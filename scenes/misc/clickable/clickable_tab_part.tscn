@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dut2fm7cqngup"]
+
+[ext_resource type="Texture2D" uid="uid://rq6d5y5g5fl7" path="res://sprite/other/clickable_type_unknown.png" id="1_d0l3u"]
+[ext_resource type="Script" path="res://scenes/misc/clickable/clickable_tab_part.gd" id="2_26mc1"]
+
+[node name="Tab_Bodies" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_d0l3u")
+script = ExtResource("2_26mc1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

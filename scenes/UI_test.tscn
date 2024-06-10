@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbnq4alg00yu4"]
+
+[ext_resource type="Script" path="res://scenes/UI_test.gd" id="1_0f0on"]
+[ext_resource type="Texture2D" uid="uid://bbx502aisqka5" path="res://bill-Sheet.png" id="2_xef8g"]
+
+[node name="draw" type="Node2D"]
+script = ExtResource("1_0f0on")
+texture = ExtResource("2_xef8g")

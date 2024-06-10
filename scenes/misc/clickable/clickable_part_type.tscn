@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mw4qydx0a26m"]
+
+[ext_resource type="Texture2D" uid="uid://rq6d5y5g5fl7" path="res://sprite/other/clickable_type_unknown.png" id="1_0vyim"]
+
+[node name="Clickable_Tab_Type" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0vyim")

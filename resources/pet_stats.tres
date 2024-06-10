@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="pet_stats_blueprint" load_steps=5 format=3 uid="uid://dgu0taccwgl7"]
+
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="1_1ldfa"]
+[ext_resource type="Script" path="res://resources/pet_stats_blueprint.gd" id="1_uv48p"]
+[ext_resource type="Texture2D" uid="uid://d0qw3p7b4qipu" path="res://sprite/face/eyes/eyes2-Sheet.png" id="2_p7q60"]
+[ext_resource type="Texture2D" uid="uid://buo66bos4gbj4" path="res://sprite/face/mouth/mouth2-Sheet.png" id="3_xpsw4"]
+
+[resource]
+script = ExtResource("1_uv48p")
+hunger = 0
+body = ExtResource("1_1ldfa")
+eyes = ExtResource("2_p7q60")
+mouth = ExtResource("3_xpsw4")

@@ -1,0 +1,490 @@
+[gd_scene load_steps=32 format=3 uid="uid://dppjchrp5io0f"]
+
+[ext_resource type="Script" path="res://scenes/pet/pet.gd" id="1_onrdo"]
+[ext_resource type="Texture2D" uid="uid://bh623cl3bwqj0" path="res://sprite/other/feet.png" id="2_7e8t7"]
+[ext_resource type="Resource" uid="uid://dgu0taccwgl7" path="res://resources/pet_stats.tres" id="2_tv5tj"]
+[ext_resource type="Texture2D" uid="uid://dig7qad3m4rp5" path="res://sprite/other/hand.png" id="4_hgdnn"]
+[ext_resource type="Texture2D" uid="uid://dh12u3rvbketk" path="res://sprite/hat/hat1.png" id="4_jk51r"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="4_n31fs"]
+[ext_resource type="Texture2D" uid="uid://cko7ia33jo52d" path="res://sprite/face/eyes/eye1-Sheet.png" id="8_3687b"]
+[ext_resource type="Texture2D" uid="uid://or31ct77bsrd" path="res://sprite/face/mouth/mouth1-Sheet.png" id="9_glp4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcv3"]
+
+[sub_resource type="Animation" id="Animation_6cof6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body_Parts/Hand1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-44, 13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body_Parts/Hand2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(43, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_fmyfs"]
+resource_name = "idle"
+length = 1.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.450625, 0.450625),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body_Parts/Hand1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.9),
+"transitions": PackedFloat32Array(0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(-44, 12.987), Vector2(-44, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body_Parts/Hand2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.9),
+"transitions": PackedFloat32Array(0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(43, 13), Vector2(43, 8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8krof"]
+_data = {
+"RESET": SubResource("Animation_6cof6"),
+"idle": SubResource("Animation_fmyfs")
+}
+
+[sub_resource type="Animation" id="Animation_5qe1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_ss78v"]
+resource_name = "eyes_normal"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_bbcge"]
+resource_name = "eyes_blink_happy"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_0404j"]
+resource_name = "eyes_happy"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_im7mf"]
+resource_name = "normal_blink"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ko0iy"]
+resource_name = "sad_eyes"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_3q7c5"]
+resource_name = "eyes_blink_sad"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f08ve"]
+_data = {
+"RESET": SubResource("Animation_5qe1i"),
+"happy": SubResource("Animation_ss78v"),
+"happy_blink": SubResource("Animation_bbcge"),
+"normal": SubResource("Animation_0404j"),
+"normal_blink": SubResource("Animation_im7mf"),
+"sad": SubResource("Animation_ko0iy"),
+"sad_blink": SubResource("Animation_3q7c5")
+}
+
+[sub_resource type="Animation" id="Animation_y1if1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_yq6wu"]
+resource_name = "happy"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_2dvc8"]
+resource_name = "happy_switch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_7fcj1"]
+resource_name = "happy_talk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_k4jkc"]
+resource_name = "normal"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_n25vw"]
+resource_name = "normal_switch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_h4r8a"]
+resource_name = "normal_talk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_c5234"]
+resource_name = "sad"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_5af2j"]
+resource_name = "sad_switch"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_6jt6o"]
+resource_name = "sad_talk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body_Parts/Body/Face/Mouth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7jvr"]
+_data = {
+"RESET": SubResource("Animation_y1if1"),
+"happy": SubResource("Animation_yq6wu"),
+"happy_switch": SubResource("Animation_2dvc8"),
+"happy_talk": SubResource("Animation_7fcj1"),
+"normal": SubResource("Animation_k4jkc"),
+"normal_switch": SubResource("Animation_n25vw"),
+"normal_talk": SubResource("Animation_h4r8a"),
+"sad": SubResource("Animation_c5234"),
+"sad_switch": SubResource("Animation_5af2j"),
+"sad_talk": SubResource("Animation_6jt6o")
+}
+
+[node name="Pet" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_onrdo")
+properties = ExtResource("2_tv5tj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_ldcv3")
+
+[node name="body_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8krof")
+}
+
+[node name="eyes_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f08ve")
+}
+
+[node name="mouth_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j7jvr")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Body_Parts" type="Node2D" parent="."]
+position = Vector2(0, -0.24171)
+scale = Vector2(3.106, 3)
+
+[node name="feet1" type="Sprite2D" parent="Body_Parts"]
+modulate = Color(0.239216, 0.290196, 0.67451, 1)
+position = Vector2(-17.7077, 36.7472)
+texture = ExtResource("2_7e8t7")
+
+[node name="feet2" type="Sprite2D" parent="Body_Parts"]
+modulate = Color(0.239216, 0.290196, 0.67451, 1)
+position = Vector2(17.7077, 36.7472)
+texture = ExtResource("2_7e8t7")
+
+[node name="Body" type="Sprite2D" parent="Body_Parts"]
+texture = ExtResource("4_n31fs")
+
+[node name="Hat" type="Sprite2D" parent="Body_Parts/Body"]
+position = Vector2(0, -45)
+texture = ExtResource("4_jk51r")
+
+[node name="Face" type="Marker2D" parent="Body_Parts/Body"]
+scale = Vector2(1.03533, 1)
+
+[node name="Mouth" type="Sprite2D" parent="Body_Parts/Body/Face"]
+texture = ExtResource("9_glp4y")
+hframes = 15
+frame = 12
+
+[node name="Eyes" type="Sprite2D" parent="Body_Parts/Body/Face"]
+texture = ExtResource("8_3687b")
+hframes = 9
+frame = 5
+
+[node name="Hand1" type="Sprite2D" parent="Body_Parts"]
+position = Vector2(-44, 13)
+texture = ExtResource("4_hgdnn")
+
+[node name="Hand2" type="Sprite2D" parent="Body_Parts"]
+position = Vector2(43, 13)
+texture = ExtResource("4_hgdnn")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

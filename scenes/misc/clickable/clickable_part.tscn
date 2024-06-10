@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxb1t451av80k"]
+
+[ext_resource type="Script" path="res://scenes/misc/clickable/clickable_part.gd" id="1_84x18"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iamti"]
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_84x18")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = SubResource("CompressedTexture2D_iamti")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
