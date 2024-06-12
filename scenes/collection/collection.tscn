@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw4u0cushw2j1"]
+[gd_scene load_steps=6 format=3 uid="uid://bm6vbtrqbqx7d"]
 
-[ext_resource type="Script" path="res://scenes/costumize_pet/character_costumize.gd" id="1_tx3qe"]
-[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://scenes/pet/pet.tscn" id="2_umgjk"]
-[ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://scenes/misc/clickable/clickable_tab_part.tscn" id="3_y5quc"]
-[ext_resource type="Script" path="res://scripts/show_parts.gd" id="4_ameph"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://scenes/misc/clickable/clickable_change_scene.tscn" id="5_eujcc"]
+[ext_resource type="Script" path="res://scenes/costumize_pet/character_costumize.gd" id="1_qphre"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://scenes/pet/pet.tscn" id="2_g0p55"]
+[ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://scenes/misc/clickable/clickable_tab_part.tscn" id="3_ej4bo"]
+[ext_resource type="Script" path="res://scenes/collection/show_parts_collection.gd" id="4_sqguu"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://scenes/misc/clickable/clickable_change_scene.tscn" id="5_xn78i"]
 
-[node name="Character_Customize" type="Node2D"]
-script = ExtResource("1_tx3qe")
+[node name="Collection" type="Node2D"]
+script = ExtResource("1_qphre")
 
-[node name="Pet" parent="." instance=ExtResource("2_umgjk")]
+[node name="Pet" parent="." instance=ExtResource("2_g0p55")]
 position = Vector2(296, 636)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -27,16 +27,16 @@ layout_mode = 2
 theme_override_constants/h_separation = 1
 columns = 6
 
-[node name="Tab_Bodies" parent="MarginContainer/GridContainer" instance=ExtResource("3_y5quc")]
+[node name="Tab_Bodies" parent="MarginContainer/GridContainer" instance=ExtResource("3_ej4bo")]
 layout_mode = 2
 
-[node name="Tab_Eyes" parent="MarginContainer/GridContainer" instance=ExtResource("3_y5quc")]
+[node name="Tab_Eyes" parent="MarginContainer/GridContainer" instance=ExtResource("3_ej4bo")]
 layout_mode = 2
 
-[node name="Tab_Mouths" parent="MarginContainer/GridContainer" instance=ExtResource("3_y5quc")]
+[node name="Tab_Mouths" parent="MarginContainer/GridContainer" instance=ExtResource("3_ej4bo")]
 layout_mode = 2
 
-[node name="Tab_Hats" parent="MarginContainer/GridContainer" instance=ExtResource("3_y5quc")]
+[node name="Tab_Hats" parent="MarginContainer/GridContainer" instance=ExtResource("3_ej4bo")]
 layout_mode = 2
 
 [node name="Body_Picker" type="Control" parent="."]
@@ -61,37 +61,34 @@ layout_mode = 2
 color = Color(0.0980392, 0.466667, 0.372549, 1)
 
 [node name="Body_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
-script = ExtResource("4_ameph")
+script = ExtResource("4_sqguu")
 
 [node name="Eyes_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
-script = ExtResource("4_ameph")
+script = ExtResource("4_sqguu")
 
 [node name="Mouth_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
-script = ExtResource("4_ameph")
+script = ExtResource("4_sqguu")
 
 [node name="Hat_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
-script = ExtResource("4_ameph")
+script = ExtResource("4_sqguu")
 
-[node name="Main_Hub" parent="." instance=ExtResource("5_eujcc")]
+[node name="Main_Hub" parent="." instance=ExtResource("5_xn78i")]
 offset_left = 171.0
 offset_top = 246.0
 offset_right = 171.0

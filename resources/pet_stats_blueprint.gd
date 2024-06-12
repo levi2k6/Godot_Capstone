@@ -10,6 +10,4 @@ class_name pet_stats_blueprint
 
 
 
-var _collection = []
-
 

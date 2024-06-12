@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpwsoetlejf43"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_cpa8k"]
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_cpa8k")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 48.0
+offset_right = 191.0
+offset_bottom = 79.0
+text = "Click"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

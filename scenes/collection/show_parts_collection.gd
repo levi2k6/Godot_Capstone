@@ -47,6 +47,20 @@ func _create_parts():
 			partins.get_child(0).vframes = 1
 			partins.get_child(0).frame = 2
 
+#func _create_parts():
+	#for part in parts:
+		#var partins = CLICKABLE_PART.instantiate()
+		#add_child(partins)
+		#partins.get_child(0).texture = part
+		#if name == "Eyes_Parts":
+			#partins.get_child(0).hframes = 9
+			#partins.get_child(0).vframes = 1
+			#partins.get_child(0).frame = 2
+		#if name == "Mouth_Parts":
+			#partins.get_child(0).hframes = 15
+			#partins.get_child(0).vframes = 1
+			#partins.get_child(0).frame = 2
+
 
 func _get_part(part):
 	emit_signal("send_texture", part, name)

@@ -22,6 +22,7 @@ func _ready():
 	_fashion()
 
 
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if get_child(5).get_child(2).get_rect().has_point(to_local(event.position)):
@@ -31,6 +32,12 @@ func _input(event):
 		print(properties.hunger)
 	
 
+
+
+func _equip():
+	
+	
+	pass
 
 func _fashion():
 	$Body_Parts.get_child(2).texture = properties.body

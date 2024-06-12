@@ -11,9 +11,6 @@ extends Node2D
 @onready var color_rect = $Body_Picker/ScrollContainer/ColorRect
 
 
-
-
-
 func _ready():
 	
 	for child in grid_container.get_children():
@@ -23,6 +20,8 @@ func _ready():
 		child.send_texture.connect(_change_part)
 	
 	_change_tab("Tab_Bodies")
+	
+	print("testomg")
 
 func _change_tab(naym):
 	for child in color_rect.get_children():

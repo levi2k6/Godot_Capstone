@@ -13,6 +13,6 @@ func _change():
 	if get_parent().name == "Character_Costumize":
 		get_tree().change_scene_to_file("res://scenes/costumize_pet/character_costumize.tscn")
 	elif get_parent().name == "Main_Hub":
-		get_tree().change_scene_to_file("res://scenes/world.tscn")
+		get_tree().change_scene_to_file("res://scenes/main_hub/world.tscn")
 	elif get_parent().name == "Game1":
 		get_tree().change_scene_to_file("res://scenes/world.tscn")

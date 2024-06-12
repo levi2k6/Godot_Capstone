@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://qnvyv3a0mthy"]
+
+[ext_resource type="Script" path="res://scenes/costumize_pet/character_costumize.gd" id="1_4832x"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://scenes/pet/pet.tscn" id="2_bmkpa"]
+[ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://scenes/misc/clickable/clickable_tab_part.tscn" id="3_i7p62"]
+[ext_resource type="Script" path="res://scenes/shop/show_parts_shop.gd" id="4_63lq5"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://scenes/misc/clickable/clickable_change_scene.tscn" id="5_b38ie"]
+[ext_resource type="Script" path="res://scenes/shop/buy_button.gd" id="6_4u4uc"]
+[ext_resource type="Script" path="res://scenes/shop/Buy_Modal.gd" id="6_iw5rd"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="6_m7fjv"]
+
+[node name="Character_Customize" type="Node2D"]
+script = ExtResource("1_4832x")
+
+[node name="Pet" parent="." instance=ExtResource("2_bmkpa")]
+position = Vector2(296, 636)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 106.0
+offset_top = 31.0
+offset_right = 258.0
+offset_bottom = 51.0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+metadata/_edit_group_ = true
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 1
+columns = 6
+
+[node name="Tab_Bodies" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+layout_mode = 2
+
+[node name="Tab_Eyes" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+layout_mode = 2
+
+[node name="Tab_Mouths" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+layout_mode = 2
+
+[node name="Tab_Hats" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+layout_mode = 2
+
+[node name="Body_Picker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Body_Picker"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 51.0
+offset_right = 449.0
+offset_bottom = 151.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Body_Picker/ScrollContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+color = Color(0.0980392, 0.466667, 0.372549, 1)
+
+[node name="Body_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+script = ExtResource("4_63lq5")
+
+[node name="Eyes_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+script = ExtResource("4_63lq5")
+
+[node name="Mouth_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+script = ExtResource("4_63lq5")
+
+[node name="Hat_Parts" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+script = ExtResource("4_63lq5")
+
+[node name="Main_Hub" parent="." instance=ExtResource("5_b38ie")]
+offset_left = 171.0
+offset_top = 246.0
+offset_right = 171.0
+offset_bottom = 246.0
+
+[node name="Buy_Modal" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 105.0
+offset_top = 237.0
+offset_right = 452.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.169583, 0.190176, 0.210148, 1)
+script = ExtResource("6_iw5rd")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="Buy_Modal"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -36.0
+offset_right = 50.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BUY"
+script = ExtResource("6_4u4uc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Buy_Modal"]
+z_index = 1
+position = Vector2(171, 77)
+texture = ExtResource("6_m7fjv")
+
+[connection signal="button_up" from="Buy_Modal/Button" to="Buy_Modal" method="_on_button_button_up"]

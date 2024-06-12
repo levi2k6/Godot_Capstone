@@ -17,4 +17,4 @@ func _triggers():
 
 func _update_hunger(hunger):
 	print("what?")
-	get_child(2).get_child(0).value = hunger
+	get_child(3).get_child(0).value = hunger

@@ -7,13 +7,14 @@
 script = ExtResource("1_hbkyp")
 
 [node name="Main_Hub" parent="." instance=ExtResource("1_u6hdh")]
-offset_left = 208.0
-offset_top = 437.0
-offset_right = 208.0
-offset_bottom = 437.0
+offset_left = 69.0
+offset_top = 227.0
+offset_right = 69.0
+offset_bottom = 227.0
 
 [node name="Character_Costumize" parent="." instance=ExtResource("1_u6hdh")]
-offset_left = 209.0
-offset_top = 437.0
-offset_right = 209.0
-offset_bottom = 437.0
+modulate = Color(1, 0.34902, 1, 1)
+offset_left = 389.0
+offset_top = 234.0
+offset_right = 389.0
+offset_bottom = 234.0
