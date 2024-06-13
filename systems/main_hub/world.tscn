@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwl4v0hw2og16"]
+
+[ext_resource type="Script" path="res://systems/main_hub/world.gd" id="1_o41l5"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_dq6rg"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="3_3mgh2"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_o41l5")
+
+[node name="Pet" parent="." instance=ExtResource("2_dq6rg")]
+position = Vector2(300, 498)
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+visible = false
+layout_mode = 0
+offset_top = 1.0
+offset_right = 576.0
+offset_bottom = 1024.0
+color = Color(0, 0.184314, 0.411765, 1)
+
+[node name="Character_Costumize" parent="." instance=ExtResource("3_3mgh2")]
+offset_left = 415.0
+offset_top = 862.0
+offset_right = 543.0
+offset_bottom = 990.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 576.0
+offset_bottom = 1023.0
+size_flags_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="Hunger_Bar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 175.0
+offset_right = 200.0
+offset_bottom = 202.0
+grow_horizontal = 2
+size_flags_horizontal = 4

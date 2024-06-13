@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq5jw5oofwekp"]
+
+[ext_resource type="Script" path="res://universal_scripts/clickable_change_scene.gd" id="1_78r7o"]
+
+[node name="Button" type="Button"]
+offset_right = 119.0
+offset_bottom = 42.0
+script = ExtResource("1_78r7o")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

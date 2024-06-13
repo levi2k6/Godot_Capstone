@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqrdnk3spxvue"]
+
+[ext_resource type="Script" path="res://systems/game_menu/Game_Menu.gd" id="1_hbkyp"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_u6hdh"]
+
+[node name="GameMenu" type="Node2D"]
+script = ExtResource("1_hbkyp")
+
+[node name="Main_Hub" parent="." instance=ExtResource("1_u6hdh")]
+offset_left = 69.0
+offset_top = 227.0
+offset_right = 69.0
+offset_bottom = 227.0
+
+[node name="Character_Costumize" parent="." instance=ExtResource("1_u6hdh")]
+modulate = Color(1, 0.34902, 1, 1)
+offset_left = 389.0
+offset_top = 234.0
+offset_right = 389.0
+offset_bottom = 234.0

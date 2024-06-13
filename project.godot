@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="learning_game"
-run/main_scene="res://scenes/main_hub/world.tscn"
+run/main_scene="res://systems/main_hub/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Singleton="*res://singleton.gd"
-PartLibrary="*res://part_library.gd"
+ItemLibrary="*res://item_library.gd"
 
 [display]
 
