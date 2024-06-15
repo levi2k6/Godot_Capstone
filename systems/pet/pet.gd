@@ -36,19 +36,23 @@ func _input(event):
 func _fashion():
 	var equip_items = ItemLibrary._get_pet_equip_library()
 	
-	properties.body = equip_items[0].texture
-	properties.eyes = equip_items[1].texture
-	properties.mouth = equip_items[2].texture
-	properties.hat = equip_items[3].texture
+	if equip_items.size() == 0:
+		return
 	
+	for item in equip_items:
+		if item.type == "body":
+			properties.body = item.texture
+		if item.type == "eye":
+			properties.eyes = item.texture
+		if item.type == "mouth":
+			properties.mouth = item.texture
+		if item.type == "hat":
+			properties.hat = item.texture
 	
 	$Body.get_child(2).texture = properties.body
 	$Body.get_child(2).get_child(1).get_child(1).texture = properties.eyes
 	$Body.get_child(2).get_child(1).get_child(0).texture = properties.mouth
 	$Body.get_child(2).get_child(0).texture = properties.hat
-	
-	
-
 
 func _learn():
 	properties.hunger += 10

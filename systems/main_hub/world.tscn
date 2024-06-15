@@ -22,12 +22,6 @@ offset_right = 576.0
 offset_bottom = 1024.0
 color = Color(0, 0.184314, 0.411765, 1)
 
-[node name="Character_Costumize" parent="." instance=ExtResource("3_3mgh2")]
-offset_left = 415.0
-offset_top = 862.0
-offset_right = 543.0
-offset_bottom = 990.0
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -47,3 +41,6 @@ offset_right = 200.0
 offset_bottom = 202.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+
+[node name="Collection_Button" parent="UI" instance=ExtResource("3_3mgh2")]
+layout_mode = 0

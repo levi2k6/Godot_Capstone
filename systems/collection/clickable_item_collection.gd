@@ -23,14 +23,18 @@ func _item_texture(item, naym):
 	
 
 func _update_pet_equip_database(item):
+	var child = ItemLibrary._get_child_database()
+	
+	print(item.name, "one1")
+	
 	if item.type == "body":
-		Singleton.database.update_rows("pet", "id = 2", {"name" :"bunkey" , "body_id" : item.id})
+		Singleton.database.update_rows("pet", "id = %d" %child[0].id, {"name" :"bunkey" , "body_id" : item.id})
 	elif item.type == "eye":
-			Singleton.database.update_rows("pet", "id = 2", {"name" :"bunkey" , "eyes_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %d" %child[0].id, {"name" :"bunkey" , "eyes_id" : item.id})
 	elif item.type == "mouth":
-			Singleton.database.update_rows("pet", "id = 2", {"name" :"bunkey" , "mouth_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %d" %child[0].id, {"name" :"bunkey" , "mouth_id" : item.id})
 	elif item.type == "hat":
-			Singleton.database.update_rows("pet", "id = 2", {"name" :"bunkey" , "hat_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %d" %child[0].id, {"name" :"bunkey" , "hat_id" : item.id})
 	get_parent()._get_item(this_item)
 
 func _on_mouse_entered():

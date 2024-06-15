@@ -18,7 +18,8 @@ var library = [
 func _ready():  
 	
 	_append_library()
-	_get_pet_equip_library()
+
+
 
 
 
@@ -62,12 +63,17 @@ func _get_pet_equip_library():
 		for lib in library:
 			if lib.id == item.body_id:
 				lib_result.append(lib)
-			if lib.id == item.eyes_id:
+				#break
+			elif lib.id == item.eyes_id:
 				lib_result.append(lib)
-			if lib.id == item.mouth_id:
+				#break
+			elif lib.id == item.mouth_id:
 				lib_result.append(lib)
-			if lib.id == item.hat_id:
+				#break
+			elif lib.id == item.hat_id:
 				lib_result.append(lib)
+				#break
+
 	return lib_result
 
 func _get_collection_database():
@@ -86,15 +92,13 @@ func _get_collection_library():
 		for collection in _get_collection_database():
 			if collection.item_id == item.id:
 				my_collection.append(item)
+				break
+			print(collection)
 	
 	return my_collection
 
-func _get_all_items_algo():
-	
-	Singleton.database.query(
-		"SELECT id FROM items;"
-	)
-	
+
+
+func _get_child_database():
+	Singleton.database.query(" SELECT * FROM child")
 	return Singleton.database.query_result
-
-
