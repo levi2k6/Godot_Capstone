@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://csecd0m0t0c2y"]
 
-[ext_resource type="Script" path="res://universal_scripts/collection_shop.gd" id="1_yxrc0"]
+[ext_resource type="Script" path="res://systems/create_pet/create_pet.gd" id="1_jjidk"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_yjn1a"]
 [ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://systems/misc/clickable/clickable_tab_item.tscn" id="3_odqlm"]
 [ext_resource type="Script" path="res://systems/create_pet/show_item_create_pet.gd" id="4_21v8p"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="5_pxq8f"]
+[ext_resource type="Script" path="res://systems/create_pet/create_pet_modal.gd" id="6_yjfel"]
 
 [node name="Create_Pet" type="Node2D"]
-script = ExtResource("1_yxrc0")
+script = ExtResource("1_jjidk")
 
 [node name="Pet" parent="." instance=ExtResource("2_yjn1a")]
 position = Vector2(296, 636)
@@ -90,8 +90,74 @@ offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Main_Hub_Button" parent="." instance=ExtResource("5_pxq8f")]
-offset_left = 447.0
-offset_top = 905.0
-offset_right = 505.0
-offset_bottom = 926.0
+[node name="Submit" type="Button" parent="."]
+offset_left = 394.0
+offset_top = 923.0
+offset_right = 515.0
+offset_bottom = 966.0
+size_flags_vertical = 8
+text = "OK"
+
+[node name="Create_Pet_Modal" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 105.0
+offset_top = 237.0
+offset_right = 452.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.169583, 0.190176, 0.210148, 1)
+script = ExtResource("6_yjfel")
+metadata/_edit_group_ = true
+
+[node name="TextEdit" type="TextEdit" parent="Create_Pet_Modal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -22.0
+offset_right = 105.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Create_Pet_Modal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -59.0
+offset_right = 20.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME YOUR PET"
+
+[node name="Button" type="Button" parent="Create_Pet_Modal"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -68.0
+offset_right = 49.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Create Pet!"
+
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
+[connection signal="button_up" from="Create_Pet_Modal/Button" to="Create_Pet_Modal" method="_on_create_pet_button_up"]

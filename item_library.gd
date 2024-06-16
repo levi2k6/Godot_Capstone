@@ -18,9 +18,7 @@ var library = [
 func _ready():  
 	
 	_append_library()
-
-
-
+	
 
 
 func _append_library():
@@ -39,7 +37,6 @@ func _append_library():
 	#print(library)
 
 
-
 func _id_to_library_data(ids):
 	var dictionaries = []
 	
@@ -51,6 +48,7 @@ func _id_to_library_data(ids):
 				
 	
 	return dictionaries
+
 
 func _get_pet_equip_library():
 	Singleton.database.query(
@@ -73,32 +71,23 @@ func _get_pet_equip_library():
 			elif lib.id == item.hat_id:
 				lib_result.append(lib)
 				#break
-
+				
 	return lib_result
 
-func _get_collection_database():
-	Singleton.database.query(
-		"SELECT * FROM collection;"
-	)
-	var result = Singleton.database.query_result
-	
-	return result
-	
 
 func _get_collection_library():
+	var collection_database = DataManager._get_collection_database()
 	var my_collection = []
 	var n = 0
 	for item in library:
-		for collection in _get_collection_database():
+		for collection in collection_database:
 			if collection.item_id == item.id:
 				my_collection.append(item)
 				break
-			print(collection)
+			#print(collection)
 	
 	return my_collection
 
 
 
-func _get_child_database():
-	Singleton.database.query(" SELECT * FROM child")
-	return Singleton.database.query_result
+

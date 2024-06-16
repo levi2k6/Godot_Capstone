@@ -15,7 +15,7 @@ func _modal_func(item):
 
 
 func _on_button_button_up():
-	var child_id = ItemLibrary._get_child_database()
+	var child_id = DataManager._get_child_database()
 	var item_id = this_item.id
 	
 	Singleton.database.insert_row("collection", {"child_id": child_id[0].id, "item_id": item_id })

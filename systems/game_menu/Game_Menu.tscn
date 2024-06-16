@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqrdnk3spxvue"]
 
-[ext_resource type="Script" path="res://systems/game_menu/Game_Menu.gd" id="1_hbkyp"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_u6hdh"]
+[ext_resource type="Script" path="res://systems/game_menu/game_menu.gd" id="1_ht4tj"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="2_qeo06"]
 
 [node name="GameMenu" type="Node2D"]
-script = ExtResource("1_hbkyp")
+script = ExtResource("1_ht4tj")
 
-[node name="Main_Hub_Button" parent="." instance=ExtResource("1_u6hdh")]
+[node name="Main_Hub_Button" parent="." instance=ExtResource("2_qeo06")]
 offset_left = 285.0
 offset_top = 524.0
 offset_right = 293.0
 offset_bottom = 532.0
 
-[node name="Create_Child_Button" parent="." instance=ExtResource("1_u6hdh")]
+[node name="Create_Child_Button" parent="." instance=ExtResource("2_qeo06")]
 modulate = Color(1, 0.34902, 1, 1)
 offset_left = 285.0
 offset_top = 524.0

@@ -12,11 +12,12 @@ func _ready():
 	_create_items()
 	#1,2,4,5,7,9
 
-func _item_owned_filter():
+func _item_owned_filter_ids():
+	var collections = ItemLibrary._get_collection_library()
 	var library_ids = []
 	for lib in ItemLibrary.library:
 		library_ids.append(lib.id)  #adds all of the item.ids in an array
-		for collection in ItemLibrary._get_collection_library():  #deletes the ids that are the same with the ids in collection
+		for collection in collections:  #deletes the ids that are the same with the ids in collection
 			if lib.id == collection.id:
 				library_ids.erase(collection.id)
 			
@@ -24,23 +25,25 @@ func _item_owned_filter():
 
 
 func _change_items():
+	var collections = ItemLibrary._id_to_library_data(_item_owned_filter_ids())
+	
 	if name == "Body_Items":
-		for item in ItemLibrary._id_to_library_data(_item_owned_filter()):
+		for item in collections:
 			if item.type == "body":
 				items.append(item)
 		
 	if name == "Eyes_Items":
-		for item in ItemLibrary._id_to_library_data(_item_owned_filter()):
+		for item in collections:
 			if item.type == "eye":
 				items.append(item)
 
 	if name == "Mouth_Items":
-		for item in ItemLibrary._id_to_library_data(_item_owned_filter()):
+		for item in collections:
 			if item.type == "mouth":
 				items.append(item)
 		
 	if name == "Hat_Items":
-		for item in ItemLibrary._id_to_library_data(_item_owned_filter()):
+		for item in collections:
 			if item.type == "hat":
 				items.append(item)
 		

@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwl4v0hw2og16"]
 
-[ext_resource type="Script" path="res://systems/main_hub/world.gd" id="1_o41l5"]
-[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_dq6rg"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="3_3mgh2"]
+[ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_c3m34"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="3_vrikd"]
 
-[node name="World" type="Node2D"]
-script = ExtResource("1_o41l5")
+[node name="Main_Hub" type="Node2D"]
+script = ExtResource("1_yumrb")
 
-[node name="Pet" parent="." instance=ExtResource("2_dq6rg")]
+[node name="Pet" parent="." instance=ExtResource("2_c3m34")]
 position = Vector2(300, 498)
 
 [node name="Background" type="Control" parent="."]
@@ -15,7 +15,6 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-visible = false
 layout_mode = 0
 offset_top = 1.0
 offset_right = 576.0
@@ -42,5 +41,5 @@ offset_bottom = 202.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
-[node name="Collection_Button" parent="UI" instance=ExtResource("3_3mgh2")]
+[node name="Collection_Button" parent="UI" instance=ExtResource("3_vrikd")]
 layout_mode = 0

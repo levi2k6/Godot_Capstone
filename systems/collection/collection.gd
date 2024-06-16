@@ -10,16 +10,6 @@ extends Node2D
 
 
 func _ready():
-	if get_tree().get_current_scene().name == "Create_Pet":
-		Singleton.database.query("SELECT * FROM pet")
-		var pet = Singleton.database.query_result
-		var child = ItemLibrary._get_child_database()
-		
-		if pet.size() == 0:
-			Singleton.database.insert_row("pet", {"id":child[0].id, "name": "", "body_id": 0, "eyes_id": 0, "mouth_id":0, "hat_id": 0})
-		else:
-			print("pet already exist")
-		
 	for child in grid_container.get_children():
 		child.change_tab.connect(_change_tab)
 	
@@ -27,8 +17,7 @@ func _ready():
 		child.send_texture.connect(_change_item)
 	
 	_change_tab("Tab_Bodies")
-	
-	
+
 
 func _change_tab(naym):
 	for child in color_rect.get_children():
@@ -50,7 +39,6 @@ func _change_tab(naym):
 func _change_item(item, naym):
 	$Pet._fashion()
 	pass
-
 
 
 

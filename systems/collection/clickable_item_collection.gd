@@ -23,7 +23,7 @@ func _item_texture(item, naym):
 	
 
 func _update_pet_equip_database(item):
-	var child = ItemLibrary._get_child_database()
+	var child = DataManager._get_child_database()
 	
 	print(item.name, "one1")
 	

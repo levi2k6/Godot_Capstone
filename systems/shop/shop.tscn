@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://qnvyv3a0mthy"]
 
-[ext_resource type="Script" path="res://universal_scripts/collection_shop.gd" id="1_4832x"]
+[ext_resource type="Script" path="res://systems/shop/shop.gd" id="1_x604k"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_bmkpa"]
 [ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://systems/misc/clickable/clickable_tab_item.tscn" id="3_i7p62"]
 [ext_resource type="Script" path="res://systems/shop/show_items_shop.gd" id="4_63lq5"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="6_m7fjv"]
 
 [node name="Shop" type="Node2D"]
-script = ExtResource("1_4832x")
+script = ExtResource("1_x604k")
 
 [node name="Pet" parent="." instance=ExtResource("2_bmkpa")]
 position = Vector2(296, 636)

@@ -8,7 +8,6 @@ func _input(event):
 		get_parent()._get_item(this_item)
 		
 
-
 func _item_texture(item, naym):
 	get_child(0).texture = item.texture
 	if naym == "Eyes_Items":
@@ -21,9 +20,6 @@ func _item_texture(item, naym):
 		get_child(0).frame = 2
 	
 	this_item = item
-
-
-
 
 
 func _on_mouse_entered():

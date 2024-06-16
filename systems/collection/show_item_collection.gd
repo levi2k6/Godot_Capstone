@@ -14,21 +14,22 @@ func _ready():
 	_create_items()
 
 func _change_items():
+	var collection = ItemLibrary._get_collection_library()
 	
 	if name == "Body_Items":
-		for item in ItemLibrary._get_collection_library():
+		for item in collection:
 			if item.type == "body":
 				items.append(item)
 	elif name == "Eyes_Items":
-		for item in ItemLibrary._get_collection_library():
+		for item in collection:
 			if item.type == "eye":
 				items.append(item)
 	elif name == "Mouth_Items":
-		for item in ItemLibrary._get_collection_library():
+		for item in collection:
 			if item.type == "mouth":
 				items.append(item)
 	elif name == "Hat_Items":
-		for item in ItemLibrary._get_collection_library():
+		for item in collection:
 			if item.type == "hat":
 				items.append(item)
 
