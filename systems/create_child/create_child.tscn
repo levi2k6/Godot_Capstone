@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://gs5npry5n6ck"]
+[gd_scene load_steps=2 format=3 uid="uid://gs5npry5n6ck"]
 
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_556sf"]
 [ext_resource type="Script" path="res://systems/create_child/create_child.gd" id="1_jxaay"]
 
 [node name="Create_Child" type="Node2D"]
@@ -18,8 +17,11 @@ offset_top = 181.0
 offset_right = 499.0
 offset_bottom = 210.0
 
-[node name="Create_Pet_Button" parent="." instance=ExtResource("1_556sf")]
-offset_left = 220.0
-offset_top = 270.0
-offset_right = 339.0
-offset_bottom = 312.0
+[node name="Button" type="Button" parent="."]
+offset_left = 235.0
+offset_top = 265.0
+offset_right = 331.0
+offset_bottom = 299.0
+text = "SUBMIT"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

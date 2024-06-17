@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Singleton="*res://singleton.gd"
-ItemLibrary="*res://item_library.gd"
+Singleton="*res://universal_scripts/singleton.gd"
+ItemLibrary="*res://universal_scripts/item_library.gd"
 DataManager="*res://universal_scripts/data_manager.gd"
 
 [display]

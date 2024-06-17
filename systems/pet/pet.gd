@@ -17,10 +17,10 @@ enum states{
 
 func _ready():
 	$body_animation.play("idle")
-	state_chage()
 	start_time()
+	_append_properties()
+	state_chage()
 	_fashion()
-
 
 
 func _input(event):
@@ -32,6 +32,8 @@ func _input(event):
 		print(properties.hunger)
 	
 
+func _append_properties():
+	properties.hunger = DataManager._get_pet_database()[0].hunger
 
 func _fashion():
 	var equip_items = ItemLibrary._get_pet_equip_library()
@@ -55,17 +57,17 @@ func _fashion():
 	$Body.get_child(2).get_child(0).texture = properties.hat
 
 func _learn():
+	var child_id = DataManager._get_child_database()[0].id
 	properties.hunger += 10
 	properties.hunger = clamp(properties.hunger, 0, 100)
+	print(properties.hunger)
+	Singleton.database.update_rows("pet","id = %s"%child_id, {"hunger": properties.hunger})
 	state_chage()
 	_update_hunger_bar()
-	
-	
 
 func _update_hunger_bar():
-	emit_signal("update_hunger", properties.hunger)
-
-
+	var pet_hunger = DataManager._get_pet_database()[0].hunger
+	emit_signal("update_hunger")
 
 func state_chage():
 	if properties.hunger < 50:

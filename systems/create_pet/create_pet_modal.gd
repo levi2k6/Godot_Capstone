@@ -2,11 +2,6 @@ extends ColorRect
 
 @onready var text_edit = $TextEdit
 
-
-
-
-
-
 func _on_create_pet_button_up():
 	var child = DataManager._get_child_database()
 	var equip_library = ItemLibrary._get_pet_equip_library()

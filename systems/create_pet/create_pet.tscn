@@ -92,9 +92,9 @@ script = ExtResource("4_21v8p")
 
 [node name="Submit" type="Button" parent="."]
 offset_left = 394.0
-offset_top = 923.0
+offset_top = 928.0
 offset_right = 515.0
-offset_bottom = 966.0
+offset_bottom = 971.0
 size_flags_vertical = 8
 text = "OK"
 

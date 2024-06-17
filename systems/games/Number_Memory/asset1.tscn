@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cqwcigbiaj6qd"]
-
-[node name="Node2D" type="RichTextLabel"]
-custom_minimum_size = Vector2(10, 20)
-offset_right = 10.0
-offset_bottom = 27.0
-text = "0"
-scroll_active = false
