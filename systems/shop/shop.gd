@@ -1,21 +1,17 @@
 extends Node2D
 
-@onready var body_items = $Body_Picker/ScrollContainer/ColorRect/Body_Items
-@onready var eyes_items = $Body_Picker/ScrollContainer/ColorRect/Eyes_Items
-@onready var mouth_items = $Body_Picker/ScrollContainer/ColorRect/Mouth_Items
-@onready var hat_items = $Body_Picker/ScrollContainer/ColorRect/Hat_Items
+@onready var body_items = $Control/Picker/ScrollContainer/ColorRect/Body_Items
+@onready var eyes_items = $Control/Picker/ScrollContainer/ColorRect/Eyes_Items
+@onready var mouth_items = $Control/Picker/ScrollContainer/ColorRect/Mouth_Items
+@onready var hat_items = $Control/Picker/ScrollContainer/ColorRect/Hat_Items
 
-@onready var grid_container = $MarginContainer/GridContainer
-@onready var color_rect = $Body_Picker/ScrollContainer/ColorRect
-
+@onready var grid_container = $Control/Picker/GridContainer
+@onready var color_rect = $Control/Picker/ScrollContainer/ColorRect
 
 
 func _ready():
 	for child in grid_container.get_children():
 		child.change_tab.connect(_change_tab)
-	
-	for child in color_rect.get_children():
-		child.send_texture.connect(_change_item)
 	
 	_change_tab("Tab_Bodies")
 
@@ -37,7 +33,5 @@ func _change_tab(naym):
 			pass
 			
 
-func _change_item(item, naym):
-	$Pet._fashion()
-	pass
+
 

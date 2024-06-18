@@ -15,9 +15,11 @@ func _change_texture():
 
 func _on_mouse_entered():
 	clickable = true
+	#print(clickable)
 	pass # Replace with function body.
 
 
 func _on_mouse_exited():
 	clickable = false
+	#print(clickable)
 	pass # Replace with function body.

@@ -7,7 +7,7 @@ var this_item;
 func _input(event):
 	if clickable and Input.is_action_just_pressed("click"):
 		_update_pet_equip_database(this_item)
-
+		
 
 func _item_texture(item, naym):
 	get_child(0).texture = item.texture
@@ -24,8 +24,6 @@ func _item_texture(item, naym):
 
 func _update_pet_equip_database(item):
 	var child = DataManager._get_child_database()
-	
-	print(item.name, "one1")
 	
 	if item.type == "body":
 		Singleton.database.update_rows("pet", "id = %d" %child[0].id, {"name" :"bunkey" , "body_id" : item.id})

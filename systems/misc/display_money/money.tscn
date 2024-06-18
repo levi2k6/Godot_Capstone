@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ka6f2ksq5rlp"]
+
+[ext_resource type="Script" path="res://systems/misc/display_money/display_money.gd" id="1_0ndv5"]
+
+[node name="Money" type="Label"]
+offset_left = 100.0
+offset_top = 45.0
+offset_right = 140.0
+offset_bottom = 68.0
+text = "asdasdasd"
+script = ExtResource("1_0ndv5")

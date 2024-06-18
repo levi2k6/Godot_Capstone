@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjvttvcw8qkgs"]
+
+[ext_resource type="Script" path="res://systems/misc/debugger_label.gd" id="1_wb2au"]
+
+[node name="Debugger_Label" type="Label"]
+modulate = Color(0.967706, 0.656632, 0.326567, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -405.0
+offset_bottom = -1001.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Debugger:"
+script = ExtResource("1_wb2au")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "asdasdasd"

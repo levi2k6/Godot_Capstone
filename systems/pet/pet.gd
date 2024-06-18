@@ -33,6 +33,7 @@ func _input(event):
 	
 
 func _append_properties():
+	
 	properties.hunger = DataManager._get_pet_database()[0].hunger
 
 func _fashion():

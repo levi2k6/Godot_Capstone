@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwl4v0hw2og16"]
+[gd_scene load_steps=5 format=3 uid="uid://bwl4v0hw2og16"]
 
 [ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_c3m34"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="3_vrikd"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_lk5ma"]
 
 [node name="Main_Hub" type="Node2D"]
 script = ExtResource("1_yumrb")
@@ -13,6 +14,8 @@ position = Vector2(300, 498)
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -1.0
+offset_bottom = -1.0
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 layout_mode = 0
@@ -24,10 +27,10 @@ color = Color(0, 0.184314, 0.411765, 1)
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
+offset_left = 1.0
+offset_right = 577.0
 offset_bottom = 1023.0
 size_flags_horizontal = 4
-metadata/_edit_group_ = true
 
 [node name="Hunger_Bar" type="ProgressBar" parent="UI"]
 layout_mode = 1
@@ -35,8 +38,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
+offset_top = 27.0
 offset_right = 200.0
-offset_bottom = 27.0
+offset_bottom = 54.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
@@ -47,17 +51,45 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -42.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -191.0
+offset_top = -144.0
+offset_right = -72.0
+offset_bottom = -102.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Money" type="Label" parent="UI"]
+[node name="Shop_Button" parent="UI" instance=ExtResource("3_vrikd")]
 layout_mode = 1
-offset_left = 100.0
-offset_top = 45.0
-offset_right = 140.0
-offset_bottom = 68.0
-text = "asdasdasd"
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -221.0
+offset_right = -72.0
+offset_bottom = -179.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Money" parent="UI" instance=ExtResource("4_lk5ma")]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 70.0
+offset_right = 176.0
+offset_bottom = 93.0
+text = "00000"
+
+[node name="Get_Money" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -217.0
+offset_right = 179.0
+offset_bottom = -167.0
+grow_vertical = 0
+text = "MONEY"
+
+[connection signal="pressed" from="UI/Get_Money" to="." method="_on_get_money_pressed"]

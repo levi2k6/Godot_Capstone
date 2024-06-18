@@ -24,4 +24,18 @@ offset_right = 331.0
 offset_bottom = 299.0
 text = "SUBMIT"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 74.0
+offset_top = 146.0
+offset_right = 159.0
+offset_bottom = 169.0
+text = "First Name"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 146.0
+offset_right = 405.0
+offset_bottom = 169.0
+text = "Last Name"
+
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

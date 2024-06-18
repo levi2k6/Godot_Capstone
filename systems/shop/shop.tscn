@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qnvyv3a0mthy"]
+[gd_scene load_steps=9 format=3 uid="uid://qnvyv3a0mthy"]
 
 [ext_resource type="Script" path="res://systems/shop/shop.gd" id="1_x604k"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_bmkpa"]
@@ -7,133 +7,171 @@
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="5_b38ie"]
 [ext_resource type="Script" path="res://systems/shop/Buy_Modal.gd" id="6_iw5rd"]
 [ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="6_m7fjv"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="8_5gl6u"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_x604k")
 
 [node name="Pet" parent="." instance=ExtResource("2_bmkpa")]
+z_index = 0
 position = Vector2(296, 636)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 106.0
-offset_top = 31.0
-offset_right = 258.0
-offset_bottom = 51.0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 576.0
+offset_bottom = 1024.0
 metadata/_edit_group_ = true
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="Picker" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.5
+offset_right = 181.5
+offset_bottom = 329.0
+grow_horizontal = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/Picker"]
 layout_mode = 2
+offset_top = 30.0
+offset_right = 363.0
+offset_bottom = 70.0
 theme_override_constants/h_separation = 1
 columns = 6
 
-[node name="Tab_Bodies" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Bodies" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 
-[node name="Tab_Eyes" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Eyes" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 
-[node name="Tab_Mouths" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Mouths" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 
-[node name="Tab_Hats" parent="MarginContainer/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Hats" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 
-[node name="Body_Picker" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Body_Picker"]
-layout_mode = 0
-offset_left = 106.0
-offset_top = 51.0
-offset_right = 449.0
-offset_bottom = 151.0
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
+layout_mode = 2
+offset_top = 70.0
+offset_right = 363.0
+offset_bottom = 298.0
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Body_Picker/ScrollContainer"]
-custom_minimum_size = Vector2(500, 100)
+[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
+custom_minimum_size = Vector2(500, 220)
 layout_mode = 2
 color = Color(0.0980392, 0.466667, 0.372549, 1)
 
-[node name="Body_Items" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
+[node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_63lq5")
 
-[node name="Eyes_Items" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
+[node name="Eyes_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_63lq5")
 
-[node name="Mouth_Items" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
-visible = false
+[node name="Mouth_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_63lq5")
 
-[node name="Hat_Items" type="GridContainer" parent="Body_Picker/ScrollContainer/ColorRect"]
+[node name="Hat_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_63lq5")
 
-[node name="Collection_Button" parent="." instance=ExtResource("5_b38ie")]
-offset_left = 171.0
-offset_top = 246.0
-offset_right = 171.0
-offset_bottom = 246.0
+[node name="Money" parent="Control" instance=ExtResource("8_5gl6u")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 111.0
+offset_top = -206.5
+offset_right = 193.0
+offset_bottom = -183.5
+grow_vertical = 2
+text = "0000"
 
-[node name="Buy_Modal" type="ColorRect" parent="."]
+[node name="Buy_Modal" type="ColorRect" parent="Control"]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 105.0
-offset_top = 237.0
-offset_right = 452.0
-offset_bottom = 455.0
+offset_left = -173.5
+offset_top = -264.0
+offset_right = 173.5
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.169583, 0.190176, 0.210148, 1)
 script = ExtResource("6_iw5rd")
 metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="Buy_Modal"]
+[node name="Buy" type="Button" parent="Control/Buy_Modal"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -36.0
-offset_right = 50.0
+offset_left = -111.0
+offset_top = -47.0
+offset_right = -11.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "BUY"
+text = "$100"
 
-[node name="Sprite2D" type="Sprite2D" parent="Buy_Modal"]
+[node name="Close" type="Button" parent="Control/Buy_Modal"]
+modulate = Color(1, 0.184314, 0.176471, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = -47.0
+offset_right = -55.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Close"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Buy_Modal"]
 z_index = 1
 position = Vector2(171, 77)
+scale = Vector2(2, 2)
 texture = ExtResource("6_m7fjv")
 
-[connection signal="button_up" from="Buy_Modal/Button" to="Buy_Modal" method="_on_button_button_up"]
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("5_b38ie")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 887.0
+offset_right = 188.0
+offset_bottom = 929.0
+
+[connection signal="button_up" from="Control/Buy_Modal/Buy" to="Control/Buy_Modal" method="_on_button_button_up"]
+[connection signal="pressed" from="Control/Buy_Modal/Close" to="Control/Buy_Modal" method="_on_close_pressed"]

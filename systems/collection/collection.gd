@@ -1,12 +1,13 @@
 extends Node2D
 
-@onready var body_items = $Body_Picker/ScrollContainer/ColorRect/Body_Items
-@onready var eyes_items = $Body_Picker/ScrollContainer/ColorRect/Eyes_Items
-@onready var mouth_items = $Body_Picker/ScrollContainer/ColorRect/Mouth_Items
-@onready var hat_items = $Body_Picker/ScrollContainer/ColorRect/Hat_Items
+@onready var body_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Body_Items
+@onready var eyes_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Eyes_Items
+@onready var mouth_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Mouth_Items
+@onready var hat_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Hat_Items
 
-@onready var grid_container = $MarginContainer/GridContainer
-@onready var color_rect = $Body_Picker/ScrollContainer/ColorRect
+@onready var grid_container = $MarginContainer/Picker/GridContainer
+@onready var color_rect = $MarginContainer/Picker/ScrollContainer/ColorRect
+
 
 
 func _ready():

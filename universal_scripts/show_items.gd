@@ -3,7 +3,7 @@ signal send_texture(texture, naym)
 
 var sprites = sprite_library.new()
 
-const CLICKABLE_item = preload("res://scenes/misc/clickable/clickable_item.tscn")
+const CLICKABLE_ITEM = preload("res://systems/misc/clickable/clickable_item.tscn")
 
 var items = []
 
@@ -35,7 +35,7 @@ func _change_items():
 
 func _create_items():
 	for item in items:
-		var itemins = CLICKABLE_item.instantiate()
+		var itemins = CLICKABLE_ITEM.instantiate()
 		add_child(itemins)
 		itemins.get_child(0).texture = item
 		if name == "Eyes_Items":

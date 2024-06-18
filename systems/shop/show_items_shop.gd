@@ -1,8 +1,8 @@
 extends GridContainer
-signal send_texture(texture, naym)
 
 const CLICKABLE_ITEM_SHOP = preload("res://systems/shop/clickable_item_shop.tscn")
 @onready var buy_modal = $"../../../../Buy_Modal"
+
 
 var items = []
 

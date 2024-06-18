@@ -1,26 +1,27 @@
 extends Node2D
 
+@onready var main_hub_button = $Control/Main_Hub_Button
+@onready var create_child_button = $Control/Create_Child_Button
+@onready var create_pet_button = $Control/Create_Pet_Button
+
+
+
 func _ready():
-	print("mama")
-	Singleton.database.query(
-		"SELECT * FROM child"
-	)
+	var child = DataManager._get_child_database()
+	var pet_equip = ItemLibrary._get_pet_equip_library()
 	
-	
-	print(Singleton.database.query_result)
-	if Singleton.database.query_result.size() == 0:
-		$Main_Hub_Button.visible = false
-		$Create_Child_Button.visible = true
-		print("is empty")
+	if child.size() == 0:
+		main_hub_button.visible = false
+		create_child_button.visible = true
+		create_pet_button.visible = false
+	elif pet_equip.size() < 3:
+		main_hub_button.visible = false
+		create_child_button.visible = false
+		create_pet_button.visible = true
 	else:
-		$Main_Hub_Button.visible = true
-		$Create_Child_Button.visible = false
-		print("is not empty")
-		
-		
-
-
-
+		main_hub_button.visible = true
+		create_child_button.visible = false
+		create_pet_button.visible = false
 
 
 
