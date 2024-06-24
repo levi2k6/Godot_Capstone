@@ -1,6 +1,6 @@
 extends GridContainer
 
-const CLICKABLE_ITEM_SHOP = preload("res://systems/shop/clickable_item_shop.tscn")
+const CLICKABLE_ITEM_SHOP = preload("res://systems/shop/new_clickable_item_shop.tscn")
 @onready var buy_modal = $"../../../../Buy_Modal"
 
 

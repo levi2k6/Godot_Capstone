@@ -1,12 +1,9 @@
-extends Control
+extends TextureButton
 
 var clickable = false
 var this_item;
 
-func _input(event):
-	if clickable and Input.is_action_just_pressed("click"):
-		get_parent()._get_item(this_item)
-		
+
 
 func _item_texture(item, naym):
 	get_child(0).texture = item.texture
@@ -22,16 +19,7 @@ func _item_texture(item, naym):
 	this_item = item
 
 
-func _on_mouse_entered():
-	clickable = true
-	#print(clickable)
+
+func _on_pressed():
+	get_parent()._get_item(this_item)
 	pass # Replace with function body.
-
-
-func _on_mouse_exited():
-	clickable = false
-	#print(clickable)
-	pass # Replace with function body.
-
-
-

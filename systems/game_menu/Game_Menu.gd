@@ -7,7 +7,14 @@ extends Node2D
 
 
 func _ready():
+	_execute()
+	pass
+
+
+func _execute():
+	
 	var child = DataManager._get_child_database()
+	print(child)
 	var pet_equip = ItemLibrary._get_pet_equip_library()
 	
 	if child.size() == 0:
@@ -22,10 +29,8 @@ func _ready():
 		main_hub_button.visible = true
 		create_child_button.visible = false
 		create_pet_button.visible = false
-
-
-
-
+	
+	
 
 
 

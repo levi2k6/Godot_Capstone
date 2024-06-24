@@ -35,26 +35,26 @@ grow_horizontal = 2
 
 [node name="GridContainer" type="GridContainer" parent="Control/Picker"]
 layout_mode = 2
-offset_top = 30.0
+offset_top = 50.0
 offset_right = 363.0
 offset_bottom = 70.0
 theme_override_constants/h_separation = 1
 columns = 6
 
 [node name="Tab_Bodies" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Eyes" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Mouths" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Hats" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]

@@ -16,9 +16,8 @@ var library = [
 
 
 func _ready():  
-	
 	_append_library()
-	
+	pass
 
 
 func _append_library():

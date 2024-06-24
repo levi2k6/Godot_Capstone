@@ -3,11 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://rq6d5y5g5fl7" path="res://sprite/other/clickable_type_unknown.png" id="1_d0l3u"]
 [ext_resource type="Script" path="res://systems/misc/clickable/clickable_tab_item.gd" id="2_26mc1"]
 
-[node name="Tab_Item" type="TextureRect"]
-offset_right = 90.0
-offset_bottom = 60.0
-texture = ExtResource("1_d0l3u")
+[node name="Tab_Item" type="TextureButton"]
+offset_right = 30.0
+offset_bottom = 20.0
+texture_normal = ExtResource("1_d0l3u")
 script = ExtResource("2_26mc1")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

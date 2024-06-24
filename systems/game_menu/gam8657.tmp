@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqrdnk3spxvue"]
+
+[ext_resource type="Script" path="res://systems/game_menu/game_menu.gd" id="1_ht4tj"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="2_qeo06"]
+
+[node name="GameMenu" type="Node2D"]
+script = ExtResource("1_ht4tj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 576.0
+offset_bottom = 1024.0
+
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_qeo06")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -193.0
+offset_right = 50.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create_Child_Button" parent="Control" instance=ExtResource("2_qeo06")]
+modulate = Color(1, 0.34902, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -193.0
+offset_right = 50.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create_Pet_Button" parent="Control" instance=ExtResource("2_qeo06")]
+modulate = Color(0.929412, 0.576471, 0.0862745, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -193.0
+offset_right = 50.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -311.0
+offset_right = 108.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BIT BUDDY THE GAME TEST 1"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -86.0
+offset_right = 212.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pangitai ninyu ug bugs I lista ug I limit test ang system. 
+Assesment Goal:
+
+-dapat purple na button mu gawas kung first
+time pa gamit sa game.
+
+-dapat grey button dili na purple basta humana create 
+ug pet.
+
+-dapat maka di maka palit ug item kung kuwang kwarta 
+ug nawala napud ang gi palit sa shop.
+
+-dapat kunig human palit item mu gawas sa collections 
+ang gi palit.
+
+-dapat mu lahi ang nawng kunig puno sa hunger bar
+(click ang nawng sa pet para ma dungagan bar).
+
+-dapat dili ka create ug pet kung dili kumpleto iyahang
+ body parts"

@@ -29,29 +29,27 @@ offset_right = 181.5
 offset_bottom = 329.0
 grow_horizontal = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Picker"]
+[node name="GridContainer" type="HBoxContainer" parent="MarginContainer/Picker"]
 layout_mode = 2
-offset_top = 30.0
+offset_top = 50.0
 offset_right = 363.0
 offset_bottom = 70.0
-theme_override_constants/h_separation = 1
-columns = 6
 
 [node name="Tab_Bodies" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Eyes" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Mouths" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="Tab_Hats" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
 visible = false
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Picker"]
