@@ -443,7 +443,7 @@ libraries = {
 
 [node name="Body" type="Node2D" parent="."]
 position = Vector2(0, -0.24171)
-scale = Vector2(3.106, 3)
+scale = Vector2(3, 3)
 
 [node name="feet1" type="Sprite2D" parent="Body"]
 modulate = Color(0.239216, 0.290196, 0.67451, 1)
@@ -458,7 +458,7 @@ texture = ExtResource("3_yfy4f")
 [node name="Body" type="Sprite2D" parent="Body"]
 
 [node name="Hat" type="Sprite2D" parent="Body/Body"]
-position = Vector2(0, -45)
+position = Vector2(0, -55.9999)
 
 [node name="Face" type="Marker2D" parent="Body/Body"]
 scale = Vector2(1.03533, 1)

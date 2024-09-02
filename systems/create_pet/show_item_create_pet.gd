@@ -1,7 +1,6 @@
 extends GridContainer
 signal send_texture(texture, naym)
 
-var sprites = sprite_library.new()
 
 const CLICKABLE_ITEM_COLLECTION = preload("res://systems/collection/clickable_item_collection.tscn")
 

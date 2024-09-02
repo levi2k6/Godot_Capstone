@@ -10,7 +10,7 @@ func _on_create_pet_button_up():
 	var n = 0
 	if equip_library.size() < 3:
 		print("PET INCOMPLETE!")
-	elif equip_library.size() == 3:
+	elif equip_library.size() >= 3:
 		if  text_edit.text == "":
 			print("NAME IS BLANK!")
 			return

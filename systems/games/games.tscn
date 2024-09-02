@@ -1,31 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://wpbkq6qk0jyr"]
+[gd_scene load_steps=2 format=3 uid="uid://lpjuc7btxytx"]
 
-[ext_resource type="Script" path="res://systems/games/games.gd" id="1_vnprm"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="2_yjel7"]
 
 [node name="Games" type="Node2D"]
-script = ExtResource("1_vnprm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
-offset_bottom = 1026.0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_yjel7")]
+layout_mode = 0
+text = "Main_Hub_Button"
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -196.0
-offset_top = 100.0
-offset_right = 196.0
-offset_bottom = 521.0
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
-size_flags_horizontal = 0
-columns = 3
-metadata/_edit_group_ = true
+grow_vertical = 2
+columns = 5
 
-[node name="Game1" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
-custom_minimum_size = Vector2(128, 128)
+[node name="Game1_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
 layout_mode = 2
+text = "Game1_Button"
+
+[node name="Game2_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
+layout_mode = 2
+text = "Game2_Button"
+
+[node name="Game3_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
+layout_mode = 2
+text = "Game3_Button"

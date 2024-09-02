@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://btjretkpepot0"]
+
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="1_cgvi1"]
+[ext_resource type="Script" path="res://systems/game3/music_tile.gd" id="2_4bo4r"]
+
+[node name="MusicTile" type="TextureButton"]
+texture_normal = ExtResource("1_cgvi1")
+script = ExtResource("2_4bo4r")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

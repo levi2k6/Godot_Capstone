@@ -1,17 +1,24 @@
 extends GridContainer
 signal send_texture(texture, naym)
 
-var sprites = sprite_library.new()
 
 const CLICKABLE_ITEM_COLLECTION = preload("res://systems/collection/clickable_item_collection.tscn")
 
 var items = []
 
 
-
 func _ready():
+	_delete_item_nodes()
 	_change_items()
 	_create_items()
+	
+
+func _delete_item_nodes():
+	items.clear()
+	for child in get_children():
+		print(child)
+		child.queue_free()
+	
 
 func _change_items():
 	var collection = ItemLibrary._get_collection_library()
@@ -32,6 +39,10 @@ func _change_items():
 		for item in collection:
 			if item.type == "hat":
 				items.append(item)
+	elif name == "Color_Items":
+		for item in collection:
+			if item.type == "color":
+				items.append(item)
 
 
 func _create_items():
@@ -43,6 +54,7 @@ func _create_items():
 
 func _get_item(item):
 	emit_signal("send_texture", item, name)
+	
 
 
 

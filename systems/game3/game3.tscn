@@ -1,0 +1,242 @@
+[gd_scene load_steps=9 format=3 uid="uid://di4kqbjwtefkk"]
+
+[ext_resource type="Script" path="res://systems/game3/game3.gd" id="1_4glro"]
+[ext_resource type="Script" path="res://systems/game3/Control.gd" id="1_mu1rs"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="2_uh0wk"]
+[ext_resource type="Script" path="res://systems/game3/music_tile.gd" id="3_h86on"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="4_6r6xo"]
+[ext_resource type="Script" path="res://systems/game3/Game_Intro.gd" id="4_k7wnb"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="6_4axi3"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="7_n7v2k"]
+
+[node name="Game3" type="Node2D"]
+script = ExtResource("1_4glro")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("1_mu1rs")
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="tile1" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile1"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile2" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile2"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile3" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile3"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile4" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile4"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile5" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile5"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile6" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile6"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile7" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile7"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile8" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile8"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="tile9" type="PanelContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("3_h86on")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/tile9"]
+position = Vector2(48, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uh0wk")
+
+[node name="Timer" type="Timer" parent="Control"]
+one_shot = true
+
+[node name="Level" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = 209.0
+offset_right = 23.0
+offset_bottom = 232.0
+grow_horizontal = 2
+text = "LEVEL: 1"
+
+[node name="Game_Intro" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.128025, 0.401517, 0.905758, 1)
+script = ExtResource("4_k7wnb")
+
+[node name="Label" type="Label" parent="Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_top = 300.0
+offset_right = 43.5
+offset_bottom = 323.0
+grow_horizontal = 2
+
+[node name="Play" type="Button" parent="Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -23.5
+offset_right = 144.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+"
+
+[node name="Main_Hub_Button" parent="Control/Game_Intro" instance=ExtResource("4_6r6xo")]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 457.0
+offset_right = 257.0
+offset_bottom = 499.0
+
+[node name="Hunger_Bar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.026
+anchor_right = 0.847
+anchor_bottom = 0.053
+offset_left = -0.128006
+offset_top = 0.401999
+offset_right = 0.12796
+offset_bottom = -0.219002
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Money" parent="Control" instance=ExtResource("7_n7v2k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.068
+anchor_right = 0.306
+anchor_bottom = 0.091
+offset_left = 0.112
+offset_top = 0.435997
+offset_right = -0.256012
+offset_bottom = -0.0930023
+text = "00000"
+
+[node name="Pet" parent="." instance=ExtResource("6_4axi3")]
+visible = false
+
+[connection signal="gui_input" from="Control/GridContainer/tile1" to="Control/GridContainer/tile1" method="_on_gui_input"]
+[connection signal="gui_input" from="Control/GridContainer/tile2" to="Control/GridContainer/tile2" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile2" to="Control/GridContainer/tile2" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile3" to="Control/GridContainer/tile3" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile3" to="Control/GridContainer/tile3" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile4" to="Control/GridContainer/tile4" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile4" to="Control/GridContainer/tile4" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile5" to="Control/GridContainer/tile5" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile5" to="Control/GridContainer/tile5" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile6" to="Control/GridContainer/tile6" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile6" to="Control/GridContainer/tile6" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile7" to="Control/GridContainer/tile7" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile7" to="Control/GridContainer/tile7" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile8" to="Control/GridContainer/tile8" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile8" to="Control/GridContainer/tile8" method="_on_mouse_entered"]
+[connection signal="gui_input" from="Control/GridContainer/tile9" to="Control/GridContainer/tile9" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/GridContainer/tile9" to="Control/GridContainer/tile9" method="_on_mouse_entered"]
+[connection signal="button_up" from="Control/Game_Intro/Play" to="Control/Game_Intro" method="_on_play_button_up"]

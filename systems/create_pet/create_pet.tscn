@@ -12,82 +12,80 @@ script = ExtResource("1_jjidk")
 [node name="Pet" parent="." instance=ExtResource("2_yjn1a")]
 position = Vector2(296, 636)
 
-[node name="MarginContainer" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
-offset_bottom = 1024.0
+offset_right = 540.0
+offset_bottom = 960.0
 metadata/_edit_group_ = true
 
-[node name="Picker" type="Control" parent="MarginContainer"]
+[node name="Picker" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 329.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.049
+anchor_right = 0.847
+anchor_bottom = 0.295
+offset_left = -0.128006
+offset_top = -0.176003
+offset_right = 0.12796
+offset_bottom = -0.0800171
 grow_horizontal = 2
 
-[node name="GridContainer" type="HBoxContainer" parent="MarginContainer/Picker"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_top = 50.0
-offset_right = 363.0
-offset_bottom = 70.0
 
-[node name="Tab_Bodies" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
+[node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Eyes" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
+[node name="Tab_Eyes" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Mouths" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
+[node name="Tab_Mouths" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Hats" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("3_odqlm")]
+[node name="Tab_Hats" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 visible = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Picker"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
 layout_mode = 2
-offset_top = 70.0
-offset_right = 363.0
-offset_bottom = 298.0
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(500, 220)
+[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
+custom_minimum_size = Vector2(1000, 220)
 layout_mode = 2
 color = Color(0.0980392, 0.466667, 0.372549, 1)
 
-[node name="Body_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Eyes_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Eyes_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Mouth_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Mouth_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Hat_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Hat_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 visible = false
 layout_mode = 0
 offset_right = 40.0
@@ -95,25 +93,25 @@ offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Create_Pet_Modal" type="ColorRect" parent="MarginContainer"]
+[node name="Create_Pet_Modal" type="ColorRect" parent="Control"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -183.0
-offset_top = -275.0
-offset_right = 164.0
-offset_bottom = -57.0
+anchors_preset = -1
+anchor_left = 0.182
+anchor_top = 0.231
+anchor_right = 0.785
+anchor_bottom = 0.444
+offset_left = 0.167992
+offset_top = 0.455994
+offset_right = -0.160004
+offset_bottom = 0.343964
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.169583, 0.190176, 0.210148, 1)
 script = ExtResource("6_yjfel")
 metadata/_edit_group_ = true
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/Create_Pet_Modal"]
+[node name="TextEdit" type="TextEdit" parent="Control/Create_Pet_Modal"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,7 +125,7 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Create_Pet_Modal"]
+[node name="Label" type="Label" parent="Control/Create_Pet_Modal"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,7 +140,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "NAME YOUR PET"
 
-[node name="Button" type="Button" parent="MarginContainer/Create_Pet_Modal"]
+[node name="Button" type="Button" parent="Control/Create_Pet_Modal"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -157,14 +155,21 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Create Pet!"
 
-[node name="Submit" type="Button" parent="MarginContainer"]
-layout_mode = 0
-offset_left = 394.0
-offset_top = 928.0
-offset_right = 515.0
-offset_bottom = 971.0
+[node name="Submit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.694
+anchor_top = 0.928
+anchor_right = 0.901
+anchor_bottom = 0.969
+offset_left = 0.255981
+offset_top = -0.272034
+offset_right = 0.0239868
+offset_bottom = -0.256042
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_vertical = 8
 text = "OK"
 
-[connection signal="button_up" from="MarginContainer/Create_Pet_Modal/Button" to="MarginContainer/Create_Pet_Modal" method="_on_create_pet_button_up"]
-[connection signal="pressed" from="MarginContainer/Submit" to="." method="_on_submit_pressed"]
+[connection signal="button_up" from="Control/Create_Pet_Modal/Button" to="Control/Create_Pet_Modal" method="_on_create_pet_button_up"]
+[connection signal="pressed" from="Control/Submit" to="." method="_on_submit_pressed"]

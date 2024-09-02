@@ -19,55 +19,55 @@ position = Vector2(296, 636)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
-offset_bottom = 1024.0
+offset_right = 540.0
+offset_bottom = 960.0
 metadata/_edit_group_ = true
 
-[node name="Picker" type="Control" parent="Control"]
+[node name="Picker" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 329.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.049
+anchor_right = 0.847
+anchor_bottom = 0.295
+offset_left = -0.128006
+offset_top = -0.176003
+offset_right = 0.12796
+offset_bottom = -0.0800171
 grow_horizontal = 2
 
-[node name="GridContainer" type="GridContainer" parent="Control/Picker"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_top = 50.0
-offset_right = 363.0
-offset_bottom = 70.0
-theme_override_constants/h_separation = 1
-columns = 6
 
-[node name="Tab_Bodies" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_i7p62")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Eyes" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Eyes" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_i7p62")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Mouths" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Mouths" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_i7p62")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Hats" parent="Control/Picker/GridContainer" instance=ExtResource("3_i7p62")]
+[node name="Tab_Hats" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_i7p62")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Tab_Colors" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_i7p62")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
 layout_mode = 2
-offset_top = 70.0
-offset_right = 363.0
-offset_bottom = 298.0
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(500, 220)
+custom_minimum_size = Vector2(1000, 220)
 layout_mode = 2
 color = Color(0.0980392, 0.466667, 0.372549, 1)
 
@@ -75,39 +75,48 @@ color = Color(0.0980392, 0.466667, 0.372549, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("4_63lq5")
 
 [node name="Eyes_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("4_63lq5")
 
 [node name="Mouth_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("4_63lq5")
 
 [node name="Hat_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
+script = ExtResource("4_63lq5")
+
+[node name="Color_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 10
 script = ExtResource("4_63lq5")
 
 [node name="Money" parent="Control" instance=ExtResource("8_5gl6u")]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 111.0
-offset_top = -206.5
-offset_right = 193.0
-offset_bottom = -183.5
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.318
+anchor_right = 0.306
+anchor_bottom = 0.34
+offset_left = 0.112
+offset_top = -0.132019
+offset_right = -0.256012
+offset_bottom = 0.339996
 grow_vertical = 2
 text = "0000"
 
@@ -167,11 +176,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_m7fjv")
 
 [node name="Main_Hub_Button" parent="Control" instance=ExtResource("5_b38ie")]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 887.0
-offset_right = 188.0
-offset_bottom = 929.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.866
+anchor_right = 0.326
+anchor_bottom = 0.907
+offset_left = -0.120003
+offset_top = 0.215942
+offset_right = 0.223999
+offset_bottom = 0.231934
 
 [connection signal="button_up" from="Control/Buy_Modal/Buy" to="Control/Buy_Modal" method="_on_button_button_up"]
 [connection signal="pressed" from="Control/Buy_Modal/Close" to="Control/Buy_Modal" method="_on_close_pressed"]

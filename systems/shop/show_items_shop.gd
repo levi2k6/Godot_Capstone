@@ -46,7 +46,11 @@ func _change_items():
 		for item in collections:
 			if item.type == "hat":
 				items.append(item)
-		
+	
+	if name == "Color_Items":
+		for item in collections:
+			if item.type == "color":
+				items.append(item)
 
 func _create_items():
 	for item in items:

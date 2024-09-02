@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://di4kqbjwtefkk"]
+
+[ext_resource type="Script" path="res://systems/game3/GridContainer.gd" id="1_mu1rs"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="2_uh0wk"]
+[ext_resource type="Script" path="res://systems/game3/music_tile.gd" id="3_h86on"]
+
+[node name="Game3" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 960.0
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+script = ExtResource("1_mu1rs")
+
+[node name="tile_1" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_2" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_3" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_4" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_5" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_6" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_7" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_8" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[node name="tile_9" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_uh0wk")
+script = ExtResource("3_h86on")
+
+[connection signal="button_down" from="Control/GridContainer/tile_1" to="Control/GridContainer/tile_1" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_2" to="Control/GridContainer/tile_2" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_3" to="Control/GridContainer/tile_3" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_4" to="Control/GridContainer/tile_4" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_5" to="Control/GridContainer/tile_5" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_6" to="Control/GridContainer/tile_6" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_7" to="Control/GridContainer/tile_7" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_8" to="Control/GridContainer/tile_8" method="_on_button_down"]
+[connection signal="button_down" from="Control/GridContainer/tile_9" to="Control/GridContainer/tile_9" method="_on_button_down"]

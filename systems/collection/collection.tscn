@@ -12,89 +12,105 @@ script = ExtResource("1_0txvs")
 [node name="Pet" parent="." instance=ExtResource("1_lwmpp")]
 position = Vector2(296, 636)
 
-[node name="MarginContainer" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
-offset_bottom = 1024.0
+offset_right = 540.0
+offset_bottom = 960.0
 metadata/_edit_group_ = true
 
-[node name="Picker" type="Control" parent="MarginContainer"]
+[node name="Picker" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 329.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.049
+anchor_right = 0.847
+anchor_bottom = 0.295
+offset_left = -0.128006
+offset_top = -0.176003
+offset_right = 0.12796
+offset_bottom = -0.0800171
 grow_horizontal = 2
+grow_vertical = 2
 
-[node name="GridContainer" type="HBoxContainer" parent="MarginContainer/Picker"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_top = 50.0
-offset_right = 363.0
-offset_bottom = 70.0
 
-[node name="Tab_Bodies" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("2_6lgo3")]
+[node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Eyes" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("2_6lgo3")]
+[node name="Tab_Eyes" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Mouths" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("2_6lgo3")]
+[node name="Tab_Mouths" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Hats" parent="MarginContainer/Picker/GridContainer" instance=ExtResource("2_6lgo3")]
+[node name="Tab_Hats" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Picker"]
+[node name="Tab_Colors" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-offset_top = 70.0
-offset_right = 363.0
-offset_bottom = 298.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
+layout_mode = 2
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(500, 220)
+[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
+custom_minimum_size = Vector2(1000, 220)
 layout_mode = 2
 color = Color(0.0980392, 0.466667, 0.372549, 1)
 
-[node name="Body_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("3_qopba")
 
-[node name="Eyes_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Eyes_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("3_qopba")
 
-[node name="Mouth_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Mouth_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("3_qopba")
 
-[node name="Hat_Items" type="GridContainer" parent="MarginContainer/Picker/ScrollContainer/ColorRect"]
+[node name="Hat_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 5
+columns = 10
 script = ExtResource("3_qopba")
 
-[node name="Main_Hub_Button" parent="." instance=ExtResource("4_vg3vp")]
-offset_left = 69.0
-offset_top = 887.0
-offset_right = 188.0
-offset_bottom = 929.0
+[node name="Color_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 10
+script = ExtResource("3_qopba")
+
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("4_vg3vp")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.866
+anchor_right = 0.326
+anchor_bottom = 0.907
+offset_left = -0.120003
+offset_top = 0.215942
+offset_right = 0.223999
+offset_bottom = 0.231934

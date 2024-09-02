@@ -1,17 +1,21 @@
 extends Node2D
 
-@onready var body_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Body_Items
-@onready var eyes_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Eyes_Items
-@onready var mouth_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Mouth_Items
-@onready var hat_items = $MarginContainer/Picker/ScrollContainer/ColorRect/Hat_Items
+@onready var body_items = $Control/Picker/ScrollContainer/ColorRect/Body_Items
+@onready var eyes_items = $Control/Picker/ScrollContainer/ColorRect/Eyes_Items
+@onready var mouth_items = $Control/Picker/ScrollContainer/ColorRect/Mouth_Items
+@onready var hat_items = $Control/Picker/ScrollContainer/ColorRect/Hat_Items
+@onready var color_items = $Control/Picker/ScrollContainer/ColorRect/Color_Items
 
-@onready var grid_container = $MarginContainer/Picker/GridContainer
-@onready var color_rect = $MarginContainer/Picker/ScrollContainer/ColorRect
+
+@onready var h_box_container = $Control/Picker/HBoxContainer
+@onready var color_rect = $Control/Picker/ScrollContainer/ColorRect
 
 
 
 func _ready():
-	for child in grid_container.get_children():
+	_resolution()
+	
+	for child in h_box_container.get_children():
 		child.change_tab.connect(_change_tab)
 	
 	for child in color_rect.get_children():
@@ -19,6 +23,13 @@ func _ready():
 	
 	_change_tab("Tab_Bodies")
 
+func _resolution():
+	var view_port = get_viewport().size
+	var center_x = view_port.x / 2 
+	var center_y = view_port.y / 1.50
+	
+	$Control.size = view_port
+	$Pet.position = Vector2(center_x, center_y)
 
 func _change_tab(naym):
 	for child in color_rect.get_children():
@@ -35,7 +46,9 @@ func _change_tab(naym):
 		elif naym == "Tab_Hats":
 			hat_items.visible = true
 			pass
-			
+		elif naym == "Tab_Colors":
+			color_items.visible = true
+			pass
 
 func _change_item(item, naym):
 	$Pet._fashion()

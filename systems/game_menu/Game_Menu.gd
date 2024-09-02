@@ -7,9 +7,15 @@ extends Node2D
 
 
 func _ready():
+	_resolution()
 	_execute()
 	pass
 
+func _resolution():
+	var view_port = get_viewport().size
+	
+	$Control.size = view_port
+	
 
 func _execute():
 	

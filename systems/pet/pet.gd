@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal update_hunger(hunger)
 
-
 @export var properties : pet_stats_blueprint
 var rng = RandomNumberGenerator.new()
 var current_state
@@ -14,7 +13,6 @@ enum states{
 	sad
 }
 
-
 func _ready():
 	$body_animation.play("idle")
 	start_time()
@@ -22,27 +20,26 @@ func _ready():
 	state_chage()
 	_fashion()
 
-
-func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if get_child(5).get_child(2).get_rect().has_point(to_local(event.position)):
-			_learn()
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		print(properties.hunger)
-	
+#func _input(event):
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#if get_child(5).get_child(2).get_rect().has_point(to_local(event.position)):
+			#_learn(10)
+	#
+	#if Input.is_action_just_pressed("ui_accept"):
+		#print(DataManager._get_pet_database()[0].hunger)
 
 func _append_properties():
-	
-	properties.hunger = DataManager._get_pet_database()[0].hunger
+	properties.hunger = DataManager._get_pet_database()[0].hunger;
 
 func _fashion():
 	var equip_items = ItemLibrary._get_pet_equip_library()
-	
+	print("RIGHT HERE:: " , equip_items)
 	if equip_items.size() == 0:
 		return
 	
 	for item in equip_items:
+		if item == null:
+			continue
 		if item.type == "body":
 			properties.body = item.texture
 		if item.type == "eye":
@@ -51,22 +48,25 @@ func _fashion():
 			properties.mouth = item.texture
 		if item.type == "hat":
 			properties.hat = item.texture
+		if item.type == "color":
+			$Body.get_child(2).self_modulate = item.name
+			$Body.get_child(3).self_modulate = item.name
+			$Body.get_child(4).self_modulate = item.name
+	
 	
 	$Body.get_child(2).texture = properties.body
 	$Body.get_child(2).get_child(1).get_child(1).texture = properties.eyes
 	$Body.get_child(2).get_child(1).get_child(0).texture = properties.mouth
 	$Body.get_child(2).get_child(0).texture = properties.hat
 
-func _learn():
-	var child_id = DataManager._get_child_database()[0].id
-	properties.hunger += 10
+func _learn(xp):
+	properties.hunger += xp;
 	properties.hunger = clamp(properties.hunger, 0, 100)
-	print(properties.hunger)
-	Singleton.database.update_rows("pet","id = %s"%child_id, {"hunger": properties.hunger})
+	DataManager._update_pet_hunger(properties.hunger);
 	state_chage()
-	_update_hunger_bar()
+	update_hunger_bar()
 
-func _update_hunger_bar():
+func update_hunger_bar():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger
 	emit_signal("update_hunger")
 
@@ -81,9 +81,7 @@ func state_chage():
 	if previous_state != current_state:
 		face_swap()
 
-
 func face_swap():
-	
 	match current_state:
 		states.normal:
 			$eyes_animation.play("normal_blink")
@@ -101,8 +99,6 @@ func start_time():
 	#print(time)
 	$Timer.wait_time = time
 	$Timer.start()
-
-
 
 func _on_timer_timeout():
 	#print("TIMEOUT!!!!!")

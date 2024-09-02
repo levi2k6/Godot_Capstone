@@ -29,7 +29,7 @@ func _create_pet_database():
 	var child_id = _get_child_database()[0].id
 	
 	if pet.size() == 0:
-		Singleton.database.insert_row("pet", {"id":child_id, "name": "", "body_id": 0,"hunger": 50, "eyes_id": 0, "mouth_id":0, "hat_id": 0, "color_id": 0})
+		Singleton.database.insert_row("pet", {"id":child_id, "name": "", "body_id": 3,"hunger": 50, "eyes_id": 11, "mouth_id":21, "hat_id": 0, "color_id": 41})
 	else:
 		print("pet already exist")
 
@@ -38,6 +38,11 @@ func _get_pet_database():
 	var result = Singleton.database.query_result
 	return result
 	
+
+func _update_pet_hunger(hunger):
+	var child_id = _get_child_database()[0].id
+	Singleton.database.update_rows("pet","id = %s"%child_id, {"hunger": hunger})
+
 
 func _get_collection_database():
 	Singleton.database.query("SELECT * FROM collection;")

@@ -9,87 +9,108 @@
 script = ExtResource("1_yumrb")
 
 [node name="Pet" parent="." instance=ExtResource("2_c3m34")]
-position = Vector2(300, 498)
+position = Vector2(270, 480)
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -1.0
-offset_bottom = -1.0
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 layout_mode = 0
-offset_top = 1.0
-offset_right = 576.0
-offset_bottom = 1024.0
+offset_right = 540.0
+offset_bottom = 960.0
 color = Color(0, 0.184314, 0.411765, 1)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
-offset_right = 577.0
-offset_bottom = 1023.0
+offset_right = 540.0
+offset_bottom = 960.0
 size_flags_horizontal = 4
 
 [node name="Hunger_Bar" type="ProgressBar" parent="UI"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 27.0
-offset_right = 200.0
-offset_bottom = 54.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.026
+anchor_right = 0.847
+anchor_bottom = 0.053
+offset_left = -0.128006
+offset_top = 0.401999
+offset_right = 0.12796
+offset_bottom = -0.219002
 grow_horizontal = 2
 size_flags_horizontal = 4
 
 [node name="Collection_Button" parent="UI" instance=ExtResource("3_vrikd")]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -191.0
-offset_top = -144.0
-offset_right = -72.0
-offset_bottom = -102.0
+anchors_preset = -1
+anchor_left = 0.668
+anchor_top = 0.859
+anchor_right = 0.875
+anchor_bottom = 0.9
+offset_left = 40.232
+offset_top = 1.24304
+offset_right = 40.0
+offset_bottom = 1.30005
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Shop_Button" parent="UI" instance=ExtResource("3_vrikd")]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -191.0
-offset_top = -221.0
-offset_right = -72.0
-offset_bottom = -179.0
+anchors_preset = -1
+anchor_left = 0.668
+anchor_top = 0.784
+anchor_right = 0.875
+anchor_bottom = 0.825
+offset_left = 40.232
+offset_top = 0.968018
+offset_right = 40.0
+offset_bottom = 1.02502
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Money" parent="UI" instance=ExtResource("4_lk5ma")]
-layout_mode = 0
-offset_left = 94.0
-offset_top = 70.0
-offset_right = 176.0
-offset_bottom = 93.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.068
+anchor_right = 0.306
+anchor_bottom = 0.091
+offset_left = 0.112
+offset_top = 0.435997
+offset_right = -0.256012
+offset_bottom = -0.0930023
 text = "00000"
 
 [node name="Get_Money" type="Button" parent="UI"]
+visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 55.0
-offset_top = -217.0
-offset_right = 179.0
-offset_bottom = -167.0
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.784
+anchor_right = 0.307
+anchor_bottom = 0.825
+offset_left = -0.176003
+offset_top = -0.0320435
+offset_right = 0.167999
+offset_bottom = 0.0249634
 grow_vertical = 0
 text = "MONEY"
+
+[node name="Games_Button" parent="UI" instance=ExtResource("3_vrikd")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.5
+offset_top = -142.0
+offset_right = 53.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="pressed" from="UI/Get_Money" to="." method="_on_get_money_pressed"]

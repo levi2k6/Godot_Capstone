@@ -6,6 +6,7 @@ var this_item;
 @onready var eyes_items = $"../Picker/ScrollContainer/ColorRect/Eyes_Items"
 @onready var mouth_items = $"../Picker/ScrollContainer/ColorRect/Mouth_Items"
 @onready var hat_items = $"../Picker/ScrollContainer/ColorRect/Hat_Items"
+@onready var color_items = $"../Picker/ScrollContainer/ColorRect/Color_Items"
 
 @onready var money_display = $"../Money"
 
@@ -17,17 +18,25 @@ func _modal_func(item):
 		$Sprite2D.hframes = 1
 		$Sprite2D.vframes = 1
 		$Sprite2D.frame = 0
+		$Sprite2D.self_modulate = Color(1, 1, 1, 1)
 		#print(item.type)
 	if item.type == "eye":
 		$Sprite2D.hframes = 9
 		$Sprite2D.vframes = 1
 		$Sprite2D.frame = 2
+		$Sprite2D.self_modulate = Color(1, 1, 1, 1)
 		#print(item.type)
 	if item.type == "mouth":
 		$Sprite2D.hframes = 15
 		$Sprite2D.vframes = 1
 		$Sprite2D.frame = 2
+		$Sprite2D.self_modulate = Color(1, 1, 1, 1)
 		#print(item.type)
+	if item.type == "color":
+		$Sprite2D.hframes = 1
+		$Sprite2D.vframes = 1
+		$Sprite2D.frame = 0
+		$Sprite2D.self_modulate = item.name
 	this_item = item
 	visible = true
 
@@ -70,6 +79,11 @@ func _delete_owned_item_shop():
 				print(this_item.name, " ", "DELETED")
 	if this_item.type == "hat":
 		for node in hat_items.get_children():
+			if node.this_item.id == this_item.id:
+				node.queue_free()
+				print(this_item.name, " ", "DELETED")
+	if this_item.type == "color":
+		for node in color_items.get_children():
 			if node.this_item.id == this_item.id:
 				node.queue_free()
 				print(this_item.name, " ", "DELETED")

@@ -5,37 +5,62 @@
 [node name="Create_Child" type="Node2D"]
 script = ExtResource("1_jxaay")
 
-[node name="Fname" type="TextEdit" parent="."]
-offset_left = 65.0
-offset_top = 182.0
-offset_right = 255.0
-offset_bottom = 211.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 908.0
 
-[node name="Lname" type="TextEdit" parent="."]
-offset_left = 309.0
-offset_top = 181.0
-offset_right = 499.0
-offset_bottom = 210.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -163.0
+offset_right = 152.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
-offset_left = 235.0
-offset_top = 265.0
-offset_right = 331.0
-offset_bottom = 299.0
-text = "SUBMIT"
+[node name="VBoxContainer1" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
-offset_left = 74.0
-offset_top = 146.0
-offset_right = 159.0
-offset_bottom = 169.0
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
 text = "First Name"
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 146.0
-offset_right = 405.0
-offset_bottom = 169.0
+[node name="Fname" type="TextEdit" parent="Control/HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 text = "Last Name"
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="Lname" type="TextEdit" parent="Control/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.47817
+anchor_right = 0.5
+anchor_bottom = 0.47817
+offset_left = -48.0
+offset_top = -17.0
+offset_right = 48.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SUBMIT"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
