@@ -20,39 +20,34 @@ func _ready():
 	state_chage()
 	_fashion()
 
-#func _input(event):
-	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		#if get_child(5).get_child(2).get_rect().has_point(to_local(event.position)):
-			#_learn(10)
-	#
-	#if Input.is_action_just_pressed("ui_accept"):
-		#print(DataManager._get_pet_database()[0].hunger)
-
 func _append_properties():
 	properties.hunger = DataManager._get_pet_database()[0].hunger;
 
 func _fashion():
-	var equip_items = ItemLibrary._get_pet_equip_library()
-	print("RIGHT HERE:: " , equip_items)
+	var equip_items = ItemLibrary._get_pet_equip_library();
+	#print("RIGHT HERE:: " , equip_items);
 	if equip_items.size() == 0:
+		print_debug("Empty Equip Items");
 		return
-	
 	for item in equip_items:
 		if item == null:
 			continue
 		if item.type == "body":
 			properties.body = item.texture
+			#print_debug(properties.body)
 		if item.type == "eye":
 			properties.eyes = item.texture
+			#print_debug(properties.eyes)
 		if item.type == "mouth":
 			properties.mouth = item.texture
+			#print_debug(properties.mouth)
 		if item.type == "hat":
 			properties.hat = item.texture
+			#print_debug(properties.hat)
 		if item.type == "color":
 			$Body.get_child(2).self_modulate = item.name
 			$Body.get_child(3).self_modulate = item.name
 			$Body.get_child(4).self_modulate = item.name
-	
 	
 	$Body.get_child(2).texture = properties.body
 	$Body.get_child(2).get_child(1).get_child(1).texture = properties.eyes

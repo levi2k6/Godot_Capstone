@@ -21,33 +21,129 @@ func create_table():
 		"id" INTEGER NOT NULL,
 		"fname" TEXT,
 		"lname" INTEGER,
+		"pet_id" INTEGER UNIQUE,
+		"datas_id" INTEGER UNIQUE,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
-		
-		CREATE TABLE "collection" (
-		"child_id" INTEGER,
-		"item_id" INTEGER,
-		FOREIGN KEY("child_id") REFERENCES "child"("id")
+
+		CREATE TABLE "pet" (
+		"id" INTEGER NOT NULL,
+		"name" TEXT,
+		"hunger" INTEGER,
+		"body_id" INTEGER,
+		"eyes_id" INTEGER,
+		"mouth_id" INTEGER,
+		"hat_id" INTEGER,
+		"color_id" INTEGER,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "child"("pet_id")
 		);
-		
+
 		CREATE TABLE "datas" (
-		"id" INTEGER,
+		"id" INTEGER NOT NULL,
 		"money" INTEGER,
-		FOREIGN KEY("id") REFERENCES "child"("id")
+		"sequence_game_id" INTEGER UNIQUE,
+		"number_memory_game_id" INTEGER UNIQUE,
+		"timing_game_id" INTEGER UNIQUE,
+		"milestone_id" INTEGER UNIQUE,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "child"("datas_id")
 		);
-		
+
+		CREATE TABLE "milestone"(
+		"id" INTEGER NOT NULL,
+		"total_time" INTEGER,
+		"total_collection" INTEGER,
+		"total_pet_fully_fed" INTEGER,
+		"total_games_played" INTEGER,
+		"total_days_played" INTEGER,
+		"total_money_earned" INTEGER,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "datas"("milestone_id")
+		);
+
+		CREATE TABLE "sequence_game"(
+		"id" INTEGER NOT NULL,
+		"total_session" INTERGER,
+		"highest_level" INTERGER,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "datas"("sequence_game_id")
+		);
+
+		CREATE TABLE "number_memory_game"(
+		"id" INTEGER NOT NULL,
+		"total_session" INTERGER,
+		"highest_level" INTERGER,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "datas"("number_memory_game_id")
+		);
+
+		CREATE TABLE "timing_game"(
+		"id" INTEGER NOT NULL,
+		"total_session" INTEGER,
+		"highest_level" INTEGER,
+		PRIMARY KEY("id"),
+		FOREIGN KEY("id") REFERENCES "datas"("timing_game_id")
+		);
+
+		CREATE TABLE "sequence_session"(
+		"id" INTEGER NOT NULL,
+		"level_reached" INTEGER,
+		PRIMARY KEY("id" AUTOINCREMENT)
+		);
+
+		CREATE TABLE "number_memory_session"(
+		"id" INTEGER NOT NULL,
+		"level_reached" INTEGER,
+		PRIMARY KEY("id" AUTOINCREMENT)
+		);
+
+		CREATE TABLE "timing_session"(
+		"id" INTEGER NOT NULL,
+		"level_reached" INTEGER,
+		PRIMARY KEY("id" AUTOINCREMENT)
+		);
+
+		CREATE TABLE "sequence_junction_session"(
+		"game_id" INTEGER,
+		"session_id" INTEGER UNIQUE,
+		FOREIGN KEY("game_id") REFERENCES "sequence_game"("id"),
+		FOREIGN KEY("session_id") REFERENCES "sequence_session"("id")
+		);
+
+		CREATE TABLE "number_memory_junction_session"(
+		"game_id" INTEGER ,
+		"session_id" INTEGER UNIQUE,
+		FOREIGN KEY("game_id") REFERENCES "number_memory_game"("id"),
+		FOREIGN KEY("session_id") REFERENCES "number_memory_session"("id")
+		);
+
+		CREATE TABLE "timing_junction_session"(
+		"game_id" INTEGER,
+		"session_id" INTEGER UNIQUE,
+		FOREIGN KEY("game_id") REFERENCES "timing_game"("id"),
+		FOREIGN KEY("session_id") REFERENCES "timing_session"("id")
+		);
+
 		CREATE TABLE "date" (
 		"today" INTEGER
 		);
-		
+
+		CREATE TABLE "collection"(
+		"child_id" INTEGER,
+		"item_id" INTEGER,
+		FOREIGN KEY("child_id") REFERENCES "child"("id"),
+		FOREIGN KEY("item_id") REFERENCES "items"("id")
+		);
+
 		CREATE TABLE "items" (
 		"id" INTEGER,
 		"name" TEXT,
 		"type" TEXT,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
-		
-		INSERT INTO "items" ( name, type)
+
+		INSERT INTO "items"(name, type)
 		VALUES
 		("body1", "body"),
 		("body2", "body"),
@@ -99,23 +195,9 @@ func create_table():
 		("93462e", "color"),
 		("8d295c", "color"),
 		("5ef3ea", "color"); 
-		
-		
-		CREATE TABLE "pet" (
-		"id" INTEGER,
-		"name" TEXT,
-		"hunger" INTEGER,
-		"body_id" INTEGER,
-		"eyes_id" INTEGER,
-		"mouth_id" INTEGER,
-		"hat_id" INTEGER,
-		"color_id" INTEGER,
-		FOREIGN KEY("id") REFERENCES "child"("id")
-		);
 		')
 		state = "open"
-		print("QUERY SUCCESS")
-		
+		print("QUERY SUCCESS");
 	else:
 		database.path = user_path
 		database.open_db()

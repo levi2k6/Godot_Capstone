@@ -52,9 +52,8 @@ var library = [
 	{"texture":preload("res://sprite/body/body3.png"), "id":0, "name": "", "type": ""},
 	]
 
-func _ready():  
+func _ready():
 	_append_library()
-	pass
 
 func _append_library():
 	#print("working")

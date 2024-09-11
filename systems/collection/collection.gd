@@ -13,7 +13,7 @@ extends Node2D
 
 
 func _ready():
-	_resolution()
+	#_resolution()
 	
 	for child in h_box_container.get_children():
 		child.change_tab.connect(_change_tab)
@@ -23,13 +23,13 @@ func _ready():
 	
 	_change_tab("Tab_Bodies")
 
-func _resolution():
-	var view_port = get_viewport().size
-	var center_x = view_port.x / 2 
-	var center_y = view_port.y / 1.50
-	
-	$Control.size = view_port
-	$Pet.position = Vector2(center_x, center_y)
+#func _resolution():
+	#var view_port = get_viewport().size
+	#var center_x = view_port.x / 2 
+	#var center_y = view_port.y / 1.50
+	#
+	#$Control.size = view_port
+	#$Pet.position = Vector2(center_x, center_y)
 
 func _change_tab(naym):
 	for child in color_rect.get_children():

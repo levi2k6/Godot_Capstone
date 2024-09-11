@@ -3,21 +3,30 @@ extends Node2D
 @onready var fname = $Control/HBoxContainer/VBoxContainer1/Fname
 @onready var lname = $Control/HBoxContainer/VBoxContainer2/Lname
 
-
-
-
 func _ready():
-	_resolution()
-	DataManager._create_child_database();
-	DataManager._create_pet_database();
-	
+	#_resolution()
+	create_child_database();
 
-func _resolution():
-	var view_port = get_viewport().size
-	$Control.size = view_port
+func create_child_database():
+	var child = DataManager._get_child_database();
 	
-	
-	
+	if child.size() == 0:
+		Singleton.database.insert_row("child", {"fname": "", "lname": "", "pet_id": 0, "datas_id": 0});
+		print("child appended");
+	else: 
+		print("child already exist");
+	var child_id = DataManager._get_child_database()[0].id;
+	Singleton.database.update_rows("child", "id = %d" %child_id, {"pet_id": child_id, "datas_id": child_id});
+	Singleton.database.insert_row("pet", {"id":child_id, "name": "", "body_id": 3,"hunger": 50, "eyes_id": 11, "mouth_id":21, "hat_id": 0, "color_id": 41});
+	Singleton.database.insert_row("datas", {"id": child_id, "money": 10, "sequence_game_id": child_id, "number_memory_game_id": child_id, "timing_game_id": child_id });
+	Singleton.database.insert_row("sequence_game", {"id": child_id, "total_session": 0, "highest_level": 0});
+	Singleton.database.insert_row("number_memory_game", {"id": child_id, "total_session": 0, "highest_level": 0});
+	Singleton.database.insert_row("timing_game", {"id": child_id, "total_session": 0, "highest_level": 0});
+
+#func _resolution():
+	#var view_port = get_viewport().size
+	#$Control.size = view_port
+	#
 
 func _on_button_button_up():
 	var child_id = DataManager._get_child_database()[0].id

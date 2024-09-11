@@ -1,37 +1,13 @@
 extends Node
 
 func _ready():
-	_update_today_database()
-	pass
-
-
-func _create_child_database():
-	var child = _get_child_database()
-	
-	if child.size() == 0:
-		Singleton.database.insert_row("child", {"fname": "", "lname": ""})
-		var child_id = _get_child_database()[0].id
-		Singleton.database.insert_row("datas", {"id": child_id, "money": 10})
-	else: 
-		print("child already exist")
-
+	_update_today_database();
 
 func _get_child_database():
 	Singleton.database.query(" SELECT * FROM child;")
-	var result = Singleton.database.query_result
+	var result = Singleton.database.query_result;
 	return result
 	pass
-
-
-func _create_pet_database():
-	Singleton.database.query("SELECT * FROM pet")
-	var pet = Singleton.database.query_result
-	var child_id = _get_child_database()[0].id
-	
-	if pet.size() == 0:
-		Singleton.database.insert_row("pet", {"id":child_id, "name": "", "body_id": 3,"hunger": 50, "eyes_id": 11, "mouth_id":21, "hat_id": 0, "color_id": 41})
-	else:
-		print("pet already exist")
 
 func _get_pet_database():
 	Singleton.database.query("SELECT * FROM pet;")
@@ -77,8 +53,6 @@ func _update_today_database():
 		
 		var child_id = DataManager._get_child_database()[0].id
 		Singleton.database.update_rows("pet", "id = %s"%child_id, {"hunger": 0})
-		
-	
 
 func _update_money_database(money):
 	var child_id = _get_child_database()[0].id
@@ -86,4 +60,26 @@ func _update_money_database(money):
 	Singleton.database.update_rows("datas", "id = %s"%child_id, {"money": money})
 	print("MONEY DEDUCTED")
 
+func _get_sequence_game_database():
+	var child_id = _get_child_database()[0].id
+	Singleton.database.query("SELECT * FROM child where id = %s;" % [str(child_id)] );
+	var result = Singleton.database.query_result
+	return result;
 
+func _insert_game1_session(level):
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("INSERT INTO sequence_session(level_reached) VALUES(%d)"%level);
+	var last_id = Singleton.database.last_insert_rowid;
+	Singleton.database.insert_row("sequence_junction_session", {"game_id": child_id, "session_id": last_id});
+
+func _insert_game2_session(level):
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("INSERT INTO number_memory_session(level_reached) VALUES(%d)"%level);
+	var last_id = Singleton.database.last_insert_rowid;
+	Singleton.database.insert_row("number_memory_junction_session", {"game_id": child_id, "session_id": last_id});
+
+func _insert_game3_session(level):
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("INSERT INTO timing_session(level_reached) VALUES(%d)"%level);
+	var last_id = Singleton.database.last_insert_rowid;
+	Singleton.database.insert_row("timing_junction_session", {"game_id": child_id, "session_id": last_id});

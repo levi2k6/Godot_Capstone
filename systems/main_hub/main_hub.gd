@@ -7,10 +7,6 @@ func _ready():
 	#print(Time.get_time_dict_from_system())
 	#_resolution()
 	_connections()
-	_triggers()
-	for item in ItemLibrary.library:
-		print(item.name)
-	pass
 
 func _resolution():
 	var view_port = get_viewport().size

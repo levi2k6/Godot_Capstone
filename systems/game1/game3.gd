@@ -16,8 +16,8 @@ func update_hunger():
 	hunger_bar.value = pet_hunger;
 
 func update_money():
-	var money = DataManager._get_money_database()[0].money
-	var add = money + 10
-	DataManager._update_money_database(add)
-	print(add)
-	money_mode._display_money()
+	var money = DataManager._get_money_database()[0].money;
+	var add = money + 10;
+	DataManager._update_money_database(add);
+	print(add);
+	money_mode._display_money();

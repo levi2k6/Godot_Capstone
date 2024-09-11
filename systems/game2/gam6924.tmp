@@ -1,0 +1,138 @@
+[gd_scene load_steps=8 format=3 uid="uid://biljrcgvvn0o3"]
+
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_ntkdw"]
+[ext_resource type="Script" path="res://systems/game2/game2.gd" id="1_uuvrj"]
+[ext_resource type="Script" path="res://systems/game2/Game_Intro.gd" id="2_602pu"]
+[ext_resource type="Script" path="res://systems/game2/Control.gd" id="2_sy20t"]
+[ext_resource type="Script" path="res://systems/game2/num_key.gd" id="3_munt4"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_f1vbq"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="5_n7b5j"]
+
+[node name="Game2" type="Node2D"]
+script = ExtResource("1_uuvrj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("2_sy20t")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -146.5
+offset_right = 0.5
+offset_bottom = -123.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -21.5
+offset_right = 34.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+text = "1"
+script = ExtResource("3_munt4")
+
+[node name="Submit" type="Button" parent="Control/GridContainer"]
+layout_mode = 2
+text = "SUBMIT"
+
+[node name="Game_Intro" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.128025, 0.401517, 0.905758, 1)
+script = ExtResource("2_602pu")
+
+[node name="Label" type="Label" parent="Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_top = 300.0
+offset_right = 43.5
+offset_bottom = 323.0
+grow_horizontal = 2
+
+[node name="Play" type="Button" parent="Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -23.5
+offset_right = 144.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+"
+
+[node name="Main_Hub_Button" parent="Control/Game_Intro" instance=ExtResource("1_ntkdw")]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 457.0
+offset_right = 257.0
+offset_bottom = 499.0
+
+[node name="Hunger_Bar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.026
+anchor_right = 0.847
+anchor_bottom = 0.053
+offset_left = -0.128006
+offset_top = 0.401999
+offset_right = 0.12796
+offset_bottom = -0.219002
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Money" parent="Control" instance=ExtResource("4_f1vbq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.068
+anchor_right = 0.306
+anchor_bottom = 0.091
+offset_left = 0.112
+offset_top = 0.435997
+offset_right = -0.256012
+offset_bottom = -0.0930023
+text = "00000"
+
+[node name="Timer" type="Timer" parent="Control"]
+one_shot = true
+
+[node name="Pet" parent="." instance=ExtResource("5_n7b5j")]
+visible = false
+
+[connection signal="button_down" from="Control/GridContainer/1" to="Control/GridContainer/1" method="_on_button_down"]
+[connection signal="button_up" from="Control/GridContainer/Submit" to="Control" method="_on_submit_button_up"]
+[connection signal="button_up" from="Control/Game_Intro/Play" to="Control/Game_Intro" method="_on_play_button_up"]

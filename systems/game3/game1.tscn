@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtwuefjxhddi2"]
 
-[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="1_enf1i"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_r1gbb"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_68c2j"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_42wg4"]
 
 [node name="Game1" type="Node2D"]
 
@@ -11,7 +11,7 @@ anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 960.0
 
-[node name="Main_Hub_Button" parent="Control" instance=ExtResource("1_r1gbb")]
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("1_68c2j")]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 457.0
@@ -23,4 +23,4 @@ position = Vector2(330, 410)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Fox"]
-texture = ExtResource("1_enf1i")
+texture = ExtResource("2_42wg4")

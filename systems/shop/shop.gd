@@ -11,8 +11,7 @@ extends Node2D
 
 
 func _ready():
-	
-	_resolution()
+	#_resolution()
 	for child in h_box_container.get_children():
 		child.change_tab.connect(_change_tab)
 	

@@ -4,18 +4,16 @@ extends Node2D
 @onready var create_child_button = $Control/Create_Child_Button
 @onready var create_pet_button = $Control/Create_Pet_Button
 
-
-
 func _ready():
-	_resolution()
+	#_resolution()
 	_execute()
 	pass
 
-func _resolution():
-	var view_port = get_viewport().size
-	
-	$Control.size = view_port
-	
+#func _resolution():
+	#var view_port = get_viewport().size
+	#
+	#$Control.size = view_port
+	#
 
 func _execute():
 	

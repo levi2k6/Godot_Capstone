@@ -72,9 +72,11 @@ func click_tile(tile, tile_name):
 			$Game_Intro.start = false;
 			$Game_Intro.change();
 			reward_system();
+			DataManager._insert_game1_session(level);
 			level = 1;
 			queue_i = 0;
 			pattern = [];
+
 
 func pattern_queue():
 	var current_queue = pattern[queue_i]
@@ -114,6 +116,9 @@ func reward_system():
 		print("plus 8 points!");
 	pet._learn(reward);
 	get_parent().update_money();
+
+func session_stats():
+	pass
 
 func print_datas():
 	print("level: " ,level);

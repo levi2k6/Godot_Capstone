@@ -8,7 +8,7 @@ func _ready():
 func change():
 	if start:
 		color = "2166e7";
-		$Label.text = "Sequence Game";
+		$Label.text = "Number Memory Game";
 		$Play.text = "Play";
 	else:
 		color = "c8284f";

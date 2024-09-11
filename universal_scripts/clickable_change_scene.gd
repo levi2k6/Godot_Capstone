@@ -19,10 +19,10 @@ func _on_pressed():
 	elif name == "Games_Button":
 		get_tree().change_scene_to_file("res://systems/games/games.tscn");
 	elif name == "Game1_Button":
-		get_tree().change_scene_to_file("res://systems/game1/game1.tscn");
+		get_tree().change_scene_to_file("res://systems/game1/game3.tscn");
 	elif name == "Game2_Button":
 		get_tree().change_scene_to_file("res://systems/game2/game2.tscn");
 	elif name == "Game3_Button":
-		get_tree().change_scene_to_file("res://systems/game3/game3.tscn");
+		get_tree().change_scene_to_file("res://systems/game3/game1.tscn");
 
 

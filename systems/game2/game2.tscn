@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://biljrcgvvn0o3"]
+[gd_scene load_steps=9 format=3 uid="uid://biljrcgvvn0o3"]
 
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_ntkdw"]
 [ext_resource type="Script" path="res://systems/game2/game2.gd" id="1_uuvrj"]
 [ext_resource type="Script" path="res://systems/game2/Game_Intro.gd" id="2_602pu"]
 [ext_resource type="Script" path="res://systems/game2/Control.gd" id="2_sy20t"]
+[ext_resource type="Script" path="res://systems/game2/Typer.gd" id="3_8tdfp"]
+[ext_resource type="Script" path="res://systems/game2/num_key.gd" id="3_munt4"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_f1vbq"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="5_n7b5j"]
 
@@ -31,34 +33,104 @@ offset_bottom = -123.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextEdit" type="TextEdit" parent="Control"]
+[node name="Typer" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -114.5
-offset_top = -13.0
-offset_right = 114.5
-offset_bottom = 13.0
+offset_left = -158.0
+offset_top = -153.0
+offset_right = 158.0
+offset_bottom = 153.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_8tdfp")
 
-[node name="Submit" type="Button" parent="Control"]
+[node name="GridContainer" type="GridContainer" parent="Control/Typer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 139.0
-offset_top = -13.0
-offset_right = 191.0
-offset_bottom = 13.0
+offset_left = -64.0
+offset_top = -50.5
+offset_right = 64.0
+offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "SUBMIT"
+columns = 3
+
+[node name="1" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1"
+script = ExtResource("3_munt4")
+
+[node name="2" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "2"
+script = ExtResource("3_munt4")
+
+[node name="3" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "3"
+script = ExtResource("3_munt4")
+
+[node name="4" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "4"
+script = ExtResource("3_munt4")
+
+[node name="5" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "5"
+script = ExtResource("3_munt4")
+
+[node name="6" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "6"
+script = ExtResource("3_munt4")
+
+[node name="7" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "7"
+script = ExtResource("3_munt4")
+
+[node name="8" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "8"
+script = ExtResource("3_munt4")
+
+[node name="9" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "9"
+script = ExtResource("3_munt4")
+
+[node name="0" type="Button" parent="Control/Typer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "0"
+script = ExtResource("3_munt4")
+
+[node name="Submit" type="Button" parent="Control/Typer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+offset_left = 127.0
+offset_top = 248.0
+offset_right = 190.0
+offset_bottom = 279.0
+text = "Submit"
 
 [node name="Game_Intro" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -131,8 +203,21 @@ offset_right = -0.256012
 offset_bottom = -0.0930023
 text = "00000"
 
+[node name="Timer" type="Timer" parent="Control"]
+one_shot = true
+
 [node name="Pet" parent="." instance=ExtResource("5_n7b5j")]
 visible = false
 
-[connection signal="button_up" from="Control/Submit" to="Control" method="_on_submit_button_up"]
+[connection signal="button_down" from="Control/Typer/GridContainer/1" to="Control/Typer/GridContainer/1" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/2" to="Control/Typer/GridContainer/2" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/3" to="Control/Typer/GridContainer/3" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/4" to="Control/Typer/GridContainer/4" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/5" to="Control/Typer/GridContainer/5" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/6" to="Control/Typer/GridContainer/6" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/7" to="Control/Typer/GridContainer/7" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/8" to="Control/Typer/GridContainer/8" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/9" to="Control/Typer/GridContainer/9" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/GridContainer/0" to="Control/Typer/GridContainer/0" method="_on_button_down"]
+[connection signal="button_down" from="Control/Typer/Submit" to="Control/Typer" method="_on_submit_button_down"]
 [connection signal="button_up" from="Control/Game_Intro/Play" to="Control/Game_Intro" method="_on_play_button_up"]
