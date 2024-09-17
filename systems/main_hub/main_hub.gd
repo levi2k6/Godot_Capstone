@@ -6,7 +6,8 @@ func _ready():
 	#print(Time.get_date_dict_from_system())
 	#print(Time.get_time_dict_from_system())
 	#_resolution()
-	_connections()
+	_connections();
+	_triggers();
 
 func _resolution():
 	var view_port = get_viewport().size

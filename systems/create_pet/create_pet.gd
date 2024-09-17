@@ -3,7 +3,7 @@ extends Node2D
 @onready var body_items = $Control/Picker/ScrollContainer/ColorRect/Body_Items
 @onready var eyes_items = $Control/Picker/ScrollContainer/ColorRect/Eyes_Items
 @onready var mouth_items = $Control/Picker/ScrollContainer/ColorRect/Mouth_Items
-@onready var hat_items = $Control/Picker/ScrollContainer/ColorRect/Hat_Items
+@onready var color_items = $Control/Picker/ScrollContainer/ColorRect/Color_Items
 
 @onready var h_box_container = $Control/Picker/HBoxContainer
 @onready var color_rect = $Control/Picker/ScrollContainer/ColorRect
@@ -41,8 +41,8 @@ func _change_tab(naym):
 		elif naym == "Tab_Mouths":
 			mouth_items.visible = true
 			pass
-		elif naym == "Tab_Hats":
-			hat_items.visible = true
+		elif naym == "Tab_Colors":
+			color_items.visible = true
 			pass
 			
 

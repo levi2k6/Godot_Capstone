@@ -24,6 +24,7 @@ func _ready():
 	pass
 
 func start():
+	$Level.text = "LEVEL: " + str(level)
 	var rng_result = rng.randi_range(1, 9);
 	pattern.append(tile_datas[rng_result]);
 	game_animation()

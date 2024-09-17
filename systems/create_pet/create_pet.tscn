@@ -48,8 +48,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
-[node name="Tab_Hats" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
-visible = false
+[node name="Tab_Colors" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 
@@ -85,7 +84,7 @@ offset_bottom = 40.0
 columns = 5
 script = ExtResource("4_21v8p")
 
-[node name="Hat_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
+[node name="Color_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 visible = false
 layout_mode = 0
 offset_right = 40.0

@@ -35,7 +35,6 @@ func compare():
 		reward_system();
 
 func reward_system():
-	print("DIES: ", level);
 	var reward = 3;
 	if level >= 20:
 		reward = 20;

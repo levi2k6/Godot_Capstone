@@ -58,8 +58,8 @@ func _learn(xp):
 	properties.hunger += xp;
 	properties.hunger = clamp(properties.hunger, 0, 100)
 	DataManager._update_pet_hunger(properties.hunger);
-	state_chage()
-	update_hunger_bar()
+	state_chage();
+	update_hunger_bar();
 
 func update_hunger_bar():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger
