@@ -63,7 +63,7 @@ func _learn(xp):
 
 func update_hunger_bar():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger
-	emit_signal("update_hunger")
+	emit_signal("update_hunger");
 
 func state_chage():
 	if properties.hunger < 50:

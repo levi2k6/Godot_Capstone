@@ -1,9 +1,181 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqrdnk3spxvue"]
+[gd_scene load_steps=16 format=3 uid="uid://bqrdnk3spxvue"]
 
 [ext_resource type="Script" path="res://systems/game_menu/game_menu.gd" id="1_ht4tj"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="2_qeo06"]
+[ext_resource type="Texture2D" uid="uid://crp7fqds1qop7" path="res://sprite/games/back_mini_pet.png" id="3_5r0wr"]
+[ext_resource type="Animation" uid="uid://cq2dl5tjuespt" path="res://systems/game_menu/animations/back_mini_pet.res" id="3_byacq"]
+[ext_resource type="Animation" uid="uid://b0v1vjsnlq6pb" path="res://systems/game_menu/animations/bit_buddy.res" id="4_3apvj"]
+[ext_resource type="Texture2D" uid="uid://bw7haho1y7350" path="res://sprite/games/bit.png" id="4_kywql"]
+[ext_resource type="Texture2D" uid="uid://b055ktgetei6j" path="res://sprite/games/buddy.png" id="5_1hseh"]
+
+[sub_resource type="Animation" id="Animation_qt1o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buddy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-613.999, 46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buddy:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.703368]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-83, -272)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bit:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Back_Tiny_Pet:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gkcmm"]
+resource_name = "Whole_Intro_Animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ga5fc"]
+_data = {
+"RESET": SubResource("Animation_qt1o2"),
+"Whole_Intro_Animation": SubResource("Animation_gkcmm"),
+"back_mini_pet": ExtResource("3_byacq"),
+"bit_buddy": ExtResource("4_3apvj")
+}
+
+[sub_resource type="Animation" id="Animation_hdjbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons/Create_Child_Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, -4.99992)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/Main_Hub_Button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, -4.99994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buttons/Create_Pet_Button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_7kfqx"]
+resource_name = "create_child_button_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons/Create_Child_Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.353553, 0.757858, 1),
+"update": 0,
+"values": [Vector2(-30, -4.99992), Vector2(-30, -403), Vector2(-30, -346)]
+}
+
+[sub_resource type="Animation" id="Animation_2p6uk"]
+resource_name = "create_pet_button_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons/Create_Pet_Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.353553, 0.757858, 1),
+"update": 0,
+"values": [Vector2(-30, -5), Vector2(-30, -403), Vector2(-30, -346)]
+}
+
+[sub_resource type="Animation" id="Animation_fx1ng"]
+resource_name = "main_hub_button_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons/Main_Hub_Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.353553, 0.757858, 1),
+"update": 0,
+"values": [Vector2(-30, -4.99994), Vector2(-30, -403), Vector2(-30, -346)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i0v2"]
+_data = {
+"RESET": SubResource("Animation_hdjbq"),
+"create_child_button_up": SubResource("Animation_7kfqx"),
+"create_pet_button_up": SubResource("Animation_2p6uk"),
+"main_hub_button_up": SubResource("Animation_fx1ng")
+}
 
 [node name="GameMenu" type="Node2D"]
+position = Vector2(0, 3)
 script = ExtResource("1_ht4tj")
 
 [node name="Control" type="Control" parent="."]
@@ -12,51 +184,17 @@ anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 
-[node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_qeo06")]
+[node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.336
-anchor_right = 0.5
-anchor_bottom = 0.336
-offset_left = -50.0
-offset_top = -25.064
-offset_right = 50.0
-offset_bottom = 24.936
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Create_Child_Button" parent="Control" instance=ExtResource("2_qeo06")]
-modulate = Color(1, 0.34902, 1, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.336
-anchor_right = 0.5
-anchor_bottom = 0.336
-offset_left = -50.0
-offset_top = -25.064
-offset_right = 50.0
-offset_bottom = 24.936
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Create_Pet_Button" parent="Control" instance=ExtResource("2_qeo06")]
-modulate = Color(0.929412, 0.576471, 0.0862745, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.336
-anchor_right = 0.5
-anchor_bottom = 0.336
-offset_left = -50.0
-offset_top = -25.064
-offset_right = 50.0
-offset_bottom = 24.936
-grow_horizontal = 2
-grow_vertical = 2
+color = Color(0, 0.352941, 0.796078, 1)
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -105,3 +243,108 @@ ang gi palit.
 
 -dapat dili ka create ug pet kung dili kumpleto iyahang
  body parts"
+
+[node name="Title" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -90.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Title"]
+libraries = {
+"": SubResource("AnimationLibrary_ga5fc")
+}
+
+[node name="Back_Tiny_Pet" type="Sprite2D" parent="Control/Title"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(22, -52)
+scale = Vector2(3, 3)
+texture = ExtResource("3_5r0wr")
+hframes = 34
+frame = 4
+
+[node name="Bit" type="Sprite2D" parent="Control/Title"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-83, -272)
+scale = Vector2(3, 3)
+texture = ExtResource("4_kywql")
+
+[node name="Buddy" type="Sprite2D" parent="Control/Title"]
+position = Vector2(-613.999, 46)
+scale = Vector2(3, 3)
+skew = -0.703368
+texture = ExtResource("5_1hseh")
+
+[node name="Timer" type="Timer" parent="Control/Title"]
+
+[node name="Buttons" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 533.0
+offset_right = 20.0
+offset_bottom = 573.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Buttons"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2i0v2")
+}
+
+[node name="Main_Hub_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -24.9999
+offset_right = 50.0
+offset_bottom = 24.9999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create_Child_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
+modulate = Color(1, 0.34902, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -24.9999
+offset_right = 50.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create_Pet_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
+modulate = Color(0.929412, 0.576471, 0.0862745, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2

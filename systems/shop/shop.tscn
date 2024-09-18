@@ -13,7 +13,6 @@
 script = ExtResource("1_x604k")
 
 [node name="Pet" parent="." instance=ExtResource("2_bmkpa")]
-z_index = 0
 position = Vector2(296, 636)
 
 [node name="Control" type="Control" parent="."]
@@ -22,6 +21,12 @@ anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0, 0.184314, 0.411765, 1)
 
 [node name="Picker" type="VBoxContainer" parent="Control"]
 layout_mode = 1

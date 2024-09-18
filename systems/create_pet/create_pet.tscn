@@ -19,6 +19,12 @@ offset_right = 540.0
 offset_bottom = 960.0
 metadata/_edit_group_ = true
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0, 0.184314, 0.411765, 1)
+
 [node name="Picker" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -31,6 +37,7 @@ offset_top = -0.176003
 offset_right = 0.12796
 offset_bottom = -0.0800171
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
 custom_minimum_size = Vector2(0, 30)

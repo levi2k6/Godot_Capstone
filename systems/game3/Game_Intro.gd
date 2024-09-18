@@ -10,7 +10,7 @@ func _ready():
 func change():
 	if start:
 		color = "2166e7";
-		$Label.text = "Number Memory Game";
+		$Label.text = "Meteor Rush";
 		$Play.text = "Play";
 	else:
 		color = "c8284f";

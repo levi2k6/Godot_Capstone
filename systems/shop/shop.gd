@@ -13,9 +13,8 @@ extends Node2D
 func _ready():
 	#_resolution()
 	for child in h_box_container.get_children():
-		child.change_tab.connect(_change_tab)
-	
-	_change_tab("Tab_Bodies")
+		child.change_tab.connect(_change_tab);
+	_change_tab("Tab_Bodies");
 
 func _resolution():
 	var view_port = get_viewport().size

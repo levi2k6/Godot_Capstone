@@ -8,8 +8,8 @@ script = ExtResource("1_jxaay")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 908.0
+offset_right = 540.0
+offset_bottom = 960.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1

@@ -72,15 +72,7 @@ func _insert_game1_session(level):
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("sequence_junction_session", {"game_id": child_id, "session_id": last_id});
 	
-	var result_dict1;
-	var result_dict2;
-	Singleton.database.query("SELECT MAX(level_reached) FROM sequence_session");
-	result_dict1 = Singleton.database.query_result[0];
-	var highest_level  = result_dict1["MAX(level_reached)"];
-	Singleton.database.query("SELECT COUNT(*) FROM sequence_session;");
-	result_dict2 = Singleton.database.query_result[0];
-	var total_session = result_dict2["COUNT(*)"];
-	Singleton.database.update_rows("sequence_game", "id = %s"%child_id, {"total_session": total_session, "highest_level": highest_level});
+	dynamic_update_game_data("sequence_session", "sequence_game", child_id);;
 
 func _insert_game2_session(level):
 	var child_id = _get_child_database()[0].id;
@@ -88,15 +80,7 @@ func _insert_game2_session(level):
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("number_memory_junction_session", {"game_id": child_id, "session_id": last_id});
 	
-	var result_dict1;
-	var result_dict2;
-	Singleton.database.query("SELECT MAX(level_reached) FROM number_memory_session");
-	result_dict1 = Singleton.database.query_result[0];
-	var highest_level  = result_dict1["MAX(level_reached)"];
-	Singleton.database.query("SELECT COUNT(*) FROM number_memory_session;");
-	result_dict2 = Singleton.database.query_result[0];
-	var total_session = result_dict2["COUNT(*)"];
-	Singleton.database.update_rows("number_memory_game", "id = %s"%child_id, {"total_session": total_session, "highest_level": highest_level});
+	dynamic_update_game_data("number_memory_session", "number_memory_game", child_id);
 
 func _insert_game3_session(level):
 	var child_id = _get_child_database()[0].id;
@@ -104,14 +88,18 @@ func _insert_game3_session(level):
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("timing_junction_session", {"game_id": child_id, "session_id": last_id});
 	
+	dynamic_update_game_data("timing_session", "timing_game", child_id);
+
+func dynamic_update_game_data(session: String, game: String, child_id: int):
+	var game_session = session;
+	var game_name = game;
+	
 	var result_dict1;
 	var result_dict2;
-	Singleton.database.query("SELECT MAX(level_reached) FROM timing_session");
+	Singleton.database.query("SELECT MAX(level_reached) FROM %s;" %game_session);
 	result_dict1 = Singleton.database.query_result[0];
 	var highest_level  = result_dict1["MAX(level_reached)"];
-	Singleton.database.query("SELECT COUNT(*) FROM timing_session;");
+	Singleton.database.query("SELECT COUNT(*) FROM %s;" %game_session);
 	result_dict2 = Singleton.database.query_result[0];
 	var total_session = result_dict2["COUNT(*)"];
-	Singleton.database.update_rows("timing_game", "id = %s"%child_id, {"total_session": total_session, "highest_level": highest_level});
-
-
+	Singleton.database.update_rows("%s" %game_name, "id = %s"%child_id, {"total_session": total_session, "highest_level": highest_level});
