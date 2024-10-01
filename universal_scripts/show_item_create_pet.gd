@@ -1,12 +1,9 @@
 extends GridContainer
 signal send_texture(texture, naym)
 
-
 const CLICKABLE_ITEM_COLLECTION = preload("res://systems/collection/clickable_item_collection.tscn")
 
 var items = []
-
-
 
 func _ready():
 	_change_items()

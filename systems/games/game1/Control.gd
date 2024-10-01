@@ -42,10 +42,10 @@ func game_animation():
 		for tile in get_child(0).get_children():
 			if tile.name == tile_name:
 				tile.modulate = "ff1622";
-				$Timer.start(1);
+				$Timer.start(0.3);
 				await $Timer.timeout;
 				tile.modulate = Color(1,1,1);
-				$Timer.start(1);
+				$Timer.start(0.3);
 				await $Timer.timeout;
 				continue;
 	while_animation = false;
@@ -55,6 +55,17 @@ func win_animation():
 	$Timer.start(1)
 	await $Timer.timeout
 	difficulty_up();
+
+func lose():
+	print("WRONG!");
+	$Game_Intro.visible = true;
+	$Game_Intro.start = false;
+	$Game_Intro.change();
+	reward_system();
+	DataManager._insert_game1_session(level);
+	level = 1;
+	queue_i = 0;
+	pattern = [];
 
 func click_tile(tile, tile_name):
 	if !while_animation:
@@ -68,15 +79,7 @@ func click_tile(tile, tile_name):
 			if queue_i ==  pattern.size():
 				win_animation();
 		else:
-			print("WRONG!");
-			$Game_Intro.visible = true;
-			$Game_Intro.start = false;
-			$Game_Intro.change();
-			reward_system();
-			DataManager._insert_game1_session(level);
-			level = 1;
-			queue_i = 0;
-			pattern = [];
+			lose();
 
 
 func pattern_queue():

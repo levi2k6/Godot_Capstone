@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://jl2lj81plmpg"]
+
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_0mkoa"]
+[ext_resource type="Script" path="res://systems/stats/milestone/milestone.gd" id="1_d0umw"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/back_change_scene/clickable_change_back_scene.tscn" id="1_f37md"]
+[ext_resource type="Texture2D" uid="uid://dhlwtwvd03hoc" path="res://sprite/milestone_sprites/milestone_panel.png" id="3_10dh8"]
+
+[node name="Milestone" type="Node2D"]
+script = ExtResource("1_d0umw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("1_f37md")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.0
+offset_top = 59.0
+offset_right = -167.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="UI" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.5
+offset_top = -125.0
+offset_right = 123.5
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main_Hub_Button" parent="Control/UI" instance=ExtResource("1_0mkoa")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -231.0
+offset_right = -44.0
+offset_bottom = -189.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 126.0
+offset_right = 521.0
+offset_bottom = 906.0
+texture = ExtResource("3_10dh8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 44.0
+offset_right = 166.0
+offset_bottom = 229.0
+
+[node name="Total_Time" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Time: 123123"
+
+[node name="Total_Collection" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Collection: 123123"
+
+[node name="Total_Pet_Fully_Fed" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Pet Fully Fed: 123123"
+
+[node name="Total_Games_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Games Played: 123123"
+
+[node name="Total_Days_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Days Played: 123123"
+
+[node name="Total_Money_Earned" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Total Money Earned: 123123"

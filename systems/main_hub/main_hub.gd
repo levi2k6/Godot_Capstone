@@ -1,5 +1,4 @@
 extends Node2D
-
 @onready var money_display = $UI/Money
 
 func _ready():
@@ -8,6 +7,7 @@ func _ready():
 	#_resolution()
 	_connections();
 	_triggers();
+	GameData.last_scene = get_tree().current_scene.get_scene_file_path();
 
 func _resolution():
 	var view_port = get_viewport().size

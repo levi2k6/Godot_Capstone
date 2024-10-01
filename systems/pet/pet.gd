@@ -6,6 +6,7 @@ signal update_hunger(hunger)
 var rng = RandomNumberGenerator.new()
 var current_state
 var previous_state
+var fully_fed: bool;
 
 enum states{
 	normal,
@@ -15,13 +16,15 @@ enum states{
 
 func _ready():
 	$body_animation.play("idle")
-	start_time()
-	_append_properties()
-	state_chage()
-	_fashion()
+	start_time();
+	start_funcs();
+	state_chage();
+	_fashion();
 
-func _append_properties():
+func start_funcs():
 	properties.hunger = DataManager._get_pet_database()[0].hunger;
+	if properties.hunger == 100:
+			fully_fed = true;
 
 func _fashion():
 	var equip_items = ItemLibrary._get_pet_equip_library();
@@ -60,6 +63,15 @@ func _learn(xp):
 	DataManager._update_pet_hunger(properties.hunger);
 	state_chage();
 	update_hunger_bar();
+	
+	if !fully_fed:
+		if properties.hunger == 100:
+			DataManager._update_milestone_total_pet_fully_fed();
+			fully_fed = true;
+		else:
+			print_debug("still hungry");
+
+
 
 func update_hunger_bar():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger

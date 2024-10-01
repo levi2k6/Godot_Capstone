@@ -4,7 +4,7 @@ extends Node2D
 @onready var pet = $"../Pet"
 
 signal game_win;
-const TILE = preload("res://systems/game3/tile.tscn");
+const TILE = preload("res://systems/games/game3/tile.tscn")
 
 var rng = RandomNumberGenerator.new();
 

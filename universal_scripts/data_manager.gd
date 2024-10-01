@@ -41,15 +41,15 @@ func _update_today_database():
 	var today = Time.get_datetime_dict_from_system().day
 	var today_or_old = _get_today_database()
 	
-	
 	if _get_today_database().size() == 0:
 		Singleton.database.insert_row("date", {"today": today})
 		#print(today)
 		#print(_get_today_database()[0].today)
 	elif today_or_old[0].today != today:
-		Singleton.database.query("UPDATE date SET today = %s" %today)
-		print("YESTERDAY WAS: ", today_or_old[0].today)
-		print("TODAY IS: ", today)
+		Singleton.database.query("UPDATE date SET today = %s" %today);
+		_update_milestone_total_days_played();
+		#print("YESTERDAY WAS: ", today_or_old[0].today)
+		#print("TODAY IS: ", today)
 		
 		var child_id = DataManager._get_child_database()[0].id
 		Singleton.database.update_rows("pet", "id = %s"%child_id, {"hunger": 0})
@@ -59,6 +59,19 @@ func _update_money_database(money):
 	
 	Singleton.database.update_rows("datas", "id = %s"%child_id, {"money": money})
 	print("MONEY DEDUCTED")
+
+#games///////////////////
+
+func _get_all_game_counts():
+	Singleton.database.query("
+	SELECT 'sequence_session' AS name, COUNT(*) AS count FROM sequence_session
+	UNION ALL 
+	SELECT 'number_memory_session' AS name, COUNT(*) FROM number_memory_session
+	UNION ALL
+	SELECT 'timing_session' AS name, COUNT(*) FROM timing_session;
+	");
+	var result = Singleton.database.query_result;
+	return result;
 
 func _get_sequence_game_database():
 	var child_id = _get_child_database()[0].id
@@ -103,3 +116,41 @@ func dynamic_update_game_data(session: String, game: String, child_id: int):
 	result_dict2 = Singleton.database.query_result[0];
 	var total_session = result_dict2["COUNT(*)"];
 	Singleton.database.update_rows("%s" %game_name, "id = %s"%child_id, {"total_session": total_session, "highest_level": highest_level});
+
+#Milestone/////////////////////
+
+func _get_milestone_datas():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("SELECT * FROM milestone WHERE  id = %s"%child_id);
+	var result = Singleton.database.query_result;
+	return result;
+
+func _update_milestone_total_time():
+	var child_id = _get_child_database()[0].id;
+	var time_track = int(GameData.time_track);
+	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_time": time_track});
+
+func _update_milestone_total_collection():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("SELECT COUNT(*) FROM collection WHERE child_id = %s" %child_id);
+	var query_result = Singleton.database.query_result[0];
+	var collection_count = query_result["COUNT(*)"];
+	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_collection": collection_count});
+
+func _update_milestone_total_pet_fully_fed():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("UPDATE milestone SET total_pet_fully_fed = total_pet_fully_fed + 1");
+
+func _update_milestone_total_days_played():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("UPDATE milestone SET total_days_played = total_days_played + 1");
+
+func _update_milestone_total_games_played():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("SELECT 
+		(SELECT COUNT(*) FROM sequence_session) +
+		(SELECT COUNT(*) FROM number_memory_session) +
+		(SELECT COUNT(*) FROM timing_session) AS total_count;
+	");
+	var total_games_played_count = Singleton.database.query_result[0].total_count;
+	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_games_played": total_games_played_count});

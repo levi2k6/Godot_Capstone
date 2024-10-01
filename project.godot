@@ -20,13 +20,13 @@ config/icon="res://icon.svg"
 Singleton="*res://universal_scripts/singleton.gd"
 ItemLibrary="*res://universal_scripts/item_library.gd"
 DataManager="*res://universal_scripts/data_manager.gd"
+GameData="*res://universal_scripts/game_data.gd"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 window/handheld/orientation=1
 
 [editor_plugins]

@@ -11,10 +11,11 @@ func _ready():
 	pass
 
 func _execute():
-	var child = DataManager._get_child_database()
-	print(child)
-	var pet_equip = ItemLibrary._get_pet_equip_library()
-	animation(child, pet_equip)
+	var child = DataManager._get_child_database();
+	#print_debug(child);
+	var pet_equip = ItemLibrary._get_pet_equip_library();
+	GameData.last_scene = get_tree().current_scene.get_scene_file_path();
+	animation(child, pet_equip);
 
 func animation(child, pet_equip):
 	var timer = title.get_child(4);
@@ -43,13 +44,3 @@ func animation(child, pet_equip):
 		create_child_button.visible = false
 		create_pet_button.visible = false
 		animation_player_button.play("main_hub_button_up");
-	
-
-
-
-
-
-
-
-
-

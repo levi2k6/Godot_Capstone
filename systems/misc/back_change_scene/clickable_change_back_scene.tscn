@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://namv7b1invr4"]
+
+[ext_resource type="Script" path="res://systems/misc/back_change_scene/clickable_back_change_scene.gd" id="1_2wflo"]
+
+[node name="Clickable_Change_Back_Scene" type="Button"]
+text = "Back"
+script = ExtResource("1_2wflo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

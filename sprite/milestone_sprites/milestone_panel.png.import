@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crp7fqds1qop7"
-path="res://.godot/imported/back_mini_pet.png-e9a2c15b3983fa59f14a837bd2b96d9f.ctex"
+uid="uid://dhlwtwvd03hoc"
+path="res://.godot/imported/milestone_panel.png-0e282d0287cd7cce68eefdc3eec141de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/games/back_mini_pet.png"
-dest_files=["res://.godot/imported/back_mini_pet.png-e9a2c15b3983fa59f14a837bd2b96d9f.ctex"]
+source_file="res://sprite/milestone_sprites/milestone_panel.png"
+dest_files=["res://.godot/imported/milestone_panel.png-0e282d0287cd7cce68eefdc3eec141de.ctex"]
 
 [params]
 

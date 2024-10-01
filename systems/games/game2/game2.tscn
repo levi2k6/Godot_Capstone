@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://biljrcgvvn0o3"]
 
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_ntkdw"]
-[ext_resource type="Script" path="res://systems/game2/game2.gd" id="1_uuvrj"]
-[ext_resource type="Script" path="res://systems/game2/Game_Intro.gd" id="2_602pu"]
-[ext_resource type="Script" path="res://systems/game2/Control.gd" id="2_sy20t"]
-[ext_resource type="Script" path="res://systems/game2/Typer.gd" id="3_8tdfp"]
-[ext_resource type="Script" path="res://systems/game2/num_key.gd" id="3_munt4"]
+[ext_resource type="Script" path="res://systems/games/game2/game2.gd" id="1_uuvrj"]
+[ext_resource type="Script" path="res://systems/games/game2/Game_Intro.gd" id="2_602pu"]
+[ext_resource type="Script" path="res://systems/games/game2/Control.gd" id="2_sy20t"]
+[ext_resource type="Script" path="res://systems/games/game2/Typer.gd" id="3_8tdfp"]
+[ext_resource type="Script" path="res://systems/games/game2/num_key.gd" id="3_munt4"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_f1vbq"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="5_n7b5j"]
 

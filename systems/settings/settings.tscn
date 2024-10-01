@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2m83r2xqeial"]
+
+[ext_resource type="Script" path="res://systems/settings/settings.gd" id="1_8mcl3"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/back_change_scene/clickable_change_back_scene.tscn" id="2_5e23u"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8mcl3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.184314, 0.411765, 1)
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Options"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 218.0
+offset_right = 434.0
+offset_bottom = 369.0
+
+[node name="Label" type="Label" parent="Options/Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 66.0
+offset_right = 94.0
+offset_bottom = 89.0
+text = "Music:"
+
+[node name="HSlider" type="HSlider" parent="Options/Panel"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 73.0
+offset_right = 290.0
+offset_bottom = 89.0
+
+[node name="Stats" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -15.5
+offset_right = 23.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Stats"
+
+[node name="Clickable_Change_Back_Scene" parent="." instance=ExtResource("2_5e23u")]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 123.0
+offset_right = 116.0
+offset_bottom = 154.0
+
+[connection signal="pressed" from="Options/Stats" to="." method="_on_stats_pressed"]
