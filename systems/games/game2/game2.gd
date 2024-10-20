@@ -1,14 +1,16 @@
 extends Node2D
+@onready var pet = $Pet
 
-@onready var money_node = $Control/Money
-@onready var hunger_bar = $Control/Hunger_Bar
+@onready var money_node = $Game/Money
+@onready var hunger_bar = $Game/Hunger_Bar
+
 
 func _ready():
 	_connections();
 	update_hunger();
 
 func _connections():
-	$Pet.connect("update_hunger", update_hunger);
+	pet.connect("update_hunger", update_hunger);
 	pass
 
 func update_hunger():
@@ -21,3 +23,5 @@ func update_money():
 	DataManager._update_money_database(add);
 	print(add);
 	money_node._display_money();
+
+

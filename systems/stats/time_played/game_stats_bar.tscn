@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://yww82ssboqhd"]
+[gd_scene load_steps=3 format=3 uid="uid://yww82ssboqhd"]
 
 [ext_resource type="Script" path="res://systems/stats/time_played/game_stats_bar.gd" id="1_pgeu4"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_6bkoy"]
 
 [node name="GameStatsBar" type="HBoxContainer"]
-offset_right = 323.0
+offset_right = 559.0
 offset_bottom = 155.0
 script = ExtResource("1_pgeu4")
 
@@ -12,12 +13,18 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "asdasdasd"
+text = "asdasdasdasdadasdadasdasdasd"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_6bkoy")
+stretch_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 4

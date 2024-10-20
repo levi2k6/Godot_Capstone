@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpm34vfsyv8yr"]
+
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/improvement_chart.gd" id="1_4wqmw"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_lqadw"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/drawer.gd" id="2_n0ruy"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/right_drawer.gd" id="2_nd7s3"]
+
+[node name="ImprovementChart" type="Node2D"]
+script = ExtResource("1_4wqmw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+
+[node name="Games" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_bottom = 40.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="Digit Hack" type="Button" parent="Control/Games"]
+layout_mode = 2
+text = "Digit Hack
+"
+
+[node name="Meteor Rush" type="Button" parent="Control/Games"]
+layout_mode = 2
+text = "Meteor Rush"
+
+[node name="Sequence Mix" type="Button" parent="Control/Games"]
+layout_mode = 2
+text = "Sequence Mix"
+
+[node name="Zoom" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_top = 757.0
+offset_right = -240.0
+offset_bottom = 797.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="ZoomOut" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-
+"
+
+[node name="ZoomIn" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -225.0
+offset_right = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 3
+
+[node name="Panel" type="Panel" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Line2D" type="Line2D" parent="Control/ScrollContainer/Panel"]
+points = PackedVector2Array(0, 500)
+width = 1.5
+default_color = Color(0.887874, 0.000325051, 0.137045, 1)
+
+[node name="Points" type="Control" parent="Control/ScrollContainer/Panel"]
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="UpScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_top = 255.0
+offset_right = 45.0
+offset_bottom = 705.0
+horizontal_scroll_mode = 3
+
+[node name="Control" type="Control" parent="Control/UpScrollContainer"]
+custom_minimum_size = Vector2(45, 450)
+layout_mode = 2
+
+[node name="RightScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 705.0
+offset_right = 495.0
+offset_bottom = 750.0
+vertical_scroll_mode = 3
+
+[node name="RightNumbers" type="Control" parent="Control/RightScrollContainer"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+
+[node name="RightDrawer" type="Node2D" parent="Control/RightScrollContainer"]
+script = ExtResource("2_nd7s3")
+
+[node name="Origin" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_lqadw")
+
+[node name="drawer" type="Node2D" parent="."]
+script = ExtResource("2_n0ruy")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.515625, 0.539063)
+texture = ExtResource("2_lqadw")
+
+[connection signal="button_down" from="Control/Games/Digit Hack" to="." method="_on_digit_hack_button_down"]
+[connection signal="button_down" from="Control/Games/Meteor Rush" to="." method="_on_meteor_rush_button_down"]
+[connection signal="button_down" from="Control/Games/Sequence Mix" to="." method="_on_sequence_mix_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
+[connection signal="scroll_started" from="Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]

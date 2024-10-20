@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://systems/pet/pet.gd" id="1_kivr4"]
 [ext_resource type="Resource" uid="uid://dgu0taccwgl7" path="res://resources/pet_stats.tres" id="2_5da1l"]
-[ext_resource type="Texture2D" uid="uid://bh623cl3bwqj0" path="res://sprite/other/feet.png" id="3_yfy4f"]
-[ext_resource type="Texture2D" uid="uid://dig7qad3m4rp5" path="res://sprite/other/hand.png" id="4_qxabx"]
+[ext_resource type="Texture2D" uid="uid://bh623cl3bwqj0" path="res://assets/other/feet.png" id="3_yfy4f"]
+[ext_resource type="Texture2D" uid="uid://dig7qad3m4rp5" path="res://assets/other/hand.png" id="4_qxabx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcv3"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6uxbwin3vvya"]
 
 [ext_resource type="Script" path="res://systems/shop/clickable_item_shop.gd" id="1_r56y5"]
-[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="2_sj554"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="2_sj554"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(128, 128)

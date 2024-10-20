@@ -7,6 +7,6 @@ func working():
 
 func initialize_game_data(datas: Dictionary):
 	$VBoxContainer/Label.text = datas.name;
-	$VBoxContainer/TextureRect.texture = datas.texture;
-	$ProgressBar.value = datas.percent;
+	$VBoxContainer/HBoxContainer/TextureRect.texture = datas.texture;
+	$VBoxContainer/HBoxContainer/ProgressBar.value = datas.percent;
 

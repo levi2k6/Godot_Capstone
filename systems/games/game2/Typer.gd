@@ -1,18 +1,15 @@
 extends Control
-@onready var control = $".."
-@onready var label = $"../Label"
+
+@onready var game = $"../../../Game"
+@onready var monitor_2_output = $"../../Monitor2/Monitor2_Output"
+
+
 var able = false;
 
 func key_input(key:String):
-	if able:
-		if label.text == "What Was The Number?":
-			label.text = "";
-		label.text += key;
+		if monitor_2_output.text == "What was the number?":
+			monitor_2_output.text = "";
+		monitor_2_output.text += key;
 
 func finalize_input():
-	if able:
-		control.compare()
-
-func _on_submit_button_down():
-	finalize_input();
-	pass # Replace with function body.
+	game.compare()

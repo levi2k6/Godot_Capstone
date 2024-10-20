@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://btjretkpepot0"]
 
-[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="1_cgvi1"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="1_cgvi1"]
 [ext_resource type="Script" path="res://systems/games/game1/music_tile.gd" id="2_4bo4r"]
 
 [node name="MusicTile" type="TextureButton"]

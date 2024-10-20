@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpm34vfsyv8yr"]
+
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/improvement_chart.gd" id="1_cc08l"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/Chart.gd" id="2_yous7"]
+
+[node name="ImprovementChart" type="Node2D"]
+script = ExtResource("1_cc08l")
+
+[node name="Chart" type="Node2D" parent="."]
+position = Vector2(244, 421)
+script = ExtResource("2_yous7")

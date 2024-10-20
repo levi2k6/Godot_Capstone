@@ -1,4 +1,5 @@
-extends ColorRect
+extends Control
+@onready var animator = $"../../Animator";
 
 var start = true;
 
@@ -7,16 +8,16 @@ func _ready():
 
 func change():
 	if start:
-		color = "2166e7";
+		
 		$Label.text = "Number Memory Game";
 		$Play.text = "Play";
 	else:
-		color = "c8284f";
+		
 		$Label.text = "Game Over";
 		$Play.text = "Again"
 		
 
 func _on_play_button_up():
 	visible = false;
-	get_parent().start();
+	animator.intro();
 	pass # Replace with function body.

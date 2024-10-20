@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="1_lwmpp"]
 [ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://systems/misc/clickable/clickable_tab_item.tscn" id="2_6lgo3"]
 [ext_resource type="Script" path="res://systems/collection/show_item_collection.gd" id="3_qopba"]
-[ext_resource type="Texture2D" uid="uid://cyvxsy1wbegdj" path="res://sprite/customize_sprites/button_normal1.png" id="4_sw0qc"]
+[ext_resource type="Texture2D" uid="uid://cyvxsy1wbegdj" path="res://assets/customize_sprites/button_normal1.png" id="4_sw0qc"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="4_vg3vp"]
-[ext_resource type="Texture2D" uid="uid://wdnga8y4yohb" path="res://sprite/customize_sprites/button_normal2.png" id="5_h2qwi"]
+[ext_resource type="Texture2D" uid="uid://wdnga8y4yohb" path="res://assets/customize_sprites/button_normal2.png" id="5_h2qwi"]
 
 [node name="Collection" type="Node2D"]
 script = ExtResource("1_0txvs")

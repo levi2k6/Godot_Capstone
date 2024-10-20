@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://systems/games/game1/game1.gd" id="1_h5acu"]
 [ext_resource type="Script" path="res://systems/games/game1/Control.gd" id="2_ooibs"]
 [ext_resource type="Script" path="res://systems/games/game1/music_tile.gd" id="3_y0d48"]
-[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="4_lrjlw"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="4_lrjlw"]
 [ext_resource type="Script" path="res://systems/games/game1/Game_Intro.gd" id="5_71xmo"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="6_y7k77"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="7_xdahh"]

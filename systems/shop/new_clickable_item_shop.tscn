@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://sl45x62t1sv3"]
 
 [ext_resource type="Script" path="res://systems/shop/clickable_item_shop.gd" id="1_ve0f0"]
-[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://sprite/body/body3.png" id="2_rjhro"]
+[ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="2_rjhro"]
 
 [node name="Control" type="TextureButton"]
 custom_minimum_size = Vector2(128, 128)

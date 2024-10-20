@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpm34vfsyv8yr"]
+
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/improvement_chart.gd" id="1_cc08l"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_lqadw"]
+
+[node name="ImprovementChart" type="Node2D"]
+script = ExtResource("1_cc08l")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -248.0
+offset_right = 239.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel"]
+position = Vector2(204, 99)
+texture = ExtResource("2_lqadw")

@@ -1,38 +1,53 @@
 extends Control
 @onready var pet = $"../Pet"
 
+@onready var animator = $"../Animator"
+@onready var monitor_1_output = $"../Foreground/Monitor1/Monitor1_Output"
+@onready var monitor_2_output = $"../Foreground/Monitor2/Monitor2_Output"
+
+@onready var timer = $Timer
+@onready var typer = $"../Foreground/Casing/Typer"
+
 var rng = RandomNumberGenerator.new();
-var label_num = "";
+var monitor1_num = "";
 var level = 1;
 
 func start():
 	print("start working");
-	label_num = "";
+	monitor1_num = "";
 	for i in range(level):
 		var rand_int = rng.randi_range(0,9);
-		var rand_str:String = str(rand_int)
-		label_num += rand_str;
+		var rand_str:String = str(rand_int);
+		monitor1_num += rand_str;
 		print(rand_int);
-	$Label.text = label_num;
-	$Timer.start(3);
-	await $Timer.timeout;
-	$Label.text = "What Was The Number?"
-	$Typer.able = true;
+	monitor_1_output.text = monitor1_num;
+	timer.start(3);
+	await timer.timeout;
+	monitor_2_output.text = "What was the number?";
+	typer.able = true;
+
+func intro_animation():
+	
+	pass
 
 func compare():
-	if int($Label.text) == int(label_num):
+	if int(monitor_2_output.text) == int(monitor1_num):
 		print("THEY ARE THE SAME NUMBER!");
-		print(int($Label.text), " | " , label_num);
-		difficulty_up();
+		print(int(monitor_1_output.text), " | " , monitor1_num);
+		animator.correct();
 	else:
-		print(int($Label.text), " | " , label_num);
-		$Game_Intro.visible = true;
-		$Game_Intro.start = false;
-		$Game_Intro.change();
-		DataManager._insert_game2_session(level);
-		level = 1
-		$Typer.able = false;
-		reward_system();
+		lose();
+
+func lose():
+	animator.game_over();
+	print(int(monitor_1_output.text), " | " , monitor1_num);
+	$Game_Intro.visible = true;
+	$Game_Intro.start = false;
+	$Game_Intro.change();
+	DataManager._insert_game2_session(level);
+	level = 1
+	typer.able = false;
+	reward_system();
 
 func reward_system():
 	var reward = 3;
@@ -55,7 +70,7 @@ func reward_system():
 
 func difficulty_up():
 	level += 1;
-	$Typer.able = false;
+	typer.able = false;
 	start();
 
 func _on_submit_button_up():

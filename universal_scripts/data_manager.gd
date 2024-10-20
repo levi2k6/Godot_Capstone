@@ -62,6 +62,13 @@ func _update_money_database(money):
 
 #games///////////////////
 
+
+func _get_game_dynamic(game):
+	var child_id = DataManager._get_child_database()[0].id;
+	Singleton.database.query("SELECT * FROM %s WHERE id = %d" % [game, child_id]);
+	var result = Singleton.database.query_result;
+	return result;
+
 func _get_all_game_counts():
 	Singleton.database.query("
 	SELECT 'sequence_session' AS name, COUNT(*) AS count FROM sequence_session
@@ -74,10 +81,27 @@ func _get_all_game_counts():
 	return result;
 
 func _get_sequence_game_database():
-	var child_id = _get_child_database()[0].id
+	var child_id = _get_child_database()[0].id;
 	Singleton.database.query("SELECT * FROM child where id = %s;" % [str(child_id)] );
 	var result = Singleton.database.query_result;
 	return result;
+
+func _get_game1_junction_session():
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("SELECT * FROM sequence_session WHERE id IN (SELECT session_id FROM sequence_junction_session)");
+	var result = Singleton.database.query_result;
+	return result;
+
+func _get_game2_junction_session():
+	Singleton.database.query("SELECT * FROM number_memory_session WHERE id IN (SELECT session_id FROM number_memory_junction_session)");
+	var result = Singleton.database.query_result;
+	return result;
+
+func _get_game3_junction_session():
+	Singleton.database.query("SELECT * FROM timing_session WHERE id IN (SELECT session_id FROM timing_junction_session)");
+	var result = Singleton.database.query_result;
+	return result;
+
 
 func _insert_game1_session(level):
 	var child_id = _get_child_database()[0].id;
@@ -85,7 +109,7 @@ func _insert_game1_session(level):
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("sequence_junction_session", {"game_id": child_id, "session_id": last_id});
 	
-	dynamic_update_game_data("sequence_session", "sequence_game", child_id);;
+	dynamic_update_game_data("sequence_session", "sequence_game", child_id);
 
 func _insert_game2_session(level):
 	var child_id = _get_child_database()[0].id;

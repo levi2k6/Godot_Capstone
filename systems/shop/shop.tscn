@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://systems/shop/Buy_Modal.gd" id="6_iw5rd"]
 [ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="6_m7fjv"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="8_5gl6u"]
-[ext_resource type="Texture2D" uid="uid://qowh8mwc260r" path="res://sprite/customize_sprites/Sprite-0007.png" id="9_e841i"]
+[ext_resource type="Texture2D" uid="uid://qowh8mwc260r" path="res://assets/customize_sprites/Sprite-0007.png" id="9_e841i"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_x604k")
