@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 @onready var game = $"../../Game"
 
@@ -9,11 +9,9 @@ func _ready():
 
 func change():
 	if start:
-		color = "2166e7";
 		$Label.text = "Meteor Rush";
 		$Play.text = "Play";
 	else:
-		color = "c8284f";
 		$Label.text = "Game Over";
 		$Play.text = "Again"
 		

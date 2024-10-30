@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpwsoetlejf43"]
+[gd_scene load_steps=4 format=3 uid="uid://bpwsoetlejf43"]
 
 [ext_resource type="Script" path="res://test.gd" id="1_cpa8k"]
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="2_5dste"]
+[ext_resource type="Texture2D" uid="uid://trhur2otfjoc" path="res://assets/universal/settings_button.png" id="3_w1tvq"]
 
 [node name="Button" type="Node2D"]
 script = ExtResource("1_cpa8k")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 14.0
-offset_top = 48.0
-offset_right = 191.0
-offset_bottom = 79.0
-text = "Click"
+offset_right = 96.0
+offset_bottom = 96.0
+theme = ExtResource("2_5dste")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="SettingsButton" type="Sprite2D" parent="Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("3_w1tvq")

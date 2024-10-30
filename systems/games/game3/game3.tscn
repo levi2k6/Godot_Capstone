@@ -1,17 +1,182 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtwuefjxhddi2"]
+[gd_scene load_steps=22 format=3 uid="uid://dtwuefjxhddi2"]
 
 [ext_resource type="Script" path="res://systems/games/game3/game3.gd" id="1_i7y8d"]
 [ext_resource type="Script" path="res://systems/games/game3/Game.gd" id="1_j4hsh"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="3_hlgud"]
+[ext_resource type="Script" path="res://systems/games/game3/Animator.gd" id="2_eejww"]
+[ext_resource type="Texture2D" uid="uid://dhm0t8m24sd18" path="res://assets/game3/Sprite-0004.png" id="2_wgffq"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="3_hlgud"]
 [ext_resource type="Script" path="res://systems/games/game3/Game_Intro.gd" id="3_xlt2l"]
+[ext_resource type="Texture2D" uid="uid://khdp2odhqh5u" path="res://assets/game3/stars-Sheet.png" id="4_4v6gl"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_gf8nj"]
+[ext_resource type="Texture2D" uid="uid://cdig6dnmxm2om" path="res://assets/game3/alien.png" id="5_fc5hf"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="6_3po1a"]
+[ext_resource type="Texture2D" uid="uid://ow43etbp4gqk" path="res://assets/game3/moon.png" id="9_snxey"]
+
+[sub_resource type="Animation" id="Animation_657cm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(270, 1440)]
+}
+
+[sub_resource type="Animation" id="Animation_3suqy"]
+resource_name = "camera_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(270, 1440), Vector2(270, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4da5"]
+_data = {
+"RESET": SubResource("Animation_657cm"),
+"camera_up": SubResource("Animation_3suqy")
+}
+
+[sub_resource type="Animation" id="Animation_cvryv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_44sv3"]
+resource_name = "twinkle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kdfom"]
+_data = {
+"RESET": SubResource("Animation_cvryv"),
+"twinkle": SubResource("Animation_44sv3")
+}
+
+[sub_resource type="Animation" id="Animation_rm7sc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nknqy"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p3f26"]
+_data = {
+"RESET": SubResource("Animation_rm7sc"),
+"idle": SubResource("Animation_nknqy")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekadj"]
 size = Vector2(541, 20)
 
 [node name="Game3" type="Node2D"]
 script = ExtResource("1_i7y8d")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i4da5")
+}
+script = ExtResource("2_eejww")
+
+[node name="AnimatorTimer" type="Timer" parent="Animator"]
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(1, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
+offset_right = 540.0
+offset_bottom = 1920.0
+texture = ExtResource("2_wgffq")
+
+[node name="Stars" type="Sprite2D" parent="Background/ParallaxLayer/TextureRect"]
+position = Vector2(270, 960)
+scale = Vector2(4, 4)
+texture = ExtResource("4_4v6gl")
+hframes = 2
+
+[node name="AnimatorStars" type="AnimationPlayer" parent="Background/ParallaxLayer/TextureRect/Stars"]
+libraries = {
+"": SubResource("AnimationLibrary_kdfom")
+}
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Moon" type="Sprite2D" parent="Foreground"]
+position = Vector2(270, 1784)
+scale = Vector2(4, 4)
+texture = ExtResource("9_snxey")
+
+[node name="Alien" type="Sprite2D" parent="Foreground"]
+position = Vector2(265, 1611)
+scale = Vector2(4, 4)
+texture = ExtResource("5_fc5hf")
+hframes = 2
+
+[node name="AnimatorAlien" type="AnimationPlayer" parent="Foreground/Alien"]
+libraries = {
+"": SubResource("AnimationLibrary_p3f26")
+}
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_j4hsh")
@@ -61,14 +226,14 @@ offset_right = 540.0
 offset_bottom = 960.0
 mouse_filter = 2
 
-[node name="Game_Intro" type="ColorRect" parent="Control"]
+[node name="Game_Intro" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.128025, 0.401517, 0.905758, 1)
 script = ExtResource("3_xlt2l")
 
 [node name="Label" type="Label" parent="Control/Game_Intro"]
@@ -131,6 +296,10 @@ offset_top = 0.435997
 offset_right = -0.256012
 offset_bottom = -0.0930023
 text = "00000"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(270, 1440)
+position_smoothing_enabled = true
 
 [node name="Pet" parent="." instance=ExtResource("6_3po1a")]
 visible = false

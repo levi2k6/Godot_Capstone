@@ -1,6 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://biljrcgvvn0o3"]
+[gd_scene load_steps=43 format=3 uid="uid://biljrcgvvn0o3"]
 
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_ntkdw"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="1_ntkdw"]
 [ext_resource type="Script" path="res://systems/games/game2/game2.gd" id="1_uuvrj"]
 [ext_resource type="Script" path="res://systems/games/game2/Game_Intro.gd" id="2_602pu"]
 [ext_resource type="Animation" uid="uid://dc1ftd4cskxpb" path="res://assets/game2/animation/camera_down.res" id="2_jgeb0"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cystbkusd2fhh" path="res://assets/game2/backgrounds/casing.png" id="5_yx76f"]
 [ext_resource type="Texture2D" uid="uid://b7xrmohnfja46" path="res://assets/game2/props/pc_engine.png" id="7_cojil"]
 [ext_resource type="Animation" uid="uid://df6rwdyyxhhdy" path="res://assets/game2/animation/engine_off.res" id="13_7t0vf"]
+[ext_resource type="Texture2D" uid="uid://c5rcf6vv38vpo" path="res://assets/game2/buttons/keyenter.png" id="16_jvnjf"]
 [ext_resource type="Texture2D" uid="uid://bgfg8rg0dsem5" path="res://assets/game2/buttons/key9.png" id="16_la8l5"]
 [ext_resource type="Texture2D" uid="uid://i8kfqxfdmlgc" path="res://assets/game2/buttons/keyback.png" id="17_a86de"]
 [ext_resource type="Texture2D" uid="uid://bh13tlbfkbxv5" path="res://assets/game2/buttons/key0-Sheet.png" id="18_2w0wl"]
@@ -199,17 +200,17 @@ libraries = {
 }
 script = ExtResource("3_vculw")
 
-[node name="Background" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 540.0
-offset_bottom = 2400.0
+[node name="Background" type="ParallaxBackground" parent="."]
 
-[node name="Back" type="TextureRect" parent="Background"]
-layout_mode = 1
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(1, 0.5)
+
+[node name="Back" type="TextureRect" parent="Background/ParallaxLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 540.0
+offset_bottom = 2400.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_2px2u")
@@ -318,7 +319,7 @@ script = ExtResource("27_djfio")
 [node name="Sprite" type="Sprite2D" parent="Foreground/Casing/Typer/Enter"]
 position = Vector2(42, 38)
 scale = Vector2(4, 4)
-texture = ExtResource("16_la8l5")
+texture = ExtResource("16_jvnjf")
 hframes = 2
 
 [node name="Back" type="TextureButton" parent="Foreground/Casing/Typer"]
@@ -478,7 +479,7 @@ hframes = 2
 [node name="Electric" type="CPUParticles2D" parent="."]
 position = Vector2(408, 641)
 emitting = false
-amount = 24
+amount = 30
 speed_scale = 3.0
 randomness = 0.8
 direction = Vector2(1, 1)
@@ -542,7 +543,7 @@ text = "
 layout_mode = 0
 offset_left = 80.0
 offset_top = 522.0
-offset_right = 199.0
+offset_right = 208.0
 offset_bottom = 564.0
 
 [node name="Hunger_Bar" type="ProgressBar" parent="Game"]

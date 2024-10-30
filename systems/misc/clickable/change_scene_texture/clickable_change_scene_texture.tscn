@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxwawhu41hr3i"]
+
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="1_tr5o1"]
+[ext_resource type="Script" path="res://systems/misc/clickable/change_scene_texture/clickable_change_scene_texture.gd" id="2_wfgxw"]
+
+[node name="Button" type="Button"]
+offset_right = 96.0
+offset_bottom = 96.0
+theme = ExtResource("1_tr5o1")
+script = ExtResource("2_wfgxw")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

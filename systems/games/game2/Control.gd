@@ -31,16 +31,16 @@ func intro_animation():
 	pass
 
 func compare():
-	if int(monitor_2_output.text) == int(monitor1_num):
+	if monitor_2_output.text == monitor1_num:
 		print("THEY ARE THE SAME NUMBER!");
-		print(int(monitor_1_output.text), " | " , monitor1_num);
+		print(monitor_1_output.text, " | " , monitor1_num);
 		animator.correct();
 	else:
 		lose();
 
 func lose():
 	animator.game_over();
-	print(int(monitor_1_output.text), " | " , monitor1_num);
+	print(monitor_1_output.text, " | " , monitor1_num);
 	$Game_Intro.visible = true;
 	$Game_Intro.start = false;
 	$Game_Intro.change();

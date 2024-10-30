@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://namv7b1invr4"]
+
+[ext_resource type="Script" path="res://systems/misc/clickable/back_change_scene/clickable_back_change_scene.gd" id="1_2wflo"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_boxbh"]
+
+[node name="Clickable_Change_Back_Scene" type="Button"]
+theme = ExtResource("1_boxbh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Back"
+script = ExtResource("1_2wflo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

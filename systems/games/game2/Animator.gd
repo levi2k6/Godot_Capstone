@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-@onready var back = $"../Background/Back";
+@onready var back = $"../Background/ParallaxLayer/Back"
 
 @onready var casing = $"../Foreground/Casing";
 @onready var monitor_1 = $"../Foreground/Monitor1";
@@ -18,7 +18,7 @@ extends AnimationPlayer
 
 
 const LIGHTS_OFF = preload("res://assets/game2/backgrounds/lights_off.png")
-const LIGHTS_ON = preload("res://assets/game2/backgrounds/lights_on.png");
+const LIGHTS_ON_2 = preload("res://assets/game2/backgrounds/lights_on2.png")
 
 func _ready():
 	pass
@@ -37,7 +37,7 @@ func reset():
 
 
 func intro():
-	back.texture = LIGHTS_ON;
+	back.texture = LIGHTS_ON_2;
 	casing.modulate = "ffffff";
 	timer.start(1);
 	await timer.timeout;

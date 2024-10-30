@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var money_mode = $Control/Money
 @onready var hunger_bar = $Control/Hunger_Bar
+@onready var moving = $Background/Moving
 
 func _ready():
 	_connections();
@@ -21,3 +22,5 @@ func update_money():
 	DataManager._update_money_database(add);
 	print(add);
 	money_mode._display_money();
+
+

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://eonfxwjpoaww"]
 
 [ext_resource type="Script" path="res://systems/stats/stats.gd" id="1_313db"]
-[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/back_change_scene/clickable_change_back_scene.tscn" id="1_ckmkd"]
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="1_k8j3d"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="1_ckmkd"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="1_k8j3d"]
 
 [node name="Stats" type="Node2D"]
 script = ExtResource("1_313db")
@@ -21,7 +21,7 @@ offset_top = 199.0
 offset_right = 147.0
 offset_bottom = 230.0
 
-[node name="UI" type="Control" parent="Control"]
+[node name="UI" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,25 +35,16 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main_Hub_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -163.0
-offset_top = -231.0
-offset_right = -44.0
-offset_bottom = -189.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Time_Played_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
-layout_mode = 0
+layout_mode = 2
+text = "Time Played"
+
+[node name="Improvement_Chart_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
+layout_mode = 2
+text = "Improvement Chart
+"
 
 [node name="Milestone_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
-layout_mode = 0
-offset_top = 62.0
-offset_bottom = 104.0
+layout_mode = 2
+text = "Milestone
+"

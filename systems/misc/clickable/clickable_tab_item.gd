@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 signal change_tab(naym)
 
 var clickable = false

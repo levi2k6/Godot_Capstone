@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpm34vfsyv8yr"]
+[gd_scene load_steps=6 format=3 uid="uid://bpm34vfsyv8yr"]
 
 [ext_resource type="Script" path="res://systems/stats/improvement_chart/improvement_chart.gd" id="1_4wqmw"]
 [ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_lqadw"]
 [ext_resource type="Script" path="res://systems/stats/improvement_chart/drawer.gd" id="2_n0ruy"]
 [ext_resource type="Script" path="res://systems/stats/improvement_chart/right_drawer.gd" id="2_nd7s3"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="3_1pic8"]
 
 [node name="ImprovementChart" type="Node2D"]
 script = ExtResource("1_4wqmw")
@@ -25,6 +26,10 @@ offset_bottom = 40.0
 grow_horizontal = 0
 metadata/_edit_group_ = true
 
+[node name="Sequence Mix" type="Button" parent="Control/Games"]
+layout_mode = 2
+text = "Sequence Mix"
+
 [node name="Digit Hack" type="Button" parent="Control/Games"]
 layout_mode = 2
 text = "Digit Hack
@@ -33,10 +38,6 @@ text = "Digit Hack
 [node name="Meteor Rush" type="Button" parent="Control/Games"]
 layout_mode = 2
 text = "Meteor Rush"
-
-[node name="Sequence Mix" type="Button" parent="Control/Games"]
-layout_mode = 2
-text = "Sequence Mix"
 
 [node name="Zoom" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -117,6 +118,9 @@ layout_mode = 2
 [node name="RightDrawer" type="Node2D" parent="Control/RightScrollContainer"]
 script = ExtResource("2_nd7s3")
 
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("3_1pic8")]
+layout_mode = 0
+
 [node name="Origin" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_lqadw")
@@ -128,9 +132,9 @@ script = ExtResource("2_n0ruy")
 scale = Vector2(0.515625, 0.539063)
 texture = ExtResource("2_lqadw")
 
+[connection signal="button_down" from="Control/Games/Sequence Mix" to="." method="_on_sequence_mix_button_down"]
 [connection signal="button_down" from="Control/Games/Digit Hack" to="." method="_on_digit_hack_button_down"]
 [connection signal="button_down" from="Control/Games/Meteor Rush" to="." method="_on_meteor_rush_button_down"]
-[connection signal="button_down" from="Control/Games/Sequence Mix" to="." method="_on_sequence_mix_button_down"]
 [connection signal="button_down" from="Control/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
 [connection signal="button_down" from="Control/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
 [connection signal="scroll_started" from="Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]

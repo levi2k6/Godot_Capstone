@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ph0gclfap1w"]
+[gd_scene load_steps=4 format=3 uid="uid://b5ph0gclfap1w"]
 
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="1_343x6"]
 [ext_resource type="Script" path="res://systems/collection/clickable_item_collection.gd" id="1_ge6m4"]
 [ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="2_xoegw"]
 
-[node name="Control" type="TextureButton"]
+[node name="Control" type="Button"]
 custom_minimum_size = Vector2(128, 128)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_343x6")
 script = ExtResource("1_ge6m4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

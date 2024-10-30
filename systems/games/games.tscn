@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lpjuc7btxytx"]
 
-[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/clickable_change_scene.tscn" id="2_yjel7"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="2_yjel7"]
 
 [node name="Games" type="Node2D"]
 
@@ -12,7 +12,6 @@ offset_bottom = 960.0
 
 [node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_yjel7")]
 layout_mode = 0
-text = "Main_Hub_Button"
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1
@@ -29,14 +28,47 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 
-[node name="Game1_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-text = "Game1_Button"
+size_flags_stretch_ratio = 0.0
 
-[node name="Game2_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
+[node name="Game1_Button" parent="Control/GridContainer/VBoxContainer" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
-text = "Game2_Button"
+size_flags_horizontal = 4
 
-[node name="Game3_Button" parent="Control/GridContainer" instance=ExtResource("2_yjel7")]
+[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer"]
 layout_mode = 2
-text = "Game3_Button"
+text = "Sequence Mix"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Game2_Button" parent="Control/GridContainer/VBoxContainer2" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Digit Hack
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Game3_Button" parent="Control/GridContainer/VBoxContainer3" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Meteor Rush"
+horizontal_alignment = 1

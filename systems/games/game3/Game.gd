@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var game_intro = $"../Control/Game_Intro";
 @onready var pet = $"../Pet"
+@onready var timer = $Timer
 
 signal game_win;
 const TILE = preload("res://systems/games/game3/tile.tscn")
@@ -67,10 +68,12 @@ func spawn():
 		$Spawner3.get_child(recent_child).connect("meteor_destroy", Callable(self, "meteor_input"));
 
 func meteor_input(meteor):
-	meteor.queue_free();
+	meteor.destroy();
 	meteors -= 1;
+	print("something");
 	if meteors == 0:
-		emit_signal("game_win");
+		#emit_signal("game_win");
+		win();
 
 func difficulty_up():
 	level += 1;
@@ -80,11 +83,13 @@ func difficulty_up():
 
 func win():
 	print("you win!");
-	$Timer.start(3);
-	await $Timer.timeout;
+	timer.start(3);
+	await timer.timeout;
 	difficulty_up();
 
 func lose():
+	timer.start(1);
+	await timer.timeout;
 	print("lost");
 	game_intro.start = false;
 	game_intro.change();
@@ -112,14 +117,11 @@ func reward_system():
 	get_parent().update_money();
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	area.get_parent().queue_free();
-	
+	area.get_parent().destroy();
 	stop_spawn = true;
-	
 	if $Spawn_Timer.time_left > 0:
 		print("Waiting");
 		await $Spawn_Timer.timeout;
-	
 	lose();
 	
 	

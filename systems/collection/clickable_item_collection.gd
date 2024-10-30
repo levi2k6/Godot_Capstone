@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 var clickable = false
 var this_item;

@@ -87,7 +87,6 @@ func _get_sequence_game_database():
 	return result;
 
 func _get_game1_junction_session():
-	var child_id = _get_child_database()[0].id;
 	Singleton.database.query("SELECT * FROM sequence_session WHERE id IN (SELECT session_id FROM sequence_junction_session)");
 	var result = Singleton.database.query_result;
 	return result;

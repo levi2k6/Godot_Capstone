@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://buvmdr2wq5ovx"]
 
-[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/back_change_scene/clickable_change_back_scene.tscn" id="1_pc5gu"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="1_pc5gu"]
 [ext_resource type="Script" path="res://systems/stats/time_played/time_played.gd" id="1_q11px"]
 
 [node name="TimePlayed" type="Node2D"]

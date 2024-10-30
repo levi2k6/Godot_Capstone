@@ -1,5 +1,6 @@
 extends Node2D
 @onready var money_display = $UI/Money
+@onready var pet = $Foreground/Pet
 
 func _ready():
 	#print(Time.get_date_dict_from_system())
@@ -17,15 +18,15 @@ func _resolution():
 	$Background.get_child(0).size = view_port
 	$UI.size = view_port
 	
-	$Pet.position = Vector2(center_x, center_y)
+	pet.position = Vector2(center_x, center_y)
 	#$Background.get_child(0).
 
 func _connections():
-	$Pet.connect("update_hunger", update_hunger)
+	pet.connect("update_hunger", update_hunger)
 	pass
 
 func _triggers():
-	$Pet.update_hunger_bar()
+	pet.update_hunger_bar()
 
 func update_hunger():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger

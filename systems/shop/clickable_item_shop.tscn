@@ -9,6 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 4
 script = ExtResource("1_r56y5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
