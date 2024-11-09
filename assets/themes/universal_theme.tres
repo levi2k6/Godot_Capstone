@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bywvvpuodhlu0"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bywvvpuodhlu0"]
 
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="1_3ivn8"]
 [ext_resource type="Texture2D" uid="uid://di6xf25cfij3" path="res://assets/universal/progress_bar_outline.png" id="2_gsmd4"]
 [ext_resource type="Texture2D" uid="uid://cyo845pw4dgnc" path="res://assets/universal/panel.png" id="3_umcld"]
+[ext_resource type="Texture2D" uid="uid://cpu8d21kb4htf" path="res://assets/universal/bar_back.png" id="4_3e1gn"]
+[ext_resource type="Texture2D" uid="uid://bamyvph0mokc3" path="res://assets/universal/brain_fill.png" id="5_outgg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxjw4"]
 content_margin_left = 4.0
@@ -67,6 +69,26 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nyc7q"]
+texture = ExtResource("4_3e1gn")
+texture_margin_left = 9.43806
+texture_margin_top = 8.67565
+texture_margin_right = 9.21618
+texture_margin_bottom = 9.3786
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+region_rect = Rect2(-0.191097, 0, 96.1911, 31.256)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7qv1"]
+texture = ExtResource("5_outgg")
+texture_margin_left = 8.0
+texture_margin_top = 16.0
+texture_margin_right = 8.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2s730"]
 texture = ExtResource("3_umcld")
 texture_margin_left = 16.0
@@ -100,4 +122,11 @@ Button/styles/hover = SubResource("StyleBoxTexture_gdf2q")
 Button/styles/normal = SubResource("StyleBoxTexture_eplh8")
 Button/styles/pressed = SubResource("StyleBoxTexture_yygrr")
 Panel/styles/panel = SubResource("StyleBoxTexture_jw7og")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("1_3ivn8")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_nyc7q")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_c7qv1")
 ScrollContainer/styles/panel = SubResource("StyleBoxTexture_2s730")

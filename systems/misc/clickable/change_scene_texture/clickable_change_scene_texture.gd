@@ -3,13 +3,6 @@ extends Button;
 
 var child_exist = false;
 
-func _ready():
-	if(get_child_count() == 0):
-		child_exist = false;
-	else:
-		child_exist = true;
-	pass
-
 func _on_pressed():
 	if name == "Collection_Button":
 		get_tree().change_scene_to_file("res://systems/collection/collection.tscn");
@@ -38,12 +31,12 @@ func _on_pressed():
 	elif name == "Milestone_Button":
 		get_tree().change_scene_to_file("res://systems/stats/milestone/milestone.tscn");
 
-func _on_button_down():
-	if child_exist:
-		get_child(0).frame = 1;
-	pass # Replace with function body.
-
-func _on_button_up():
-	if child_exist:
-		get_child(0).frame = 0;
-	pass # Replace with function body.
+#func _on_button_down():
+	#if child_exist:
+		#get_child(0).frame = 1;
+	#pass # Replace with function body.
+#
+#func _on_button_up():
+	#if child_exist:
+		#get_child(0).frame = 0;
+	#pass # Replace with function body.

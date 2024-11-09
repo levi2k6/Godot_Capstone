@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready():
 	#_resolution()
+	
 	create_child_database();
 
 func create_child_database():
@@ -15,6 +16,7 @@ func create_child_database():
 		print("child appended");
 	else: 
 		print("child already exist");
+		return;
 	var child_id = DataManager._get_child_database()[0].id;
 	
 	Singleton.database.update_rows("child", "id = %d" %child_id, {"pet_id": child_id, "datas_id": child_id});
@@ -25,10 +27,6 @@ func create_child_database():
 	Singleton.database.insert_row("timing_game", {"id": child_id, "total_session": 0, "highest_level": 0});
 	Singleton.database.insert_row("milestone",{"id": child_id, "total_time": 0, "total_collection": 0, "total_pet_fully_fed": 0, "total_games_played": 0, "total_days_played": 0, "total_money_earned": 0});
 
-#func _resolution():
-	#var view_port = get_viewport().size
-	#$Control.size = view_port
-	#
 
 func _on_button_button_up():
 	var child_id = DataManager._get_child_database()[0].id

@@ -1,13 +1,13 @@
-extends TextureButton;
+extends Button;
 
 @onready var timer = $"../../Timer"
 
 
 func animation():
-	$Sprite2D.modulate = "2e74e2";
+	modulate = "2e74e2";
 	timer.start(0.2);
 	await timer.timeout;
-	$Sprite2D.modulate = Color(1,1,1);
+	modulate = Color(1,1,1);
 	
 
 

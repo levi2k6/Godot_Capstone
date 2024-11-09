@@ -8,6 +8,10 @@ extends Node2D
 
 
 func _ready():
+	var child = DataManager._get_child_database();
+	if child.size() == 0:
+		print_debug("child does not exist");
+		return;
 	update_datas();
 	display_datas();
 

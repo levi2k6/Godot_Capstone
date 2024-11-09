@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gs5npry5n6ck"]
+[gd_scene load_steps=3 format=3 uid="uid://gs5npry5n6ck"]
 
 [ext_resource type="Script" path="res://systems/create_child/create_child.gd" id="1_jxaay"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_fr333"]
 
 [node name="Create_Child" type="Node2D"]
 script = ExtResource("1_jxaay")
@@ -10,6 +11,22 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
+theme = ExtResource("2_fr333")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -480.0
+offset_right = 270.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.352941, 0.796078, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1

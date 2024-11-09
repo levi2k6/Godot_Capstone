@@ -1,17 +1,19 @@
 extends Node2D
-
+@onready var animator = $"../Animator"
 @onready var game_intro = $"../Control/Game_Intro";
 @onready var pet = $"../Pet"
 @onready var timer = $Timer
+@onready var label = $"../Control/Game_Intro/Label"
 
 signal game_win;
-const TILE = preload("res://systems/games/game3/tile.tscn")
+const METEOR = preload("res://systems/games/game3/Meteor.tscn");
 
 var rng = RandomNumberGenerator.new();
 
 var level : int;
 var stop_spawn : bool;
 var meteors : int;
+var difficulty: String;
 
 func _ready():
 	self.connect("game_win", Callable(self, "win"));
@@ -26,6 +28,7 @@ func _process(delta):
 func start():
 	print("start");
 	level = 1;
+	await show_level();
 	stop_spawn = false;
 	meteors = level;
 	spawn_repeater();
@@ -49,25 +52,32 @@ func spawn_repeater():
 	pass;
 
 func spawn():
-	var tile1 = TILE.instantiate();
+	var meteor = METEOR.instantiate();
+	if difficulty == "normal":
+		meteor.speed = rng.randi_range(20, 25);
+	elif difficulty == "hard":
+		meteor.speed = rng.randi_range(25, 30);
+	
 	var ran_num = rng.randi_range(1, 3);
 	if ran_num == 1:
-		$Spawner1.add_child(tile1);
+		$Spawner1.add_child(meteor);
 		var recent_child = $Spawner1.get_child_count() - 1;
 		#print_debug(recent_child);
 		$Spawner1.get_child(recent_child).connect("meteor_destroy", Callable(self, "meteor_input"));
 	elif ran_num == 2:
-		$Spawner2.add_child(tile1);
+		$Spawner2.add_child(meteor);
 		var recent_child = $Spawner2.get_child_count() - 1;
 		#print_debug(recent_child);
 		$Spawner2.get_child(recent_child).connect("meteor_destroy", Callable(self, "meteor_input"));
 	elif ran_num == 3:
-		$Spawner3.add_child(tile1);
+		$Spawner3.add_child(meteor);
 		var recent_child = $Spawner3.get_child_count() - 1;
 		#print_debug(recent_child);
 		$Spawner3.get_child(recent_child).connect("meteor_destroy", Callable(self, "meteor_input"));
 
+
 func meteor_input(meteor):
+	print("input");
 	meteor.destroy();
 	meteors -= 1;
 	print("something");
@@ -77,9 +87,19 @@ func meteor_input(meteor):
 
 func difficulty_up():
 	level += 1;
+	await show_level();
 	print("level: ", level);
 	_continue();
 	pass
+
+func show_level():
+	print("level here" , str(level));
+	label.text = "LEVEL: %s" %str(level);
+	timer.start(2.5);
+	await timer.timeout;
+	label.text = "";
+	timer.start(1);
+	await timer.timeout;
 
 func win():
 	print("you win!");
@@ -91,30 +111,36 @@ func lose():
 	timer.start(1);
 	await timer.timeout;
 	print("lost");
-	game_intro.start = false;
-	game_intro.change();
-	game_intro.visible = true;
-	DataManager._insert_game3_session(level);
+	animator.ship_appear();
+	DataManager._insert_game3_session(level, difficulty);
 	reward_system();
 
 func reward_system():
-	var reward = 3;
-	if level >= 20:
-		reward = 20;
-		print("plus 14 points!");
-	elif level >= 15:
-		reward = 16;
-		print("plus 12 points!");
-	elif level >= 10:
-		reward = 12;
-		print("plus 10 points!");
-	elif level > 5:
-		reward = 8;
-	elif level == 1:
-		reward = 1;
-		print("plus 8 points!");
+	var reward = level;
+	var money = level;
+	
+	if difficulty == "hard":
+		if level >= 30:
+			level += 8;
+		elif level >= 25:
+			reward += 7;
+		elif level >= 20:
+			reward += 6;
+		elif level >= 15:
+			reward += 5;
+		elif level >= 10:
+			reward += 4;
+		elif level >= 6:
+			reward += 3;
+		elif level >= 4:
+			reward += 2;
+		elif level == 3:
+			reward += 1;
+		money *= 2;
+	
+	print("points: ", reward);
 	pet._learn(reward);
-	get_parent().update_money();
+	get_parent().update_money(money);
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	area.get_parent().destroy();

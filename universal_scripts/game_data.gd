@@ -2,9 +2,12 @@ extends Node
 
 signal okay;
 
+
 var last_scene = "";
 var child_exist = false;
 var time_track := 0.0;
+
+
 
 func _ready():
 	if DataManager._get_child_database().size() != 0:

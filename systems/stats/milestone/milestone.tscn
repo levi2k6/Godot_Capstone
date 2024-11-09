@@ -15,15 +15,24 @@ offset_right = 540.0
 offset_bottom = 960.0
 size_flags_horizontal = 4
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.352941, 0.796078, 1)
+
 [node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("1_f37md")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -212.0
-offset_top = 59.0
-offset_right = -167.0
-offset_bottom = 90.0
+offset_left = -240.0
+offset_top = 21.0
+offset_right = -144.0
+offset_bottom = 117.0
 grow_horizontal = 2
 
 [node name="UI" type="Control" parent="Control"]
@@ -58,10 +67,11 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 126.0
+offset_top = 141.0
 offset_right = 521.0
-offset_bottom = 906.0
+offset_bottom = 921.0
 texture = ExtResource("3_10dh8")
+metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
 layout_mode = 1
@@ -73,29 +83,29 @@ offset_bottom = 229.0
 [node name="Total_Time" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Time: 123123"
+text = "Total Time: 0"
 
 [node name="Total_Collection" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Collection: 123123"
+text = "Total Collection: 0"
 
 [node name="Total_Pet_Fully_Fed" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Pet Fully Fed: 123123"
+text = "Total Pet Fully Fed: 0"
 
 [node name="Total_Games_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Games Played: 123123"
+text = "Total Games Played: 0"
 
 [node name="Total_Days_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Days Played: 123123"
+text = "Total Days Played: 0"
 
 [node name="Total_Money_Earned" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Total Money Earned: 123123"
+text = "Total Money Earned: 0"

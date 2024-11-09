@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=3 uid="uid://bwl4v0hw2og16"]
+
+[ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_c3m34"]
+[ext_resource type="Texture2D" uid="uid://bwnyj7rdcy8dk" path="res://assets/main_hub/ground.png" id="2_rjlpo"]
+[ext_resource type="Texture2D" uid="uid://bcox1k21kea1a" path="res://assets/main_hub/shadow.png" id="3_7hgya"]
+[ext_resource type="PackedScene" uid="uid://dxwawhu41hr3i" path="res://systems/misc/clickable/change_scene_texture/clickable_change_scene_texture.tscn" id="3_rqak5"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="3_vrikd"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_lk5ma"]
+[ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="5_d1ebq"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="5_wtyko"]
+[ext_resource type="Texture2D" uid="uid://dbrpi4lrktn83" path="res://assets/main_hub/collection_icon.png" id="6_km5kr"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="7_6dfur"]
+[ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="7_mf7qu"]
+[ext_resource type="Texture2D" uid="uid://c1ghuiulv5vli" path="res://assets/main_hub/shop_icon.png" id="7_ojrfq"]
+[ext_resource type="Texture2D" uid="uid://trhur2otfjoc" path="res://assets/universal/settings_button.png" id="11_khsi7"]
+
+[node name="MainHub" type="Node2D"]
+script = ExtResource("1_yumrb")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0, 0.352941, 0.796078, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+texture = ExtResource("2_rjlpo")
+
+[node name="Foreground" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Shadow" type="Sprite2D" parent="Foreground"]
+position = Vector2(270, 612)
+scale = Vector2(3, 3)
+texture = ExtResource("3_7hgya")
+
+[node name="Pet" parent="Foreground" instance=ExtResource("2_c3m34")]
+z_index = 0
+position = Vector2(270, 480)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 540.0
+offset_bottom = 961.0
+size_flags_horizontal = 4
+
+[node name="Info" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.5
+offset_top = 25.0
+offset_right = 181.5
+offset_bottom = 103.0
+grow_horizontal = 2
+
+[node name="Hunger" type="HBoxContainer" parent="UI/Info"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="UI/Info/Hunger"]
+custom_minimum_size = Vector2(51, 33)
+layout_mode = 2
+
+[node name="HungerIcon" type="Sprite2D" parent="UI/Info/Hunger/Control"]
+position = Vector2(25.5, 19.5)
+scale = Vector2(3, 3)
+texture = ExtResource("5_d1ebq")
+
+[node name="Hunger_Bar" type="ProgressBar" parent="UI/Info/Hunger"]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_wtyko")
+theme_override_font_sizes/font_size = 20
+
+[node name="Money" type="HBoxContainer" parent="UI/Info"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Node" type="Control" parent="UI/Info/Money"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+
+[node name="MoneyIcon" type="Sprite2D" parent="UI/Info/Money/Node"]
+position = Vector2(18, 18)
+scale = Vector2(3, 3)
+texture = ExtResource("7_mf7qu")
+
+[node name="Money_Count" parent="UI/Info/Money" instance=ExtResource("4_lk5ma")]
+layout_mode = 2
+theme = ExtResource("5_wtyko")
+theme_override_colors/font_color = Color(0.92, 0.812667, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "00000"
+
+[node name="Pet_Name" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.5
+offset_top = -292.0
+offset_right = 34.5
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_wtyko")
+theme_override_font_sizes/font_size = 32
+text = "asd"
+
+[node name="Settings_Button" parent="UI" instance=ExtResource("3_rqak5")]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 98.0
+offset_right = 516.0
+offset_bottom = 194.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Settings_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("11_khsi7")
+hframes = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 721.0
+offset_right = 498.0
+offset_bottom = 917.0
+
+[node name="Collection_Button" parent="UI/VBoxContainer" instance=ExtResource("3_vrikd")]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Collection_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("6_km5kr")
+
+[node name="Shop_Button" parent="UI/VBoxContainer" instance=ExtResource("3_vrikd")]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Shop_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("7_ojrfq")
+
+[node name="Get_Money" type="Button" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.784
+anchor_right = 0.307
+anchor_bottom = 0.825
+offset_left = -0.176003
+offset_top = -0.0320435
+offset_right = 0.167999
+offset_bottom = 0.0249634
+grow_vertical = 0
+text = "MONEY"
+
+[node name="Games_Button" parent="UI" instance=ExtResource("3_vrikd")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -205.0
+offset_right = 84.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Play"
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="UI/Games_Button"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 190.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="UI/Get_Money" to="." method="_on_get_money_pressed"]

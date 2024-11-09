@@ -1,4 +1,4 @@
-extends Control
+extends Node
 var database = SQLite.new()
 var user_path = "user://data.db"
 var state = "close"
@@ -12,9 +12,10 @@ func _ready():
 func create_table():
 	
 	if !FileAccess.file_exists(user_path):
-		database.path = user_path
-		database.open_db()
-		print(database.path)
+		database.path = user_path;
+		database.open_db();
+		state = "open";
+		print(database.path);
 		
 		database.query('
 		CREATE TABLE "child" (
@@ -89,18 +90,21 @@ func create_table():
 		CREATE TABLE "sequence_session"(
 		"id" INTEGER NOT NULL,
 		"level_reached" INTEGER,
+		"difficulty" TEXT,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
 
 		CREATE TABLE "number_memory_session"(
 		"id" INTEGER NOT NULL,
 		"level_reached" INTEGER,
+		"difficulty" TEXT,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
 
 		CREATE TABLE "timing_session"(
 		"id" INTEGER NOT NULL,
 		"level_reached" INTEGER,
+		"difficulty" TEXT,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
 
@@ -196,17 +200,16 @@ func create_table():
 		("8d295c", "color"),
 		("5ef3ea", "color"); 
 		')
-		state = "open"
 		print("QUERY SUCCESS");
 	else:
 		database.path = user_path
 		database.open_db()
+		state = "open"
 		print("DATABASE ALREADY EXIST")
 	
 	pass
 
-
-
-
-
+func _exit_tree():
+	if state == "open":
+		database.close_db();
 

@@ -6,23 +6,21 @@ func _ready():
 func _get_child_database():
 	Singleton.database.query(" SELECT * FROM child;")
 	var result = Singleton.database.query_result;
-	return result
-	pass
+	return result;
 
 func _get_pet_database():
 	Singleton.database.query("SELECT * FROM pet;")
-	var result = Singleton.database.query_result
-	return result
-	
+	var result = Singleton.database.query_result;
+	return result;
 
 func _update_pet_hunger(hunger):
 	var child_id = _get_child_database()[0].id
-	Singleton.database.update_rows("pet","id = %s"%child_id, {"hunger": hunger})
+	Singleton.database.update_rows("pet","id = %s"%child_id, {"hunger": hunger});
 
 
 func _get_collection_database():
-	Singleton.database.query("SELECT * FROM collection;")
-	var result = Singleton.database.query_result
+	Singleton.database.query("SELECT * FROM collection;");
+	var result = Singleton.database.query_result;
 	return result
 
 func _get_money_database():
@@ -64,7 +62,10 @@ func _update_money_database(money):
 
 
 func _get_game_dynamic(game):
-	var child_id = DataManager._get_child_database()[0].id;
+	var child = DataManager._get_child_database();
+	if child.size() == 0:
+		return;
+	var child_id = child[0].id;
 	Singleton.database.query("SELECT * FROM %s WHERE id = %d" % [game, child_id]);
 	var result = Singleton.database.query_result;
 	return result;
@@ -86,41 +87,36 @@ func _get_sequence_game_database():
 	var result = Singleton.database.query_result;
 	return result;
 
-func _get_game1_junction_session():
-	Singleton.database.query("SELECT * FROM sequence_session WHERE id IN (SELECT session_id FROM sequence_junction_session)");
-	var result = Singleton.database.query_result;
-	return result;
 
-func _get_game2_junction_session():
-	Singleton.database.query("SELECT * FROM number_memory_session WHERE id IN (SELECT session_id FROM number_memory_junction_session)");
-	var result = Singleton.database.query_result;
-	return result;
-
-func _get_game3_junction_session():
-	Singleton.database.query("SELECT * FROM timing_session WHERE id IN (SELECT session_id FROM timing_junction_session)");
+func _get_game_sessions(from ,where):
+	var query = "SELECT * FROM %s_session WHERE id IN (SELECT session_id FROM %s_junction_session)" %[from, from];
+	if where != null:
+		query += " AND difficulty = '%s'" %where;
+		#print_debug(query);
+	Singleton.database.query(query);
 	var result = Singleton.database.query_result;
 	return result;
 
 
-func _insert_game1_session(level):
+func _insert_game1_session(level, difficulty):
 	var child_id = _get_child_database()[0].id;
-	Singleton.database.query("INSERT INTO sequence_session(level_reached) VALUES(%d)"%level);
+	Singleton.database.query("INSERT INTO sequence_session(level_reached, difficulty) VALUES(%d, '%s')" %[level, difficulty]);
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("sequence_junction_session", {"game_id": child_id, "session_id": last_id});
 	
 	dynamic_update_game_data("sequence_session", "sequence_game", child_id);
 
-func _insert_game2_session(level):
+func _insert_game2_session(level, difficulty):
 	var child_id = _get_child_database()[0].id;
-	Singleton.database.query("INSERT INTO number_memory_session(level_reached) VALUES(%d)"%level);
+	Singleton.database.query("INSERT INTO number_memory_session(level_reached, difficulty) VALUES(%d, '%s')"%[level, difficulty] );
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("number_memory_junction_session", {"game_id": child_id, "session_id": last_id});
 	
 	dynamic_update_game_data("number_memory_session", "number_memory_game", child_id);
 
-func _insert_game3_session(level):
+func _insert_game3_session(level, difficulty):
 	var child_id = _get_child_database()[0].id;
-	Singleton.database.query("INSERT INTO timing_session(level_reached) VALUES(%d)"%level);
+	Singleton.database.query("INSERT INTO timing_session(level_reached, difficulty) VALUES(%d, '%s')" %[level, difficulty] );
 	var last_id = Singleton.database.last_insert_rowid;
 	Singleton.database.insert_row("timing_junction_session", {"game_id": child_id, "session_id": last_id});
 	
@@ -149,7 +145,10 @@ func _get_milestone_datas():
 	return result;
 
 func _update_milestone_total_time():
-	var child_id = _get_child_database()[0].id;
+	var child = _get_child_database();
+	if child.size() == 0:
+		return
+	var child_id = child[0].id;
 	var time_track = int(GameData.time_track);
 	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_time": time_track});
 
@@ -161,11 +160,9 @@ func _update_milestone_total_collection():
 	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_collection": collection_count});
 
 func _update_milestone_total_pet_fully_fed():
-	var child_id = _get_child_database()[0].id;
 	Singleton.database.query("UPDATE milestone SET total_pet_fully_fed = total_pet_fully_fed + 1");
 
 func _update_milestone_total_days_played():
-	var child_id = _get_child_database()[0].id;
 	Singleton.database.query("UPDATE milestone SET total_days_played = total_days_played + 1");
 
 func _update_milestone_total_games_played():

@@ -55,3 +55,7 @@ func _on_submit_pressed():
 	
 	create_pet_modal.visible = !create_pet_modal.visible
 	pass # Replace with function body.
+
+func _on_back_button_up():
+	create_pet_modal.visible = false;
+	pass # Replace with function body.

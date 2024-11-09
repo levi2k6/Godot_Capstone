@@ -39,10 +39,10 @@ metadata/_edit_group_ = true
 
 [node name="Clickable_Change_Back_Scene" parent="Options" instance=ExtResource("2_5e23u")]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 30.0
-offset_right = 106.0
-offset_bottom = 82.0
+offset_left = 29.0
+offset_top = 25.0
+offset_right = 125.0
+offset_bottom = 121.0
 
 [node name="Panel" type="Panel" parent="Options"]
 self_modulate = Color(0.65, 0.65, 0.65, 1)
@@ -53,9 +53,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -159.0
-offset_top = -198.5
+offset_top = -169.5
 offset_right = 159.0
-offset_bottom = -47.5
+offset_bottom = -18.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -82,9 +82,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -85.0
-offset_top = -17.0
+offset_top = 5.0
 offset_right = 85.0
-offset_bottom = 59.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_lhqne")

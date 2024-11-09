@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://lpjuc7btxytx"]
+[gd_scene load_steps=7 format=3 uid="uid://lpjuc7btxytx"]
 
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="2_al0cj"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="2_tchsg"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="2_yjel7"]
+[ext_resource type="Texture2D" uid="uid://cdvql8jd8ff2f" path="res://assets/games/game1.png" id="3_ih45j"]
+[ext_resource type="Texture2D" uid="uid://crus2t5x7fd3y" path="res://assets/games/game2.png" id="4_57ci2"]
+[ext_resource type="Texture2D" uid="uid://d4gxioiap6swk" path="res://assets/games/game3.png" id="5_2wtbh"]
 
 [node name="Games" type="Node2D"]
 
@@ -10,8 +15,28 @@ anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -480.0
+offset_right = 270.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.352941, 0.796078, 1)
+
 [node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_yjel7")]
 layout_mode = 0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Main_Hub_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("2_tchsg")
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1
@@ -37,6 +62,12 @@ size_flags_stretch_ratio = 0.0
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer/Game1_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ih45j")
 
 [node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer"]
 layout_mode = 2
@@ -52,6 +83,12 @@ size_flags_stretch_ratio = 0.0
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer2/Game2_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("4_57ci2")
 
 [node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer2"]
 layout_mode = 2
@@ -67,6 +104,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer3/Game3_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("5_2wtbh")
 
 [node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer3"]
 layout_mode = 2

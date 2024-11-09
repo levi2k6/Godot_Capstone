@@ -1,0 +1,238 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpm34vfsyv8yr"]
+
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/improvement_chart.gd" id="1_4wqmw"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/Node2D.gd" id="2_be7l4"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_lqadw"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/drawer.gd" id="2_n0ruy"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/right_drawer.gd" id="2_nd7s3"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="3_1pic8"]
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="5_0skor"]
+[ext_resource type="Texture2D" uid="uid://cdlsr05ofq40y" path="res://assets/improvement_chart/swap_icon.png" id="6_7ir32"]
+[ext_resource type="Texture2D" uid="uid://cwfpgvecgmp1r" path="res://assets/improvement_chart/normal_icon.png" id="7_h2jvo"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="7_ul8ui"]
+[ext_resource type="Texture2D" uid="uid://pv7uygs23pg0" path="res://assets/improvement_chart/visible_icon.png" id="8_6bvc2"]
+[ext_resource type="Texture2D" uid="uid://dyouqupibm1yx" path="res://assets/improvement_chart/hard_icon.png" id="9_53wbj"]
+
+[node name="ImprovementChart" type="Node2D"]
+script = ExtResource("1_4wqmw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0, 0.352941, 0.796078, 1)
+
+[node name="Games" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_bottom = 40.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="Sequence Mix" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("7_ul8ui")
+text = "Sequence Mix"
+
+[node name="Digit Hack" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("7_ul8ui")
+text = "Digit Hack
+"
+
+[node name="Meteor Rush" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("7_ul8ui")
+text = "Meteor Rush"
+
+[node name="Difficulty_Filter" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 114.0
+offset_right = 178.0
+offset_bottom = 235.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="Swap" type="Button" parent="Control/Difficulty_Filter/HBoxContainer3"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme = ExtResource("5_0skor")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Difficulty_Filter/HBoxContainer3/Swap"]
+position = Vector2(24, 24)
+scale = Vector2(3, 3)
+texture = ExtResource("6_7ir32")
+
+[node name="All" type="Button" parent="Control/Difficulty_Filter/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("7_ul8ui")
+toggle_mode = true
+text = "ALL"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_h2jvo")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/Difficulty_Filter/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Normal
+"
+
+[node name="TextureButton" type="TextureButton" parent="Control/Difficulty_Filter/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("8_6bvc2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("9_53wbj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/Difficulty_Filter/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Hard
+"
+
+[node name="TextureButton" type="TextureButton" parent="Control/Difficulty_Filter/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("8_6bvc2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Zoom" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_top = 757.0
+offset_right = -240.0
+offset_bottom = 797.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="ZoomIn" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-
+"
+
+[node name="ZoomOut" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -225.0
+offset_right = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 3
+
+[node name="Panel" type="Panel" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Line2D_All" type="Line2D" parent="Control/ScrollContainer/Panel"]
+points = PackedVector2Array(0, 450)
+width = 1.5
+default_color = Color(0.887874, 0.000325051, 0.137045, 1)
+
+[node name="Points" type="Control" parent="Control/ScrollContainer/Panel"]
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="UpScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_top = 255.0
+offset_right = 45.0
+offset_bottom = 705.0
+horizontal_scroll_mode = 3
+
+[node name="UpNumbers" type="Control" parent="Control/UpScrollContainer"]
+custom_minimum_size = Vector2(45, 450)
+layout_mode = 2
+
+[node name="UpDrawer" type="Node2D" parent="Control/UpScrollContainer"]
+script = ExtResource("2_be7l4")
+
+[node name="RightScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 705.0
+offset_right = 495.0
+offset_bottom = 750.0
+vertical_scroll_mode = 3
+
+[node name="RightNumbers" type="Control" parent="Control/RightScrollContainer"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+
+[node name="RightDrawer" type="Node2D" parent="Control/RightScrollContainer"]
+script = ExtResource("2_nd7s3")
+
+[node name="Icon" type="Sprite2D" parent="Control/RightScrollContainer"]
+position = Vector2(-45, -705)
+scale = Vector2(0.515625, 0.539063)
+texture = ExtResource("2_lqadw")
+
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("3_1pic8")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 829.0
+offset_right = 136.0
+offset_bottom = 925.0
+
+[node name="Icon2" type="Sprite2D" parent="Control"]
+scale = Vector2(0.515625, 0.539063)
+texture = ExtResource("2_lqadw")
+
+[node name="Origin" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_lqadw")
+
+[node name="drawer" type="Node2D" parent="."]
+script = ExtResource("2_n0ruy")
+
+[connection signal="button_down" from="Control/Games/Sequence Mix" to="." method="_on_sequence_mix_button_down"]
+[connection signal="button_down" from="Control/Games/Digit Hack" to="." method="_on_digit_hack_button_down"]
+[connection signal="button_down" from="Control/Games/Meteor Rush" to="." method="_on_meteor_rush_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
+[connection signal="scroll_started" from="Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]

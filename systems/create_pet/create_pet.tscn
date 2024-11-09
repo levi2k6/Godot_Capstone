@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://csecd0m0t0c2y"]
+[gd_scene load_steps=9 format=3 uid="uid://csecd0m0t0c2y"]
 
 [ext_resource type="Script" path="res://systems/create_pet/create_pet.gd" id="1_jjidk"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_yjn1a"]
 [ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://systems/misc/clickable/clickable_tab_item.tscn" id="3_odqlm"]
 [ext_resource type="Script" path="res://systems/create_pet/show_item_create_pet.gd" id="4_21v8p"]
+[ext_resource type="Theme" uid="uid://dent1p17y64cs" path="res://assets/themes/customize_theme.tres" id="5_8smym"]
+[ext_resource type="Texture2D" uid="uid://dm8wxesvh5t8p" path="res://assets/customize/icons.png" id="5_xlut1"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="6_c4pff"]
 [ext_resource type="Script" path="res://systems/create_pet/create_pet_modal.gd" id="6_yjfel"]
 
 [node name="Create_Pet" type="Node2D"]
@@ -23,84 +26,157 @@ metadata/_edit_group_ = true
 layout_mode = 0
 offset_right = 540.0
 offset_bottom = 960.0
-color = Color(0, 0.184314, 0.411765, 1)
+color = Color(0, 0.352941, 0.796078, 1)
 
-[node name="Picker" type="VBoxContainer" parent="Control"]
+[node name="Picker" type="Control" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.153
-anchor_top = 0.049
-anchor_right = 0.847
-anchor_bottom = 0.295
-offset_left = -0.128006
-offset_top = -0.176003
-offset_right = 0.12796
-offset_bottom = -0.0800171
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 42.0
+offset_right = 229.0
+offset_bottom = 398.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
 custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
+offset_left = 10.0
+offset_right = 463.0
+offset_bottom = 64.0
 
 [node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(80, 64)
 layout_mode = 2
+theme = ExtResource("5_8smym")
+
+[node name="Icon" type="Sprite2D" parent="Control/Picker/HBoxContainer/Tab_Bodies"]
+position = Vector2(40, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xlut1")
+hframes = 5
 
 [node name="Tab_Eyes" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(80, 64)
 layout_mode = 2
+theme = ExtResource("5_8smym")
+
+[node name="Icon2" type="Sprite2D" parent="Control/Picker/HBoxContainer/Tab_Eyes"]
+position = Vector2(40, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xlut1")
+hframes = 5
+frame = 1
 
 [node name="Tab_Mouths" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(80, 64)
 layout_mode = 2
+theme = ExtResource("5_8smym")
+
+[node name="Icon3" type="Sprite2D" parent="Control/Picker/HBoxContainer/Tab_Mouths"]
+position = Vector2(41, 34)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xlut1")
+hframes = 5
+frame = 2
+
+[node name="Tab_Hats" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
+visible = false
+custom_minimum_size = Vector2(80, 64)
+layout_mode = 2
+theme = ExtResource("5_8smym")
+
+[node name="Icon4" type="Sprite2D" parent="Control/Picker/HBoxContainer/Tab_Hats"]
+position = Vector2(40, 33)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xlut1")
+hframes = 5
+frame = 3
 
 [node name="Tab_Colors" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(80, 64)
 layout_mode = 2
+theme = ExtResource("5_8smym")
+
+[node name="Icon5" type="Sprite2D" parent="Control/Picker/HBoxContainer/Tab_Colors"]
+position = Vector2(40, 33)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xlut1")
+hframes = 5
+frame = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
 layout_mode = 2
-horizontal_scroll_mode = 2
-vertical_scroll_mode = 0
+offset_top = 55.0
+offset_right = 452.0
+offset_bottom = 356.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(1000, 220)
+[node name="ColorRect" type="Panel" parent="Control/Picker/ScrollContainer"]
+custom_minimum_size = Vector2(452, 500)
 layout_mode = 2
-color = Color(0.0980392, 0.466667, 0.372549, 1)
+theme = ExtResource("6_c4pff")
 
 [node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 61.0
+offset_bottom = 58.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 script = ExtResource("4_21v8p")
 
 [node name="Eyes_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 61.0
+offset_bottom = 58.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 script = ExtResource("4_21v8p")
 
 [node name="Mouth_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 61.0
+offset_bottom = 58.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 script = ExtResource("4_21v8p")
 
 [node name="Color_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
-visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 61.0
+offset_bottom = 58.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 script = ExtResource("4_21v8p")
 
-[node name="Create_Pet_Modal" type="ColorRect" parent="Control"]
+[node name="outline" type="Panel" parent="Control/Picker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_8smym")
+
+[node name="Create_Pet_Modal" type="Panel" parent="Control"]
 visible = false
+self_modulate = Color(0.486275, 0.564706, 0.690196, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.182
@@ -113,7 +189,7 @@ offset_right = -0.160004
 offset_bottom = 0.343964
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.169583, 0.190176, 0.210148, 1)
+theme = ExtResource("6_c4pff")
 script = ExtResource("6_yjfel")
 metadata/_edit_group_ = true
 
@@ -146,20 +222,30 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "NAME YOUR PET"
 
-[node name="Button" type="Button" parent="Control/Create_Pet_Modal"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Create_Pet_Modal"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -49.0
-offset_top = -68.0
-offset_right = 49.0
-offset_bottom = -37.0
+offset_left = -97.5
+offset_top = -71.0
+offset_right = 97.5
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 25
+
+[node name="CreatePet" type="Button" parent="Control/Create_Pet_Modal/HBoxContainer"]
+layout_mode = 2
 text = "Create Pet!"
+
+[node name="Back" type="Button" parent="Control/Create_Pet_Modal/HBoxContainer"]
+custom_minimum_size = Vector2(122, 0)
+layout_mode = 2
+text = "Back
+"
 
 [node name="Submit" type="Button" parent="Control"]
 layout_mode = 1
@@ -175,7 +261,9 @@ offset_bottom = -0.256042
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_vertical = 8
+theme = ExtResource("6_c4pff")
 text = "OK"
 
-[connection signal="button_up" from="Control/Create_Pet_Modal/Button" to="Control/Create_Pet_Modal" method="_on_create_pet_button_up"]
+[connection signal="button_up" from="Control/Create_Pet_Modal/HBoxContainer/CreatePet" to="Control/Create_Pet_Modal" method="_on_create_pet_button_up"]
+[connection signal="button_up" from="Control/Create_Pet_Modal/HBoxContainer/Back" to="." method="_on_back_button_up"]
 [connection signal="pressed" from="Control/Submit" to="." method="_on_submit_pressed"]

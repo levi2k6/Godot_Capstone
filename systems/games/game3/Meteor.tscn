@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://buoh61rycxmef"]
+
+[ext_resource type="Script" path="res://systems/games/game3/meteor.gd" id="1_21gmt"]
+[ext_resource type="Texture2D" uid="uid://cdl7k545uawte" path="res://assets/game3/meteor_shards.png" id="2_2ngjh"]
+[ext_resource type="Texture2D" uid="uid://pja08d41o75" path="res://assets/game3/meteor2.png" id="2_bo48d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qcy"]
+size = Vector2(128, 128)
+
+[node name="Meteor" type="Node2D"]
+script = ExtResource("1_21gmt")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -24.0
+offset_bottom = -24.0
+scale = Vector2(3.19609, 3.20119)
+
+[node name="Fire_Particle" type="CPUParticles2D" parent="."]
+position = Vector2(1, 57)
+amount = 30
+direction = Vector2(0, -1)
+spread = 82.56
+gravity = Vector2(0, -980)
+initial_velocity_min = 224.48
+initial_velocity_max = 224.48
+angular_velocity_max = 371.25
+damping_max = 60.156
+scale_amount_min = 10.0
+scale_amount_max = 16.62
+color = Color(1, 0.466667, 0.305882, 1)
+
+[node name="Explosion_Particle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+texture = ExtResource("2_2ngjh")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+angular_velocity_min = 101.25
+angular_velocity_max = 202.5
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_bo48d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_p7qcy")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

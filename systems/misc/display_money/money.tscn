@@ -1,11 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ka6f2ksq5rlp"]
+[gd_scene load_steps=4 format=3 uid="uid://ka6f2ksq5rlp"]
 
 [ext_resource type="Script" path="res://systems/misc/display_money/display_money.gd" id="1_0ndv5"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_6eyho"]
+[ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="3_1al3a"]
 
-[node name="Money" type="Label"]
-offset_left = 100.0
-offset_top = 45.0
-offset_right = 140.0
-offset_bottom = 68.0
-text = "asdasdasd"
+[node name="Money_Count" type="HBoxContainer"]
+offset_right = 130.0
+offset_bottom = 36.0
+theme = ExtResource("1_6eyho")
 script = ExtResource("1_0ndv5")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(18, 18)
+scale = Vector2(3, 3)
+texture = ExtResource("3_1al3a")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 1, 0.176471, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "000000"

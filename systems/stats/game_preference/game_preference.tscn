@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://buvmdr2wq5ovx"]
+
+[ext_resource type="Script" path="res://systems/stats/game_preference/game_preference.gd" id="1_jnx5u"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_4cvqo"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_068v1"]
+
+[node name="GamePreference" type="Node2D"]
+script = ExtResource("1_jnx5u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+theme = ExtResource("2_068v1")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -480.0
+offset_right = 270.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.352941, 0.796078, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 34.0
+offset_right = 528.0
+offset_bottom = 83.0
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Highest To Lowest"
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Lowest To Highest"
+
+[node name="Info_Visible" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 99.0
+offset_right = 208.0
+offset_bottom = 131.0
+
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("2_4cvqo")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 106.0
+offset_bottom = 104.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -337.5
+offset_right = 300.0
+offset_bottom = 512.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -378.5
+offset_right = 245.0
+offset_bottom = 296.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00521, 1)
+theme_override_constants/separation = 10
+
+[connection signal="button_down" from="Control/HBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/HBoxContainer/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Control/Info_Visible" to="." method="_on_info_visible_button_down"]

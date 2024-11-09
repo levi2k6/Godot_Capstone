@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtwuefjxhddi2"]
+[gd_scene load_steps=30 format=3 uid="uid://dtwuefjxhddi2"]
 
 [ext_resource type="Script" path="res://systems/games/game3/game3.gd" id="1_i7y8d"]
 [ext_resource type="Script" path="res://systems/games/game3/Game.gd" id="1_j4hsh"]
@@ -10,7 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_gf8nj"]
 [ext_resource type="Texture2D" uid="uid://cdig6dnmxm2om" path="res://assets/game3/alien.png" id="5_fc5hf"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="6_3po1a"]
+[ext_resource type="Texture2D" uid="uid://ir7ppp5wk550" path="res://assets/game3/title.png" id="7_blirx"]
 [ext_resource type="Texture2D" uid="uid://ow43etbp4gqk" path="res://assets/game3/moon.png" id="9_snxey"]
+[ext_resource type="Texture2D" uid="uid://s6gsslhn0wgx" path="res://assets/game3/ship_menu.png" id="10_0gj1o"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="10_7exri"]
+[ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="10_ggkwj"]
+[ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="14_hthx6"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="15_rd76u"]
 
 [sub_resource type="Animation" id="Animation_657cm"]
 length = 0.001
@@ -25,6 +31,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(270, 1440)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Game_Intro/Ship_Intro:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1092, 541)]
 }
 
 [sub_resource type="Animation" id="Animation_3suqy"]
@@ -43,10 +61,44 @@ tracks/0/keys = {
 "values": [Vector2(270, 1440), Vector2(270, 480)]
 }
 
+[sub_resource type="Animation" id="Animation_f7ojn"]
+resource_name = "ship_appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Game_Intro/Ship_Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.466515, 1.03526),
+"update": 0,
+"values": [Vector2(1092, 541), Vector2(269, 541)]
+}
+
+[sub_resource type="Animation" id="Animation_r2gg5"]
+resource_name = "ship_leave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Game_Intro/Ship_Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2.82843, 6.49801),
+"update": 0,
+"values": [Vector2(269, 541), Vector2(-819, 541)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4da5"]
 _data = {
 "RESET": SubResource("Animation_657cm"),
-"camera_up": SubResource("Animation_3suqy")
+"camera_up": SubResource("Animation_3suqy"),
+"ship_appear": SubResource("Animation_f7ojn"),
+"ship_leave": SubResource("Animation_r2gg5")
 }
 
 [sub_resource type="Animation" id="Animation_cvryv"]
@@ -178,6 +230,12 @@ libraries = {
 "": SubResource("AnimationLibrary_p3f26")
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 1067.0
+offset_right = 540.0
+offset_bottom = 1451.0
+texture = ExtResource("7_blirx")
+
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_j4hsh")
 
@@ -227,13 +285,13 @@ offset_bottom = 960.0
 mouse_filter = 2
 
 [node name="Game_Intro" type="Control" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_xlt2l")
 
 [node name="Label" type="Label" parent="Control/Game_Intro"]
@@ -246,56 +304,101 @@ offset_top = 300.0
 offset_right = 43.5
 offset_bottom = 323.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_7exri")
+theme_override_font_sizes/font_size = 30
 
-[node name="Play" type="Button" parent="Control/Game_Intro"]
+[node name="Ship_Intro" type="Node2D" parent="Control/Game_Intro"]
+position = Vector2(1092, 541)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/Game_Intro/Ship_Intro"]
+position = Vector2(277, 8)
+amount = 30
+speed_scale = 2.0
+spread = 53.85
+gravity = Vector2(500, 0)
+initial_velocity_min = 195.31
+initial_velocity_max = 234.38
+angular_velocity_min = -382.5
+radial_accel_max = 51.56
+scale_amount_min = 20.0
+scale_amount_max = 20.0
+color = Color(0.956863, 0.631373, 0.113725, 1)
+
+[node name="ShipMenu" type="TextureRect" parent="Control/Game_Intro/Ship_Intro"]
+offset_left = -422.0
+offset_top = -241.0
+offset_right = 386.0
+offset_bottom = 299.0
+texture = ExtResource("10_0gj1o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Game_Intro/Ship_Intro/ShipMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = -23.5
-offset_right = 144.0
-offset_bottom = 18.5
+offset_left = -82.0
+offset_top = -85.0
+offset_right = 118.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "
+
+[node name="Normal" type="Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme = ExtResource("10_ggkwj")
+text = "Normal"
+
+[node name="Hard" type="Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme = ExtResource("10_ggkwj")
+text = "Hard
 "
 
-[node name="Main_Hub_Button" parent="Control/Game_Intro" instance=ExtResource("3_hlgud")]
-layout_mode = 0
-offset_left = 138.0
-offset_top = 457.0
-offset_right = 257.0
-offset_bottom = 499.0
+[node name="Main_Hub_Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer" instance=ExtResource("3_hlgud")]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme = ExtResource("10_ggkwj")
+text = "Back"
 
-[node name="Hunger_Bar" type="ProgressBar" parent="Control"]
+[node name="Info" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.153
-anchor_top = 0.026
-anchor_right = 0.847
-anchor_bottom = 0.053
-offset_left = -0.128006
-offset_top = 0.401999
-offset_right = 0.12796
-offset_bottom = -0.219002
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.5
+offset_top = 25.0
+offset_right = 181.5
+offset_bottom = 103.0
 grow_horizontal = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 20
 
-[node name="Money" parent="Control" instance=ExtResource("4_gf8nj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.163
-anchor_top = 0.068
-anchor_right = 0.306
-anchor_bottom = 0.091
-offset_left = 0.112
-offset_top = 0.435997
-offset_right = -0.256012
-offset_bottom = -0.0930023
-text = "00000"
+[node name="Hunger" type="HBoxContainer" parent="Control/Info"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="Control/Info/Hunger"]
+custom_minimum_size = Vector2(51, 33)
+layout_mode = 2
+
+[node name="HungerIcon" type="Sprite2D" parent="Control/Info/Hunger/Control"]
+position = Vector2(25.5, 23.5)
+scale = Vector2(3, 3)
+texture = ExtResource("14_hthx6")
+
+[node name="Hunger_Bar" type="ProgressBar" parent="Control/Info/Hunger"]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("15_rd76u")
+theme_override_font_sizes/font_size = 20
+value = 100.0
+
+[node name="Money_Count" parent="Control/Info" instance=ExtResource("4_gf8nj")]
+layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(270, 1440)
@@ -305,4 +408,5 @@ position_smoothing_enabled = true
 visible = false
 
 [connection signal="area_shape_entered" from="Game/Area2D" to="Game" method="_on_area_2d_area_shape_entered"]
-[connection signal="button_up" from="Control/Game_Intro/Play" to="Control/Game_Intro" method="_on_play_button_up"]
+[connection signal="button_up" from="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer/Normal" to="Control/Game_Intro" method="_on_normal_button_up"]
+[connection signal="button_up" from="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer/Hard" to="Control/Game_Intro" method="_on_hard_button_up"]

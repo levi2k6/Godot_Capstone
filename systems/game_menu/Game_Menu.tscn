@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqrdnk3spxvue"]
+[gd_scene load_steps=18 format=3 uid="uid://bqrdnk3spxvue"]
 
 [ext_resource type="Script" path="res://systems/game_menu/game_menu.gd" id="1_ht4tj"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="2_qeo06"]
@@ -7,6 +7,8 @@
 [ext_resource type="Animation" uid="uid://b0v1vjsnlq6pb" path="res://systems/game_menu/animations/bit_buddy.res" id="4_3apvj"]
 [ext_resource type="Texture2D" uid="uid://bw7haho1y7350" path="res://assets/game_menu/bit.png" id="4_kywql"]
 [ext_resource type="Texture2D" uid="uid://b055ktgetei6j" path="res://assets/game_menu/buddy.png" id="5_1hseh"]
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="8_1q0ko"]
+[ext_resource type="Texture2D" uid="uid://trhur2otfjoc" path="res://assets/universal/settings_button.png" id="9_p4t8g"]
 
 [sub_resource type="Animation" id="Animation_qt1o2"]
 length = 0.001
@@ -189,6 +191,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.352941, 0.796078, 1)
@@ -258,7 +262,7 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Title"]
+[node name="Animator_Title" type="AnimationPlayer" parent="Control/Title"]
 libraries = {
 "": SubResource("AnimationLibrary_ga5fc")
 }
@@ -291,6 +295,13 @@ offset_left = 411.0
 offset_top = 28.0
 offset_right = 507.0
 offset_bottom = 124.0
+theme = ExtResource("8_1q0ko")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Settings_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("9_p4t8g")
+hframes = 2
 
 [node name="Buttons" type="Control" parent="Control"]
 layout_mode = 1
@@ -306,7 +317,7 @@ offset_bottom = 573.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Buttons"]
+[node name="Animator_Buttons" type="AnimationPlayer" parent="Control/Buttons"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_2i0v2")
@@ -319,39 +330,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -4.99994
-offset_right = 70.0
-offset_bottom = 44.9999
+offset_left = -50.0
+offset_top = -24.9999
+offset_right = 50.0
+offset_bottom = 24.9999
 grow_horizontal = 2
 grow_vertical = 2
+text = "Main Hub"
 
 [node name="Create_Child_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
-modulate = Color(1, 0.34902, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -4.99992
-offset_right = 70.0
-offset_bottom = 45.0
+offset_left = -50.0
+offset_top = -24.9999
+offset_right = 80.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Create Child"
 
 [node name="Create_Pet_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
-modulate = Color(0.929412, 0.576471, 0.0862745, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 70.0
-offset_bottom = 45.0
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 69.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Create Pet"

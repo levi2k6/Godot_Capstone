@@ -108,11 +108,9 @@ func _get_pet_equip_library():
 				lib_result[4] = lib;
 	return lib_result
 
-
 func _get_collection_library():
 	var collection_database = DataManager._get_collection_database()
 	var my_collection = []
-	var n = 0
 	for item in library:
 		for collection in collection_database:
 			if collection.item_id == item.id:

@@ -35,7 +35,6 @@ func _update_pet_equip_database(item):
 		Singleton.database.update_rows("pet", "id = %d" %child_id, {"hat_id" : item.id})
 	elif item.type == "color":
 		Singleton.database.update_rows("pet", "id = %d" %child_id, {"color_id" : item.id})
-		get_parent().get_parent().get_child(0)._ready()
 	get_parent()._get_item(this_item)
 	
 

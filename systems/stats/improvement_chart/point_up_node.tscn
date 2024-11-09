@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ssybcuj71hu"]
+
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="1_8jxa4"]
+[ext_resource type="Script" path="res://systems/stats/improvement_chart/point_up_node.gd" id="1_jldi6"]
+
+[node name="PointNode" type="Node2D"]
+script = ExtResource("1_jldi6")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 1.69407e-21)
+scale = Vector2(1.5, 1.33333)
+polygon = PackedVector2Array(-1.33333, -1.5, 0, -1.5, 1.33333, -1.5, 1.33333, -1.27055e-21, 1.33333, 1.5, 0, 1.5, -1.33333, 1.5, -1.33333, -1.27055e-21)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -5.0
+offset_right = -2.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("1_8jxa4")
+theme_override_font_sizes/font_size = 10
+text = "1111111"
+horizontal_alignment = 2

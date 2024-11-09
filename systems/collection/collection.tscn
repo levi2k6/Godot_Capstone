@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm6vbtrqbqx7d"]
+[gd_scene load_steps=11 format=3 uid="uid://bm6vbtrqbqx7d"]
 
 [ext_resource type="Script" path="res://systems/collection/collection.gd" id="1_0txvs"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="1_lwmpp"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://systems/collection/show_item_collection.gd" id="3_qopba"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="4_vg3vp"]
 [ext_resource type="Texture2D" uid="uid://dm8wxesvh5t8p" path="res://assets/customize/icons.png" id="6_wie7m"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="7_gyej6"]
 [ext_resource type="Theme" uid="uid://dent1p17y64cs" path="res://assets/themes/customize_theme.tres" id="8_hh76e"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="9_7skf4"]
 
 [node name="Collection" type="Node2D"]
 script = ExtResource("1_0txvs")
@@ -25,7 +27,7 @@ offset_bottom = 960.0
 layout_mode = 0
 offset_right = 540.0
 offset_bottom = 960.0
-color = Color(0, 0.254902, 0.560784, 1)
+color = Color(0, 0.352941, 0.796078, 1)
 
 [node name="Shadow" type="Sprite2D" parent="Control"]
 position = Vector2(296, 769)
@@ -37,18 +39,18 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -222.5
-offset_right = 222.5
-offset_bottom = 284.0
+offset_left = -226.0
+offset_top = 42.0
+offset_right = 226.0
+offset_bottom = 398.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 offset_left = 9.5
-offset_top = 23.0
 offset_right = 454.5
-offset_bottom = 87.0
+offset_bottom = 64.0
 
 [node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("2_6lgo3")]
 custom_minimum_size = Vector2(80, 64)
@@ -111,23 +113,23 @@ frame = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
 layout_mode = 2
-offset_top = 79.0
+offset_top = 55.0
 offset_right = 445.0
-offset_bottom = 379.0
+offset_bottom = 355.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
+[node name="ColorRect" type="Panel" parent="Control/Picker/ScrollContainer"]
 custom_minimum_size = Vector2(445, 500)
 layout_mode = 2
-color = Color(0.0901961, 0.388235, 0.827451, 1)
+theme = ExtResource("7_gyej6")
 
 [node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0
-offset_left = 18.0
+offset_left = 25.0
 offset_top = 18.0
-offset_right = 58.0
+offset_right = 65.0
 offset_bottom = 58.0
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
@@ -178,6 +180,15 @@ theme_override_constants/v_separation = 10
 columns = 3
 script = ExtResource("3_qopba")
 
+[node name="Panel" type="Panel" parent="Control/Picker"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 55.0
+offset_right = 445.0
+offset_bottom = 356.0
+mouse_filter = 2
+theme = ExtResource("8_hh76e")
+
 [node name="Main_Hub_Button" parent="Control" instance=ExtResource("4_vg3vp")]
 layout_mode = 1
 anchors_preset = -1
@@ -190,11 +201,7 @@ offset_top = -19.36
 offset_right = -8.04001
 offset_bottom = 37.28
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 78.0
-offset_right = 501.0
-offset_bottom = 379.0
-mouse_filter = 2
-theme = ExtResource("8_hh76e")
+[node name="BackIcon" type="Sprite2D" parent="Control/Main_Hub_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7skf4")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://yww82ssboqhd"]
+
+[ext_resource type="Script" path="res://systems/stats/game_preference/game_stats_bar.gd" id="1_d04no"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_ptvxh"]
+[ext_resource type="Texture2D" uid="uid://cdvql8jd8ff2f" path="res://assets/games/game1.png" id="2_0qivt"]
+[ext_resource type="Theme" uid="uid://csj11qg66i8t2" path="res://assets/themes/game_preference_theme.tres" id="3_fegvm"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="4_wbmnn"]
+
+[node name="GameStatsBar" type="HBoxContainer"]
+offset_right = 559.0
+offset_bottom = 155.0
+size_flags_vertical = 4
+theme = ExtResource("1_ptvxh")
+script = ExtResource("1_d04no")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "asdasdasdasdadasdadasdasdasd"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_0qivt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 25
+
+[node name="Type" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Type: "
+
+[node name="Session" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Game Session: "
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+modulate = Color(0.0980392, 0.752941, 0.164706, 1)
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("3_fegvm")
+value = 90.0
+show_percentage = false
+
+[node name="Number" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -17.0
+offset_right = 156.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wbmnn")
+theme_override_font_sizes/font_size = 20
+text = "100"
+vertical_alignment = 1
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_down"]
