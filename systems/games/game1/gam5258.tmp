@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://di4kqbjwtefkk"]
+[gd_scene load_steps=28 format=3 uid="uid://di4kqbjwtefkk"]
 
 [ext_resource type="Script" path="res://systems/games/game1/game1.gd" id="1_h5acu"]
 [ext_resource type="Script" path="res://systems/games/game1/Animator.gd" id="2_jf0en"]
@@ -11,15 +11,29 @@
 [ext_resource type="Script" path="res://systems/games/game1/Game_Intro.gd" id="5_71xmo"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_y7k77"]
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="7_xdahh"]
-[ext_resource type="Theme" uid="uid://ekb4yt0bhvmu" path="res://assets/themes/game1_texture_theme.tres" id="8_18ghq"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="8_sqsqg"]
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="8_uw73o"]
 [ext_resource type="Texture2D" uid="uid://dn7fd8rjf62d8" path="res://assets/game1/tile-sheet.png" id="10_6n462"]
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="11_6e3p3"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="11_eugcs"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="11_m0x0s"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="12_tbmpk"]
-[ext_resource type="Texture2D" uid="uid://dlkgav0sx3lm1" path="res://assets/game1/game_intro_background.png" id="12_wxj4d"]
-[ext_resource type="Texture2D" uid="uid://cmh7p083lhl00" path="res://assets/game1/title.png" id="15_8dici"]
+
+[sub_resource type="Animation" id="Animation_qr4fi"]
+resource_name = "game_intro_appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/Game_Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.287174, 1),
+"update": 0,
+"values": [Vector2(0, -961), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_1i4dw"]
 length = 0.001
@@ -33,23 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -960)]
-}
-
-[sub_resource type="Animation" id="Animation_qr4fi"]
-resource_name = "game_intro_appear"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Game/Game_Intro:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.329877, 1),
-"update": 0,
-"values": [Vector2(0, -960), Vector2(0, 0)]
+"values": [Vector2(0, -961)]
 }
 
 [sub_resource type="Animation" id="Animation_uxjqa"]
@@ -63,9 +61,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.277393, 1),
+"transitions": PackedFloat32Array(0.366021, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -960)]
+"values": [Vector2(0, 0), Vector2(0, -961)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6im47"]
@@ -80,33 +78,6 @@ shader = ExtResource("2_u8iip")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouf1y"]
 shader = ExtResource("2_lxpxx")
-
-[sub_resource type="Animation" id="Animation_wkghc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tiles:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28, 991.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tiles:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.45098, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_6y2he"]
 resource_name = "tiles_appear"
@@ -134,6 +105,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.258816, 1),
 "update": 0,
 "values": [Color(1, 0.45098, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wkghc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tiles:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 991.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tiles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.45098, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3taw2"]
@@ -204,10 +202,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = 991.5
-offset_right = 512.0
-offset_bottom = 1470.5
+offset_left = -242.0
+offset_top = 511.5
+offset_right = 242.0
+offset_bottom = 990.5
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
@@ -217,7 +215,7 @@ metadata/_edit_group_ = true
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile1"]
@@ -230,7 +228,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile2"]
@@ -243,7 +241,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile3"]
@@ -256,7 +254,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile4"]
@@ -269,7 +267,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile5"]
@@ -282,7 +280,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile6"]
@@ -295,7 +293,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile7"]
@@ -308,7 +306,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile8"]
@@ -321,7 +319,7 @@ hframes = 3
 custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = ExtResource("8_18ghq")
+theme = ExtResource("8_uw73o")
 script = ExtResource("3_y0d48")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Game/Tiles/tile9"]
@@ -331,7 +329,6 @@ texture = ExtResource("10_6n462")
 hframes = 3
 
 [node name="Level" type="Label" parent="Game"]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -345,27 +342,30 @@ theme_override_fonts/font = ExtResource("11_6e3p3")
 theme_override_font_sizes/font_size = 45
 text = "LEVEL: 1"
 
-[node name="Game_Intro" type="TextureRect" parent="Game"]
-layout_mode = 0
-offset_top = -960.0
-offset_right = 540.0
-texture = ExtResource("12_wxj4d")
+[node name="Game_Intro" type="ColorRect" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -961.0
+offset_right = 2.0
+offset_bottom = -960.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.128025, 0.401517, 0.905758, 1)
 script = ExtResource("5_71xmo")
 
 [node name="Label" type="Label" parent="Game/Game_Intro"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -11.5
-offset_right = 53.5
-offset_bottom = 11.5
+offset_left = -43.5
+offset_top = 300.0
+offset_right = 43.5
+offset_bottom = 323.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "Sequence Mix"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game/Game_Intro"]
@@ -375,10 +375,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 71.0
-offset_right = 100.0
-offset_bottom = 259.0
+offset_left = -20.0
+offset_top = -42.5
+offset_right = 20.0
+offset_bottom = 42.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -401,11 +401,6 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("11_m0x0s")
 text = "Back"
-
-[node name="Title" type="Sprite2D" parent="Game/Game_Intro"]
-position = Vector2(272, 315)
-scale = Vector2(4, 4)
-texture = ExtResource("15_8dici")
 
 [node name="Info" type="VBoxContainer" parent="Game"]
 layout_mode = 1

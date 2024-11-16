@@ -38,13 +38,25 @@ func append_game_library():
 		games_library[i].count = games_db[i].count;
 	#print("games_library: " , games_library);
 
+
+@onready var button = $Control/HBoxContainer/Button
+@onready var button_2 = $Control/HBoxContainer/Button2
+
+
 func _on_button_button_down():
 	high_to_low_datas_initialize();
+	button_pressed_state();
 	pass # Replace with function body.
 
 func _on_button_2_button_down():
 	low_to_high_datas_initialize();
+	button_pressed_state();
 	pass # Replace with function body.
+
+func button_pressed_state():
+	button.button_pressed = false;
+	button_2.button_pressed = false;
+
 
 func high_to_low_datas_initialize():
 	remove_games_stats();

@@ -55,9 +55,9 @@ layout_mode = 2
 text = "Game Preference
 "
 
-[node name="Improvement_Chart_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
+[node name="Performance_Chart_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]
 layout_mode = 2
-text = "Improvement Chart
+text = "Performance Chart
 "
 
 [node name="Milestone_Button" parent="Control/UI" instance=ExtResource("1_k8j3d")]

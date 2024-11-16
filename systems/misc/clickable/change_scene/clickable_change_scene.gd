@@ -32,11 +32,9 @@ func _on_pressed():
 		get_tree().change_scene_to_file("res://systems/Stats/Stats.tscn");
 	elif name == "Game_Preference_Button":
 		get_tree().change_scene_to_file("res://systems/stats/game_preference/game_preference.tscn");
-	elif name == "Improvement_Chart_Button":
-		get_tree().change_scene_to_file("res://systems/stats/improvement_chart/improvement_chart2.tscn");
+	elif name == "Performance_Chart_Button":
+		get_tree().change_scene_to_file("res://systems/stats/performance_chart/improvement_chart2.tscn");
 	elif name == "Milestone_Button":
 		get_tree().change_scene_to_file("res://systems/stats/milestone/milestone.tscn");
-	elif name == "Empty1":
-		get_tree().change_scene_to_file("res://systems/empty/empty1.tscn");
 	
 	

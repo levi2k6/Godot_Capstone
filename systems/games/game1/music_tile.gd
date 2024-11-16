@@ -1,17 +1,24 @@
 extends Button;
 
 @onready var timer = $"../../Timer"
+@onready var tile_sprite = $Tile_Sprite
 
 
 func animation():
-	modulate = "2e74e2";
+	change_blue();
 	timer.start(0.2);
 	await timer.timeout;
-	modulate = Color(1,1,1);
+	change_normal();
 	
 
+func change_red():
+	tile_sprite.frame = 1;
 
+func change_blue():
+	tile_sprite.frame = 2;
 
+func change_normal():
+	tile_sprite.frame = 0;
 
 func _on_button_down():
 	get_parent().get_parent().click_tile(self, name);

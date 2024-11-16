@@ -71,7 +71,8 @@ texture = ExtResource("3_ih45j")
 
 [node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer"]
 layout_mode = 2
-text = "Sequence Mix"
+text = "Soda Tiles
+"
 horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/GridContainer"]

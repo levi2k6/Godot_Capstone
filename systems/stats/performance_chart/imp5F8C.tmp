@@ -1,0 +1,337 @@
+[gd_scene load_steps=19 format=3 uid="uid://cd6dhh668lla3"]
+
+[ext_resource type="Script" path="res://systems/stats/performance_chart/improvement_chart.gd" id="1_rbibm"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/Game_Description.gd" id="2_eegsv"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_t3lyo"]
+[ext_resource type="Texture2D" uid="uid://qfhesm8otkv" path="res://assets/improvement_chart/all_icon.png" id="3_r0pfq"]
+[ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="4_xs62s"]
+[ext_resource type="Texture2D" uid="uid://pv7uygs23pg0" path="res://assets/improvement_chart/visible_icon.png" id="5_0yicj"]
+[ext_resource type="Texture2D" uid="uid://cwfpgvecgmp1r" path="res://assets/improvement_chart/normal_icon.png" id="6_kpnus"]
+[ext_resource type="Texture2D" uid="uid://dyouqupibm1yx" path="res://assets/improvement_chart/hard_icon.png" id="7_6mgoc"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/up_drawer.gd" id="8_6qkfm"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/right_drawer2.gd" id="9_1b1cl"]
+[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="10_8d2ku"]
+[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="11_7up4d"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/drawer2.gd" id="12_61dj2"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/Interpretation.gd" id="12_m4awi"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="13_ceqha"]
+[ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="14_cou7a"]
+[ext_resource type="FontFile" uid="uid://bjqtxj2hjlg82" path="res://assets/fonts/MinecraftItalic-R8Mo.otf" id="15_a6bcd"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="16_6okkp"]
+
+[node name="ImprovementChart" type="Node2D"]
+script = ExtResource("1_rbibm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0, 0.352941, 0.796078, 1)
+
+[node name="Game_Description" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 211.0
+offset_top = 61.0
+offset_right = 524.0
+offset_bottom = 174.0
+script = ExtResource("2_eegsv")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Control/Game_Description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_ceqha")
+text = "A memory game where "
+autowrap_mode = 3
+clip_text = true
+
+[node name="Games" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_bottom = 40.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="SodaTiles" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("2_t3lyo")
+toggle_mode = true
+text = "Soda Tiles"
+
+[node name="Digit Hack" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("2_t3lyo")
+toggle_mode = true
+text = "Digit Hack
+"
+
+[node name="Meteor Rush" type="Button" parent="Control/Games"]
+layout_mode = 2
+theme = ExtResource("2_t3lyo")
+toggle_mode = true
+text = "Meteor Rush"
+
+[node name="Difficulty_Filter" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 114.0
+offset_right = 178.0
+offset_bottom = 235.0
+theme = ExtResource("2_t3lyo")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="AllContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/AllContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_r0pfq")
+expand_mode = 1
+
+[node name="All_Label" type="Label" parent="Control/Difficulty_Filter/AllContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "All
+"
+
+[node name="All_Visible" type="Button" parent="Control/Difficulty_Filter/AllContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_xs62s")
+
+[node name="Visible_Icon1" type="Sprite2D" parent="Control/Difficulty_Filter/AllContainer/All_Visible"]
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0yicj")
+hframes = 2
+
+[node name="NormalContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/NormalContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_kpnus")
+expand_mode = 1
+
+[node name="Normal_Label" type="Label" parent="Control/Difficulty_Filter/NormalContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Normal
+"
+
+[node name="Normal_Visible" type="Button" parent="Control/Difficulty_Filter/NormalContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_xs62s")
+
+[node name="Visible_Icon2" type="Sprite2D" parent="Control/Difficulty_Filter/NormalContainer/Normal_Visible"]
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0yicj")
+hframes = 2
+frame = 1
+
+[node name="HardContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/HardContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_6mgoc")
+expand_mode = 1
+
+[node name="Hard_Label" type="Label" parent="Control/Difficulty_Filter/HardContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Hard
+"
+
+[node name="Hard_Visible" type="Button" parent="Control/Difficulty_Filter/HardContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_xs62s")
+
+[node name="Visible_Icon3" type="Sprite2D" parent="Control/Difficulty_Filter/HardContainer/Hard_Visible"]
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0yicj")
+hframes = 2
+frame = 1
+
+[node name="Zoom" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -327.0
+offset_top = 198.0
+offset_right = -243.0
+offset_bottom = 238.0
+grow_horizontal = 0
+theme = ExtResource("2_t3lyo")
+metadata/_edit_group_ = true
+
+[node name="ZoomIn" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-
+"
+
+[node name="ZoomOut" type="Button" parent="Control/Zoom"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -225.0
+offset_right = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 3
+
+[node name="Panel" type="Panel" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Line2D_All" type="Line2D" parent="Control/ScrollContainer/Panel"]
+points = PackedVector2Array(0, 450)
+width = 1.5
+default_color = Color(0.286507, 0.888196, 0.116652, 1)
+
+[node name="Line2D_Normal" type="Line2D" parent="Control/ScrollContainer/Panel"]
+points = PackedVector2Array(0, 450)
+width = 1.8
+default_color = Color(1, 0.694118, 0.34902, 1)
+
+[node name="Line2D_Hard" type="Line2D" parent="Control/ScrollContainer/Panel"]
+points = PackedVector2Array(0, 450)
+width = 1.5
+default_color = Color(0.811765, 0.156863, 0.156863, 1)
+
+[node name="Points_All" type="Control" parent="Control/ScrollContainer/Panel"]
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="Points_Normal" type="Control" parent="Control/ScrollContainer/Panel"]
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="Points_Hard" type="Control" parent="Control/ScrollContainer/Panel"]
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="UpScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_top = 255.0
+offset_right = 45.0
+offset_bottom = 705.0
+horizontal_scroll_mode = 3
+
+[node name="UpNumbers" type="Control" parent="Control/UpScrollContainer"]
+custom_minimum_size = Vector2(45, 450)
+layout_mode = 2
+
+[node name="UpDrawer" type="Node2D" parent="Control/UpScrollContainer"]
+script = ExtResource("8_6qkfm")
+
+[node name="RightScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 705.0
+offset_right = 495.0
+offset_bottom = 750.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="RightNumbers" type="Control" parent="Control/RightScrollContainer"]
+custom_minimum_size = Vector2(450, 45)
+layout_mode = 2
+
+[node name="RightDrawer" type="Node2D" parent="Control/RightScrollContainer"]
+script = ExtResource("9_1b1cl")
+
+[node name="Icon" type="Sprite2D" parent="Control/RightScrollContainer"]
+visible = false
+position = Vector2(-45, -705)
+scale = Vector2(0.515625, 0.539063)
+texture = ExtResource("10_8d2ku")
+
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("11_7up4d")]
+layout_mode = 0
+
+[node name="Icon2" type="Sprite2D" parent="Control"]
+visible = false
+scale = Vector2(0.515625, 0.539063)
+texture = ExtResource("10_8d2ku")
+
+[node name="Interpretation" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 753.0
+offset_right = 494.0
+offset_bottom = 948.0
+theme = ExtResource("2_t3lyo")
+script = ExtResource("12_m4awi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Interpretation"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 430.0
+offset_bottom = 209.0
+theme_override_fonts/normal_font = ExtResource("13_ceqha")
+theme_override_fonts/bold_font = ExtResource("14_cou7a")
+theme_override_fonts/italics_font = ExtResource("15_a6bcd")
+theme_override_fonts/bold_italics_font = ExtResource("16_6okkp")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+fit_content = true
+
+[node name="Origin" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_8d2ku")
+
+[node name="drawer" type="Node2D" parent="."]
+script = ExtResource("12_61dj2")
+
+[connection signal="button_down" from="Control/Games/SodaTiles" to="." method="_on_sequence_mix_button_down"]
+[connection signal="button_down" from="Control/Games/Digit Hack" to="." method="_on_digit_hack_button_down"]
+[connection signal="button_down" from="Control/Games/Meteor Rush" to="." method="_on_meteor_rush_button_down"]
+[connection signal="button_down" from="Control/Difficulty_Filter/AllContainer/All_Visible" to="." method="_on_all_visible_button_down"]
+[connection signal="button_down" from="Control/Difficulty_Filter/NormalContainer/Normal_Visible" to="." method="_on_normal_visible_button_down"]
+[connection signal="button_down" from="Control/Difficulty_Filter/HardContainer/Hard_Visible" to="." method="_on_hard_visible_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
+[connection signal="button_down" from="Control/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
+[connection signal="scroll_started" from="Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]

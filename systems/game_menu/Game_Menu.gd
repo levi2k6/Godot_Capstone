@@ -8,7 +8,6 @@ extends Node2D
 @onready var animator_buttons = $Control/Buttons/Animator_Buttons;
 
 
-
 @onready var buttons = $Control/Buttons;
 
 func _ready():

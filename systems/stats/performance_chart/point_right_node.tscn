@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tmnfr8wgm2v"]
 
-[ext_resource type="Script" path="res://systems/stats/improvement_chart/point_up_node.gd" id="1_dlmve"]
+[ext_resource type="Script" path="res://systems/stats/performance_chart/point_up_node.gd" id="1_dlmve"]
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="2_jsxq2"]
 
 [node name="PointNode" type="Node2D"]

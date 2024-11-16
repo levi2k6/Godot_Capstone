@@ -26,7 +26,7 @@ func initialize_game_data(datas: Dictionary):
 	progress_bar.modulate = datas.color;
 	number.text =  "%s%%" %progress_bar.value;
 	number_position();
-	session.text = "Session: " + str(datas.count);
+	session.text = "Games Played: " + str(datas.count);
 	
 	#for game in parent.games_library:
 		#if label.text == game.name:

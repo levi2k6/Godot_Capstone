@@ -24,10 +24,22 @@ extends Node2D
 @onready var visible_icon_3 = $Control/Difficulty_Filter/HardContainer/Hard_Visible/Visible_Icon3;
 @onready var line_2d_hard = $Control/ScrollContainer/Panel/Line2D_Hard;
 
+@onready var soda_tiles = $Control/Games/SodaTiles
+@onready var digit_hack = $"Control/Games/Digit Hack"
+@onready var meteor_rush = $"Control/Games/Meteor Rush"
+
+
 var scroll_moving = false;
 
+@onready var zoom_in = $Control/Zoom/ZoomIn
+@onready var zoom_out = $Control/Zoom/ZoomOut
+
+
+
 func _ready():
-	print("look here" , get_tree().root.get_children());
+	zoom_in.disabled = true;
+	zoom_out.disabled = true;
+	#print("look here" , get_tree().root.get_children());
 	normal_hard_disable(true);
 	#visible_icon_2.frame = 1;
 	#visible_icon_3.frame = 1;
@@ -37,12 +49,14 @@ func _process(delta):
 	if right_scroll_container.scroll_horizontal != scroll_container.scroll_horizontal:
 		right_scroll_container.scroll_horizontal = scroll_container.scroll_horizontal; 
 
+
 func _on_zoom_in_button_down():
 	if panel.custom_minimum_size.x != 450:
 		panel.custom_minimum_size.x -= 50;
 		right_numbers.custom_minimum_size.x = panel.custom_minimum_size.x;
 		drawer.create_origin();
 		right_drawer.create_origin();
+
 	pass # Replace with function body.
 
 
@@ -70,6 +84,7 @@ func _on_sequence_mix_button_down():
 	drawer.create_origin();
 	right_drawer.create_origin();
 	up_drawer.create_origin();
+	button_pressed_state();
 	pass # Replace with function body.
 
 func _on_digit_hack_button_down():
@@ -80,6 +95,7 @@ func _on_digit_hack_button_down():
 	drawer.create_origin();
 	right_drawer.create_origin();
 	up_drawer.create_origin();
+	button_pressed_state();
 	pass # Replace with function body.
 
 func _on_meteor_rush_button_down():
@@ -90,8 +106,14 @@ func _on_meteor_rush_button_down():
 	drawer.create_origin();
 	right_drawer.create_origin();
 	up_drawer.create_origin();
+	button_pressed_state();
 	pass # Replace with function body.
 
+
+func button_pressed_state():
+	soda_tiles.button_pressed = false;
+	digit_hack.button_pressed = false;
+	meteor_rush.button_pressed = false;
 
 
 func _on_scroll_container_scroll_started():

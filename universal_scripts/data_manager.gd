@@ -41,6 +41,7 @@ func _update_today_database():
 	
 	if _get_today_database().size() == 0:
 		Singleton.database.insert_row("date", {"today": today})
+		_update_milestone_total_days_played();
 		#print(today)
 		#print(_get_today_database()[0].today)
 	elif today_or_old[0].today != today:

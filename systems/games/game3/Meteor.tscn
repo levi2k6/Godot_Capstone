@@ -11,10 +11,10 @@ size = Vector2(128, 128)
 script = ExtResource("1_21gmt")
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -24.0
-offset_bottom = -24.0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -27.0
+offset_bottom = -27.0
 scale = Vector2(3.19609, 3.20119)
 
 [node name="Fire_Particle" type="CPUParticles2D" parent="."]
@@ -52,6 +52,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_bo48d")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_p7qcy")

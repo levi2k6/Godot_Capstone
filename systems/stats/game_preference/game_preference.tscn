@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://buvmdr2wq5ovx"]
+[gd_scene load_steps=6 format=3 uid="uid://buvmdr2wq5ovx"]
 
 [ext_resource type="Script" path="res://systems/stats/game_preference/game_preference.gd" id="1_jnx5u"]
 [ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_4cvqo"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_068v1"]
+[ext_resource type="Theme" uid="uid://csj11qg66i8t2" path="res://assets/themes/game_preference_theme.tres" id="3_jqfja"]
+[ext_resource type="Texture2D" uid="uid://qegaifqc484q" path="res://assets/game_preference/info.png" id="4_rm6r1"]
 
 [node name="GamePreference" type="Node2D"]
 script = ExtResource("1_jnx5u")
@@ -39,10 +41,12 @@ offset_bottom = 83.0
 
 [node name="Button" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
 text = "Highest To Lowest"
 
 [node name="Button2" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
 text = "Lowest To Highest"
 
 [node name="Info_Visible" type="Button" parent="Control"]
@@ -51,6 +55,11 @@ offset_left = 176.0
 offset_top = 99.0
 offset_right = 208.0
 offset_bottom = 131.0
+theme = ExtResource("3_jqfja")
+
+[node name="Info" type="Sprite2D" parent="Control/Info_Visible"]
+position = Vector2(16, 16)
+texture = ExtResource("4_rm6r1")
 
 [node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("2_4cvqo")]
 layout_mode = 0

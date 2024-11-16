@@ -1,6 +1,6 @@
 extends Node2D
 
-const POINT_UP_NODE = preload("res://systems/stats/improvement_chart/point_up_node.tscn")
+const POINT_UP_NODE = preload("res://systems/stats/performance_chart/point_up_node.tscn")
 @onready var up_numbers = $"../UpNumbers"
 @onready var icon_2 = $"../../Icon2"
 

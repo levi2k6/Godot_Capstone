@@ -275,7 +275,7 @@ text = "Close"
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/Buy_Modal"]
 z_index = 1
-position = Vector2(171, 77)
+position = Vector2(171, 105)
 scale = Vector2(2, 2)
 
 [connection signal="button_up" from="Control/Buy_Modal/Buy" to="Control/Buy_Modal" method="_on_button_button_up"]

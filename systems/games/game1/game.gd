@@ -59,10 +59,10 @@ func game_animation():
 	for tile_name in pattern:
 		for tile in tiles.get_children():
 			if tile.name == tile_name:
-				tile.modulate = "ff1622";
+				tile.change_red();
 				$Timer.start(0.3);
 				await $Timer.timeout;
-				tile.modulate = Color(1,1,1);
+				tile.change_normal();
 				$Timer.start(0.3);
 				await $Timer.timeout;
 				continue;
@@ -79,9 +79,6 @@ func lose():
 	disable_tiles();
 	print("WRONG!");
 	await animator.wrong();
-	$Game_Intro.visible = true;
-	$Game_Intro.start = false;
-	$Game_Intro.change();
 	reward_system();
 	DataManager._insert_game1_session(level, difficulty);
 	level = 1;

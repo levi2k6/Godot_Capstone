@@ -1,12 +1,13 @@
 extends Node2D
-const POINT_NODE = preload("res://systems/stats/improvement_chart/point_node.tscn")
+const POINT_NODE = preload("res://systems/stats/performance_chart/point_node.tscn")
 @onready var panel = $"../Control/ScrollContainer/Panel";
 @onready var points_all = $"../Control/ScrollContainer/Panel/Points_All";
 @onready var points_normal = $"../Control/ScrollContainer/Panel/Points_Normal";
 @onready var points_hard = $"../Control/ScrollContainer/Panel/Points_Hard";
-@onready var zoom_out = $"../Control/Zoom/ZoomOut"
 
-
+@onready var difficulty_number = $"../Control/Difficulty_Number"
+@onready var game_description = $"../Control/Game_Description"
+@onready var interpretation = $"../Control/Interpretation"
 
 @onready var line_2d_all = $"../Control/ScrollContainer/Panel/Line2D_All";
 @onready var line_2d_normal = $"../Control/ScrollContainer/Panel/Line2D_Normal";
@@ -98,12 +99,24 @@ func show_game_stats_dynamic():
 		return;
 	
 	
+	difficulty_number.set_text(session_datas_all.size(), "all");
+	difficulty_number.set_text(session_datas_normal.size(), "normal");
+	difficulty_number.set_text(session_datas_hard.size(), "hard");
+	game_description.show_description();
+	interpretation.interpret();
+	
 	set_length_max_size(session_datas_all, range);
 	
 	await range_check(session_datas_all, highest_level, range, "all");
 	await range_check(session_datas_normal, highest_level, range, "normal");
 	await range_check(session_datas_hard, highest_level, range, "hard");
 
+
+
+
+
+@onready var zoom_out = $"../Control/Zoom/ZoomOut"
+@onready var zoom_in = $"../Control/Zoom/ZoomIn"
 
 func set_length_max_size(session_datas, range):
 	var range_multiple = 0;
@@ -121,6 +134,10 @@ func set_length_max_size(session_datas, range):
 		zoom_out.disabled = true;
 	else:
 		zoom_out.disabled = false;
+	if panel.custom_minimum_size.x == 450:
+		zoom_in.disabled = true;
+	else:
+		zoom_in.disabled = false;
 
 func length_check():
 	var length = int(panel.custom_minimum_size.x);
@@ -145,7 +162,6 @@ func range_check(session_datas, highest_level, range, type):
 	
 	
 	var b = 0;
-	print("here" , type);
 	if type == "all":
 		range_times = 0;
 		for i in range(1, range+1):
@@ -157,7 +173,6 @@ func range_check(session_datas, highest_level, range, type):
 				return;
 	
 	if session_datas.size() <= range || session_datas.size() > range:
-		print("type " , range_times);
 		for data in session_datas:
 			b+=1;
 			renderer(data, highest_level, range_times, type, b); 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yww82ssboqhd"]
+[gd_scene load_steps=7 format=3 uid="uid://yww82ssboqhd"]
 
 [ext_resource type="Script" path="res://systems/stats/game_preference/game_stats_bar.gd" id="1_d04no"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_ptvxh"]
 [ext_resource type="Texture2D" uid="uid://cdvql8jd8ff2f" path="res://assets/games/game1.png" id="2_0qivt"]
 [ext_resource type="Theme" uid="uid://csj11qg66i8t2" path="res://assets/themes/game_preference_theme.tres" id="3_fegvm"]
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="4_wbmnn"]
+[ext_resource type="Texture2D" uid="uid://qegaifqc484q" path="res://assets/game_preference/info.png" id="5_r8ery"]
 
 [node name="GameStatsBar" type="HBoxContainer"]
 offset_right = 559.0
@@ -42,7 +43,12 @@ size_flags_vertical = 6
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("3_fegvm")
 theme_override_font_sizes/font_size = 25
+
+[node name="Info" type="Sprite2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/Button"]
+position = Vector2(16, 16)
+texture = ExtResource("5_r8ery")
 
 [node name="Type" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -52,7 +58,7 @@ text = "Type: "
 [node name="Session" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "Game Session: "
+text = "Games Played: "
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 modulate = Color(0.0980392, 0.752941, 0.164706, 1)

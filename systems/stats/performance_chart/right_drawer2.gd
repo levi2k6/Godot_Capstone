@@ -1,5 +1,5 @@
 extends Node2D
-const POINT_RIGHT_NODE = preload("res://systems/stats/improvement_chart/point_right_node.tscn")
+const POINT_RIGHT_NODE = preload("res://systems/stats/performance_chart/point_right_node.tscn")
 @onready var drawer = $"../../../drawer";
 @onready var right_numbers = $"../RightNumbers";
 @onready var icon = $"../Icon";
