@@ -187,10 +187,12 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="Panel" parent="Control/Picker/ScrollContainer"]
+[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
 custom_minimum_size = Vector2(452, 500)
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("10_hjout")
+color = Color(0, 0.254902, 0.560784, 1)
 
 [node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0

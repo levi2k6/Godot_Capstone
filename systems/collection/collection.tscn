@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm6vbtrqbqx7d"]
+[gd_scene load_steps=12 format=3 uid="uid://bm6vbtrqbqx7d"]
 
 [ext_resource type="Script" path="res://systems/collection/collection.gd" id="1_0txvs"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="1_lwmpp"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://systems/collection/show_item_collection.gd" id="3_qopba"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="4_vg3vp"]
 [ext_resource type="Texture2D" uid="uid://dm8wxesvh5t8p" path="res://assets/customize/icons.png" id="6_wie7m"]
-[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="7_gyej6"]
 [ext_resource type="Theme" uid="uid://dent1p17y64cs" path="res://assets/themes/customize_theme.tres" id="8_hh76e"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="9_7skf4"]
 [ext_resource type="Texture2D" uid="uid://dxm7l6a13fcxw" path="res://assets/customize/shadow.png" id="11_4biyp"]
@@ -119,10 +118,11 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="Panel" parent="Control/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(452, 500)
+[node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
+custom_minimum_size = Vector2(451, 500)
 layout_mode = 2
-theme = ExtResource("7_gyej6")
+mouse_filter = 2
+color = Color(0, 0.254902, 0.560784, 1)
 
 [node name="Body_Items" type="GridContainer" parent="Control/Picker/ScrollContainer/ColorRect"]
 layout_mode = 0

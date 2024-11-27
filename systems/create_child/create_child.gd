@@ -44,21 +44,11 @@ func _on_button_button_up():
 	pass # Replace with function body.
 
 
-func _on_fname_text_changed():
-	
-	var string_size = fname.text.length();
-	#print(string_size);
-	if string_size > 20:
-		var new_text = fname.text.substr(0, string_size - 1);
-		fname.text = new_text;
-	
-	pass # Replace with function body.
+func _input(event):
+	if fname.has_focus() || lname.has_focus():
+		if event is InputEventKey and event.is_pressed():
+			if event.keycode == KEY_ENTER:
+				get_viewport().set_input_as_handled();
 
-
-func _on_lname_text_changed():
-	var string_size = lname.text.length();
-	print(string_size);
-	if string_size > 20:
-		var new_text = lname.text.substr(0, string_size - 1);
-		lname.text = new_text;
-	pass # Replace with function body.
+	
+	

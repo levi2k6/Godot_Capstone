@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(128, 128)
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 theme = ExtResource("1_343x6")
 script = ExtResource("1_ge6m4")
 

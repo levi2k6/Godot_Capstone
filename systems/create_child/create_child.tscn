@@ -34,9 +34,9 @@ anchor_top = 0.227
 anchor_right = 0.965
 anchor_bottom = 0.517
 offset_left = 0.1
-offset_top = 0.0799866
-offset_right = -0.100037
-offset_bottom = -0.320007
+offset_top = 0.0800018
+offset_right = -0.0999756
+offset_bottom = 34.68
 grow_horizontal = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
@@ -54,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
@@ -106,6 +106,4 @@ vertical_alignment = 1
 
 [node name="Transition_Layer" parent="." instance=ExtResource("5_av2pa")]
 
-[connection signal="text_changed" from="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1/Fname" to="." method="_on_fname_text_changed"]
-[connection signal="text_changed" from="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Lname" to="." method="_on_lname_text_changed"]
 [connection signal="button_up" from="Control/Panel/VBoxContainer/Button" to="." method="_on_button_button_up"]
