@@ -1,30 +1,19 @@
 extends Node2D
 
-
-var center = Vector2(50, 50);
-var right_end = Vector2(500, 50);
-
-var right_length = center.x - right_end.x;
-var right_divide = abs(right_length) / 3;
-var point_position_x = center.x + (right_divide * 0);
-
+@onready var icon = $Icon
+@onready var icon_2 = $Icon2
 
 func _ready():
-	
-	print(right_end);
-	print(right_length);
-	print(right_divide);
-	print(point_position_x);
-	
-	
-	pass
+	icon1_move()  # Linear motion (no easing)
+	icon2_move()  # Ease-in motion
 
+func icon1_move():
+	var tween = get_tree().create_tween()
+	# Default TRANS_LINEAR and EASE_IN_OUT ensures linear motion
+	tween.tween_property(icon, "position", Vector2(500, icon.position.y), 1)
 
-
-func _draw():
-	draw_line(center, right_end, Color(1,1,1));
-	draw_circle(Vector2(point_position_x, 50), 10, Color(1,1,1));
-
-
-
-
+func icon2_move():
+	var tween = get_tree().create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)    # Smooth easing transition
+	tween.set_ease(Tween.EASE_IN)        # Apply ease-in for smoother start
+	tween.tween_property(icon_2, "position", Vector2(500, icon_2.position.y), 1)

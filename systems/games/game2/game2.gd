@@ -1,8 +1,13 @@
 extends Node2D
 @onready var pet = $Pet;
-@onready var money_count = $Game/Info/Money_Count
+@onready var money_count = $Game/Info/Money_Count;
 @onready var hunger_bar = $Game/Info/Hunger/Hunger_Bar;
+@onready var transition_layer = $Transition_Position/Transition_Layer;
 
+
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	_connections();

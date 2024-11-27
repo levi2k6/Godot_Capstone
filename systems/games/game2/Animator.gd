@@ -46,7 +46,7 @@ func reset():
 	play("second_monitor_off");
 	
 	game_intro.start = false;
-	game_intro.change();
+	game_intro.display_highest_level();
 
 
 func intro():

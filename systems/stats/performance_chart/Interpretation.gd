@@ -9,7 +9,6 @@ func _ready():
 	if child.size() == 0:
 		return;
 	
-	#interpret();
 
 func interpret():
 	var session_datas_all = [];
@@ -32,6 +31,7 @@ func interpret():
 		session_datas_normal = DataManager._get_game_sessions("timing", "normal");
 		session_datas_hard = DataManager._get_game_sessions("timing" , "hard");
 		highest_level = DataManager._get_game_dynamic("timing_game")[0].highest_level;
+	
 	
 	var normal_count = session_datas_normal.size();
 	var hard_count = session_datas_hard.size();
@@ -59,25 +59,10 @@ func interpret():
 	
 	var interpretation_text = "";
 	
-	#if normal_count < 10 && hard_count < 10:
-		#var text = "[color=#ffb159]Normal[/color] and [color=#cf2828]hard[/color] difficulty requires 10 or more game sessions to be interpreted.";
-		#interpretation_text = "All Median: [color=#49e21e]%s[/color] \nNormal Median: [color=#ffb159]%s[/color] \nHard Median: [color=#cf2828]%s[/color] \n%% Between Hard And Normal: %s%%  \n\n[b]Interpretation[/b]: %s"%[all_median, normal_median, hard_median ,percent_between_median, text];
-		#rich_text_label.text = interpretation_text;
-		#return;
-	#elif normal_count < 10:
-		#var text = "[color=#ffb159]Normal[/color] difficulty requires 10 or more game sessions to be interpreted.";
-		#interpretation_text = "All Median: [color=#49e21e]%s[/color] \nNormal Median: [color=#ffb159]%s[/color] \nHard Median: [color=#cf2828]%s[/color] \n%% Between Hard And Normal: %s%%  \n\n[b]Interpretation[/b]: %s"%[all_median, normal_median, hard_median ,percent_between_median, text];
-		#rich_text_label.text = interpretation_text;
-		#return;
-	#elif hard_count < 10:
-		#var text = "[color=#cf2828]Hard[/color] difficulty requires 10 or more game sessions to be interpreted.";
-		#interpretation_text = "All Median: [color=#49e21e]%s[/color] \nNormal Median: [color=#ffb159]%s[/color] \nHard Median: [color=#cf2828]%s[/color] \n%% Between Hard And Normal: %s%%  \n\n[b]Interpretation[/b]: %s"%[all_median, normal_median, hard_median ,percent_between_median, text];
-		#rich_text_label.text = interpretation_text;
-		#return;
-	
-	
 	if normal_count > hard_count:
-		if normal_median > hard_median:
+		if  hard_median == 0:
+			count_text = "Child only plays in [color=#ffb159]normal[/color] difficutly";
+		elif normal_median > hard_median:
 			if percent_between_count <= 5:
 				count_text = "Child slightly plays more and is ";
 			elif percent_between_median <= 15:
@@ -99,7 +84,9 @@ func interpret():
 			elif percent_between_median > 15:
 				count_text = "Child significantly plays more in [color=#ffb159]normal[/color] difficulty, but ";
 	elif normal_count < hard_count:
-		if normal_median < hard_median:
+		if normal_median == 0:
+			count_text = "Child only plays in the [color=#cf2828]hardest[/color] difficutly";
+		elif normal_median < hard_median:
 			if percent_between_count <= 5:
 				count_text = "Child slightly plays more and is ";
 			elif percent_between_median <= 15:
@@ -134,7 +121,9 @@ func interpret():
 
 
 	if normal_median > hard_median:
-		if percent_between_median <= 5:
+		if hard_count == 0:
+			median_text = ".";
+		elif percent_between_median <= 5:
 			median_text = "slightly more competent in [color=#ffb159]normal[/color] difficulty.";
 		elif percent_between_median <= 15:
 			median_text = "moderately more competent in [color=#ffb159]normal[/color] difficulty.";
@@ -143,7 +132,9 @@ func interpret():
 		elif percent_between_median > 50:
 			median_text = "highly more competent in [color=#ffb159]normal[/color] difficulty.";
 	elif normal_median < hard_median:
-		if percent_between_count <= 5:
+		if normal_count == 0:
+			median_text = ".";
+		elif percent_between_count <= 5:
 			median_text = "slightly more competent in the [color=#cf2828]hardest[/color] difficulty.";
 		elif percent_between_count <= 15:
 			median_text = "moderately more competent in the [color=#cf2828]hardest[/color] difficulty.";
@@ -169,9 +160,15 @@ func get_levels_median(datas):
 	
 	levels_arranged.sort();
 	
+	print("LOOKA TIM HERE: ", levels_arranged.size())
+	
+	if levels_arranged.size() == 0:
+		return 0;
+	
 	var amount = levels_arranged.size();
 	if levels_arranged.size() % 2 != 0:
 		return levels_arranged[amount/2];
+	
 	
 	var median_value = (levels_arranged[amount / 2 - 1] + levels_arranged[amount / 2]) / 2.0
 	return median_value;

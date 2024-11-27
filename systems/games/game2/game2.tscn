@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://biljrcgvvn0o3"]
+[gd_scene load_steps=55 format=3 uid="uid://biljrcgvvn0o3"]
 
 [ext_resource type="Script" path="res://systems/games/game2/game2.gd" id="1_uuvrj"]
 [ext_resource type="Script" path="res://systems/games/game2/Game_Intro.gd" id="2_602pu"]
@@ -16,11 +16,11 @@
 [ext_resource type="Animation" uid="uid://dvfgfxat0hsaa" path="res://assets/game2/animation/engine_on.res" id="5_lwde0"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="5_n7b5j"]
 [ext_resource type="Texture2D" uid="uid://cystbkusd2fhh" path="res://assets/game2/backgrounds/casing.png" id="5_yx76f"]
-[ext_resource type="Texture2D" uid="uid://b7xrmohnfja46" path="res://assets/game2/props/pc_engine.png" id="7_cojil"]
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="9_k7eub"]
 [ext_resource type="Texture2D" uid="uid://cciu0pn372gsu" path="res://assets/game2/screens/title_art.png" id="9_mkn01"]
 [ext_resource type="Texture2D" uid="uid://bfn5cm655ouc" path="res://assets/game2/screens/time_bar.png" id="11_xla4x"]
 [ext_resource type="Animation" uid="uid://df6rwdyyxhhdy" path="res://assets/game2/animation/engine_off.res" id="13_7t0vf"]
+[ext_resource type="Texture2D" uid="uid://dxh43im08h2id" path="res://assets/game2/backgrounds/pc_engine.png" id="14_px73p"]
 [ext_resource type="Texture2D" uid="uid://c5rcf6vv38vpo" path="res://assets/game2/buttons/keyenter.png" id="16_jvnjf"]
 [ext_resource type="Texture2D" uid="uid://bgfg8rg0dsem5" path="res://assets/game2/buttons/key9.png" id="16_la8l5"]
 [ext_resource type="Texture2D" uid="uid://i8kfqxfdmlgc" path="res://assets/game2/buttons/keyback.png" id="17_a86de"]
@@ -35,8 +35,12 @@
 [ext_resource type="Texture2D" uid="uid://cdxem614eely3" path="res://assets/game2/buttons/key1-Sheet.png" id="26_fopi2"]
 [ext_resource type="Script" path="res://systems/games/game2/Key.gd" id="27_djfio"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="31_1c2kp"]
+[ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="33_loug4"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="33_nng18"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="34_c5eje"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="35_d5rpr"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="39_3nuh5"]
+[ext_resource type="Script" path="res://systems/games/game2/transition_position.gd" id="39_bs1fk"]
 
 [sub_resource type="Animation" id="Animation_jhloa"]
 length = 0.001
@@ -186,7 +190,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(150, 110)]
+"values": [Vector2(150, 200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ehk7o"]
@@ -252,8 +256,9 @@ motion_scale = Vector2(1, 0.5)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -184.0
 offset_right = 540.0
-offset_bottom = 2400.0
+offset_bottom = 2616.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_2px2u")
@@ -268,9 +273,9 @@ offset_bottom = 2400.0
 modulate = Color(0.709804, 1, 1, 1)
 anchors_preset = 0
 offset_left = 24.0
-offset_top = 256.0
+offset_top = 264.0
 offset_right = 516.0
-offset_bottom = 484.0
+offset_bottom = 492.0
 
 [node name="ScreenFirstMonitor-sheet" type="Sprite2D" parent="Foreground/Monitor1"]
 position = Vector2(246, 114)
@@ -371,9 +376,9 @@ texture_progress = ExtResource("11_xla4x")
 modulate = Color(0.709804, 1, 1, 1)
 anchors_preset = 0
 offset_left = 40.0
-offset_top = 1708.0
+offset_top = 1716.0
 offset_right = 512.0
-offset_bottom = 1840.0
+offset_bottom = 1848.0
 
 [node name="ScreenSecond-sheet" type="Sprite2D" parent="Foreground/Monitor2"]
 position = Vector2(236, 66)
@@ -405,15 +410,16 @@ autowrap_mode = 3
 modulate = Color(0.501961, 0.501961, 0.501961, 1)
 custom_minimum_size = Vector2(540, 2400)
 layout_mode = 0
+offset_top = -192.0
 offset_right = 540.0
-offset_bottom = 2400.0
+offset_bottom = 2608.0
 mouse_filter = 2
 texture = ExtResource("5_yx76f")
 
 [node name="Engine" type="Sprite2D" parent="Foreground/Casing"]
-position = Vector2(150, 110)
+position = Vector2(150, 200)
 scale = Vector2(4, 4)
-texture = ExtResource("7_cojil")
+texture = ExtResource("14_px73p")
 
 [node name="AnimatorEngine" type="AnimationPlayer" parent="Foreground/Casing/Engine"]
 root_node = NodePath("../../../..")
@@ -424,9 +430,9 @@ libraries = {
 [node name="Typer" type="Control" parent="Foreground/Casing"]
 anchors_preset = 0
 offset_left = 329.0
-offset_top = 1964.0
+offset_top = 2170.0
 offset_right = 369.0
-offset_bottom = 2004.0
+offset_bottom = 2210.0
 script = ExtResource("3_8tdfp")
 
 [node name="Enter" type="TextureButton" parent="Foreground/Casing/Typer"]
@@ -602,14 +608,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 220.0
-offset_bottom = -1788.0
+offset_top = 420.0
+offset_bottom = -1588.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_602pu")
 
-[node name="Back" type="Button" parent="Foreground/Casing/Game_Intro"]
+[node name="Games_Button" parent="Foreground/Casing/Game_Intro" instance=ExtResource("33_nng18")]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 287.0
@@ -617,7 +623,8 @@ offset_right = 178.0
 offset_bottom = 357.0
 theme = ExtResource("31_1c2kp")
 theme_override_font_sizes/font_size = 30
-text = "Back"
+text = "Back
+"
 
 [node name="Play" type="Button" parent="Foreground/Casing/Game_Intro"]
 layout_mode = 0
@@ -644,6 +651,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_k7eub")
+
+[node name="Highest_Level" type="Label" parent="Foreground"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.262
+anchor_top = 0.369
+anchor_right = 0.738
+anchor_bottom = 0.38
+offset_left = 0.019989
+offset_top = 75.9
+offset_right = -0.0200195
+offset_bottom = 76.4999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("33_loug4")
+theme_override_font_sizes/font_size = 26
+text = "Highest Level: 0"
 
 [node name="Electric" type="CPUParticles2D" parent="."]
 position = Vector2(408, 641)
@@ -678,9 +703,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -259.5
+offset_left = -260.0
 offset_top = 25.0
-offset_right = 181.5
+offset_right = 181.0
 offset_bottom = 119.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
@@ -719,6 +744,23 @@ position_smoothing_enabled = true
 [node name="Pet" parent="." instance=ExtResource("5_n7b5j")]
 visible = false
 
+[node name="Transition_Position" type="Node2D" parent="."]
+position = Vector2(270, 480)
+script = ExtResource("39_bs1fk")
+
+[node name="Transition_Layer" parent="Transition_Position" instance=ExtResource("39_3nuh5")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -693.0
+offset_right = 270.0
+offset_bottom = 693.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Normal" to="Foreground/Casing/Game_Intro" method="_on_normal_button_up"]
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Hard" to="Foreground/Casing/Game_Intro" method="_on_hard_button_up"]
 [connection signal="button_down" from="Foreground/Casing/Typer/Enter" to="Foreground/Casing/Typer/Enter" method="_on_button_down"]
@@ -745,5 +787,4 @@ visible = false
 [connection signal="button_up" from="Foreground/Casing/Typer/2" to="Foreground/Casing/Typer/2" method="_on_button_up"]
 [connection signal="button_down" from="Foreground/Casing/Typer/1" to="Foreground/Casing/Typer/1" method="_on_button_down"]
 [connection signal="button_up" from="Foreground/Casing/Typer/1" to="Foreground/Casing/Typer/1" method="_on_button_up"]
-[connection signal="button_up" from="Foreground/Casing/Game_Intro/Back" to="Foreground/Casing/Game_Intro" method="_on_back_button_up"]
 [connection signal="button_up" from="Foreground/Casing/Game_Intro/Play" to="Foreground/Casing/Game_Intro" method="_on_play_button_up"]

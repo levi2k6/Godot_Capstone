@@ -1,4 +1,8 @@
-extends Control
+extends Node2D
+@onready var transition_layer = $Transition_Layer
+
+func get_transition_layer():
+	return transition_layer;
 
 func _on_settings_button_pressed():
 	visible = true;
@@ -8,7 +12,8 @@ func _on_button_pressed():
 	visible = false;
 	pass # Replace with function body.
 
-func _on_stats_pressed():
-	get_tree().change_scene_to_file("res://systems/stats/stats.tscn");
+
+
+func _on_exit_button_up():
+	get_tree().quit();
 	pass # Replace with function body.
-		

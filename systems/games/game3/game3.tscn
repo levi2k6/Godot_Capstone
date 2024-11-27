@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtwuefjxhddi2"]
+[gd_scene load_steps=32 format=3 uid="uid://dtwuefjxhddi2"]
 
 [ext_resource type="Script" path="res://systems/games/game3/game3.gd" id="1_i7y8d"]
 [ext_resource type="Script" path="res://systems/games/game3/Game.gd" id="1_j4hsh"]
 [ext_resource type="Script" path="res://systems/games/game3/Animator.gd" id="2_eejww"]
-[ext_resource type="Texture2D" uid="uid://dhm0t8m24sd18" path="res://assets/game3/Sprite-0004.png" id="2_wgffq"]
+[ext_resource type="Texture2D" uid="uid://dhm0t8m24sd18" path="res://assets/game3/Space.png" id="2_wgffq"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="3_hlgud"]
 [ext_resource type="Script" path="res://systems/games/game3/Game_Intro.gd" id="3_xlt2l"]
 [ext_resource type="Texture2D" uid="uid://khdp2odhqh5u" path="res://assets/game3/stars-Sheet.png" id="4_4v6gl"]
@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://ir7ppp5wk550" path="res://assets/game3/title.png" id="7_blirx"]
 [ext_resource type="Texture2D" uid="uid://ow43etbp4gqk" path="res://assets/game3/moon.png" id="9_snxey"]
 [ext_resource type="Texture2D" uid="uid://s6gsslhn0wgx" path="res://assets/game3/ship_menu.png" id="10_0gj1o"]
-[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="10_7exri"]
+[ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="10_1b6su"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="10_ggkwj"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="14_hthx6"]
+[ext_resource type="Script" path="res://systems/games/game3/Info_Control.gd" id="14_peucc"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="15_rd76u"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="19_2wmt0"]
 
 [sub_resource type="Animation" id="Animation_657cm"]
 length = 0.001
@@ -56,7 +58,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector2(270, 1440), Vector2(270, 480)]
 }
@@ -197,6 +199,7 @@ script = ExtResource("2_eejww")
 motion_scale = Vector2(1, 0.5)
 
 [node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
+offset_top = -80.0
 offset_right = 540.0
 offset_bottom = 1920.0
 texture = ExtResource("2_wgffq")
@@ -215,12 +218,12 @@ libraries = {
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="Moon" type="Sprite2D" parent="Foreground"]
-position = Vector2(270, 1784)
+position = Vector2(270, 1851)
 scale = Vector2(4, 4)
 texture = ExtResource("9_snxey")
 
 [node name="Alien" type="Sprite2D" parent="Foreground"]
-position = Vector2(265, 1611)
+position = Vector2(265, 1655)
 scale = Vector2(4, 4)
 texture = ExtResource("5_fc5hf")
 hframes = 2
@@ -263,6 +266,7 @@ position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_ekadj")
 
 [node name="Debuger" type="VBoxContainer" parent="Game"]
+visible = false
 offset_left = 7.0
 offset_top = 140.0
 offset_right = 202.0
@@ -294,17 +298,37 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_xlt2l")
 
+[node name="Highest_Level" type="Label" parent="Control/Game_Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.262
+anchor_top = 0.369
+anchor_right = 0.738
+anchor_bottom = 0.38
+offset_left = 0.019989
+offset_top = -128.02
+offset_right = -0.0200195
+offset_bottom = -111.58
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_1b6su")
+theme_override_font_sizes/font_size = 26
+text = "Highest Level: 0"
+
 [node name="Label" type="Label" parent="Control/Game_Intro"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -43.5
-offset_top = 300.0
-offset_right = 43.5
-offset_bottom = 323.0
+anchors_preset = -1
+anchor_left = 0.463
+anchor_top = 0.221
+anchor_right = 0.537
+anchor_bottom = 0.252
+offset_left = -0.0200195
+offset_top = -0.160019
+offset_right = 0.019989
+offset_bottom = 0.0800018
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("10_7exri")
+theme_override_fonts/font = ExtResource("10_1b6su")
 theme_override_font_sizes/font_size = 30
 
 [node name="Ship_Intro" type="Node2D" parent="Control/Game_Intro"]
@@ -358,38 +382,44 @@ theme = ExtResource("10_ggkwj")
 text = "Hard
 "
 
-[node name="Main_Hub_Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer" instance=ExtResource("3_hlgud")]
+[node name="Games_Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer" instance=ExtResource("3_hlgud")]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme = ExtResource("10_ggkwj")
 text = "Back"
 
-[node name="Info" type="VBoxContainer" parent="Control"]
+[node name="Info_Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+mouse_filter = 2
+script = ExtResource("14_peucc")
+
+[node name="Info" type="VBoxContainer" parent="Info_Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -259.5
+anchors_preset = -1
+offset_left = 10.0
 offset_top = 25.0
-offset_right = 181.5
-offset_bottom = 103.0
+offset_right = 451.0
+offset_bottom = 119.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
 
-[node name="Hunger" type="HBoxContainer" parent="Control/Info"]
+[node name="Hunger" type="HBoxContainer" parent="Info_Control/Info"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="Control" parent="Control/Info/Hunger"]
+[node name="Control" type="Control" parent="Info_Control/Info/Hunger"]
 custom_minimum_size = Vector2(51, 33)
 layout_mode = 2
 
-[node name="HungerIcon" type="Sprite2D" parent="Control/Info/Hunger/Control"]
+[node name="HungerIcon" type="Sprite2D" parent="Info_Control/Info/Hunger/Control"]
 position = Vector2(25.5, 23.5)
 scale = Vector2(3, 3)
 texture = ExtResource("14_hthx6")
 
-[node name="Hunger_Bar" type="ProgressBar" parent="Control/Info/Hunger"]
+[node name="Hunger_Bar" type="ProgressBar" parent="Info_Control/Info/Hunger"]
 custom_minimum_size = Vector2(375, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -397,12 +427,21 @@ theme = ExtResource("15_rd76u")
 theme_override_font_sizes/font_size = 20
 value = 100.0
 
-[node name="Money_Count" parent="Control/Info" instance=ExtResource("4_gf8nj")]
+[node name="Money_Count" parent="Info_Control/Info" instance=ExtResource("4_gf8nj")]
 layout_mode = 2
+
+[node name="Transition_Layer" parent="Info_Control" instance=ExtResource("19_2wmt0")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(270, 1440)
-position_smoothing_enabled = true
 
 [node name="Pet" parent="." instance=ExtResource("6_3po1a")]
 visible = false

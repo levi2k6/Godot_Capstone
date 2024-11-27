@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cd6dhh668lla3"]
+[gd_scene load_steps=21 format=3 uid="uid://cd6dhh668lla3"]
 
 [ext_resource type="Script" path="res://systems/stats/performance_chart/improvement_chart.gd" id="1_rbibm"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_easxp"]
 [ext_resource type="Script" path="res://systems/stats/performance_chart/Game_Description.gd" id="2_eegsv"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_t3lyo"]
 [ext_resource type="Texture2D" uid="uid://qfhesm8otkv" path="res://assets/improvement_chart/all_icon.png" id="3_r0pfq"]
@@ -29,18 +30,25 @@ anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 size_flags_horizontal = 4
+script = ExtResource("2_easxp")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_right = 540.0
-offset_bottom = 960.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.352941, 0.796078, 1)
 
 [node name="Game_Description" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 211.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.681
+anchor_right = 0.681
+offset_left = -156.74
 offset_top = 61.0
-offset_right = 524.0
+offset_right = 156.26
 offset_bottom = 189.0
 script = ExtResource("2_eegsv")
 metadata/_edit_group_ = true
@@ -65,7 +73,7 @@ text = "..."
 
 [node name="Games" type="HBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -198.0
@@ -92,15 +100,22 @@ theme = ExtResource("2_t3lyo")
 toggle_mode = true
 text = "Meteor Rush"
 
-[node name="Difficulty_Number" type="VBoxContainer" parent="Control"]
+[node name="Difficulty_Info" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.223
+anchor_right = 0.223
+offset_left = -73.42
+offset_top = 125.0
+offset_right = 73.58
+offset_bottom = 233.0
+
+[node name="Difficulty_Number" type="VBoxContainer" parent="Control/Difficulty_Info"]
 layout_mode = 2
-offset_top = 119.0
-offset_right = 45.0
-offset_bottom = 221.0
 theme = ExtResource("2_t3lyo")
 script = ExtResource("8_7i0ib")
 
-[node name="AllCount" type="Label" parent="Control/Difficulty_Number"]
+[node name="AllCount" type="Label" parent="Control/Difficulty_Info/Difficulty_Number"]
 self_modulate = Color(0.286275, 0.886275, 0.117647, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -109,7 +124,7 @@ text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="NormalCount" type="Label" parent="Control/Difficulty_Number"]
+[node name="NormalCount" type="Label" parent="Control/Difficulty_Info/Difficulty_Number"]
 self_modulate = Color(1, 0.694118, 0.34902, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -118,7 +133,7 @@ text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HardCount" type="Label" parent="Control/Difficulty_Number"]
+[node name="HardCount" type="Label" parent="Control/Difficulty_Info/Difficulty_Number"]
 self_modulate = Color(0.811765, 0.156863, 0.156863, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -127,235 +142,250 @@ text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Difficulty_Filter" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 114.0
-offset_right = 178.0
-offset_bottom = 235.0
+[node name="Difficulty_Filter" type="VBoxContainer" parent="Control/Difficulty_Info"]
+layout_mode = 2
 theme = ExtResource("2_t3lyo")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
 layout_mode = 2
 
-[node name="AllContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+[node name="AllContainer" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/AllContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Info/Difficulty_Filter/AllContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_r0pfq")
 expand_mode = 1
 
-[node name="All_Label" type="Label" parent="Control/Difficulty_Filter/AllContainer"]
+[node name="All_Label" type="Label" parent="Control/Difficulty_Info/Difficulty_Filter/AllContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "All
 "
 
-[node name="All_Visible" type="Button" parent="Control/Difficulty_Filter/AllContainer"]
+[node name="All_Visible" type="Button" parent="Control/Difficulty_Info/Difficulty_Filter/AllContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("4_xs62s")
 
-[node name="Visible_Icon1" type="Sprite2D" parent="Control/Difficulty_Filter/AllContainer/All_Visible"]
+[node name="Visible_Icon1" type="Sprite2D" parent="Control/Difficulty_Info/Difficulty_Filter/AllContainer/All_Visible"]
 position = Vector2(16, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("5_0yicj")
 hframes = 2
 
-[node name="NormalContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+[node name="NormalContainer" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/NormalContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Info/Difficulty_Filter/NormalContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("6_kpnus")
 expand_mode = 1
 
-[node name="Normal_Label" type="Label" parent="Control/Difficulty_Filter/NormalContainer"]
+[node name="Normal_Label" type="Label" parent="Control/Difficulty_Info/Difficulty_Filter/NormalContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Normal
 "
 
-[node name="Normal_Visible" type="Button" parent="Control/Difficulty_Filter/NormalContainer"]
+[node name="Normal_Visible" type="Button" parent="Control/Difficulty_Info/Difficulty_Filter/NormalContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("4_xs62s")
 
-[node name="Visible_Icon2" type="Sprite2D" parent="Control/Difficulty_Filter/NormalContainer/Normal_Visible"]
+[node name="Visible_Icon2" type="Sprite2D" parent="Control/Difficulty_Info/Difficulty_Filter/NormalContainer/Normal_Visible"]
 position = Vector2(16, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("5_0yicj")
 hframes = 2
 frame = 1
 
-[node name="HardContainer" type="HBoxContainer" parent="Control/Difficulty_Filter"]
+[node name="HardContainer" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Filter/HardContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/Difficulty_Info/Difficulty_Filter/HardContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_6mgoc")
 expand_mode = 1
 
-[node name="Hard_Label" type="Label" parent="Control/Difficulty_Filter/HardContainer"]
+[node name="Hard_Label" type="Label" parent="Control/Difficulty_Info/Difficulty_Filter/HardContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Hard
 "
 
-[node name="Hard_Visible" type="Button" parent="Control/Difficulty_Filter/HardContainer"]
+[node name="Hard_Visible" type="Button" parent="Control/Difficulty_Info/Difficulty_Filter/HardContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("4_xs62s")
 
-[node name="Visible_Icon3" type="Sprite2D" parent="Control/Difficulty_Filter/HardContainer/Hard_Visible"]
+[node name="Visible_Icon3" type="Sprite2D" parent="Control/Difficulty_Info/Difficulty_Filter/HardContainer/Hard_Visible"]
 position = Vector2(16, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("5_0yicj")
 hframes = 2
 frame = 1
 
-[node name="Chart_Name" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 212.0
-offset_top = 215.0
-offset_right = 416.0
-offset_bottom = 240.0
+[node name="above_panel" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.694
+anchor_top = 0.231
+anchor_right = 0.694
+anchor_bottom = 0.231
+offset_left = -147.76
+offset_top = -24.76
+offset_right = 148.24
+offset_bottom = 24.24
+
+[node name="Chart_Name" type="Label" parent="Control/above_panel"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("14_cou7a")
 theme_override_font_sizes/font_size = 18
 text = "Performance Chart"
 
-[node name="Zoom" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
-offset_top = 197.0
-offset_right = -16.0
-offset_bottom = 246.0
-grow_horizontal = 0
+[node name="Zoom" type="HBoxContainer" parent="Control/above_panel"]
+layout_mode = 2
 theme = ExtResource("2_t3lyo")
 metadata/_edit_group_ = true
 
-[node name="ZoomIn" type="Button" parent="Control/Zoom"]
+[node name="ZoomIn" type="Button" parent="Control/above_panel/Zoom"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-
 "
 
-[node name="ZoomOut" type="Button" parent="Control/Zoom"]
+[node name="ZoomOut" type="Button" parent="Control/above_panel/Zoom"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "+"
 
-[node name="Levels" type="Label" parent="Control"]
-layout_mode = 2
-offset_left = 1.0
-offset_top = 705.0
-offset_right = 176.0
-offset_bottom = 728.0
-rotation = -1.5708
-theme_override_fonts/font = ExtResource("16_6okkp")
-text = "Levels >>>"
-
-[node name="Game Sessions" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 729.0
-offset_right = 176.0
-offset_bottom = 752.0
-theme_override_fonts/font = ExtResource("16_6okkp")
-text = "Game Sessions >>>"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+[node name="Stats_Chart" type="Control" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchor_left = 0.463
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.463
 anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -225.0
-offset_right = 225.0
-offset_bottom = 225.0
+offset_left = -249.52
+offset_top = -226.5
+offset_right = 249.48
+offset_bottom = 272.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Stats_Chart"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Stats_Chart/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="UpScrollContainer" type="ScrollContainer" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(45, 450)
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="UpNumbers" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/UpScrollContainer"]
+custom_minimum_size = Vector2(45, 450)
+layout_mode = 2
+
+[node name="UpDrawer" type="Node2D" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/UpScrollContainer"]
+script = ExtResource("8_6qkfm")
+
+[node name="StatsPanelContainer" type="ScrollContainer" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 2
 vertical_scroll_mode = 3
 
-[node name="Panel" type="Panel" parent="Control/ScrollContainer"]
+[node name="Panel" type="Panel" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer"]
 custom_minimum_size = Vector2(450, 450)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Line2D_All" type="Line2D" parent="Control/ScrollContainer/Panel"]
+[node name="Line2D_All" type="Line2D" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 points = PackedVector2Array(0, 450)
 width = 1.5
 default_color = Color(0.286507, 0.888196, 0.116652, 1)
 
-[node name="Line2D_Normal" type="Line2D" parent="Control/ScrollContainer/Panel"]
+[node name="Line2D_Normal" type="Line2D" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 points = PackedVector2Array(0, 450)
 width = 1.8
 default_color = Color(1, 0.694118, 0.34902, 1)
 
-[node name="Line2D_Hard" type="Line2D" parent="Control/ScrollContainer/Panel"]
+[node name="Line2D_Hard" type="Line2D" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 points = PackedVector2Array(0, 450)
 width = 1.5
 default_color = Color(0.811765, 0.156863, 0.156863, 1)
 
-[node name="Points_All" type="Control" parent="Control/ScrollContainer/Panel"]
+[node name="Points_All" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 anchors_preset = 0
-offset_right = 500.0
-offset_bottom = 500.0
+offset_right = 450.0
+offset_bottom = 450.0
 
-[node name="Points_Normal" type="Control" parent="Control/ScrollContainer/Panel"]
+[node name="Points_Normal" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 anchors_preset = 0
-offset_right = 500.0
-offset_bottom = 500.0
+offset_right = 450.0
+offset_bottom = 450.0
 
-[node name="Points_Hard" type="Control" parent="Control/ScrollContainer/Panel"]
+[node name="Points_Hard" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 anchors_preset = 0
-offset_right = 500.0
-offset_bottom = 500.0
+offset_right = 450.0
+offset_bottom = 450.0
 
-[node name="UpScrollContainer" type="ScrollContainer" parent="Control"]
-layout_mode = 0
-offset_top = 255.0
-offset_right = 45.0
-offset_bottom = 705.0
-horizontal_scroll_mode = 3
-
-[node name="UpNumbers" type="Control" parent="Control/UpScrollContainer"]
-custom_minimum_size = Vector2(45, 450)
+[node name="RightScrollContainer" type="ScrollContainer" parent="Control/Stats_Chart/VBoxContainer"]
+custom_minimum_size = Vector2(450, 45)
 layout_mode = 2
-
-[node name="UpDrawer" type="Node2D" parent="Control/UpScrollContainer"]
-script = ExtResource("8_6qkfm")
-
-[node name="RightScrollContainer" type="ScrollContainer" parent="Control"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 705.0
-offset_right = 495.0
-offset_bottom = 750.0
+size_flags_horizontal = 8
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="RightNumbers" type="Control" parent="Control/RightScrollContainer"]
+[node name="RightNumbers" type="Control" parent="Control/Stats_Chart/VBoxContainer/RightScrollContainer"]
 custom_minimum_size = Vector2(450, 45)
 layout_mode = 2
 
-[node name="RightDrawer" type="Node2D" parent="Control/RightScrollContainer"]
+[node name="RightDrawer" type="Node2D" parent="Control/Stats_Chart/VBoxContainer/RightScrollContainer"]
 script = ExtResource("9_1b1cl")
 
-[node name="Icon" type="Sprite2D" parent="Control/RightScrollContainer"]
+[node name="Icon" type="Sprite2D" parent="Control/Stats_Chart/VBoxContainer/RightScrollContainer"]
 visible = false
 position = Vector2(-45, -705)
 scale = Vector2(0.515625, 0.539063)
 texture = ExtResource("10_8d2ku")
+
+[node name="Levels" type="Label" parent="Control/Stats_Chart"]
+layout_mode = 2
+anchor_left = 0.116
+anchor_top = 0.412
+anchor_right = 0.116
+anchor_bottom = 0.412
+offset_left = -58.384
+offset_top = 48.912
+offset_right = 39.616
+offset_bottom = 65.912
+rotation = -1.5708
+theme_override_fonts/font = ExtResource("16_6okkp")
+text = "Levels >>>"
+
+[node name="Game Sessions" type="Label" parent="Control/Stats_Chart"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+anchor_left = 0.574
+anchor_top = 0.876
+anchor_right = 0.574
+anchor_bottom = 0.876
+offset_left = -84.926
+offset_top = 45.376
+offset_right = 85.074
+offset_bottom = 62.376
+theme_override_fonts/font = ExtResource("16_6okkp")
+text = "Game Sessions >>>"
 
 [node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("11_7up4d")]
 layout_mode = 0
@@ -366,11 +396,16 @@ scale = Vector2(0.515625, 0.539063)
 texture = ExtResource("10_8d2ku")
 
 [node name="Interpretation" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 753.0
-offset_right = 494.0
-offset_bottom = 948.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.886
+anchor_right = 0.5
+anchor_bottom = 0.886
+offset_left = -224.0
+offset_top = -97.5601
+offset_right = 224.0
+offset_bottom = 97.4399
 theme = ExtResource("2_t3lyo")
 script = ExtResource("12_m4awi")
 
@@ -399,9 +434,9 @@ script = ExtResource("12_61dj2")
 [connection signal="button_down" from="Control/Games/SodaTiles" to="." method="_on_sequence_mix_button_down"]
 [connection signal="button_down" from="Control/Games/Digit Hack" to="." method="_on_digit_hack_button_down"]
 [connection signal="button_down" from="Control/Games/Meteor Rush" to="." method="_on_meteor_rush_button_down"]
-[connection signal="button_down" from="Control/Difficulty_Filter/AllContainer/All_Visible" to="." method="_on_all_visible_button_down"]
-[connection signal="button_down" from="Control/Difficulty_Filter/NormalContainer/Normal_Visible" to="." method="_on_normal_visible_button_down"]
-[connection signal="button_down" from="Control/Difficulty_Filter/HardContainer/Hard_Visible" to="." method="_on_hard_visible_button_down"]
-[connection signal="button_down" from="Control/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
-[connection signal="button_down" from="Control/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
-[connection signal="scroll_started" from="Control/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="button_down" from="Control/Difficulty_Info/Difficulty_Filter/AllContainer/All_Visible" to="." method="_on_all_visible_button_down"]
+[connection signal="button_down" from="Control/Difficulty_Info/Difficulty_Filter/NormalContainer/Normal_Visible" to="." method="_on_normal_visible_button_down"]
+[connection signal="button_down" from="Control/Difficulty_Info/Difficulty_Filter/HardContainer/Hard_Visible" to="." method="_on_hard_visible_button_down"]
+[connection signal="button_down" from="Control/above_panel/Zoom/ZoomIn" to="." method="_on_zoom_in_button_down"]
+[connection signal="button_down" from="Control/above_panel/Zoom/ZoomOut" to="." method="_on_zoom_out_button_down"]
+[connection signal="scroll_started" from="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer" to="." method="_on_scroll_container_scroll_started"]

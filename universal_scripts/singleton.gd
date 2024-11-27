@@ -133,6 +133,11 @@ func create_table():
 		"today" INTEGER
 		);
 
+		CREATE TABLE "status" (
+		"redeem_status" BOOLEAN,
+		"fully_fed_status" BOOLEAN
+		);
+
 		CREATE TABLE "collection"(
 		"child_id" INTEGER,
 		"item_id" INTEGER,

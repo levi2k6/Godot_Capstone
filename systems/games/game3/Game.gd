@@ -1,6 +1,7 @@
 extends Node2D
 @onready var animator = $"../Animator"
 @onready var game_intro = $"../Control/Game_Intro";
+@onready var highest_level = $"../Control/Game_Intro/Highest_Level"
 @onready var pet = $"../Pet"
 @onready var timer = $Timer
 @onready var label = $"../Control/Game_Intro/Label"
@@ -54,9 +55,9 @@ func spawn_repeater():
 func spawn():
 	var meteor = METEOR.instantiate();
 	if difficulty == "normal":
-		meteor.speed = rng.randi_range(20, 25);
+		meteor.speed = rng.randi_range(1000, 1500);
 	elif difficulty == "hard":
-		meteor.speed = rng.randi_range(25, 30);
+		meteor.speed = rng.randi_range(1500, 2000);
 	
 	var ran_num = rng.randi_range(1, 3);
 	if ran_num == 1:
@@ -103,17 +104,14 @@ func show_level():
 
 func win():
 	print("you win!");
-	timer.start(3);
+	timer.start(1.5);
 	await timer.timeout;
 	difficulty_up();
 
 func lose():
-	timer.start(1);
-	await timer.timeout;
-	print("lost");
-	animator.ship_appear();
 	DataManager._insert_game3_session(level, difficulty);
 	reward_system();
+	await animator.lose();
 
 func reward_system():
 	var reward = level;

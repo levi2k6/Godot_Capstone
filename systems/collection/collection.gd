@@ -1,4 +1,5 @@
 extends Node2D
+@onready var pet = $Control/Pet_Control/Pet
 
 @onready var body_items = $Control/Picker/ScrollContainer/ColorRect/Body_Items
 @onready var eyes_items = $Control/Picker/ScrollContainer/ColorRect/Eyes_Items
@@ -8,6 +9,10 @@ extends Node2D
 
 @onready var h_box_container = $Control/Picker/HBoxContainer
 @onready var color_rect = $Control/Picker/ScrollContainer/ColorRect
+@onready var transition_layer = $Transition_Layer
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	for child in h_box_container.get_children():
@@ -38,7 +43,7 @@ func _change_tab(naym):
 			pass
 
 func _change_item(item, naym):
-	$Pet._fashion()
+	pet._fashion()
 	pass
 
 

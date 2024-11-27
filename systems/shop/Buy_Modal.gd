@@ -8,7 +8,8 @@ var this_item;
 @onready var hat_items = $"../Picker/ScrollContainer/ColorRect/Hat_Items"
 @onready var color_items = $"../Picker/ScrollContainer/ColorRect/Color_Items"
 
-@onready var money_display = $"../Money"
+@onready var money_display = $"../Picker/Money"
+@onready var animation_player = $AnimationPlayer
 
 
 
@@ -42,13 +43,13 @@ func _modal_func(item):
 
 
 func _on_button_button_up():
-	
 	var child_id = DataManager._get_child_database()
 	var item_id = this_item.id
 	
 	var money = DataManager._get_money_database()[0].money
 	
 	if money >= 100:
+		animation_player.play("buy_green");
 		Singleton.database.insert_row("collection", {"child_id": child_id[0].id, "item_id": item_id })
 		print("check database if inserted")
 		_delete_owned_item_shop()
@@ -58,6 +59,7 @@ func _on_button_button_up():
 		money_display._display_money()
 		visible = !visible
 	elif money < 100:
+		animation_player.play("buy_red");
 		print("NOT ENOUGH MONEY!")
 	pass # Replace with function body.
 

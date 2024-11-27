@@ -1,5 +1,7 @@
 extends Node2D
 
-func _input(event):
-	if event is InputEventKey:
-		get_tree().quit()
+@onready var animator_transition = $Transition_Layer/Animator_Transition
+
+
+func _ready():
+	animator_transition.play("transition_appear");

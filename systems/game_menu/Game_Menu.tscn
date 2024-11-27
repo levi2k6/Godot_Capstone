@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqrdnk3spxvue"]
+[gd_scene load_steps=24 format=3 uid="uid://bqrdnk3spxvue"]
 
 [ext_resource type="Script" path="res://systems/game_menu/game_menu.gd" id="1_ht4tj"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="2_qeo06"]
+[ext_resource type="Script" path="res://systems/game_menu/Animator.gd" id="2_smkgb"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_smvl1"]
 [ext_resource type="Texture2D" uid="uid://crp7fqds1qop7" path="res://assets/game_menu/back_mini_pet.png" id="3_5r0wr"]
 [ext_resource type="Animation" uid="uid://cq2dl5tjuespt" path="res://systems/game_menu/animations/back_mini_pet.res" id="3_byacq"]
 [ext_resource type="Animation" uid="uid://b0v1vjsnlq6pb" path="res://systems/game_menu/animations/bit_buddy.res" id="4_3apvj"]
@@ -9,76 +11,54 @@
 [ext_resource type="Texture2D" uid="uid://b055ktgetei6j" path="res://assets/game_menu/buddy.png" id="5_1hseh"]
 [ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="8_1q0ko"]
 [ext_resource type="Texture2D" uid="uid://trhur2otfjoc" path="res://assets/universal/settings_button.png" id="9_p4t8g"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="11_uvhwb"]
 
-[sub_resource type="Animation" id="Animation_qt1o2"]
+[sub_resource type="Animation" id="Animation_jynbg"]
+resource_name = "dark_disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m27xs"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Buddy:position")
+tracks/0/path = NodePath("Control/ColorRect2:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-613.999, 46)]
+"values": [Color(0, 0, 0, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Buddy:skew")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.703368]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jr0fs"]
+_data = {
+"RESET": SubResource("Animation_m27xs"),
+"dark_disappear": SubResource("Animation_jynbg")
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Bit:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-83, -272)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Bit:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Back_Tiny_Pet:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
+
+[sub_resource type="Animation" id="Animation_hr28c"]
+resource_name = "RESET"
 
 [sub_resource type="Animation" id="Animation_gkcmm"]
 resource_name = "Whole_Intro_Animation"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ga5fc"]
 _data = {
-"RESET": SubResource("Animation_qt1o2"),
+"RESET": SubResource("Animation_hr28c"),
 "Whole_Intro_Animation": SubResource("Animation_gkcmm"),
 "back_mini_pet": ExtResource("3_byacq"),
 "bit_buddy": ExtResource("4_3apvj")
@@ -96,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-30, -4.99992)]
+"values": [Vector2(-104, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +88,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-30, -4.99994)]
+"values": [Vector2(-104, -5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -120,7 +100,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-30, -5)]
+"values": [Vector2(-104, -5)]
 }
 
 [sub_resource type="Animation" id="Animation_7kfqx"]
@@ -135,7 +115,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(0.353553, 0.757858, 1),
 "update": 0,
-"values": [Vector2(-30, -4.99992), Vector2(-30, -403), Vector2(-30, -346)]
+"values": [Vector2(-104, -11), Vector2(-104, -770), Vector2(-104, -650)]
 }
 
 [sub_resource type="Animation" id="Animation_2p6uk"]
@@ -150,7 +130,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(0.353553, 0.757858, 1),
 "update": 0,
-"values": [Vector2(-30, -5), Vector2(-30, -403), Vector2(-30, -346)]
+"values": [Vector2(-104, -11), Vector2(-104, -770), Vector2(-104, -650)]
 }
 
 [sub_resource type="Animation" id="Animation_fx1ng"]
@@ -165,7 +145,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(0.353553, 0.757858, 1),
 "update": 0,
-"values": [Vector2(-30, -4.99994), Vector2(-30, -403), Vector2(-30, -346)]
+"values": [Vector2(-104, -11), Vector2(-104, -770), Vector2(-104, -650)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2i0v2"]
@@ -180,12 +160,21 @@ _data = {
 position = Vector2(0, 3)
 script = ExtResource("1_ht4tj")
 
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jr0fs")
+}
+script = ExtResource("2_smkgb")
+
+[node name="Timer" type="Timer" parent="."]
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -3.0
-offset_right = 542.0
+offset_right = 540.0
 offset_bottom = 957.0
+script = ExtResource("2_smvl1")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -194,17 +183,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(1.00112e-05, 0.400864, 0.896055, 1)
 
 [node name="Title" type="Control" parent="Control"]
 layout_mode = 1
-anchors_preset = 0
-offset_left = 250.0
-offset_top = 390.0
-offset_right = 290.0
-offset_bottom = 430.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="Animator_Title" type="AnimationPlayer" parent="Control/Title"]
 libraries = {
@@ -217,7 +211,7 @@ position = Vector2(22, -52)
 scale = Vector2(3, 3)
 texture = ExtResource("3_5r0wr")
 hframes = 34
-frame = 4
+frame = 5
 
 [node name="Bit" type="Sprite2D" parent="Control/Title"]
 self_modulate = Color(1, 1, 1, 0)
@@ -230,8 +224,6 @@ position = Vector2(-613.999, 46)
 scale = Vector2(3, 3)
 skew = -0.703368
 texture = ExtResource("5_1hseh")
-
-[node name="Timer" type="Timer" parent="Control/Title"]
 
 [node name="Settings_Button" parent="Control" instance=ExtResource("2_qeo06")]
 layout_mode = 1
@@ -260,11 +252,11 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = 53.0
+offset_top = 388.0
 offset_right = 20.0
-offset_bottom = 93.0
+offset_bottom = 428.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="Animator_Buttons" type="AnimationPlayer" parent="Control/Buttons"]
 root_node = NodePath("../..")
@@ -274,45 +266,53 @@ libraries = {
 
 [node name="Main_Hub_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -4.99994
-offset_right = 70.0
-offset_bottom = 44.9999
+offset_left = -104.0
+offset_top = -5.0
+offset_right = 144.0
+offset_bottom = 57.0001
 grow_horizontal = 2
-grow_vertical = 2
-text = "Main Hub"
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
 
 [node name="Create_Child_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -4.99992
-offset_right = 100.0
-offset_bottom = 45.0
+offset_left = -104.0
+offset_top = -5.0
+offset_right = 144.0
+offset_bottom = 57.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "Create Child"
+theme_override_font_sizes/font_size = 30
+text = "START"
 
 [node name="Create_Pet_Button" parent="Control/Buttons" instance=ExtResource("2_qeo06")]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
+offset_left = -104.0
 offset_top = -5.0
-offset_right = 89.0
-offset_bottom = 45.0
+offset_right = 144.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "CONTINUE"
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Create Pet"
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Transition_Layer" parent="." instance=ExtResource("11_uvhwb")]
+offset_top = -3.0
+offset_bottom = 957.0

@@ -21,8 +21,8 @@ func fire_explosion():
 
 func _process(delta):
 	if speed != null:
-		position.y += speed;
-		sprite_2d.rotation_degrees += 5;
+		position.y += (speed * delta);
+		sprite_2d.rotation_degrees += (200 * delta);
 
 func destroy():
 	speed = 0;

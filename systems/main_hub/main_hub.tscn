@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwl4v0hw2og16"]
+[gd_scene load_steps=27 format=3 uid="uid://bwl4v0hw2og16"]
 
 [ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_1p52a"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_c3m34"]
 [ext_resource type="Texture2D" uid="uid://bwnyj7rdcy8dk" path="res://assets/main_hub/ground.png" id="2_rjlpo"]
 [ext_resource type="Texture2D" uid="uid://br71g1n3ijwfp" path="res://assets/main_hub/clouds_back.png" id="2_y2yo0"]
@@ -10,11 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="4_lk5ma"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="5_d1ebq"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="5_wtyko"]
+[ext_resource type="Script" path="res://systems/main_hub/Pet_Control.gd" id="6_0uhvx"]
 [ext_resource type="Texture2D" uid="uid://dbrpi4lrktn83" path="res://assets/main_hub/collection_icon.png" id="6_km5kr"]
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="7_6dfur"]
 [ext_resource type="Texture2D" uid="uid://c1ghuiulv5vli" path="res://assets/main_hub/shop_icon.png" id="7_ojrfq"]
 [ext_resource type="Texture2D" uid="uid://trhur2otfjoc" path="res://assets/universal/settings_button.png" id="11_khsi7"]
 [ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="14_hftc7"]
+[ext_resource type="Texture2D" uid="uid://d282dsl2ag38r" path="res://assets/main_hub/calendar_icon_button.png" id="14_ism18"]
+[ext_resource type="Texture2D" uid="uid://biyx6ikutwe0g" path="res://assets/main_hub/calender.png" id="18_272kt"]
+[ext_resource type="Script" path="res://systems/main_hub/Calendar_Modal.gd" id="18_i60sd"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="19_2gkey"]
+[ext_resource type="Texture2D" uid="uid://c7v0e6fu634fg" path="res://assets/main_hub/close_icon.png" id="22_7vkao"]
+[ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="23_k0y41"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="24_a11n7"]
+[ext_resource type="Script" path="res://systems/main_hub/Receive_Label.gd" id="24_rc4mi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6jh8"]
 shader = ExtResource("3_ickli")
@@ -23,81 +33,138 @@ shader_parameter/speed = 0.5
 [node name="MainHub" type="Node2D"]
 script = ExtResource("1_yumrb")
 
-[node name="Background" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-layout_mode = 0
 offset_right = 540.0
 offset_bottom = 960.0
-color = Color(0, 0.352941, 0.796078, 1)
+script = ExtResource("2_1p52a")
 
-[node name="Clouds" type="TextureRect" parent="Background/ColorRect"]
+[node name="Background" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Clouds" type="TextureRect" parent="Control/Background/ColorRect"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_i6jh8")
 layout_mode = 0
-offset_left = -314.0
-offset_right = 901.0
-offset_bottom = 958.0
+offset_left = -304.0
+offset_top = 10.0
+offset_right = 911.0
+offset_bottom = 968.0
 texture = ExtResource("2_y2yo0")
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_right = 540.0
-offset_bottom = 960.0
+[node name="TextureRect" type="TextureRect" parent="Control/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_rjlpo")
 
-[node name="Foreground" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 540.0
-offset_bottom = 960.0
+[node name="Foreground" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Shadow" type="Sprite2D" parent="Foreground"]
-position = Vector2(270, 612)
+[node name="Pet_Control" type="Control" parent="Control/Foreground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_0uhvx")
+
+[node name="Shadow" type="Sprite2D" parent="Control/Foreground/Pet_Control"]
+position = Vector2(32, 133)
 scale = Vector2(3, 3)
 texture = ExtResource("3_7hgya")
 
-[node name="Pet" parent="Foreground" instance=ExtResource("2_c3m34")]
-z_index = 0
-position = Vector2(270, 480)
+[node name="Pet" parent="Control/Foreground/Pet_Control" instance=ExtResource("2_c3m34")]
+position = Vector2(32, 0)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 540.0
-offset_bottom = 961.0
+[node name="Pet_Name" type="Label" parent="Control/Foreground/Pet_Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = 148.0
+offset_right = 270.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_wtyko")
+theme_override_font_sizes/font_size = 32
+text = "asd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
+theme = ExtResource("5_wtyko")
 
-[node name="Info" type="VBoxContainer" parent="UI"]
+[node name="Info" type="VBoxContainer" parent="Control/UI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -259.5
+offset_left = -260.0
 offset_top = 25.0
-offset_right = 181.5
-offset_bottom = 103.0
+offset_right = 181.0
+offset_bottom = 119.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
 
-[node name="Hunger" type="HBoxContainer" parent="UI/Info"]
+[node name="Hunger" type="HBoxContainer" parent="Control/UI/Info"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="Control" parent="UI/Info/Hunger"]
+[node name="Control" type="Control" parent="Control/UI/Info/Hunger"]
 custom_minimum_size = Vector2(51, 33)
 layout_mode = 2
 
-[node name="HungerIcon" type="Sprite2D" parent="UI/Info/Hunger/Control"]
+[node name="HungerIcon" type="Sprite2D" parent="Control/UI/Info/Hunger/Control"]
 position = Vector2(25.5, 23.5)
 scale = Vector2(3, 3)
 texture = ExtResource("5_d1ebq")
 
-[node name="Hunger_Bar" type="ProgressBar" parent="UI/Info/Hunger"]
+[node name="Hunger_Bar" type="ProgressBar" parent="Control/UI/Info/Hunger"]
 custom_minimum_size = Vector2(375, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -105,67 +172,49 @@ theme = ExtResource("5_wtyko")
 theme_override_font_sizes/font_size = 20
 value = 100.0
 
-[node name="Money" parent="UI/Info" instance=ExtResource("4_lk5ma")]
+[node name="Money" parent="Control/UI/Info" instance=ExtResource("4_lk5ma")]
 layout_mode = 2
 
-[node name="Pet_Name" type="Label" parent="UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/UI"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -34.5
-offset_top = -292.0
-offset_right = 34.5
-offset_bottom = -253.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("5_wtyko")
-theme_override_font_sizes/font_size = 32
-text = "asd"
+anchors_preset = -1
+anchor_left = 0.833
+anchor_top = 0.853
+anchor_right = 0.833
+anchor_bottom = 0.853
+offset_left = -37.82
+offset_top = -184.88
+offset_right = 58.18
+offset_bottom = 111.12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 402.0
-offset_top = 721.0
-offset_right = 498.0
-offset_bottom = 917.0
-
-[node name="Collection_Button" parent="UI/VBoxContainer" instance=ExtResource("3_vrikd")]
+[node name="Collection_Button" parent="Control/UI/VBoxContainer" instance=ExtResource("3_vrikd")]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Collection_Button"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/UI/VBoxContainer/Collection_Button"]
 position = Vector2(48, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("6_km5kr")
 
-[node name="Shop_Button" parent="UI/VBoxContainer" instance=ExtResource("3_vrikd")]
+[node name="Shop_Button" parent="Control/UI/VBoxContainer" instance=ExtResource("3_vrikd")]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Shop_Button"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/UI/VBoxContainer/Shop_Button"]
 position = Vector2(48, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("7_ojrfq")
 
-[node name="Get_Money" type="Button" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.101
-anchor_top = 0.784
-anchor_right = 0.307
-anchor_bottom = 0.825
-offset_left = -0.176003
-offset_top = -0.0320435
-offset_right = 0.167999
-offset_bottom = 0.0249634
-grow_vertical = 0
-text = "MONEY"
+[node name="Daily_Reward" type="Button" parent="Control/UI/VBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
 
-[node name="Games_Button" parent="UI" instance=ExtResource("3_vrikd")]
+[node name="Sprite2D" type="Sprite2D" parent="Control/UI/VBoxContainer/Daily_Reward"]
+position = Vector2(49, 48.0001)
+scale = Vector2(3, 3)
+texture = ExtResource("14_ism18")
+
+[node name="Games_Button" parent="Control/UI" instance=ExtResource("3_vrikd")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -183,7 +232,7 @@ theme_override_font_sizes/font_size = 40
 text = "Play"
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="UI/Games_Button"]
+[node name="Label" type="Label" parent="Control/UI/Games_Button"]
 visible = false
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
@@ -197,18 +246,1090 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Settings_Button" parent="UI" instance=ExtResource("3_vrikd")]
-layout_mode = 0
-offset_left = 422.0
-offset_top = 78.0
-offset_right = 518.0
-offset_bottom = 174.0
+[node name="Settings_Button" parent="Control/UI" instance=ExtResource("3_vrikd")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87
+anchor_top = 0.131
+anchor_right = 0.87
+anchor_bottom = 0.131
+offset_left = -47.8
+offset_top = -47.76
+offset_right = 48.2
+offset_bottom = 48.24
 theme = ExtResource("14_hftc7")
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/Settings_Button"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/UI/Settings_Button"]
 position = Vector2(48, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("11_khsi7")
 hframes = 2
 
-[connection signal="pressed" from="UI/Get_Money" to="." method="_on_get_money_pressed"]
+[node name="Get_Money" type="Button" parent="Control/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.101
+anchor_top = 0.784
+anchor_right = 0.307
+anchor_bottom = 0.825
+offset_left = -0.176003
+offset_top = -9.61499
+offset_right = 0.167999
+offset_bottom = 0.0249634
+grow_vertical = 0
+text = "MONEY"
+
+[node name="Calendar_Modal" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wtyko")
+script = ExtResource("18_i60sd")
+
+[node name="ColorRect" type="ColorRect" parent="Control/Calendar_Modal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="Calendar" type="TextureRect" parent="Control/Calendar_Modal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.5
+offset_top = -171.5
+offset_right = 244.5
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_272kt")
+
+[node name="Close" type="Button" parent="Control/Calendar_Modal/Calendar"]
+modulate = Color(0.99965, 0.0470286, 3.85046e-07, 1)
+layout_mode = 0
+offset_left = 421.5
+offset_top = 14.5
+offset_right = 471.5
+offset_bottom = 64.5
+
+[node name="CloseIcon" type="Sprite2D" parent="Control/Calendar_Modal/Calendar/Close"]
+position = Vector2(25, 25)
+texture = ExtResource("22_7vkao")
+
+[node name="Label" type="Label" parent="Control/Calendar_Modal/Calendar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 23.0
+offset_right = 125.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("19_2gkey")
+theme_override_font_sizes/font_size = 30
+text = "Daily Reward
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/Calendar_Modal/Calendar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 81.0
+offset_right = 484.0
+offset_bottom = 352.0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 7
+
+[node name="1" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/1"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/1"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/1"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="2" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/2"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/2"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="3" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/3"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/3"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="4" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/4"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/4"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/4"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="5" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/5"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/5"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/5"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="6" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/6"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/6"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/6"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="7" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/7"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/7"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/7"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="8" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/8"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/8"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/8"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="9" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/9"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/9"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/9"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="10" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/10"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/10"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/10"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="11" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/11"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/11"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/11"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="12" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/12"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/12"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/12"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="13" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/13"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/13"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/13"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="14" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/14"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/14"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/14"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="15" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/15"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/15"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/15"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="16" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/16"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/16"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/16"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="17" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/17"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/17"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/17"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="18" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/18"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/18"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/18"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="19" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/19"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/19"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/19"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="20" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/20"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/20"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/20"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="21" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/21"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/21"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/21"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="22" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/22"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/22"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/22"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="23" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/23"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/23"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/23"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="24" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/24"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/24"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/24"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="25" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/25"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/25"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/25"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="26" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/26"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/26"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/26"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="27" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/27"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/27"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/27"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="28" type="ColorRect" parent="Control/Calendar_Modal/Calendar/GridContainer"]
+custom_minimum_size = Vector2(63, 63)
+layout_mode = 2
+
+[node name="Day" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/28"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Reward" type="Label" parent="Control/Calendar_Modal/Calendar/GridContainer/28"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 21.5
+offset_right = 63.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(1, 0.486275, 0, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 30
+text = "00"
+
+[node name="color" type="TextureRect" parent="Control/Calendar_Modal/Calendar/GridContainer/28"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 25.5
+offset_right = 22.5
+offset_bottom = 45.5
+texture = ExtResource("23_k0y41")
+
+[node name="Receive_Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -256.0
+offset_right = 42.0
+offset_bottom = -221.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.176471, 1)
+theme_override_fonts/font = ExtResource("7_6dfur")
+theme_override_font_sizes/font_size = 35
+text = "+100"
+script = ExtResource("24_rc4mi")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Transition_Layer" parent="." instance=ExtResource("24_a11n7")]
+
+[connection signal="pressed" from="Control/UI/VBoxContainer/Daily_Reward" to="." method="_on_daily_reward_pressed"]
+[connection signal="pressed" from="Control/UI/Get_Money" to="." method="_on_get_money_pressed"]
+[connection signal="pressed" from="Control/Calendar_Modal/Calendar/Close" to="." method="_on_close_pressed"]

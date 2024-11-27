@@ -1,10 +1,14 @@
 extends Node2D
-@onready var money_count = $Game/Info/Money_Count
+@onready var animator = $Animator
+@onready var pet = $Pet
 
+@onready var money_count = $Control/Game/Info/Money_Count
+@onready var hunger_bar = $Control/Game/Info/Hunger/Hunger_Bar
+@onready var moving = $Control/Background/Moving
+@onready var transition_layer = $Transition_Layer
 
-@onready var hunger_bar = $Game/Info/Hunger/Hunger_Bar
-
-@onready var moving = $Background/Moving
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	_connections();

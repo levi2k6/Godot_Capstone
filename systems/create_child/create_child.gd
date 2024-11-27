@@ -1,7 +1,11 @@
 extends Node2D
 
-@onready var fname = $Control/HBoxContainer/VBoxContainer1/Fname
-@onready var lname = $Control/HBoxContainer/VBoxContainer2/Lname
+@onready var fname = $Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1/Fname
+@onready var lname = $Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Lname
+@onready var transition_layer = $Transition_Layer
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	#_resolution()
@@ -26,7 +30,7 @@ func create_child_database():
 	Singleton.database.insert_row("number_memory_game", {"id": child_id, "total_session": 0, "highest_level": 0});
 	Singleton.database.insert_row("timing_game", {"id": child_id, "total_session": 0, "highest_level": 0});
 	Singleton.database.insert_row("milestone",{"id": child_id, "total_time": 0, "total_collection": 0, "total_pet_fully_fed": 0, "total_games_played": 0, "total_days_played": 0, "total_money_earned": 0});
-
+	DataManager._update_milestone_total_days_played();
 
 func _on_button_button_up():
 	var child_id = DataManager._get_child_database()[0].id
@@ -37,4 +41,24 @@ func _on_button_button_up():
 		Singleton.database.update_rows("child", "id = %s" %child_id, {"fname": fname.text, "lname": lname.text})
 		get_tree().change_scene_to_file("res://systems/create_pet/create_pet.tscn")
 	
+	pass # Replace with function body.
+
+
+func _on_fname_text_changed():
+	
+	var string_size = fname.text.length();
+	#print(string_size);
+	if string_size > 20:
+		var new_text = fname.text.substr(0, string_size - 1);
+		fname.text = new_text;
+	
+	pass # Replace with function body.
+
+
+func _on_lname_text_changed():
+	var string_size = lname.text.length();
+	print(string_size);
+	if string_size > 20:
+		var new_text = lname.text.substr(0, string_size - 1);
+		lname.text = new_text;
 	pass # Replace with function body.

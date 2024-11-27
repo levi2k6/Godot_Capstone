@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gs5npry5n6ck"]
+[gd_scene load_steps=6 format=3 uid="uid://gs5npry5n6ck"]
 
 [ext_resource type="Script" path="res://systems/create_child/create_child.gd" id="1_jxaay"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_fr333"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_i634m"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_dkulu"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="5_av2pa"]
 
 [node name="Create_Child" type="Node2D"]
 script = ExtResource("1_jxaay")
@@ -12,72 +15,97 @@ anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 theme = ExtResource("2_fr333")
+script = ExtResource("3_i634m")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -480.0
-offset_right = 270.0
-offset_bottom = 480.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.227
+anchor_right = 0.965
+anchor_bottom = 0.517
+offset_left = 0.1
+offset_top = 0.0799866
+offset_right = -0.100037
+offset_bottom = -0.320007
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -163.0
-offset_right = 152.0
-offset_bottom = -101.0
+offset_left = -212.5
+offset_top = -77.5
+offset_right = 212.5
+offset_bottom = 77.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 50
 
-[node name="VBoxContainer1" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer1"]
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
 text = "First Name"
 
-[node name="Fname" type="TextEdit" parent="Control/HBoxContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(150, 35)
+[node name="Fname" type="TextEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Last Name"
 
-[node name="Lname" type="TextEdit" parent="Control/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(150, 35)
+[node name="Lname" type="TextEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.47817
-anchor_right = 0.5
-anchor_bottom = 0.47817
-offset_left = -48.0
-offset_top = -17.0
-offset_right = 48.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Button" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 text = "SUBMIT"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
+[node name="Milestone_Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.082
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -158.0
+offset_top = -38.72
+offset_right = 158.0
+offset_bottom = 37.36
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_dkulu")
+theme_override_font_sizes/font_size = 40
+text = "CHILD'S NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition_Layer" parent="." instance=ExtResource("5_av2pa")]
+
+[connection signal="text_changed" from="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1/Fname" to="." method="_on_fname_text_changed"]
+[connection signal="text_changed" from="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Lname" to="." method="_on_lname_text_changed"]
+[connection signal="button_up" from="Control/Panel/VBoxContainer/Button" to="." method="_on_button_button_up"]

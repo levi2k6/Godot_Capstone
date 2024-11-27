@@ -1,0 +1,469 @@
+[gd_scene load_steps=30 format=3 uid="uid://di4kqbjwtefkk"]
+
+[ext_resource type="Script" path="res://systems/games/game1/game1.gd" id="1_h5acu"]
+[ext_resource type="Script" path="res://systems/games/game1/Animator.gd" id="2_jf0en"]
+[ext_resource type="Shader" path="res://assets/game1/shader/back1.gdshader" id="2_lxpxx"]
+[ext_resource type="Script" path="res://systems/games/game1/game.gd" id="2_ooibs"]
+[ext_resource type="Shader" path="res://assets/game1/shader/back2.gdshader" id="2_u8iip"]
+[ext_resource type="Texture2D" uid="uid://d3nbsys7wmv84" path="res://assets/game1/background_moving2.png" id="3_1gyn6"]
+[ext_resource type="Texture2D" uid="uid://bsfu7admwidaq" path="res://assets/game1/background_moving.png" id="3_7wgrb"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_ss5tk"]
+[ext_resource type="Script" path="res://systems/games/game1/music_tile.gd" id="3_y0d48"]
+[ext_resource type="Script" path="res://systems/games/game1/Game_Intro.gd" id="5_71xmo"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_y7k77"]
+[ext_resource type="PackedScene" uid="uid://ka6f2ksq5rlp" path="res://systems/misc/display_money/money.tscn" id="7_xdahh"]
+[ext_resource type="Theme" uid="uid://ekb4yt0bhvmu" path="res://assets/themes/game1_texture_theme.tres" id="8_18ghq"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="8_sqsqg"]
+[ext_resource type="Texture2D" uid="uid://dn7fd8rjf62d8" path="res://assets/game1/tile-sheet.png" id="10_6n462"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="11_6e3p3"]
+[ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="11_eugcs"]
+[ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="11_m0x0s"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="12_tbmpk"]
+[ext_resource type="Texture2D" uid="uid://dlkgav0sx3lm1" path="res://assets/game1/game_intro_background.png" id="12_wxj4d"]
+[ext_resource type="Script" path="res://systems/games/game1/Intro_Control.gd" id="13_qgqy2"]
+[ext_resource type="Texture2D" uid="uid://cmh7p083lhl00" path="res://assets/game1/title.png" id="15_8dici"]
+
+[sub_resource type="Animation" id="Animation_1i4dw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Game/Intro_Control/Game_Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6im47"]
+_data = {
+"RESET": SubResource("Animation_1i4dw")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56gch"]
+shader = ExtResource("2_u8iip")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouf1y"]
+shader = ExtResource("2_lxpxx")
+
+[sub_resource type="Animation" id="Animation_wkghc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tiles:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 991.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tiles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.45098, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6y2he"]
+resource_name = "tiles_appear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tiles:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Vector2(28, 991.5), Vector2(28, 308.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tiles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Color(1, 0.45098, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3taw2"]
+_data = {
+"RESET": SubResource("Animation_wkghc"),
+"tiles_appear": SubResource("Animation_6y2he")
+}
+
+[node name="Game1" type="Node2D"]
+script = ExtResource("1_h5acu")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6im47")
+}
+script = ExtResource("2_jf0en")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("3_ss5tk")
+
+[node name="Background" type="Control" parent="Control"]
+modulate = Color(0.933333, 0.619608, 0.294118, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="ColorRect" parent="Control/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.907942, 0.907942, 0.907942, 1)
+
+[node name="Moving2" type="TextureRect" parent="Control/Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_56gch")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1gyn6")
+
+[node name="Moving" type="TextureRect" parent="Control/Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ouf1y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7wgrb")
+
+[node name="Game" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ooibs")
+
+[node name="Animator_Tiles" type="AnimationPlayer" parent="Control/Game"]
+libraries = {
+"": SubResource("AnimationLibrary_3taw2")
+}
+
+[node name="Tiles" type="GridContainer" parent="Control/Game"]
+modulate = Color(1, 0.45098, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = 511.5
+offset_right = 242.0
+offset_bottom = 990.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+metadata/_edit_group_ = true
+
+[node name="tile1" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile1"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile2" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile2"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile3" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile3"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile4" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile4"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile5" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile5"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile6" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile6"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile7" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile7"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile8" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile8"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="tile9" type="Button" parent="Control/Game/Tiles"]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("8_18ghq")
+script = ExtResource("3_y0d48")
+
+[node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile9"]
+position = Vector2(78, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("10_6n462")
+hframes = 3
+
+[node name="Level" type="Label" parent="Control/Game"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.242
+anchor_right = 0.5
+anchor_bottom = 0.242
+offset_left = -94.5
+offset_top = -22.32
+offset_right = 94.5
+offset_bottom = 22.68
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("11_6e3p3")
+theme_override_font_sizes/font_size = 45
+text = "LEVEL: 1"
+
+[node name="Intro_Control" type="Control" parent="Control/Game"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -480.0
+offset_right = 270.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_qgqy2")
+metadata/_edit_group_ = true
+
+[node name="Game_Intro" type="TextureRect" parent="Control/Game/Intro_Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_wxj4d")
+script = ExtResource("5_71xmo")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Control/Game/Intro_Control/Game_Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -11.5
+offset_right = 53.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sequence Mix"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Game/Intro_Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 71.0
+offset_right = 100.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Normal" type="Button" parent="Control/Game/Intro_Control/Game_Intro/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme = ExtResource("11_m0x0s")
+text = "Normal
+"
+
+[node name="Hard" type="Button" parent="Control/Game/Intro_Control/Game_Intro/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("11_m0x0s")
+text = "Hard
+"
+
+[node name="Main_Hub_Button" parent="Control/Game/Intro_Control/Game_Intro/VBoxContainer" instance=ExtResource("6_y7k77")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("11_m0x0s")
+text = "Back"
+
+[node name="Title" type="Sprite2D" parent="Control/Game/Intro_Control/Game_Intro"]
+position = Vector2(272, 315)
+scale = Vector2(4, 4)
+texture = ExtResource("15_8dici")
+
+[node name="Info" type="VBoxContainer" parent="Control/Game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.5
+offset_top = 25.0
+offset_right = 181.5
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="Hunger" type="HBoxContainer" parent="Control/Game/Info"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="Control/Game/Info/Hunger"]
+custom_minimum_size = Vector2(51, 33)
+layout_mode = 2
+
+[node name="HungerIcon" type="Sprite2D" parent="Control/Game/Info/Hunger/Control"]
+position = Vector2(25.5, 23.5)
+scale = Vector2(3, 3)
+texture = ExtResource("11_eugcs")
+
+[node name="Hunger_Bar" type="ProgressBar" parent="Control/Game/Info/Hunger"]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("12_tbmpk")
+theme_override_font_sizes/font_size = 20
+value = 100.0
+
+[node name="Money_Count" parent="Control/Game/Info" instance=ExtResource("7_xdahh")]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="Control/Game"]
+one_shot = true
+
+[node name="Pet" parent="." instance=ExtResource("8_sqsqg")]
+visible = false
+
+[connection signal="button_down" from="Control/Game/Tiles/tile1" to="Control/Game/Tiles/tile1" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile2" to="Control/Game/Tiles/tile2" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile3" to="Control/Game/Tiles/tile3" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile4" to="Control/Game/Tiles/tile4" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile5" to="Control/Game/Tiles/tile5" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile6" to="Control/Game/Tiles/tile6" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile7" to="Control/Game/Tiles/tile7" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile8" to="Control/Game/Tiles/tile8" method="_on_button_down"]
+[connection signal="button_down" from="Control/Game/Tiles/tile9" to="Control/Game/Tiles/tile9" method="_on_button_down"]
+[connection signal="button_up" from="Control/Game/Intro_Control/Game_Intro/VBoxContainer/Normal" to="Control/Game/Intro_Control/Game_Intro" method="_on_normal_button_up"]
+[connection signal="button_up" from="Control/Game/Intro_Control/Game_Intro/VBoxContainer/Hard" to="Control/Game/Intro_Control/Game_Intro" method="_on_hard_button_up"]

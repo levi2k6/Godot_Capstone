@@ -1,118 +1,168 @@
-[gd_scene load_steps=7 format=3 uid="uid://lpjuc7btxytx"]
+[gd_scene load_steps=12 format=3 uid="uid://lpjuc7btxytx"]
 
+[ext_resource type="Script" path="res://systems/games/Control.gd" id="1_c00us"]
+[ext_resource type="Script" path="res://systems/games/games.gd" id="1_jdim2"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_txa4o"]
 [ext_resource type="Theme" uid="uid://dacebaabmadq" path="res://assets/themes/texture_theme.tres" id="2_al0cj"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="2_tchsg"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="2_yjel7"]
 [ext_resource type="Texture2D" uid="uid://cdvql8jd8ff2f" path="res://assets/games/game1.png" id="3_ih45j"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="3_w0r1m"]
 [ext_resource type="Texture2D" uid="uid://crus2t5x7fd3y" path="res://assets/games/game2.png" id="4_57ci2"]
 [ext_resource type="Texture2D" uid="uid://d4gxioiap6swk" path="res://assets/games/game3.png" id="5_2wtbh"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="10_tv6xi"]
 
 [node name="Games" type="Node2D"]
+script = ExtResource("1_jdim2")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
+theme = ExtResource("1_txa4o")
+script = ExtResource("1_c00us")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -480.0
-offset_right = 270.0
-offset_bottom = 480.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Games_Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.084
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -147.0
+offset_top = -38.64
+offset_right = 147.0
+offset_bottom = 39.36
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_w0r1m")
+theme_override_font_sizes/font_size = 40
+text = "GAMES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.056
+anchor_top = 0.148
+anchor_right = 1.056
+anchor_bottom = 1.034
+offset_left = 0.240002
+offset_top = 0.419998
+offset_right = -0.23999
+offset_bottom = -0.140015
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/Panel"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.489
+anchor_top = 0.5
+anchor_right = 0.489
+anchor_bottom = 0.5
+offset_left = -243.4
+offset_top = -358.5
+offset_right = 244.6
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="Game1_Button" parent="Control/Panel/GridContainer/VBoxContainer" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/GridContainer/VBoxContainer/Game1_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ih45j")
+
+[node name="Label" type="Label" parent="Control/Panel/GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "Soda Tiles
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="Game2_Button" parent="Control/Panel/GridContainer/VBoxContainer2" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/GridContainer/VBoxContainer2/Game2_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("4_57ci2")
+
+[node name="Label" type="Label" parent="Control/Panel/GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Digit Hack
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/Panel/GridContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Game3_Button" parent="Control/Panel/GridContainer/VBoxContainer3" instance=ExtResource("2_yjel7")]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_al0cj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/GridContainer/VBoxContainer3/Game3_Button"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("5_2wtbh")
+
+[node name="Label" type="Label" parent="Control/Panel/GridContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Meteor Rush"
+horizontal_alignment = 1
 
 [node name="Main_Hub_Button" parent="Control" instance=ExtResource("2_yjel7")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.05
+anchor_right = 0.089
+anchor_bottom = 0.05
+offset_left = -38.06
+offset_top = -38.0
+offset_right = 57.94
+offset_bottom = 58.0
 
 [node name="BackIcon" type="Sprite2D" parent="Control/Main_Hub_Button"]
 position = Vector2(48, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("2_tchsg")
 
-[node name="GridContainer" type="GridContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -250.0
-offset_right = 250.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/GridContainer"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-
-[node name="Game1_Button" parent="Control/GridContainer/VBoxContainer" instance=ExtResource("2_yjel7")]
-custom_minimum_size = Vector2(144, 144)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_al0cj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer/Game1_Button"]
-position = Vector2(72, 72)
-scale = Vector2(3, 3)
-texture = ExtResource("3_ih45j")
-
-[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer"]
-layout_mode = 2
-text = "Soda Tiles
-"
-horizontal_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/GridContainer"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-
-[node name="Game2_Button" parent="Control/GridContainer/VBoxContainer2" instance=ExtResource("2_yjel7")]
-custom_minimum_size = Vector2(144, 144)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_al0cj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer2/Game2_Button"]
-position = Vector2(72, 72)
-scale = Vector2(3, 3)
-texture = ExtResource("4_57ci2")
-
-[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Digit Hack
-"
-horizontal_alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Control/GridContainer"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-
-[node name="Game3_Button" parent="Control/GridContainer/VBoxContainer3" instance=ExtResource("2_yjel7")]
-custom_minimum_size = Vector2(144, 144)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_al0cj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Control/GridContainer/VBoxContainer3/Game3_Button"]
-position = Vector2(72, 72)
-scale = Vector2(3, 3)
-texture = ExtResource("5_2wtbh")
-
-[node name="Label" type="Label" parent="Control/GridContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Meteor Rush"
-horizontal_alignment = 1
+[node name="Transition_Layer" parent="." instance=ExtResource("10_tv6xi")]

@@ -1,6 +1,8 @@
 extends Control
-@onready var pet = $"../Pet";
-@onready var animator = $"../Animator"
+@onready var game_1 = $"../.."
+
+@onready var pet = $"../../Pet"
+@onready var animator = $"../../Animator"
 @onready var tiles = $Tiles
 
 var rng = RandomNumberGenerator.new()
@@ -78,9 +80,9 @@ func win():
 func lose():
 	disable_tiles();
 	print("WRONG!");
+	DataManager._insert_game1_session(level, difficulty);
 	await animator.wrong();
 	reward_system();
-	DataManager._insert_game1_session(level, difficulty);
 	level = 1;
 	queue_i = 0;
 	pattern = [];
@@ -141,7 +143,7 @@ func reward_system():
 	
 	print("points: ", reward);
 	pet._learn(reward);
-	get_parent().update_money(money);
+	game_1.update_money(money);
 
 func session_stats():
 	pass

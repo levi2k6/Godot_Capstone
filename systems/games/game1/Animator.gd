@@ -1,16 +1,23 @@
 extends AnimationPlayer
-@onready var background = $"../Background"
-@onready var timer = $"../Game/Timer"
-@onready var animator_tiles = $"../Game/Animator_Tiles"
-@onready var tiles = $"../Game/Tiles"
-@onready var level = $"../Game/Level"
+@onready var intro_control = $"../Control/Game/Intro_Control"
+@onready var game_intro = $"../Control/Game/Intro_Control/Game_Intro"
+@onready var background = $"../Control/Background"
+@onready var timer = $"../Control/Game/Timer"
+@onready var animator_tiles = $"../Control/Game/Animator_Tiles"
+@onready var tiles = $"../Control/Game/Tiles"
+@onready var level = $"../Control/Game/Level"
+
 
 
 func _ready():
 	game_intro_appear();
 
 func game_intro_appear():
-	play("RESET");
+	
+	for tile in tiles.get_children():
+		tile.disabled = true;
+		print(tile.disabled);
+	
 	timer.start(2);
 	await timer.timeout;
 	
@@ -44,25 +51,25 @@ func game_intro_appear():
 	timer.start(1);
 	await timer.timeout;
 	
-	play("game_intro_appear");
-	await animation_finished;
+	await intro_control.intro_appear();
+	
 	print("done intro");
 	pass
 
 func game_intro_leave():
 	level.visible = true;
-	play("game_intro_leave");
-	await animation_finished;
+	await intro_control.intro_leave();
 	pass
 
 func restart():
 	background.modulate = "ee9e4b";
 
 func wrong():
+	game_intro.display_highest_level();
 	background.modulate = "ff0000";
 	timer.start(2);
 	await timer.timeout;
-	play("game_intro_appear");
+	await intro_control.intro_appear();
 
 func right():
 	background.modulate = "2166e7";

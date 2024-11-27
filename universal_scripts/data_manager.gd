@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	_create_status();
 	_update_today_database();
 
 func _get_child_database():
@@ -30,6 +31,11 @@ func _get_money_database():
 	var result = Singleton.database.query_result
 	return result
 
+func _get_date():
+	Singleton.database.query("SELECT * FROM date");
+	var result = Singleton.database.query_result;
+	return result;
+
 func _get_today_database():
 	Singleton.database.query("SELECT today FROM date;")
 	var result = Singleton.database.query_result	
@@ -40,23 +46,42 @@ func _update_today_database():
 	var today_or_old = _get_today_database()
 	
 	if _get_today_database().size() == 0:
-		Singleton.database.insert_row("date", {"today": today})
-		_update_milestone_total_days_played();
+		Singleton.database.insert_row("date", {"today": today});
 		#print(today)
-		#print(_get_today_database()[0].today)
+		print_debug("THIS IS WORKING");
 	elif today_or_old[0].today != today:
 		Singleton.database.query("UPDATE date SET today = %s" %today);
+		_update_redeem_status(0);
+		_update_fully_fed_status(0);
 		_update_milestone_total_days_played();
-		#print("YESTERDAY WAS: ", today_or_old[0].today)
+		print_debug("THIS IS WORKING NEW DAY");
 		#print("TODAY IS: ", today)
 		
 		var child_id = DataManager._get_child_database()[0].id
 		Singleton.database.update_rows("pet", "id = %s"%child_id, {"hunger": 0})
 
+func _create_status():
+	var status = _get_status();
+	if status.size() != 0:
+		return
+	Singleton.database.query("INSERT INTO status(redeem_status, fully_fed_status) VALUES(0, 0)")
+
+func _get_status():
+	Singleton.database.query("SELECT * FROM status");
+	var result = Singleton.database.query_result;
+	return result;
+
+func _update_redeem_status(data):
+	Singleton.database.update_rows("status", "1=1", {"redeem_status": data});
+
+func _update_fully_fed_status(data):
+	Singleton.database.update_rows("status", "1=1", {"fully_fed_status": data});
+
+
 func _update_money_database(money):
 	var child_id = _get_child_database()[0].id
 	
-	Singleton.database.update_rows("datas", "id = %s"%child_id, {"money": money})
+	Singleton.database.update_rows("datas", "id = %s"%child_id, {"money": money});
 	print("MONEY DEDUCTED")
 
 #games///////////////////
@@ -164,6 +189,7 @@ func _update_milestone_total_pet_fully_fed():
 	Singleton.database.query("UPDATE milestone SET total_pet_fully_fed = total_pet_fully_fed + 1");
 
 func _update_milestone_total_days_played():
+	print("TOTAL DAYS ADDED");
 	Singleton.database.query("UPDATE milestone SET total_days_played = total_days_played + 1");
 
 func _update_milestone_total_games_played():

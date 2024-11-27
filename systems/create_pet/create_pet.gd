@@ -1,4 +1,5 @@
 extends Node2D
+@onready var pet = $Control/Pet_Control/Pet
 
 @onready var body_items = $Control/Picker/ScrollContainer/ColorRect/Body_Items
 @onready var eyes_items = $Control/Picker/ScrollContainer/ColorRect/Eyes_Items
@@ -9,6 +10,10 @@ extends Node2D
 @onready var color_rect = $Control/Picker/ScrollContainer/ColorRect
 
 @onready var create_pet_modal = $Control/Create_Pet_Modal
+@onready var transition_layer = $Transition_Layer
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	#_resolution()
@@ -20,14 +25,6 @@ func _ready():
 	
 	_change_tab("Tab_Bodies")
 
-#func _resolution():
-	#var view_port = get_viewport().size
-	#var center_x = view_port.x / 2
-	#var center_y = view_port.y / 1.50
-	#
-	#$Control.size = view_port
-	#$Pet.position = Vector2(center_x, center_y)
-	#
 
 func _change_tab(naym):
 	for child in color_rect.get_children():
@@ -48,7 +45,7 @@ func _change_tab(naym):
 
 func _change_item(item, naym):
 	#print(naym)
-	$Pet._fashion()
+	pet._fashion()
 	pass
 
 func _on_submit_pressed():

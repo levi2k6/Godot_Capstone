@@ -11,14 +11,24 @@ extends Control
 @onready var timer = $Timer
 @onready var typer = $"../Foreground/Casing/Typer"
 
+@onready var camera_2d = $"../Camera2D"
+
 var difficulty: String;
 var rng = RandomNumberGenerator.new();
 var monitor1_num = "";
 var level = 1;
 var per_num = 0;
 
-func start():
+func _ready():
+	var viewport_size = camera_2d.get_viewport_rect().size;
+	var viewport_half_y = viewport_size.y / 2;
 	
+	size = viewport_size;
+	position = Vector2(0, camera_2d.position.y + -viewport_half_y);
+
+
+
+func start():
 	print(difficulty);
 	print("start working");
 	if difficulty == "normal":
@@ -50,9 +60,9 @@ func compare():
 		lose();
 
 func lose():
-	animator.game_over();
 	print(monitor_1_output.text, " | " , monitor1_num);
 	DataManager._insert_game2_session(level, difficulty);
+	animator.game_over();
 	reward_system();
 	level = 1;
 	per_num = 0;

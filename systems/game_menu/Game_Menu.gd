@@ -1,14 +1,25 @@
 extends Node2D
 
-@onready var main_hub_button = $Control/Buttons/Main_Hub_Button;
-@onready var create_child_button = $Control/Buttons/Create_Child_Button;
-@onready var create_pet_button = $Control/Buttons/Create_Pet_Button;
-@onready var title = $Control/Title;
+@onready var timer = $Timer
+
+@onready var animator = $Animator
 @onready var animator_title = $Control/Title/Animator_Title;
 @onready var animator_buttons = $Control/Buttons/Animator_Buttons;
 
-
+@onready var title = $Control/Title;
 @onready var buttons = $Control/Buttons;
+@onready var transition_layer = $Transition_Layer
+
+
+@onready var main_hub_button = $Control/Buttons/Main_Hub_Button;
+@onready var create_child_button = $Control/Buttons/Create_Child_Button;
+@onready var create_pet_button = $Control/Buttons/Create_Pet_Button;
+
+
+
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	_execute()
@@ -22,15 +33,7 @@ func _execute():
 	animation(child, pet);
 
 func animation(child, pet):
-	var timer = title.get_child(4);
-	
-	timer.start(1);
-	await timer.timeout;
-	animator_title.play("back_mini_pet");
-	await animator_title.animation_finished;
-	animator_title.play("bit_buddy");
-	await animator_title.animation_finished;
-	
+	await animator.title_animation()
 	
 	print(child);
 	print(pet);

@@ -25,8 +25,9 @@ GameData="*res://universal_scripts/game_data.gd"
 [display]
 
 window/size/viewport_width=540
-window/size/viewport_height=960
+window/size/viewport_height=1060
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [editor_plugins]
@@ -44,6 +45,10 @@ finger={
 "deadzone": 0.5,
 "events": []
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

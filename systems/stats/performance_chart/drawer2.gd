@@ -1,19 +1,22 @@
 extends Node2D
 const POINT_NODE = preload("res://systems/stats/performance_chart/point_node.tscn")
-@onready var panel = $"../Control/ScrollContainer/Panel";
-@onready var points_all = $"../Control/ScrollContainer/Panel/Points_All";
-@onready var points_normal = $"../Control/ScrollContainer/Panel/Points_Normal";
-@onready var points_hard = $"../Control/ScrollContainer/Panel/Points_Hard";
 
-@onready var difficulty_number = $"../Control/Difficulty_Number"
+@onready var panel = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"
+
+@onready var line_2d_all = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_All"
+@onready var line_2d_normal = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_Normal"
+@onready var line_2d_hard = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_Hard"
+
+@onready var points_all = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_All"
+@onready var points_normal = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_Normal"
+@onready var points_hard = $"../Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_Hard"
+
+@onready var difficulty_number = $"../Control/Difficulty_Info/Difficulty_Number"
 @onready var game_description = $"../Control/Game_Description"
 @onready var interpretation = $"../Control/Interpretation"
+@onready var rich_text_label = $"../Control/Interpretation/RichTextLabel"
 
-@onready var line_2d_all = $"../Control/ScrollContainer/Panel/Line2D_All";
-@onready var line_2d_normal = $"../Control/ScrollContainer/Panel/Line2D_Normal";
-@onready var line_2d_hard = $"../Control/ScrollContainer/Panel/Line2D_Hard";
-
-@onready var origin = $"../Origin";
+#@onready var origin = $"../Origin";
 
 
 var center = Vector2();
@@ -24,6 +27,8 @@ var right = Vector2();
 var current_game;
 var all = false;
 var max_length;
+
+var okay;
 
 func _ready():
 	pass
@@ -62,9 +67,12 @@ func create_origin():
 	var center_x = panel.global_position.x;
 	var center_y = panel.global_position.y + panel.custom_minimum_size.y;
 	center = Vector2(center_x, center_y);
+	
 	up = center - Vector2(0, panel.custom_minimum_size.y);
 	right = center + Vector2(panel.custom_minimum_size.x, 0);
 	show_game_stats_dynamic();
+	okay = true;
+	queue_redraw();
 
 func show_game_stats_dynamic():
 	var session_datas_all = [];
@@ -96,6 +104,7 @@ func show_game_stats_dynamic():
 	
 	if highest_level == 0 || highest_level == null:
 		print_debug("highest_level == empty");
+		rich_text_label.text = "Interpretation: ...";
 		return;
 	
 	
@@ -111,12 +120,8 @@ func show_game_stats_dynamic():
 	await range_check(session_datas_normal, highest_level, range, "normal");
 	await range_check(session_datas_hard, highest_level, range, "hard");
 
-
-
-
-
-@onready var zoom_out = $"../Control/Zoom/ZoomOut"
-@onready var zoom_in = $"../Control/Zoom/ZoomIn"
+@onready var zoom_in = $"../Control/Stats_Chart/above_panel/Zoom/ZoomIn"
+@onready var zoom_out = $"../Control/Stats_Chart/above_panel/Zoom/ZoomOut"
 
 func set_length_max_size(session_datas, range):
 	var range_multiple = 0;
@@ -213,9 +218,12 @@ func point_pos_marker_y(point_count_up, level_at):
 	pass
 
 
-#func _draw():
-	#draw_line(center, up, Color(1,1,1));
-	#draw_line(center, right, Color(1,1,1));
-	#draw_circle(point_position, 10, Color(1,1,1));
-	#pass
+func _draw():
+	var center_x = center.x + -5;
+	var center_y = center.y + +5;
+	
+	if okay == true:
+		draw_circle(Vector2(center_x, center_y), 5, Color(1,1,1));
+		draw_line(Vector2(center_x, center_y), Vector2(510, center_y), Color(1,1,1));
+		draw_line(Vector2(center_x, center_y), Vector2(center_x, up.y), Color(1,1,1));
 

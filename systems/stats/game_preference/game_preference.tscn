@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://buvmdr2wq5ovx"]
+[gd_scene load_steps=9 format=3 uid="uid://buvmdr2wq5ovx"]
 
 [ext_resource type="Script" path="res://systems/stats/game_preference/game_preference.gd" id="1_jnx5u"]
-[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_4cvqo"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_068v1"]
 [ext_resource type="Theme" uid="uid://csj11qg66i8t2" path="res://assets/themes/game_preference_theme.tres" id="3_jqfja"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_ouh13"]
 [ext_resource type="Texture2D" uid="uid://qegaifqc484q" path="res://assets/game_preference/info.png" id="4_rm6r1"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_p0hhr"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="8_2rhr2"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="8_4wewa"]
 
 [node name="GamePreference" type="Node2D"]
 script = ExtResource("1_jnx5u")
@@ -16,88 +19,98 @@ offset_right = 540.0
 offset_bottom = 960.0
 size_flags_horizontal = 4
 theme = ExtResource("2_068v1")
+script = ExtResource("3_ouh13")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -480.0
-offset_right = 270.0
-offset_bottom = 480.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 34.0
-offset_right = 528.0
-offset_bottom = 83.0
+[node name="Button_Container" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.652
+anchor_right = 0.652
+offset_left = -178.08
+offset_top = 13.0
+offset_right = 177.92
+offset_bottom = 98.0
 
-[node name="Button" type="Button" parent="Control/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Button_Container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/Button_Container/HBoxContainer"]
 layout_mode = 2
 toggle_mode = true
 text = "Highest To Lowest"
 
-[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+[node name="Button2" type="Button" parent="Control/Button_Container/HBoxContainer"]
 layout_mode = 2
 toggle_mode = true
 text = "Lowest To Highest"
 
-[node name="Info_Visible" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 176.0
-offset_top = 99.0
-offset_right = 208.0
-offset_bottom = 131.0
+[node name="Info_Visible" type="Button" parent="Control/Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 0
 theme = ExtResource("3_jqfja")
 
-[node name="Info" type="Sprite2D" parent="Control/Info_Visible"]
+[node name="Info" type="Sprite2D" parent="Control/Button_Container/Info_Visible"]
 position = Vector2(16, 16)
 texture = ExtResource("4_rm6r1")
 
-[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("2_4cvqo")]
+[node name="Stats_Button" parent="Control" instance=ExtResource("6_p0hhr")]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 8.0
+offset_top = 10.0
 offset_right = 106.0
-offset_bottom = 104.0
+offset_bottom = 106.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Stats_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("8_2rhr2")
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -337.5
-offset_right = 300.0
-offset_bottom = 512.5
+anchors_preset = -1
+anchor_left = -0.056
+anchor_top = 0.148
+anchor_right = 1.056
+anchor_bottom = 1.034
+offset_left = 0.240002
+offset_top = 0.419998
+offset_right = -0.23999
+offset_bottom = -0.140015
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -245.0
-offset_top = -378.5
-offset_right = 245.0
-offset_bottom = 296.5
+anchors_preset = -1
+anchor_left = 0.092
+anchor_top = 0.055
+anchor_right = 0.913
+anchor_bottom = 0.849
+offset_left = -0.200005
+offset_top = -0.250004
+offset_right = -2.80005
+offset_bottom = -0.150024
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00521, 1)
 theme_override_constants/separation = 10
 
-[connection signal="button_down" from="Control/HBoxContainer/Button" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Control/HBoxContainer/Button2" to="." method="_on_button_2_button_down"]
-[connection signal="button_down" from="Control/Info_Visible" to="." method="_on_info_visible_button_down"]
+[node name="Button_Control" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Transition_Layer" parent="Control" instance=ExtResource("8_4wewa")]
+
+[connection signal="button_down" from="Control/Button_Container/HBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Button_Container/HBoxContainer/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Control/Button_Container/Info_Visible" to="." method="_on_info_visible_button_down"]

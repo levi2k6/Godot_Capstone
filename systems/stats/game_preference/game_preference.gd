@@ -1,6 +1,8 @@
 extends Node2D
 @onready var v_box_container = $Control/Panel/VBoxContainer
 const GAME_STATS_BAR = preload("res://systems/stats/game_preference/game_stats_bar.tscn");
+@onready var transition_layer = $Control/Transition_Layer
+
 
 var games_library = [
 {"id" : 1 ,"name": "Sequence Mix", "type": "visual memory","texture": preload("res://assets/games/game1.png"), "count": 0, "color": "f1bd00", "visible_state": false},
@@ -13,6 +15,8 @@ var lowest_count = 0;
 var high_low_arr = [];
 var low_high_arr = [];
 
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	append_game_library();
@@ -39,8 +43,8 @@ func append_game_library():
 	#print("games_library: " , games_library);
 
 
-@onready var button = $Control/HBoxContainer/Button
-@onready var button_2 = $Control/HBoxContainer/Button2
+@onready var button = $Control/Button_Container/HBoxContainer/Button
+@onready var button_2 = $Control/Button_Container/HBoxContainer/Button2
 
 
 func _on_button_button_down():

@@ -1,7 +1,10 @@
 extends Node2D
-@onready var money_count = $Control/Info/Money_Count
-@onready var hunger_bar = $Control/Info/Hunger/Hunger_Bar
+@onready var money_count = $Info_Control/Info/Money_Count;
+@onready var hunger_bar = $Info_Control/Info/Hunger/Hunger_Bar;
+@onready var transition_layer = $Info_Control/Transition_Layer
 
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	_connections();

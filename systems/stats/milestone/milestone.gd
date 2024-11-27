@@ -5,7 +5,11 @@ extends Node2D
 @onready var total_games_played = $Control/TextureRect/VBoxContainer/Total_Games_Played;
 @onready var total_days_played = $Control/TextureRect/VBoxContainer/Total_Days_Played
 @onready var total_money_earned = $Control/TextureRect/VBoxContainer/Total_Money_Earned
+@onready var transition_layer = $Transition_Layer
 
+
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	var child = DataManager._get_child_database();
@@ -18,7 +22,6 @@ func _ready():
 func update_datas():
 	DataManager._update_milestone_total_time();
 	DataManager._update_milestone_total_collection();
-	DataManager._update_milestone_total_games_played();
 
 func total_time_converter(seconds):
 	var minutes = float(seconds) / 60; 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://jl2lj81plmpg"]
+[gd_scene load_steps=8 format=3 uid="uid://jl2lj81plmpg"]
 
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="1_0mkoa"]
 [ext_resource type="Script" path="res://systems/stats/milestone/milestone.gd" id="1_d0umw"]
-[ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="1_f37md"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_lyegd"]
-[ext_resource type="Texture2D" uid="uid://dhlwtwvd03hoc" path="res://assets/milestone_sprites/milestone_panel.png" id="3_10dh8"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_vpk5f"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_34oh1"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="6_mn40c"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="7_16p7c"]
 
 [node name="Milestone" type="Node2D"]
 script = ExtResource("1_d0umw")
@@ -16,6 +18,7 @@ offset_right = 540.0
 offset_bottom = 960.0
 size_flags_horizontal = 4
 theme = ExtResource("2_lyegd")
+script = ExtResource("3_vpk5f")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -24,18 +27,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
 
-[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("1_f37md")]
+[node name="Milestone_Label" type="Label" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.082
 anchor_right = 0.5
-offset_left = -240.0
-offset_top = 21.0
-offset_right = -144.0
-offset_bottom = 117.0
+anchor_bottom = 0.084
+offset_left = -158.0
+offset_top = -38.72
+offset_right = 158.0
+offset_bottom = 37.36
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_34oh1")
+theme_override_font_sizes/font_size = 40
+text = "MILESTONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats_Button" parent="Control" instance=ExtResource("1_0mkoa")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 116.0
+offset_bottom = 116.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Stats_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("6_mn40c")
 
 [node name="UI" type="Control" parent="Control"]
 layout_mode = 1
@@ -66,13 +88,17 @@ offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 141.0
-offset_right = 521.0
-offset_bottom = 921.0
-texture = ExtResource("3_10dh8")
+[node name="TextureRect" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.506
+anchor_top = 0.431
+anchor_right = 0.506
+anchor_bottom = 0.431
+offset_left = -248.24
+offset_top = -272.76
+offset_right = 247.76
+offset_bottom = 507.24
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
@@ -85,29 +111,37 @@ offset_bottom = 229.0
 [node name="Total_Time" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Time: 0"
 
 [node name="Total_Collection" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Collection: 0"
 
 [node name="Total_Pet_Fully_Fed" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Pet Fully Fed: 0"
 
 [node name="Total_Games_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Games Played: 0"
 
 [node name="Total_Days_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Days Played: 0"
 
 [node name="Total_Money_Earned" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Total Money Earned: 0"
+
+[node name="Transition_Layer" parent="." instance=ExtResource("7_16p7c")]

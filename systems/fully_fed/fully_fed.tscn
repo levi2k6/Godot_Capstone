@@ -1,0 +1,330 @@
+[gd_scene load_steps=26 format=3 uid="uid://5km0tv5bvtt5"]
+
+[ext_resource type="Script" path="res://systems/fully_fed/fully_fed.gd" id="1_k7h33"]
+[ext_resource type="Script" path="res://systems/games/Control.gd" id="2_2va06"]
+[ext_resource type="Script" path="res://systems/fully_fed/Animator.gd" id="2_8atyk"]
+[ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="3_fmor2"]
+[ext_resource type="Shader" path="res://assets/fully_fed/shader/baloon2.gdshader" id="4_hsw1r"]
+[ext_resource type="Shader" path="res://assets/fully_fed/shader/baloon1.gdshader" id="4_ttbbo"]
+[ext_resource type="Texture2D" uid="uid://crtj1qu62t1d0" path="res://assets/fully_fed/baloon_background.png" id="4_w5wfs"]
+[ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="5_byhcv"]
+[ext_resource type="Texture2D" uid="uid://b3q1g7n0wed27" path="res://assets/fully_fed/baloon2_back.png" id="6_7cy3n"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="6_so6bu"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="7_qclqw"]
+[ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="8_5pujn"]
+[ext_resource type="FontFile" uid="uid://bjqtxj2hjlg82" path="res://assets/fonts/MinecraftItalic-R8Mo.otf" id="9_p8vui"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="10_l611u"]
+[ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="11_q3so4"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="15_lbe3b"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="17_7ymcp"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="17_g7ttj"]
+
+[sub_resource type="Animation" id="Animation_k8bkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/White:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Info:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 243)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Info:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wihtp"]
+resource_name = "hunger_appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Info:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0915053, 1),
+"update": 0,
+"values": [Vector2(18, 291), Vector2(18, 243)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Info:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0915053, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fybt7"]
+resource_name = "white_animation"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/White:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(3, 0.000943298, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.929412), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ayvfo"]
+resource_name = "white_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/White:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.521569), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hi51x"]
+_data = {
+"RESET": SubResource("Animation_k8bkh"),
+"hunger_appear": SubResource("Animation_wihtp"),
+"white_animation": SubResource("Animation_fybt7"),
+"white_fade": SubResource("Animation_ayvfo")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mbcj"]
+shader = ExtResource("4_hsw1r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyviy"]
+shader = ExtResource("4_ttbbo")
+
+[node name="Fully_Fed" type="Node2D"]
+script = ExtResource("1_k7h33")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hi51x")
+}
+script = ExtResource("2_8atyk")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("2_2va06")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -348.0
+offset_right = 49.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Baloons2" type="TextureRect" parent="Control"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5mbcj")
+layout_mode = 0
+offset_left = -50.0
+offset_top = -348.0
+offset_right = 589.0
+offset_bottom = 1302.0
+texture = ExtResource("6_7cy3n")
+
+[node name="Baloons1" type="TextureRect" parent="Control"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jyviy")
+layout_mode = 0
+offset_left = -50.0
+offset_top = -348.0
+offset_right = 589.0
+offset_bottom = 1302.0
+texture = ExtResource("4_w5wfs")
+
+[node name="Pet_Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pet" parent="Control/Pet_Control" instance=ExtResource("3_fmor2")]
+position = Vector2(20, 20)
+
+[node name="Info" type="VBoxContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.253
+anchor_right = 0.5
+anchor_bottom = 0.253
+offset_left = 18.0
+offset_top = 243.0
+offset_right = 459.0
+offset_bottom = 337.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+metadata/_edit_group_ = true
+
+[node name="Hunger" type="HBoxContainer" parent="Control/Info"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="Control/Info/Hunger"]
+custom_minimum_size = Vector2(51, 33)
+layout_mode = 2
+
+[node name="HungerIcon" type="Sprite2D" parent="Control/Info/Hunger/Control"]
+visible = false
+position = Vector2(25.5, 23.5)
+scale = Vector2(3, 3)
+texture = ExtResource("5_byhcv")
+
+[node name="Hunger_Bar" type="ProgressBar" parent="Control/Info/Hunger"]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_so6bu")
+theme_override_font_sizes/font_size = 20
+
+[node name="Reward" type="HBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.676
+anchor_right = 0.5
+anchor_bottom = 0.676
+offset_left = -54.5
+offset_top = 0.039917
+offset_right = 54.5
+offset_bottom = 40.0399
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_so6bu")
+
+[node name="Label" type="Label" parent="Control/Reward"]
+self_modulate = Color(1, 1, 0.176471, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "+30"
+
+[node name="TextureRect" type="TextureRect" parent="Control/Reward"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_q3so4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.792
+anchor_right = 0.5
+anchor_bottom = 0.792
+offset_left = -246.0
+offset_top = -72.3201
+offset_right = 246.0
+offset_bottom = 72.6799
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("7_qclqw")
+theme_override_fonts/bold_font = ExtResource("8_5pujn")
+theme_override_fonts/italics_font = ExtResource("9_p8vui")
+theme_override_fonts/bold_italics_font = ExtResource("10_l611u")
+theme_override_font_sizes/bold_font_size = 47
+bbcode_enabled = true
+text = "
+
+         [wave][b]BRAINTASTIC!!![/b][/wave]"
+
+[node name="Main_Hub_Button" parent="Control" instance=ExtResource("15_lbe3b")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -158.0
+offset_right = 48.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Main_Hub_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("17_7ymcp")
+
+[node name="White" type="ColorRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -348.0
+offset_right = 48.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(270, 530)
+
+[node name="Transition_Layer" parent="." instance=ExtResource("17_g7ttj")]

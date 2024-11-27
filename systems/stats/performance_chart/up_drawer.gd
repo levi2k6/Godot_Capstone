@@ -2,7 +2,7 @@ extends Node2D
 
 const POINT_UP_NODE = preload("res://systems/stats/performance_chart/point_up_node.tscn")
 @onready var up_numbers = $"../UpNumbers"
-@onready var icon_2 = $"../../Icon2"
+#@onready var icon_2 = $"../../Icon2"
 
 var center = Vector2();
 var up = Vector2();
@@ -22,7 +22,6 @@ func create_origin():
 	var center_y = up_numbers.global_position.y + up_numbers.custom_minimum_size.y;
 	center = Vector2(center_x, center_y);
 	up = center + Vector2(0, -up_numbers.custom_minimum_size.y);
-	icon_2.position = up;
 	show_game_stats_dynamic();
 
 func show_game_stats_dynamic():

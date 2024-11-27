@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://csecd0m0t0c2y"]
+[gd_scene load_steps=11 format=3 uid="uid://csecd0m0t0c2y"]
 
 [ext_resource type="Script" path="res://systems/create_pet/create_pet.gd" id="1_jjidk"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_ucw8x"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_yjn1a"]
 [ext_resource type="PackedScene" uid="uid://dut2fm7cqngup" path="res://systems/misc/clickable/clickable_tab_item.tscn" id="3_odqlm"]
 [ext_resource type="Script" path="res://systems/create_pet/show_item_create_pet.gd" id="4_21v8p"]
@@ -8,43 +9,52 @@
 [ext_resource type="Texture2D" uid="uid://dm8wxesvh5t8p" path="res://assets/customize/icons.png" id="5_xlut1"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="6_c4pff"]
 [ext_resource type="Script" path="res://systems/create_pet/create_pet_modal.gd" id="6_yjfel"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="10_0ke5y"]
 
 [node name="Create_Pet" type="Node2D"]
 script = ExtResource("1_jjidk")
-
-[node name="Pet" parent="." instance=ExtResource("2_yjn1a")]
-position = Vector2(296, 636)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
+script = ExtResource("2_ucw8x")
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_right = 540.0
-offset_bottom = 960.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.352941, 0.796078, 1)
 
 [node name="Picker" type="Control" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -223.0
-offset_top = 42.0
-offset_right = 229.0
-offset_bottom = 398.0
+anchor_left = 0.506
+anchor_top = 0.229
+anchor_right = 0.506
+anchor_bottom = 0.229
+offset_left = -226.24
+offset_top = -177.84
+offset_right = 225.76
+offset_bottom = 178.16
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Picker"]
 custom_minimum_size = Vector2(0, 30)
-layout_mode = 0
-offset_left = 10.0
-offset_right = 463.0
-offset_bottom = 64.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.523
+anchor_top = 0.09
+anchor_right = 0.523
+anchor_bottom = 0.09
+offset_left = -226.396
+offset_top = -32.04
+offset_right = 226.604
+offset_bottom = 31.96
 
 [node name="Tab_Bodies" parent="Control/Picker/HBoxContainer" instance=ExtResource("3_odqlm")]
 custom_minimum_size = Vector2(80, 64)
@@ -108,15 +118,20 @@ frame = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Picker"]
 layout_mode = 2
-offset_top = 55.0
-offset_right = 452.0
-offset_bottom = 356.0
+anchor_left = 0.5
+anchor_top = 0.577
+anchor_right = 0.5
+anchor_bottom = 0.577
+offset_left = -226.0
+offset_top = -150.412
+offset_right = 226.0
+offset_bottom = 150.588
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="Panel" parent="Control/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(452, 500)
+custom_minimum_size = Vector2(452, 600)
 layout_mode = 2
 theme = ExtResource("6_c4pff")
 
@@ -166,10 +181,15 @@ script = ExtResource("4_21v8p")
 
 [node name="outline" type="Panel" parent="Control/Picker"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 55.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.577
+anchor_right = 0.5
+anchor_bottom = 0.577
+offset_left = -226.0
+offset_top = -150.412
+offset_right = 226.0
+offset_bottom = 150.588
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -184,9 +204,9 @@ anchor_left = 0.182
 anchor_top = 0.231
 anchor_right = 0.785
 anchor_bottom = 0.444
-offset_left = 0.167992
+offset_left = 18.168
 offset_top = 0.455994
-offset_right = -0.160004
+offset_right = 17.84
 offset_bottom = 0.343964
 grow_horizontal = 2
 grow_vertical = 2
@@ -251,19 +271,37 @@ text = "Back
 [node name="Submit" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.694
-anchor_top = 0.928
-anchor_right = 0.901
-anchor_bottom = 0.969
-offset_left = 0.255981
-offset_top = -0.272034
-offset_right = 0.0239868
-offset_bottom = -0.256042
+anchor_left = 0.798
+anchor_top = 0.943
+anchor_right = 0.798
+anchor_bottom = 0.943
+offset_left = -55.904
+offset_top = -14.6721
+offset_right = 55.644
+offset_bottom = 24.7039
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_vertical = 8
 theme = ExtResource("6_c4pff")
 text = "OK"
+
+[node name="Pet_Control" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.647
+anchor_right = 0.5
+anchor_bottom = 0.647
+offset_left = -32.0
+offset_top = -32.12
+offset_right = 32.0
+offset_bottom = 31.88
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pet" parent="Control/Pet_Control" instance=ExtResource("2_yjn1a")]
+position = Vector2(32, 32)
+
+[node name="Transition_Layer" parent="." instance=ExtResource("10_0ke5y")]
 
 [connection signal="button_up" from="Control/Create_Pet_Modal/HBoxContainer/CreatePet" to="Control/Create_Pet_Modal" method="_on_create_pet_button_up"]
 [connection signal="button_up" from="Control/Create_Pet_Modal/HBoxContainer/Back" to="." method="_on_back_button_up"]

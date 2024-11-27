@@ -1,95 +1,136 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2m83r2xqeial"]
+[gd_scene load_steps=8 format=3 uid="uid://b2m83r2xqeial"]
 
 [ext_resource type="Script" path="res://systems/settings/settings.gd" id="1_8mcl3"]
 [ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_5e23u"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_lhqne"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_vlan1"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_0o8hb"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_27t48"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="6_nrsig"]
 
-[node name="Settings" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Settings" type="Node2D"]
 script = ExtResource("1_8mcl3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("2_vlan1")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
 
-[node name="Options" type="Panel" parent="."]
+[node name="Clickable_Change_Back_Scene" parent="Control" instance=ExtResource("2_5e23u")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 106.0
+offset_bottom = 106.0
+
+[node name="Settings_Label" type="Label" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = 68.0
-offset_right = -57.0
-offset_bottom = -250.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.082
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -158.0
+offset_top = -38.72
+offset_right = 158.0
+offset_bottom = 37.36
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_0o8hb")
+theme_override_font_sizes/font_size = 40
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.143
+anchor_right = 0.5
+anchor_bottom = 0.143
+offset_left = -248.0
+offset_top = -0.279999
+offset_right = 248.0
+offset_bottom = 647.72
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_lhqne")
 metadata/_edit_group_ = true
 
-[node name="Clickable_Change_Back_Scene" parent="Options" instance=ExtResource("2_5e23u")]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 25.0
-offset_right = 125.0
-offset_bottom = 121.0
-
-[node name="Panel" type="Panel" parent="Options"]
+[node name="Panel" type="Panel" parent="Control/Options"]
 self_modulate = Color(0.65, 0.65, 0.65, 1)
+custom_minimum_size = Vector2(318, 128)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -169.5
-offset_right = 159.0
-offset_bottom = -18.5
+offset_left = -175.0
+offset_top = 73.0
+offset_right = 175.0
+offset_bottom = 223.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Options/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.368
+anchor_right = 0.892
+anchor_bottom = 0.632
+offset_left = 0.155998
+offset_top = -0.0680046
+offset_right = -0.156006
+offset_bottom = 0.0679932
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Options/Panel"]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 66.0
-offset_right = 94.0
-offset_bottom = 89.0
+[node name="Label" type="Label" parent="Control/Options/Panel/HBoxContainer"]
+layout_mode = 2
 text = "Music:"
 
-[node name="HSlider" type="HSlider" parent="Options/Panel"]
-layout_mode = 0
-offset_left = 114.0
-offset_top = 73.0
-offset_right = 290.0
-offset_bottom = 89.0
+[node name="HSlider" type="HSlider" parent="Control/Options/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(230, 50)
+layout_mode = 2
+size_flags_vertical = 4
 
-[node name="Stats" type="Button" parent="Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Options"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = 5.0
-offset_right = 85.0
-offset_bottom = 81.0
+anchors_preset = -1
+offset_left = 89.0
+offset_top = 291.5
+offset_right = 407.0
+offset_bottom = 495.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_lhqne")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 39
+theme_override_constants/separation = 10
+
+[node name="Stats_Button" parent="Control/Options/VBoxContainer" instance=ExtResource("6_27t48")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Stats"
 
-[connection signal="pressed" from="Options/Stats" to="." method="_on_stats_pressed"]
+[node name="EXIT" type="Button" parent="Control/Options/VBoxContainer"]
+self_modulate = Color(1, 0.0705882, 0.054902, 1)
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_lhqne")
+theme_override_font_sizes/font_size = 39
+text = "EXIT
+"
+
+[node name="Transition_Layer" parent="." instance=ExtResource("6_nrsig")]
+
+[connection signal="button_up" from="Control/Options/VBoxContainer/EXIT" to="." method="_on_exit_button_up"]

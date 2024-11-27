@@ -1,40 +1,45 @@
 extends Node2D
-@onready var scroll_container = $Control/ScrollContainer
-@onready var panel = $Control/ScrollContainer/Panel;
-@onready var points_all = $Control/ScrollContainer/Panel/Points_All
-@onready var points_normal = $Control/ScrollContainer/Panel/Points_Normal
-@onready var points_hard = $Control/ScrollContainer/Panel/Points_Hard
 
-@onready var right_scroll_container = $Control/RightScrollContainer;
-@onready var right_numbers = $Control/RightScrollContainer/RightNumbers;
+@onready var stats_panel_container = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer
+@onready var panel = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel
+
+@onready var line_2d_all = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_All
+@onready var line_2d_normal = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_Normal
+@onready var line_2d_hard = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Line2D_Hard
+
+@onready var points_all = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_All
+@onready var points_normal = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_Normal
+@onready var points_hard = $Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel/Points_Hard
+
+@onready var right_scroll_container = $Control/Stats_Chart/VBoxContainer/RightScrollContainer
+@onready var right_numbers = $Control/Stats_Chart/VBoxContainer/RightScrollContainer/RightNumbers
 
 @onready var drawer = $drawer;
-@onready var up_drawer = $Control/UpScrollContainer/UpDrawer;
-@onready var right_drawer = $Control/RightScrollContainer/RightDrawer;
+@onready var up_drawer = $Control/Stats_Chart/VBoxContainer/HBoxContainer/UpScrollContainer/UpDrawer
+@onready var right_drawer = $Control/Stats_Chart/VBoxContainer/RightScrollContainer/RightDrawer
 
-@onready var all_visible = $Control/Difficulty_Filter/AllContainer/All_Visible;
-@onready var visible_icon_1 = $Control/Difficulty_Filter/AllContainer/All_Visible/Visible_Icon1;
-@onready var line_2d_all = $Control/ScrollContainer/Panel/Line2D_All
+@onready var all_visible = $Control/Difficulty_Info/Difficulty_Filter/AllContainer/All_Visible
+@onready var visible_icon_1 = $Control/Difficulty_Info/Difficulty_Filter/AllContainer/All_Visible/Visible_Icon1
 
-@onready var normal_visible = $Control/Difficulty_Filter/NormalContainer/Normal_Visible;
-@onready var visible_icon_2 = $Control/Difficulty_Filter/NormalContainer/Normal_Visible/Visible_Icon2;
-@onready var line_2d_normal = $Control/ScrollContainer/Panel/Line2D_Normal;
+@onready var normal_visible = $Control/Difficulty_Info/Difficulty_Filter/NormalContainer/Normal_Visible
+@onready var visible_icon_2 = $Control/Difficulty_Info/Difficulty_Filter/NormalContainer/Normal_Visible/Visible_Icon2
 
-@onready var hard_visible = $Control/Difficulty_Filter/HardContainer/Hard_Visible;
-@onready var visible_icon_3 = $Control/Difficulty_Filter/HardContainer/Hard_Visible/Visible_Icon3;
-@onready var line_2d_hard = $Control/ScrollContainer/Panel/Line2D_Hard;
+@onready var hard_visible = $Control/Difficulty_Info/Difficulty_Filter/HardContainer/Hard_Visible
+@onready var visible_icon_3 = $Control/Difficulty_Info/Difficulty_Filter/HardContainer/Hard_Visible/Visible_Icon3
 
 @onready var soda_tiles = $Control/Games/SodaTiles
 @onready var digit_hack = $"Control/Games/Digit Hack"
 @onready var meteor_rush = $"Control/Games/Meteor Rush"
 
-
 var scroll_moving = false;
 
-@onready var zoom_in = $Control/Zoom/ZoomIn
-@onready var zoom_out = $Control/Zoom/ZoomOut
+@onready var zoom_in = $Control/Stats_Chart/above_panel/Zoom/ZoomIn
+@onready var zoom_out = $Control/Stats_Chart/above_panel/Zoom/ZoomOut
 
+@onready var transition_layer = $Transition_Layer
 
+func get_transition_layer():
+	return transition_layer;
 
 func _ready():
 	zoom_in.disabled = true;
@@ -46,8 +51,8 @@ func _ready():
 	pass
 
 func _process(delta):
-	if right_scroll_container.scroll_horizontal != scroll_container.scroll_horizontal:
-		right_scroll_container.scroll_horizontal = scroll_container.scroll_horizontal; 
+	if right_scroll_container.scroll_horizontal != stats_panel_container.scroll_horizontal:
+		right_scroll_container.scroll_horizontal = stats_panel_container.scroll_horizontal; 
 
 
 func _on_zoom_in_button_down():

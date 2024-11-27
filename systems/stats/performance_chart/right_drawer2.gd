@@ -1,12 +1,18 @@
 extends Node2D
 const POINT_RIGHT_NODE = preload("res://systems/stats/performance_chart/point_right_node.tscn")
-@onready var drawer = $"../../../drawer";
-@onready var right_numbers = $"../RightNumbers";
-@onready var icon = $"../Icon";
-@onready var icon_2 = $"../../Icon2";
-@onready var origin = $"../../../Origin";
 
-@onready var panel = $"../../ScrollContainer/Panel"
+@onready var panel = $"../../HBoxContainer/StatsPanelContainer/Panel"
+
+@onready var right_numbers = $"../RightNumbers"
+#@onready var drawer = $"../../../../../drawer"
+
+
+
+#@onready var icon = $"../Icon";
+#@onready var icon_2 = $"../../Icon2";
+#@onready var origin = $"../../../Origin";
+
+
 
 
 var center = Vector2();
@@ -32,7 +38,6 @@ func create_origin():
 	var center_y = right_numbers.global_position.y;
 	center = Vector2(center_x, center_y);
 	right = center + Vector2(right_numbers.custom_minimum_size.x, 0);
-	origin.position = center;
 	show_game_stats_dynamic();
 
 func show_game_stats_dynamic():
@@ -109,6 +114,3 @@ func point_pos_marker_x(point_count_right, b):
 	#icon_2.position = point_position;
 	return point_position
 	pass
-
-func _draw():
-	draw_line(Vector2(right_numbers.position.x, 5), Vector2(right_numbers.custom_minimum_size.x, 5), Color(1,1,1));
