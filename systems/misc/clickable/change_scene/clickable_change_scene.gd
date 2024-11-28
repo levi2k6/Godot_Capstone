@@ -74,5 +74,4 @@ func _on_pressed():
 
 func transition():
 	var transition_layer = get_tree().current_scene.get_transition_layer();
-	print("transition_layer: ", transition_layer);
 	await transition_layer.appear();

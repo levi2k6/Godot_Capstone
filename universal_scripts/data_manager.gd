@@ -190,7 +190,8 @@ func _update_milestone_total_pet_fully_fed():
 
 func _update_milestone_total_days_played():
 	print("TOTAL DAYS ADDED");
-	Singleton.database.query("UPDATE milestone SET total_days_played = total_days_played + 1");
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("UPDATE milestone SET total_days_played = total_days_played + 1 WHERE id = %s" %child_id);
 
 func _update_milestone_total_games_played():
 	var child_id = _get_child_database()[0].id;
@@ -201,3 +202,8 @@ func _update_milestone_total_games_played():
 	");
 	var total_games_played_count = Singleton.database.query_result[0].total_count;
 	Singleton.database.update_rows("milestone", "id = %s" %child_id, {"total_games_played": total_games_played_count});
+
+func _update_milestone_total_money_earned(money):
+	print("LOKLOKLOKLOKLOK", money);
+	var child_id = _get_child_database()[0].id;
+	Singleton.database.query("UPDATE milestone SET total_money_earned = total_money_earned + %s WHERE id = %s" %[money, child_id]);

@@ -145,6 +145,7 @@ func reward_system():
 	pet._learn(reward);
 	game_1.update_money(money);
 
+
 func session_stats():
 	pass
 

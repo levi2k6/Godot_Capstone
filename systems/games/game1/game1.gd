@@ -26,6 +26,7 @@ func update_money(add):
 	var money = DataManager._get_money_database()[0].money;
 	var money_added = money + add;
 	DataManager._update_money_database(money_added);
+	DataManager._update_milestone_total_money_earned(add);
 	print(add);
 	money_count._display_money();
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2m83r2xqeial"]
+[gd_scene load_steps=10 format=3 uid="uid://b2m83r2xqeial"]
 
 [ext_resource type="Script" path="res://systems/settings/settings.gd" id="1_8mcl3"]
 [ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_5e23u"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_vlan1"]
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_0o8hb"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_27t48"]
+[ext_resource type="Script" path="res://systems/settings/Label.gd" id="6_jtc3b"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="6_nrsig"]
+[ext_resource type="PackedScene" uid="uid://cx0hmtjo834nu" path="res://systems/settings/exit_modal.tscn" id="8_vyiom"]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_8mcl3")
@@ -69,20 +71,33 @@ mouse_filter = 2
 theme = ExtResource("2_lhqne")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="Control/Options"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Options"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 42.0
+offset_right = 491.0
+offset_bottom = 658.0
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Options/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Control/Options/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Name Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_jtc3b")
+
+[node name="Panel" type="Panel" parent="Control/Options/VBoxContainer2/VBoxContainer2"]
 self_modulate = Color(0.65, 0.65, 0.65, 1)
 custom_minimum_size = Vector2(318, 128)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -175.0
-offset_top = 73.0
-offset_right = 175.0
-offset_bottom = 223.0
-grow_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Options/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.108
@@ -97,32 +112,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/Options/Panel/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer"]
 layout_mode = 2
 text = "Music:"
 
-[node name="HSlider" type="HSlider" parent="Control/Options/Panel/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(230, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Options"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 89.0
-offset_top = 291.5
-offset_right = 407.0
-offset_bottom = 495.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Options/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Stats_Button" parent="Control/Options/VBoxContainer" instance=ExtResource("6_27t48")]
+[node name="Stats_Button" parent="Control/Options/VBoxContainer2/VBoxContainer" instance=ExtResource("6_27t48")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Stats"
 
-[node name="EXIT" type="Button" parent="Control/Options/VBoxContainer"]
+[node name="EXIT" type="Button" parent="Control/Options/VBoxContainer2/VBoxContainer"]
 self_modulate = Color(1, 0.0705882, 0.054902, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -131,6 +140,10 @@ theme_override_font_sizes/font_size = 39
 text = "EXIT
 "
 
+[node name="Exit_Modal" parent="Control" instance=ExtResource("8_vyiom")]
+visible = false
+layout_mode = 1
+
 [node name="Transition_Layer" parent="." instance=ExtResource("6_nrsig")]
 
-[connection signal="button_up" from="Control/Options/VBoxContainer/EXIT" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="Control/Options/VBoxContainer2/VBoxContainer/EXIT" to="." method="_on_exit_button_up"]

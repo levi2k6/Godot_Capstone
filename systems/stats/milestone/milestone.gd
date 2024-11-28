@@ -62,7 +62,7 @@ func display_datas():
 	total_collection.text = "Total Collection: %s" %text_total_collection;
 	
 	var text_total_pet_fully_fed = milestone_datas_db[0].total_pet_fully_fed;
-	total_pet_fully_fed.text = "Total Pet Fully Fed: %s" %text_total_pet_fully_fed;
+	total_pet_fully_fed.text = "Total Pet Fully Brain Fed: %s" %text_total_pet_fully_fed;
 	
 	var text_total_games_played = milestone_datas_db[0].total_games_played;
 	total_games_played.text = "Total Games Played: %s" %text_total_games_played;

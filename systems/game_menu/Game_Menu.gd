@@ -33,7 +33,7 @@ func _execute():
 	animation(child, pet);
 
 func animation(child, pet):
-	await animator.title_animation()
+	await animator.title_animation();
 	
 	print(child);
 	print(pet);

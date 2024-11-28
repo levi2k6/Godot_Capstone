@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csecd0m0t0c2y"]
+[gd_scene load_steps=12 format=3 uid="uid://csecd0m0t0c2y"]
 
 [ext_resource type="Script" path="res://systems/create_pet/create_pet.gd" id="1_jjidk"]
 [ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_ucw8x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dm8wxesvh5t8p" path="res://assets/customize/icons.png" id="5_xlut1"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="6_c4pff"]
 [ext_resource type="Script" path="res://systems/create_pet/create_pet_modal.gd" id="6_yjfel"]
+[ext_resource type="Texture2D" uid="uid://dxm7l6a13fcxw" path="res://assets/customize/shadow.png" id="9_cxc2u"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="10_0ke5y"]
 
 [node name="Create_Pet" type="Node2D"]
@@ -29,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.352941, 0.796078, 1)
+color = Color(0, 0.4, 0.894118, 1)
 
 [node name="Picker" type="Control" parent="Control"]
 layout_mode = 1
@@ -297,6 +298,11 @@ offset_right = 32.0
 offset_bottom = 31.88
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Shadow" type="Sprite2D" parent="Control/Pet_Control"]
+position = Vector2(32, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("9_cxc2u")
 
 [node name="Pet" parent="Control/Pet_Control" instance=ExtResource("2_yjn1a")]
 position = Vector2(32, 32)

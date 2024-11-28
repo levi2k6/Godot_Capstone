@@ -23,6 +23,8 @@ func _on_create_pet_button_up():
 				if item == null:
 					continue;
 				Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
+			await transition();
+			GameData.transition_disappear = true;
 			get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
 		else:
 			for item in equip_library:
@@ -36,7 +38,11 @@ func _on_create_pet_button_up():
 						print(n," was not found so insert the item")
 						Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
 				n = 0
+			await transition();
+			GameData.transition_disappear = true;
 			get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
 
-	
-	pass # Replace with function body.
+
+func transition():
+	var transition_layer = get_tree().current_scene.get_transition_layer();
+	await transition_layer.appear();

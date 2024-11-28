@@ -16,7 +16,6 @@ func get_transition_layer():
 	return transition_layer;
 
 func _ready():
-	#_resolution()
 	for child in h_box_container.get_children():
 		child.change_tab.connect(_change_tab)
 	
@@ -49,7 +48,6 @@ func _change_item(item, naym):
 	pass
 
 func _on_submit_pressed():
-	
 	create_pet_modal.visible = !create_pet_modal.visible
 	pass # Replace with function body.
 

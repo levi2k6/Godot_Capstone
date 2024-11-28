@@ -124,7 +124,7 @@ text = "Total Collection: 0"
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Total Pet Fully Fed: 0"
+text = "Total Pet Fully Brain Fed: 0"
 
 [node name="Total_Games_Played" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
