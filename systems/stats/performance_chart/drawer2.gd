@@ -75,6 +75,8 @@ func create_origin():
 	queue_redraw();
 
 func show_game_stats_dynamic():
+	game_description.show_description();
+	
 	var session_datas_all = [];
 	var session_datas_normal = [];
 	var session_datas_hard = [];
@@ -111,7 +113,6 @@ func show_game_stats_dynamic():
 	difficulty_number.set_text(session_datas_all.size(), "all");
 	difficulty_number.set_text(session_datas_normal.size(), "normal");
 	difficulty_number.set_text(session_datas_hard.size(), "hard");
-	game_description.show_description();
 	interpretation.interpret();
 	
 	set_length_max_size(session_datas_all, range);
@@ -223,7 +224,7 @@ func _draw():
 	var center_y = center.y + +5;
 	
 	if okay == true:
-		draw_circle(Vector2(center_x, center_y), 5, Color(1,1,1));
+		#draw_circle(Vector2(center_x, center_y), 5, Color(1,1,1));
 		draw_line(Vector2(center_x, center_y), Vector2(510, center_y), Color(1,1,1));
 		draw_line(Vector2(center_x, center_y), Vector2(center_x, up.y), Color(1,1,1));
 

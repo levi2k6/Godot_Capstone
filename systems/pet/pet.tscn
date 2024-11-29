@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://dppjchrp5io0f"]
+[gd_scene load_steps=36 format=3 uid="uid://dppjchrp5io0f"]
 
 [ext_resource type="Script" path="res://systems/pet/pet.gd" id="1_kivr4"]
 [ext_resource type="Resource" uid="uid://dgu0taccwgl7" path="res://resources/pet_stats.tres" id="2_5da1l"]
+[ext_resource type="AudioStream" uid="uid://bjeowcmvlnch0" path="res://assets/universal/sounds/pet_tap.wav" id="3_u2wnn"]
 [ext_resource type="Texture2D" uid="uid://bh623cl3bwqj0" path="res://assets/other/feet.png" id="3_yfy4f"]
 [ext_resource type="Texture2D" uid="uid://bgs557j6jt0g" path="res://assets/body/body3.png" id="4_c6rra"]
 [ext_resource type="Texture2D" uid="uid://dig7qad3m4rp5" path="res://assets/other/hand.png" id="4_qxabx"]
@@ -72,6 +73,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_u2wnn")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_h5spg"]
@@ -178,6 +203,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(2.07053, 0.189465, 1),
 "update": 0,
 "values": [Vector2(45, 5), Vector2(45, 0), Vector2(44, 13)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_u2wnn")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_fmyfs"]
@@ -570,6 +619,9 @@ _data = {
 [node name="Pet" type="CharacterBody2D"]
 script = ExtResource("1_kivr4")
 properties = ExtResource("2_5da1l")
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u2wnn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

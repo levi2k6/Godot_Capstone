@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dtwuefjxhddi2"]
+[gd_scene load_steps=33 format=3 uid="uid://dtwuefjxhddi2"]
 
 [ext_resource type="Script" path="res://systems/games/game3/game3.gd" id="1_i7y8d"]
 [ext_resource type="Script" path="res://systems/games/game3/Game.gd" id="1_j4hsh"]
@@ -15,10 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://s6gsslhn0wgx" path="res://assets/game3/ship_menu.png" id="10_0gj1o"]
 [ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="10_1b6su"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="10_ggkwj"]
+[ext_resource type="AudioStream" uid="uid://drt863a37hs53" path="res://assets/game3/sounds/rocket.wav" id="11_up4vi"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="14_hthx6"]
 [ext_resource type="Script" path="res://systems/games/game3/Info_Control.gd" id="14_peucc"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="15_rd76u"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="19_2wmt0"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="19_2wmt0"]
 
 [sub_resource type="Animation" id="Animation_657cm"]
 length = 0.001
@@ -298,23 +299,34 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_xlt2l")
 
-[node name="Highest_Level" type="Label" parent="Control/Game_Intro"]
+[node name="Highest_Level_Container" type="VBoxContainer" parent="Control/Game_Intro"]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.262
-anchor_top = 0.369
-anchor_right = 0.738
-anchor_bottom = 0.38
-offset_left = 0.019989
-offset_top = -128.02
-offset_right = -0.0200195
-offset_bottom = -111.58
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.5
+offset_top = -272.28
+offset_right = 174.5
+offset_bottom = -214.28
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Highest_LevelN" type="Label" parent="Control/Game_Intro/Highest_Level_Container"]
+self_modulate = Color(0.258824, 1, 0.219608, 1)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("10_1b6su")
 theme_override_font_sizes/font_size = 26
-text = "Highest Level: 0"
+text = "Highest Level Normal: 0"
+
+[node name="Highest_LevelH" type="Label" parent="Control/Game_Intro/Highest_Level_Container"]
+self_modulate = Color(1, 0.713726, 0.196078, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_1b6su")
+theme_override_font_sizes/font_size = 26
+text = "Highest Level Hard: 0"
 
 [node name="Label" type="Label" parent="Control/Game_Intro"]
 layout_mode = 1
@@ -333,6 +345,9 @@ theme_override_font_sizes/font_size = 30
 
 [node name="Ship_Intro" type="Node2D" parent="Control/Game_Intro"]
 position = Vector2(1092, 541)
+
+[node name="Ship_Sound" type="AudioStreamPlayer" parent="Control/Game_Intro/Ship_Intro"]
+stream = ExtResource("11_up4vi")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Control/Game_Intro/Ship_Intro"]
 position = Vector2(277, 8)

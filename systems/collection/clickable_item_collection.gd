@@ -40,6 +40,7 @@ func _update_pet_equip_database(item):
 
 
 func _on_pressed():
+	SoundPlayer.button_sfx();
 	_update_pet_equip_database(this_item)
 	
 	pass # Replace with function body.

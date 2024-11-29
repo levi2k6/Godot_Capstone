@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="3_w0r1m"]
 [ext_resource type="Texture2D" uid="uid://crus2t5x7fd3y" path="res://assets/games/game2.png" id="4_57ci2"]
 [ext_resource type="Texture2D" uid="uid://d4gxioiap6swk" path="res://assets/games/game3.png" id="5_2wtbh"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="10_tv6xi"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="10_tv6xi"]
 
 [node name="Games" type="Node2D"]
 script = ExtResource("1_jdim2")

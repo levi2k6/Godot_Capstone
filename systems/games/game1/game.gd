@@ -3,6 +3,7 @@ extends Control
 
 @onready var pet = $"../../Pet"
 @onready var animator = $"../../Animator"
+@onready var sound = $Animator_Tiles/Sound
 @onready var tiles = $Tiles
 
 var rng = RandomNumberGenerator.new()
@@ -73,6 +74,11 @@ func game_animation():
 
 func win():
 	await animator.right();
+	
+	const WIN_FX = preload("res://assets/universal/sounds/Win Fx.wav")
+	sound.stream = WIN_FX;
+	sound.play();
+	
 	$Timer.start(1)
 	await $Timer.timeout
 	difficulty_up();
@@ -82,6 +88,11 @@ func lose():
 	print("WRONG!");
 	DataManager._insert_game1_session(level, difficulty);
 	await animator.wrong();
+	
+	const LOSE_FX = preload("res://assets/universal/sounds/Lose Fx.wav")
+	sound.stream = LOSE_FX;
+	sound.play();
+	
 	reward_system();
 	level = 1;
 	queue_i = 0;

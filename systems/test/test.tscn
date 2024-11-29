@@ -1,31 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c37rxtt7ovq0n"]
+[gd_scene load_steps=3 format=3 uid="uid://c37rxtt7ovq0n"]
 
 [ext_resource type="Script" path="res://systems/test/test.gd" id="1_j4xbs"]
-[ext_resource type="Texture2D" uid="uid://s871uxno6uty" path="res://icon.svg" id="2_s4ve1"]
-[ext_resource type="Script" path="res://systems/test/ScrollContainer.gd" id="3_uh7vg"]
+[ext_resource type="AudioStream" uid="uid://rn835vu2occ" path="res://assets/universal/sounds/Universal Game Theme.wav" id="2_dg76j"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_j4xbs")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(97, 167)
-texture = ExtResource("2_s4ve1")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dg76j")
 
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(95, 333)
-texture = ExtResource("2_s4ve1")
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 198.0
+offset_top = 429.0
+offset_right = 366.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-offset_left = 195.0
-offset_top = 667.0
-offset_right = 295.0
-offset_bottom = 767.0
-script = ExtResource("3_uh7vg")
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="ScrollContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-mouse_filter = 2
-
-[connection signal="mouse_entered" from="ScrollContainer" to="ScrollContainer" method="_on_mouse_entered"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

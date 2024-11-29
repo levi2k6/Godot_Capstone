@@ -22,6 +22,7 @@ func _ready():
 func update_datas():
 	DataManager._update_milestone_total_time();
 	DataManager._update_milestone_total_collection();
+	DataManager._update_milestone_total_games_played();
 
 func total_time_converter(seconds):
 	var minutes = float(seconds) / 60; 

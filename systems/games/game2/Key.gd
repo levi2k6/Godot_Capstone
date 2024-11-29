@@ -1,13 +1,10 @@
 extends TextureButton
 @onready var typer = $".."
 @onready var monitor_2_output = $"../../../Monitor2/Monitor2_Output"
-
-
-
-
-
+@onready var key_sound = $"../Key_Sound"
 
 func _on_button_down():
+	key_sound.play();
 	if !typer.able:
 		return;
 	get_child(0).frame = 1;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2m83r2xqeial"]
+[gd_scene load_steps=11 format=3 uid="uid://b2m83r2xqeial"]
 
 [ext_resource type="Script" path="res://systems/settings/settings.gd" id="1_8mcl3"]
 [ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_5e23u"]
@@ -7,7 +7,8 @@
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_0o8hb"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_27t48"]
 [ext_resource type="Script" path="res://systems/settings/Label.gd" id="6_jtc3b"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="6_nrsig"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="6_nrsig"]
+[ext_resource type="Script" path="res://systems/settings/HSlider.gd" id="7_2qe38"]
 [ext_resource type="PackedScene" uid="uid://cx0hmtjo834nu" path="res://systems/settings/exit_modal.tscn" id="8_vyiom"]
 
 [node name="Settings" type="Node2D"]
@@ -83,12 +84,14 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Control/Options/VBoxContainer2/VBoxContainer2"]
+[node name="Name" type="Label" parent="Control/Options/VBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Name Here"
+text = "Teheee"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 script = ExtResource("6_jtc3b")
 
 [node name="Panel" type="Panel" parent="Control/Options/VBoxContainer2/VBoxContainer2"]
@@ -120,6 +123,9 @@ text = "Music:"
 custom_minimum_size = Vector2(230, 50)
 layout_mode = 2
 size_flags_vertical = 4
+min_value = -30.0
+max_value = 0.0
+script = ExtResource("7_2qe38")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Options/VBoxContainer2"]
 layout_mode = 2
@@ -146,4 +152,5 @@ layout_mode = 1
 
 [node name="Transition_Layer" parent="." instance=ExtResource("6_nrsig")]
 
+[connection signal="value_changed" from="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer/HSlider" to="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer/HSlider" method="_on_value_changed"]
 [connection signal="button_up" from="Control/Options/VBoxContainer2/VBoxContainer/EXIT" to="." method="_on_exit_button_up"]

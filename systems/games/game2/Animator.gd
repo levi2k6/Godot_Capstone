@@ -1,17 +1,21 @@
 extends AnimationPlayer
 
 @onready var back = $"../Background/ParallaxLayer/Back"
+@onready var lights_sound = $"../Background/ParallaxLayer/Back/Lights_Sound"
 
 @onready var casing = $"../Foreground/Casing";
 @onready var monitor_1 = $"../Foreground/Monitor1";
+@onready var monitor_sound = $Monitor_Sound;
 @onready var monitor_1_output = $"../Foreground/Monitor1/Monitor1_Output";
-@onready var bar_timer = $"../Foreground/Monitor1/Bar_Timer"
-@onready var game_intro = $"../Foreground/Casing/Game_Intro"
+@onready var bar_timer = $"../Foreground/Monitor1/Bar_Timer";
+@onready var game_intro = $"../Foreground/Casing/Game_Intro";
 
 @onready var monitor_2 = $"../Foreground/Monitor2";
 @onready var monitor_2_output = $"../Foreground/Monitor2/Monitor2_Output";
 
-@onready var animator_engine = $"../Foreground/Casing/Engine/AnimatorEngine"
+@onready var animator_engine = $"../Foreground/Casing/Engine/AnimatorEngine";
+@onready var engine_sound = $"../Foreground/Casing/Engine/Engine_Sound";
+
 
 @onready var electric = $"../Electric"
 @onready var animator_electric = $"../Electric/AnimatorElectric"
@@ -34,8 +38,10 @@ func reset():
 	timer.start(2);
 	await timer.timeout;
 	animator_engine.play("engine_off");
+	engine_sound.playing = false;
 	monitor_1_output.text = "";
 	monitor_2.modulate = "b5ffff";
+	lights_sound.play();
 	back.texture = LIGHTS_OFF;
 	casing.modulate = "808080";
 	play("first_monitor_off");
@@ -50,14 +56,15 @@ func reset():
 
 
 func intro():
+	lights_sound.play();
 	back.texture = LIGHTS_ON_2;
 	casing.modulate = "ffffff";
 	timer.start(1);
 	await timer.timeout;
 	animator_engine.play("engine_on");
+	engine_sound.play();
 	timer.start(1);
 	await timer.timeout;
-	
 	play("first_monitor_on");
 	timer.start(1);
 	await timer.timeout;
@@ -77,6 +84,9 @@ func intro():
 
 
 func correct():
+	const CHECK = preload("res://assets/game2/sounds/Check.wav")
+	monitor_sound.stream = CHECK;
+	monitor_sound.play();
 	monitor_2.modulate = "78ff4e";
 	timer.start(1);
 	await timer.timeout;
@@ -115,6 +125,9 @@ func _process(delta):
 		bar_timer.value = num_percent;
 
 func game_over():
+	const WRONG = preload("res://assets/game2/sounds/Wrong.wav")
+	monitor_sound.stream = WRONG;
+	monitor_sound.play();
 	bonus_time = 0;
 	monitor_2.modulate = "ff5449";
 	timer.start(2);

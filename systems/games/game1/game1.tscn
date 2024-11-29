@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://di4kqbjwtefkk"]
+[gd_scene load_steps=39 format=3 uid="uid://di4kqbjwtefkk"]
 
 [ext_resource type="Script" path="res://systems/games/game1/game1.gd" id="1_h5acu"]
 [ext_resource type="Script" path="res://systems/games/game1/Animator.gd" id="2_jf0en"]
@@ -18,12 +18,20 @@
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="11_6e3p3"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="11_eugcs"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="11_m0x0s"]
+[ext_resource type="AudioStream" uid="uid://hh8ug2aib24f" path="res://assets/game1/sounds/Do.wav" id="11_sttvg"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="12_tbmpk"]
 [ext_resource type="Texture2D" uid="uid://dlkgav0sx3lm1" path="res://assets/game1/game_intro_background.png" id="12_wxj4d"]
+[ext_resource type="AudioStream" uid="uid://bf21gue88772x" path="res://assets/game1/sounds/Re.wav" id="13_eo1or"]
 [ext_resource type="Script" path="res://systems/games/game1/Intro_Control.gd" id="13_qgqy2"]
+[ext_resource type="AudioStream" uid="uid://b0b7m0igtrqeh" path="res://assets/game1/sounds/Mi.wav" id="14_fkc28"]
 [ext_resource type="Texture2D" uid="uid://cmh7p083lhl00" path="res://assets/game1/title.png" id="15_8dici"]
+[ext_resource type="AudioStream" uid="uid://cy0p67lim8j6i" path="res://assets/game1/sounds/Fa.wav" id="15_cvxfq"]
+[ext_resource type="AudioStream" uid="uid://bbspo6xnkf41n" path="res://assets/game1/sounds/So.wav" id="16_73f1u"]
 [ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="16_acgpu"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="24_ii57i"]
+[ext_resource type="AudioStream" uid="uid://cksjl4nepywit" path="res://assets/game1/sounds/La.wav" id="17_pdgox"]
+[ext_resource type="AudioStream" uid="uid://cvicx8py657yb" path="res://assets/game1/sounds/Ti.wav" id="18_g0aaw"]
+[ext_resource type="AudioStream" uid="uid://dy7bccqypnbb5" path="res://assets/game1/sounds/Do - High.wav" id="19_ag56d"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="24_ii57i"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6im47"]
 
@@ -165,6 +173,8 @@ libraries = {
 "": SubResource("AnimationLibrary_3taw2")
 }
 
+[node name="Sound" type="AudioStreamPlayer" parent="Control/Game/Animator_Tiles"]
+
 [node name="Tiles" type="GridContainer" parent="Control/Game"]
 modulate = Color(1, 0.45098, 0, 1)
 layout_mode = 1
@@ -189,6 +199,9 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
 
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile1"]
+stream = ExtResource("11_sttvg")
+
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile1"]
 position = Vector2(78, 78)
 scale = Vector2(4, 4)
@@ -200,6 +213,9 @@ custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
+
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile2"]
+stream = ExtResource("13_eo1or")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile2"]
 position = Vector2(78, 78)
@@ -213,6 +229,9 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
 
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile3"]
+stream = ExtResource("14_fkc28")
+
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile3"]
 position = Vector2(78, 78)
 scale = Vector2(4, 4)
@@ -224,6 +243,9 @@ custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
+
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile4"]
+stream = ExtResource("15_cvxfq")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile4"]
 position = Vector2(78, 78)
@@ -237,6 +259,9 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
 
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile5"]
+stream = ExtResource("16_73f1u")
+
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile5"]
 position = Vector2(78, 78)
 scale = Vector2(4, 4)
@@ -248,6 +273,9 @@ custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
+
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile6"]
+stream = ExtResource("17_pdgox")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile6"]
 position = Vector2(78, 78)
@@ -261,6 +289,9 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
 
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile7"]
+stream = ExtResource("18_g0aaw")
+
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile7"]
 position = Vector2(78, 78)
 scale = Vector2(4, 4)
@@ -272,6 +303,9 @@ custom_minimum_size = Vector2(156, 156)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
+
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile8"]
+stream = ExtResource("19_ag56d")
 
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile8"]
 position = Vector2(78, 78)
@@ -285,6 +319,10 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("3_y0d48")
 
+[node name="Tile_Sound" type="AudioStreamPlayer" parent="Control/Game/Tiles/tile9"]
+stream = ExtResource("19_ag56d")
+pitch_scale = 1.5
+
 [node name="Tile_Sprite" type="Sprite2D" parent="Control/Game/Tiles/tile9"]
 position = Vector2(78, 78)
 scale = Vector2(4, 4)
@@ -292,17 +330,14 @@ texture = ExtResource("10_6n462")
 hframes = 3
 
 [node name="Level" type="Label" parent="Control/Game"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.242
 anchor_right = 0.5
-anchor_bottom = 0.242
 offset_left = -94.5
-offset_top = -22.32
+offset_top = 210.0
 offset_right = 94.5
-offset_bottom = 22.68
+offset_bottom = 255.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("11_6e3p3")
 theme_override_font_sizes/font_size = 45
@@ -333,24 +368,52 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_wxj4d")
 script = ExtResource("5_71xmo")
-metadata/_edit_group_ = true
 
-[node name="Highest_Level" type="Label" parent="Control/Game/Intro_Control/Game_Intro"]
+[node name="Control" type="Control" parent="Control/Game/Intro_Control/Game_Intro"]
 layout_mode = 1
-anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.269
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.5
-offset_top = 49.5
-offset_right = 128.5
-offset_bottom = 76.5
+anchor_bottom = 0.269
+offset_left = -20.0
+offset_top = -20.24
+offset_right = 20.0
+offset_bottom = 19.76
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" type="Sprite2D" parent="Control/Game/Intro_Control/Game_Intro/Control"]
+position = Vector2(20, 31)
+scale = Vector2(4, 4)
+texture = ExtResource("15_8dici")
+
+[node name="Highest_Level_Container" type="VBoxContainer" parent="Control/Game/Intro_Control/Game_Intro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.511
+anchor_right = 0.5
+anchor_bottom = 0.511
+offset_left = -174.5
+offset_top = 0.439972
+offset_right = 174.5
+offset_bottom = 58.44
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Highest_LevelN" type="Label" parent="Control/Game/Intro_Control/Game_Intro/Highest_Level_Container"]
+self_modulate = Color(0.258824, 1, 0.219608, 1)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("16_acgpu")
 theme_override_font_sizes/font_size = 26
-text = "Highest Level: 0"
+text = "Highest Level Normal: 0"
+
+[node name="Highest_LevelH" type="Label" parent="Control/Game/Intro_Control/Game_Intro/Highest_Level_Container"]
+self_modulate = Color(1, 0.713726, 0.196078, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_acgpu")
+theme_override_font_sizes/font_size = 26
+text = "Highest Level Hard: 0"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Game/Intro_Control/Game_Intro"]
 layout_mode = 1
@@ -359,10 +422,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 124.0
-offset_right = 100.0
-offset_bottom = 312.0
+offset_left = -125.0
+offset_top = 151.0
+offset_right = 125.0
+offset_bottom = 369.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -388,16 +451,6 @@ layout_mode = 2
 theme = ExtResource("11_m0x0s")
 theme_override_font_sizes/font_size = 30
 text = "Back"
-
-[node name="Title" type="Sprite2D" parent="Control/Game/Intro_Control/Game_Intro"]
-position = Vector2(272, 315)
-scale = Vector2(4, 4)
-texture = ExtResource("15_8dici")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Game/Intro_Control/Game_Intro"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Info" type="VBoxContainer" parent="Control/Game"]
 layout_mode = 1

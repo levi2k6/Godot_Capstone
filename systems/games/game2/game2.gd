@@ -3,13 +3,14 @@ extends Node2D
 @onready var money_count = $Game/Info/Money_Count;
 @onready var hunger_bar = $Game/Info/Hunger/Hunger_Bar;
 @onready var transition_layer = $Transition_Position/Transition_Layer;
-
+@onready var lights_sound = $Background/ParallaxLayer/Back/Lights_Sound
 
 
 func get_transition_layer():
 	return transition_layer;
 
 func _ready():
+	SoundPlayer.play_bgm_music();
 	_connections();
 	update_hunger();
 
@@ -30,3 +31,7 @@ func update_money(add):
 	money_count._display_money();
 
 
+@onready var engine_sound = $Foreground/Casing/Engine/Engine_Sound
+func _on_engine_sound_finished():
+	engine_sound.play();
+	pass # Replace with function body.

@@ -5,6 +5,7 @@
 [node name="Tab_Item" type="Button"]
 offset_right = 30.0
 offset_bottom = 20.0
+toggle_mode = true
 script = ExtResource("2_26mc1")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -60,6 +60,7 @@ func change_info_visible_all(visible_state):
 	session.visible = visible_state;
 
 func _on_button_button_down():
+	SoundPlayer.button_sfx();
 	for game in parent.games_library:
 		if label.text == game.name:
 			#print(game.name, " BUTTON: " , game.visible_state);

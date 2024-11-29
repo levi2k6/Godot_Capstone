@@ -5,11 +5,12 @@ extends Node2D
 @onready var transition_layer = $Transition_Layer
 
 
-
 func get_transition_layer():
 	return transition_layer;
 
+
 func _ready():
+	SoundPlayer.play_bgm_music();
 	_connections();
 	_triggers();
 	GameData.last_scene = get_tree().current_scene.get_scene_file_path();
@@ -22,7 +23,6 @@ func _connections():
 func _triggers():
 	pet.update_hunger_bar()
 
-
 func update_hunger():
 	var pet_hunger = DataManager._get_pet_database()[0].hunger
 	hunger_bar.value = pet_hunger
@@ -34,12 +34,14 @@ func update_hunger():
 
 
 func _on_daily_reward_pressed():
+	SoundPlayer.button_sfx();
 	calendar_modal.visible = true;
 	receive_label.visible = false;
 	pass # Replace with function body.
 	
 
 func _on_close_pressed():
+	SoundPlayer.button_sfx();
 	calendar_modal.visible = false;
 	pass # Replace with function body.
 

@@ -40,7 +40,13 @@ func _change_tab(naym):
 		elif naym == "Tab_Colors":
 			color_items.visible = true
 			pass
-			
+	button_highlight_disabler(naym);
+
+func button_highlight_disabler(naym):
+	for child in h_box_container.get_children():
+		if naym == child.name:
+			continue;
+		child.button_pressed = false;
 
 func _change_item(item, naym):
 	#print(naym)
@@ -48,9 +54,11 @@ func _change_item(item, naym):
 	pass
 
 func _on_submit_pressed():
+	SoundPlayer.button_sfx();
 	create_pet_modal.visible = !create_pet_modal.visible
 	pass # Replace with function body.
 
 func _on_back_button_up():
+	SoundPlayer.button_sfx();
 	create_pet_modal.visible = false;
 	pass # Replace with function body.

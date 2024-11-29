@@ -14,14 +14,15 @@ extends Node2D
 func get_transition_layer():
 	return transition_layer;
 
+
 func _ready():
 	for child in h_box_container.get_children():
 		child.change_tab.connect(_change_tab)
 	
 	for child in color_rect.get_children():
 		child.send_texture.connect(_change_item)
-	
-	_change_tab("Tab_Bodies")
+	_change_tab("Tab_Bodies");
+
 
 func _change_tab(naym):
 	for child in color_rect.get_children():
@@ -41,6 +42,13 @@ func _change_tab(naym):
 		elif naym == "Tab_Colors":
 			color_items.visible = true
 			pass
+	button_highlight_disabler(naym);
+
+func button_highlight_disabler(naym):
+	for child in h_box_container.get_children():
+		if naym == child.name:
+			continue;
+		child.button_pressed = false;
 
 func _change_item(item, naym):
 	pet._fashion()

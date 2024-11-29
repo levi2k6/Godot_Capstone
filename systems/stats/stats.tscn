@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_dwyp5"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="5_tsqde"]
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="6_ln3vg"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="7_552xs"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="7_552xs"]
 
 [node name="Stats" type="Node2D"]
 script = ExtResource("1_313db")

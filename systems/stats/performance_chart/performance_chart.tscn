@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="19_etagl"]
 [ext_resource type="Script" path="res://systems/stats/performance_chart/Interpretation.gd" id="20_1xhs7"]
 [ext_resource type="Script" path="res://systems/stats/performance_chart/drawer2.gd" id="21_pw1bn"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="22_demm4"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="22_demm4"]
 
-[node name="ImprovementChart" type="Node2D"]
+[node name="PerformanceChart" type="Node2D"]
 script = ExtResource("1_c4kng")
 
 [node name="Control" type="Control" parent="."]
@@ -155,9 +155,6 @@ vertical_alignment = 1
 [node name="Difficulty_Filter" type="VBoxContainer" parent="Control/Difficulty_Info"]
 layout_mode = 2
 theme = ExtResource("3_7y7tp")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
-layout_mode = 2
 
 [node name="AllContainer" type="HBoxContainer" parent="Control/Difficulty_Info/Difficulty_Filter"]
 layout_mode = 2
@@ -318,6 +315,7 @@ vertical_scroll_mode = 3
 custom_minimum_size = Vector2(450, 450)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 
 [node name="Line2D_All" type="Line2D" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 points = PackedVector2Array(0, 450)
@@ -338,16 +336,19 @@ default_color = Color(0.811765, 0.156863, 0.156863, 1)
 anchors_preset = 0
 offset_right = 450.0
 offset_bottom = 450.0
+mouse_filter = 2
 
 [node name="Points_Normal" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 anchors_preset = 0
 offset_right = 450.0
 offset_bottom = 450.0
+mouse_filter = 2
 
 [node name="Points_Hard" type="Control" parent="Control/Stats_Chart/VBoxContainer/HBoxContainer/StatsPanelContainer/Panel"]
 anchors_preset = 0
 offset_right = 450.0
 offset_bottom = 450.0
+mouse_filter = 2
 
 [node name="RightScrollContainer" type="ScrollContainer" parent="Control/Stats_Chart/VBoxContainer"]
 custom_minimum_size = Vector2(450, 45)

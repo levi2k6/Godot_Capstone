@@ -43,6 +43,13 @@ func _on_create_pet_button_up():
 			get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
 
 
+func _input(event):
+	if text_edit.has_focus():
+		if event is InputEventKey and event.is_pressed():
+			if event.keycode == KEY_ENTER:
+				get_viewport().set_input_as_handled();
+
+
 func transition():
 	var transition_layer = get_tree().current_scene.get_transition_layer();
 	await transition_layer.appear();

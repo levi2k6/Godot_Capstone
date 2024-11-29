@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://no7bxle6eefw"]
+
+[ext_resource type="Script" path="res://systems/misc/sound_player/sound_player.gd" id="1_27e2a"]
+[ext_resource type="Script" path="res://systems/misc/sound_player/Modules.gd" id="2_ui3ys"]
+
+[node name="SoundPlayer" type="Node"]
+script = ExtResource("1_27e2a")
+
+[node name="Modules" type="Node" parent="."]
+script = ExtResource("2_ui3ys")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+volume_db = 2.0
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
+
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://du7cx7073j3uo"
+path="res://.godot/imported/Meteor Sound Fx Falling.wav-e3750762424825f9e825d6841736365b.sample"
+
+[deps]
+
+source_file="res://assets/game3/sounds/Meteor Sound Fx Falling.wav"
+dest_files=["res://.godot/imported/Meteor Sound Fx Falling.wav-e3750762424825f9e825d6841736365b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

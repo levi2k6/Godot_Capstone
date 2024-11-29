@@ -10,6 +10,7 @@ extends AnimationPlayer
 @onready var reward = $"../Control/Reward"
 @onready var rich_text_label = $"../Control/RichTextLabel"
 @onready var main_hub_button = $"../Control/Main_Hub_Button"
+@onready var sound = $Sound
 
 
 func start(pet_animators):
@@ -25,12 +26,18 @@ func start(pet_animators):
 	tween.set_trans(Tween.TRANS_CUBIC);
 	tween.set_ease(Tween.EASE_OUT);
 	tween.tween_property(hunger_bar, "value", 100, 1);
+	const TRANSITION = preload("res://assets/universal/sounds/Transition.wav")
+	sound.stream = TRANSITION;
+	sound.pitch_scale = 2;
+	sound.play();
 	await tween.finished;
 	
 	var tween1 = get_tree().create_tween();
 	tween1.set_trans(Tween.TRANS_CUBIC);
 	tween1.set_ease(Tween.EASE_OUT);
 	tween1.tween_property(camera_2d, "zoom", Vector2(1.3,1.3), 1.7);
+	
+	sound.pitch_scale = 1;
 	
 	play("white_animation");
 	await animation_finished;
@@ -41,6 +48,7 @@ func start(pet_animators):
 	baloons_2.visible = true;
 	main_hub_button.visible = true;
 	play("white_fade");
+	SoundPlayer.play_bgm_music();
 	var tween2 = get_tree().create_tween();
 	tween2.set_trans(Tween.TRANS_BACK);
 	tween2.set_ease(Tween.EASE_OUT);

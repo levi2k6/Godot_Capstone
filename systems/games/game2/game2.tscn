@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://biljrcgvvn0o3"]
+[gd_scene load_steps=60 format=3 uid="uid://biljrcgvvn0o3"]
 
 [ext_resource type="Script" path="res://systems/games/game2/game2.gd" id="1_uuvrj"]
 [ext_resource type="Script" path="res://systems/games/game2/Game_Intro.gd" id="2_602pu"]
@@ -16,11 +16,14 @@
 [ext_resource type="Animation" uid="uid://dvfgfxat0hsaa" path="res://assets/game2/animation/engine_on.res" id="5_lwde0"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="5_n7b5j"]
 [ext_resource type="Texture2D" uid="uid://cystbkusd2fhh" path="res://assets/game2/backgrounds/casing.png" id="5_yx76f"]
+[ext_resource type="AudioStream" uid="uid://bmypk3ebhkv2y" path="res://assets/game2/sounds/Lights on Fx.wav" id="8_ntpwx"]
+[ext_resource type="AudioStream" uid="uid://b8xp1rskadvdg" path="res://assets/game2/sounds/monitor_sound.wav" id="9_dmx3m"]
 [ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="9_k7eub"]
 [ext_resource type="Texture2D" uid="uid://cciu0pn372gsu" path="res://assets/game2/screens/title_art.png" id="9_mkn01"]
 [ext_resource type="Texture2D" uid="uid://bfn5cm655ouc" path="res://assets/game2/screens/time_bar.png" id="11_xla4x"]
 [ext_resource type="Animation" uid="uid://df6rwdyyxhhdy" path="res://assets/game2/animation/engine_off.res" id="13_7t0vf"]
 [ext_resource type="Texture2D" uid="uid://dxh43im08h2id" path="res://assets/game2/backgrounds/pc_engine.png" id="14_px73p"]
+[ext_resource type="AudioStream" uid="uid://c7wmtyrkxoo0r" path="res://assets/game2/sounds/Machine Loop.wav" id="15_ptbci"]
 [ext_resource type="Texture2D" uid="uid://c5rcf6vv38vpo" path="res://assets/game2/buttons/keyenter.png" id="16_jvnjf"]
 [ext_resource type="Texture2D" uid="uid://bgfg8rg0dsem5" path="res://assets/game2/buttons/key9.png" id="16_la8l5"]
 [ext_resource type="Texture2D" uid="uid://i8kfqxfdmlgc" path="res://assets/game2/buttons/keyback.png" id="17_a86de"]
@@ -35,11 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://cdxem614eely3" path="res://assets/game2/buttons/key1-Sheet.png" id="26_fopi2"]
 [ext_resource type="Script" path="res://systems/games/game2/Key.gd" id="27_djfio"]
 [ext_resource type="Theme" uid="uid://c5hch5i6dr5ws" path="res://assets/themes/game_theme.tres" id="31_1c2kp"]
+[ext_resource type="AudioStream" uid="uid://cgw2gue6k5nxg" path="res://assets/universal/sounds/dot_sfx.wav" id="32_0otcc"]
 [ext_resource type="FontFile" uid="uid://cqhjm2fdma250" path="res://assets/fonts/MinecraftBold-nMK1.otf" id="33_loug4"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="33_nng18"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="34_c5eje"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="35_d5rpr"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="39_3nuh5"]
+[ext_resource type="AudioStream" uid="uid://dxskhl0xq2nnb" path="res://assets/game2/sounds/electricity-2.wav" id="35_nhy1h"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="39_3nuh5"]
 [ext_resource type="Script" path="res://systems/games/game2/transition_position.gd" id="39_bs1fk"]
 
 [sub_resource type="Animation" id="Animation_jhloa"]
@@ -92,6 +97,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(150, 110)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Animator/Monitor_Sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Animator/Monitor_Sound:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_dmx3m")]
+}
 
 [sub_resource type="Animation" id="Animation_8l81x"]
 resource_name = "first_monitor_off"
@@ -107,6 +136,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [6, 5, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animator/Monitor_Sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animator/Monitor_Sound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_dmx3m")]
 }
 
 [sub_resource type="Animation" id="Animation_72nvg"]
@@ -214,6 +267,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(408, 641)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Electric_Sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4j2kv"]
 resource_name = "move"
@@ -229,6 +294,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(408, 641), Vector2(409, 818), Vector2(43, 820), Vector2(44, 1079), Vector2(480, 1083), Vector2(479, 1367), Vector2(133, 1369), Vector2(134, 1662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Electric_Sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b8tun"]
@@ -247,6 +324,10 @@ libraries = {
 }
 script = ExtResource("3_vculw")
 
+[node name="Monitor_Sound" type="AudioStreamPlayer" parent="Animator"]
+stream = ExtResource("9_dmx3m")
+volume_db = 6.638
+
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
@@ -262,6 +343,10 @@ offset_bottom = 2616.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_2px2u")
+
+[node name="Lights_Sound" type="AudioStreamPlayer" parent="Background/ParallaxLayer/Back"]
+stream = ExtResource("8_ntpwx")
+volume_db = 20.0
 
 [node name="Foreground" type="Control" parent="."]
 layout_mode = 3
@@ -298,7 +383,7 @@ offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_k7eub")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -401,7 +486,7 @@ offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_k7eub")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -420,6 +505,10 @@ texture = ExtResource("5_yx76f")
 position = Vector2(150, 200)
 scale = Vector2(4, 4)
 texture = ExtResource("14_px73p")
+
+[node name="Engine_Sound" type="AudioStreamPlayer2D" parent="Foreground/Casing/Engine"]
+stream = ExtResource("15_ptbci")
+volume_db = 10.0
 
 [node name="AnimatorEngine" type="AnimationPlayer" parent="Foreground/Casing/Engine"]
 root_node = NodePath("../../../..")
@@ -603,6 +692,9 @@ scale = Vector2(4, 4)
 texture = ExtResource("26_fopi2")
 hframes = 2
 
+[node name="Key_Sound" type="AudioStreamPlayer" parent="Foreground/Casing/Typer"]
+stream = ExtResource("32_0otcc")
+
 [node name="Game_Intro" type="Control" parent="Foreground/Casing"]
 layout_mode = 1
 anchors_preset = 15
@@ -652,23 +744,33 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_k7eub")
 
-[node name="Highest_Level" type="Label" parent="Foreground"]
-visible = false
+[node name="Highest_Level_Container" type="VBoxContainer" parent="Foreground"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.262
-anchor_top = 0.369
-anchor_right = 0.738
-anchor_bottom = 0.38
-offset_left = 0.019989
-offset_top = 75.9
-offset_right = -0.0200195
-offset_bottom = 76.4999
+anchor_left = 0.5
+anchor_top = 0.389
+anchor_right = 0.5
+anchor_bottom = 0.389
+offset_left = -174.5
+offset_top = -29.6001
+offset_right = 174.5
+offset_bottom = 28.3999
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Highest_LevelN" type="Label" parent="Foreground/Highest_Level_Container"]
+self_modulate = Color(0.258824, 1, 0.219608, 1)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("33_loug4")
 theme_override_font_sizes/font_size = 26
-text = "Highest Level: 0"
+text = "Highest Level Normal: 0"
+
+[node name="Highest_LevelH" type="Label" parent="Foreground/Highest_Level_Container"]
+self_modulate = Color(1, 0.713726, 0.196078, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("33_loug4")
+theme_override_font_sizes/font_size = 26
+text = "Highest Level Hard: 0"
 
 [node name="Electric" type="CPUParticles2D" parent="."]
 position = Vector2(408, 641)
@@ -689,6 +791,9 @@ color = Color(1, 1, 0.27451, 1)
 libraries = {
 "": SubResource("AnimationLibrary_b8tun")
 }
+
+[node name="Electric_Sound" type="AudioStreamPlayer" parent="Electric"]
+stream = ExtResource("35_nhy1h")
 
 [node name="Game" type="Control" parent="."]
 layout_mode = 3
@@ -763,6 +868,7 @@ grow_vertical = 2
 
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Normal" to="Foreground/Casing/Game_Intro" method="_on_normal_button_up"]
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Hard" to="Foreground/Casing/Game_Intro" method="_on_hard_button_up"]
+[connection signal="finished" from="Foreground/Casing/Engine/Engine_Sound" to="." method="_on_engine_sound_finished"]
 [connection signal="button_down" from="Foreground/Casing/Typer/Enter" to="Foreground/Casing/Typer/Enter" method="_on_button_down"]
 [connection signal="button_up" from="Foreground/Casing/Typer/Enter" to="Foreground/Casing/Typer/Enter" method="_on_button_up"]
 [connection signal="button_down" from="Foreground/Casing/Typer/Back" to="Foreground/Casing/Typer/Back" method="_on_button_down"]

@@ -24,5 +24,6 @@ func _item_texture(item, naym):
 
 
 func _on_pressed():
+	SoundPlayer.button_sfx();
 	get_parent()._get_item(this_item)
 	pass # Replace with function body.

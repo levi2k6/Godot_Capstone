@@ -1,6 +1,7 @@
 extends Label
 @onready var main_hub = $"../.."
 @onready var timer = $"../../Timer"
+@onready var money_sound = $Money_Sound
 
 
 func _ready():
@@ -17,6 +18,7 @@ func fully_fed_reward():
 	var tween = get_tree().create_tween();
 	tween.set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(self, "position", Vector2(position.x, position.y - 150), 3.5);
+	money_sound.play();
 	main_hub.update_money(30);
 	await tween.finished;
 	visible = false;

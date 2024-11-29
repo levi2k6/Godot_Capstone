@@ -44,10 +44,7 @@ func get_transition_layer():
 func _ready():
 	zoom_in.disabled = true;
 	zoom_out.disabled = true;
-	#print("look here" , get_tree().root.get_children());
 	normal_hard_disable(true);
-	#visible_icon_2.frame = 1;
-	#visible_icon_3.frame = 1;
 	pass
 
 func _process(delta):
@@ -56,16 +53,17 @@ func _process(delta):
 
 
 func _on_zoom_in_button_down():
+	SoundPlayer.button_sfx();
 	if panel.custom_minimum_size.x != 450:
 		panel.custom_minimum_size.x -= 50;
 		right_numbers.custom_minimum_size.x = panel.custom_minimum_size.x;
 		drawer.create_origin();
 		right_drawer.create_origin();
-
 	pass # Replace with function body.
 
 
 func _on_zoom_out_button_down():
+	SoundPlayer.button_sfx();
 	panel.custom_minimum_size.x += 50;
 	right_numbers.custom_minimum_size.x = panel.custom_minimum_size.x;
 	drawer.create_origin();
@@ -82,6 +80,7 @@ func _panel_size_reset():
 
 #games////////////////////////////////////////////////
 func _on_sequence_mix_button_down():
+	SoundPlayer.button_sfx();
 	_panel_size_reset();
 	drawer.current_game = "game1";
 	right_drawer.current_game = "game1";
@@ -93,6 +92,7 @@ func _on_sequence_mix_button_down():
 	pass # Replace with function body.
 
 func _on_digit_hack_button_down():
+	SoundPlayer.button_sfx();
 	_panel_size_reset();
 	drawer.current_game = "game2";
 	right_drawer.current_game = "game2";
@@ -104,6 +104,7 @@ func _on_digit_hack_button_down():
 	pass # Replace with function body.
 
 func _on_meteor_rush_button_down():
+	SoundPlayer.button_sfx();
 	_panel_size_reset();
 	drawer.current_game = "game3";
 	right_drawer.current_game = "game3";
@@ -122,7 +123,6 @@ func button_pressed_state():
 
 
 func _on_scroll_container_scroll_started():
-	print("hello");
 	scroll_moving = true;
 	pass # Replace with function body.
 
@@ -131,6 +131,7 @@ var normal_show = false;
 var hard_show = false;
 
 func _on_all_visible_button_down():
+	SoundPlayer.button_sfx();
 	all_show = !all_show;
 	if all_show:
 		visible_icon_1.frame = 0;
@@ -149,18 +150,19 @@ func normal_hard_disable(all_show):
 		normal_visible.disabled = true;
 		hard_visible.disabled = true;
 		normal_show = true;
-		_on_normal_visible_button_down();
+		_on_normal_visible_button_down2();
 		hard_show = true;
-		_on_hard_visible_button_down();
+		_on_hard_visible_button_down2();
 	else:
 		normal_visible.disabled = false;
 		hard_visible.disabled = false;
 		normal_show = false;
-		_on_normal_visible_button_down();
+		_on_normal_visible_button_down2();
 		hard_show = false;
-		_on_hard_visible_button_down();
+		_on_hard_visible_button_down2();
 
 func _on_normal_visible_button_down():
+	SoundPlayer.button_sfx();
 	normal_show = !normal_show;
 	if normal_show:
 		visible_icon_2.frame = 0;
@@ -174,6 +176,7 @@ func _on_normal_visible_button_down():
 
 
 func _on_hard_visible_button_down():
+	SoundPlayer.button_sfx();
 	hard_show = !hard_show;
 	if hard_show:
 		visible_icon_3.frame = 0;
@@ -185,4 +188,30 @@ func _on_hard_visible_button_down():
 		points_hard.visible = false;
 	pass # Replace with function body.
 
+
+#//////////////////////////////////////////////////////
+func _on_normal_visible_button_down2():
+	normal_show = !normal_show;
+	if normal_show:
+		visible_icon_2.frame = 0;
+		line_2d_normal.visible = true;
+		points_normal.visible = true;
+	else:
+		visible_icon_2.frame = 1;
+		line_2d_normal.visible = false;
+		points_normal.visible = false;
+	pass # Replace with function body.
+
+
+func _on_hard_visible_button_down2():
+	hard_show = !hard_show;
+	if hard_show:
+		visible_icon_3.frame = 0;
+		line_2d_hard.visible = true;
+		points_hard.visible = true;
+	else:
+		visible_icon_3.frame = 1;
+		line_2d_hard.visible = false;
+		points_hard.visible = false;
+	pass # Replace with function body.
 

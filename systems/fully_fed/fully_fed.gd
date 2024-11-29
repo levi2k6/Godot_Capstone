@@ -8,7 +8,7 @@ func get_transition_layer():
 	return transition_layer;
 
 func _ready():
-	
+	SoundPlayer.bgm.playing = false;
 	var pet_animators = pet.get_animator();
 	animator.start(pet_animators);
 	GameData.fully_fed_reward = true;

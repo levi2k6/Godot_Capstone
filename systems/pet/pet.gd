@@ -7,7 +7,7 @@ signal update_hunger(hunger)
 @onready var mouth_animation = $mouth_animation
 @onready var timer = $Timer
 @onready var blink_timer = $BlinkTimer
-
+@onready var sound = $sound
 
 
 @export var properties : pet_stats_blueprint
@@ -87,10 +87,9 @@ func _learn(xp):
 			DataManager._update_fully_fed_status(1);
 			
 			var transition_layer = get_tree().current_scene.get_transition_layer();
+			transition_layer.mouse_filter = Control.MOUSE_FILTER_STOP;
 			timer.start(1);
 			await timer.timeout;
-			transition_layer.mouse_filter = Control.MOUSE_FILTER_STOP;
-			print("mouse_filter: ", transition_layer.mouse_filter);
 			await transition_layer.appear();
 			GameData.transition_disappear = true;
 			get_tree().change_scene_to_file("res://systems/fully_fed/fully_fed.tscn");
@@ -159,8 +158,6 @@ func _on_timer_timeout():
 @onready var body = $Body/Body
 
 func _on_touch_button_down():
-	print_debug("CURRENT ANIMATOIN: ", body_animation.current_animation);
-	
 	if body_animation.current_animation == "dance1":
 		var tween = get_tree().create_tween();
 		tween.set_trans(Tween.TRANS_CUBIC);

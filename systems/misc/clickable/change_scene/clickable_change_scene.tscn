@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq5jw5oofwekp"]
+[gd_scene load_steps=4 format=3 uid="uid://dq5jw5oofwekp"]
 
 [ext_resource type="Script" path="res://systems/misc/clickable/change_scene/clickable_change_scene.gd" id="1_2a4a3"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_qu5pq"]
+[ext_resource type="AudioStream" uid="uid://bunnhiuegou26" path="res://assets/universal/sounds/button_pressed_sound.wav" id="3_mre2r"]
 
 [node name="Button" type="Button"]
 offset_right = 96.0
 offset_bottom = 96.0
 theme = ExtResource("1_qu5pq")
 script = ExtResource("1_2a4a3")
+
+[node name="Auidio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mre2r")
+volume_db = 14.0
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

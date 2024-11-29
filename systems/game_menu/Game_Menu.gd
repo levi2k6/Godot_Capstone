@@ -22,6 +22,7 @@ func get_transition_layer():
 	return transition_layer;
 
 func _ready():
+	SoundPlayer.play_bgm_music();
 	_execute()
 	pass
 
@@ -78,3 +79,5 @@ func show_button(button_state):
 		create_child_button.visible = false
 		create_pet_button.visible = false
 		animator_buttons.play("main_hub_button_up");
+
+

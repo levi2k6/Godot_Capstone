@@ -1,7 +1,6 @@
 extends Node2D
 @onready var animator = $"../Animator"
 @onready var game_intro = $"../Control/Game_Intro";
-@onready var highest_level = $"../Control/Game_Intro/Highest_Level"
 @onready var pet = $"../Pet"
 @onready var timer = $Timer
 @onready var label = $"../Control/Game_Intro/Label"

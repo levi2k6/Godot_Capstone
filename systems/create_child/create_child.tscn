@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_fr333"]
 [ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_i634m"]
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="4_dkulu"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="5_av2pa"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="5_av2pa"]
 
 [node name="Create_Child" type="Node2D"]
 script = ExtResource("1_jxaay")
@@ -65,9 +65,10 @@ layout_mode = 2
 layout_mode = 2
 text = "First Name"
 
-[node name="Fname" type="TextEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
+[node name="Fname" type="LineEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+max_length = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -76,9 +77,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Last Name"
 
-[node name="Lname" type="TextEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Lname" type="LineEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+max_length = 50
 
 [node name="Button" type="Button" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2

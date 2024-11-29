@@ -48,11 +48,13 @@ func append_game_library():
 
 
 func _on_button_button_down():
+	SoundPlayer.button_sfx();
 	high_to_low_datas_initialize();
 	button_pressed_state();
 	pass # Replace with function body.
 
 func _on_button_2_button_down():
+	SoundPlayer.button_sfx();
 	low_to_high_datas_initialize();
 	button_pressed_state();
 	pass # Replace with function body.
@@ -113,6 +115,7 @@ func game_datas_display(arr: Array):
 
 var visible_state_all = false;
 func _on_info_visible_button_down():
+	SoundPlayer.button_sfx();
 	visible_state_all = ! visible_state_all;
 	
 	for game in games_library:

@@ -5,6 +5,7 @@ extends Control
 @onready var grid_container = $Calendar/GridContainer;
 @onready var receive_label = $"../Receive_Label";
 @onready var timer = $"../../Timer";
+@onready var money_sound = $"../Receive_Label/Money_Sound"
 
 var library = [
 	{"day": "1", "reward": "20"},
@@ -115,6 +116,7 @@ func animate_receive_label(child):
 	var tween = get_tree().create_tween();
 	tween.set_trans(Tween.TRANS_LINEAR);
 	tween.tween_property(receive_label, "position", Vector2(receive_label.position.x, receive_label.position.y - 150), 3.5);
+	money_sound.play();
 	main_hub.update_money(int(reward));
 	await tween.finished;
 

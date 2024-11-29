@@ -1,7 +1,5 @@
 extends Panel;
 
-var this_item;
-
 @onready var body_items = $"../Picker/ScrollContainer/ColorRect/Body_Items"
 @onready var eyes_items = $"../Picker/ScrollContainer/ColorRect/Eyes_Items"
 @onready var mouth_items = $"../Picker/ScrollContainer/ColorRect/Mouth_Items"
@@ -11,7 +9,8 @@ var this_item;
 @onready var money_display = $"../Picker/Money"
 @onready var animation_player = $AnimationPlayer
 
-
+var this_item;
+var price;
 
 func _modal_func(item):
 	$Sprite2D.texture = item.texture
@@ -38,27 +37,39 @@ func _modal_func(item):
 		$Sprite2D.vframes = 1
 		$Sprite2D.frame = 0
 		$Sprite2D.self_modulate = item.name
+	
 	this_item = item
+	if this_item.type == "hat":
+		price = 500;
+		print(price);
+	else:
+		print("this triggered");
+		price = 350;
+		print(price);
+	buy.text = "$%s"%price;
 	visible = true
 
-
+@onready var buy_sound = $Buy_Sound
+@onready var buy = $Buy
 func _on_button_button_up():
 	var child_id = DataManager._get_child_database()
 	var item_id = this_item.id
 	
+	
 	var money = DataManager._get_money_database()[0].money
 	
-	if money >= 100:
+	if money >= price:
+		buy_sound.play();
 		animation_player.play("buy_green");
 		Singleton.database.insert_row("collection", {"child_id": child_id[0].id, "item_id": item_id })
 		print("check database if inserted")
 		_delete_owned_item_shop()
 		
-		var deduction = money - 100
+		var deduction = money - price
 		DataManager._update_money_database(deduction)
 		money_display._display_money()
 		visible = !visible
-	elif money < 100:
+	elif money < price:
 		animation_player.play("buy_red");
 		print("NOT ENOUGH MONEY!")
 	pass # Replace with function body.

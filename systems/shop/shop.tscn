@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qnvyv3a0mthy"]
+[gd_scene load_steps=20 format=3 uid="uid://qnvyv3a0mthy"]
 
 [ext_resource type="Script" path="res://systems/shop/shop.gd" id="1_x604k"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_bmkpa"]
@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="9_q71ul"]
 [ext_resource type="Theme" uid="uid://dent1p17y64cs" path="res://assets/themes/customize_theme.tres" id="10_44y3j"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="10_hjout"]
+[ext_resource type="AudioStream" uid="uid://wmunc2ghxa6f" path="res://assets/universal/sounds/Win Fx 2.wav" id="12_75jbr"]
 [ext_resource type="Texture2D" uid="uid://dxm7l6a13fcxw" path="res://assets/customize/shadow.png" id="13_esqxw"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="14_xldgr"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="14_xldgr"]
 
 [sub_resource type="Animation" id="Animation_raj6n"]
 length = 0.001
@@ -188,7 +189,7 @@ vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control/Picker/ScrollContainer"]
-custom_minimum_size = Vector2(452, 500)
+custom_minimum_size = Vector2(452, 620)
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("10_hjout")
@@ -309,6 +310,10 @@ theme = ExtResource("10_hjout")
 script = ExtResource("6_iw5rd")
 metadata/_edit_group_ = true
 
+[node name="Buy_Sound" type="AudioStreamPlayer" parent="Control/Buy_Modal"]
+stream = ExtResource("12_75jbr")
+pitch_scale = 1.17
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Buy_Modal"]
 libraries = {
 "": SubResource("AnimationLibrary_ov1oh")
@@ -327,7 +332,7 @@ offset_right = -11.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "$100"
+text = "$0"
 
 [node name="Close" type="Button" parent="Control/Buy_Modal"]
 layout_mode = 1
@@ -345,7 +350,6 @@ grow_vertical = 0
 text = "Close"
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/Buy_Modal"]
-z_index = 1
 position = Vector2(171, 105)
 scale = Vector2(2, 2)
 

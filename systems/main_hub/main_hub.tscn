@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bwl4v0hw2og16"]
+[gd_scene load_steps=28 format=3 uid="uid://bwl4v0hw2og16"]
 
 [ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
 [ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_1p52a"]
@@ -23,8 +23,9 @@
 [ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="19_2gkey"]
 [ext_resource type="Texture2D" uid="uid://c7v0e6fu634fg" path="res://assets/main_hub/close_icon.png" id="22_7vkao"]
 [ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="23_k0y41"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="24_a11n7"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="24_a11n7"]
 [ext_resource type="Script" path="res://systems/main_hub/Receive_Label.gd" id="24_rc4mi"]
+[ext_resource type="AudioStream" uid="uid://wmunc2ghxa6f" path="res://assets/universal/sounds/Win Fx 2.wav" id="25_pcrol"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6jh8"]
 shader = ExtResource("3_ickli")
@@ -116,17 +117,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -270.0
-offset_top = 148.0
-offset_right = 270.0
-offset_bottom = 187.0
+offset_left = -131.0
+offset_top = 108.0
+offset_right = 141.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("5_wtyko")
 theme_override_font_sizes/font_size = 32
-text = "asd"
+text = "NA"
 horizontal_alignment = 1
-vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="UI" type="Control" parent="Control"]
 layout_mode = 1
@@ -1325,6 +1326,10 @@ theme_override_fonts/font = ExtResource("7_6dfur")
 theme_override_font_sizes/font_size = 35
 text = "+100"
 script = ExtResource("24_rc4mi")
+
+[node name="Money_Sound" type="AudioStreamPlayer" parent="Control/Receive_Label"]
+stream = ExtResource("25_pcrol")
+pitch_scale = 1.08
 
 [node name="Timer" type="Timer" parent="."]
 

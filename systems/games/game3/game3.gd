@@ -7,6 +7,7 @@ func get_transition_layer():
 	return transition_layer;
 
 func _ready():
+	SoundPlayer.play_bgm_music();
 	_connections();
 	update_hunger();
 

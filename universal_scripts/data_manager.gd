@@ -123,6 +123,18 @@ func _get_game_sessions(from ,where):
 	var result = Singleton.database.query_result;
 	return result;
 
+func _get_game_highest_normal(game):
+	var query = "SELECT MAX(level_reached) AS highest FROM %s_session WHERE difficulty = 'normal'"%game;
+	Singleton.database.query(query);
+	var result = Singleton.database.query_result;
+	return result;
+
+func _get_game_highest_hard(game):
+	var query = "SELECT MAX(level_reached) AS highest FROM %s_session WHERE difficulty = 'hard'"%game;
+	Singleton.database.query(query);
+	var result = Singleton.database.query_result;
+	return result;
+
 
 func _insert_game1_session(level, difficulty):
 	var child_id = _get_child_database()[0].id;

@@ -31,6 +31,7 @@ func create_child_database():
 	DataManager._update_milestone_total_days_played();
 
 func _on_button_button_up():
+	SoundPlayer.button_sfx();
 	var child_id = DataManager._get_child_database()[0].id
 	
 	if fname.text == "" or lname.text == "":
@@ -53,5 +54,8 @@ func _input(event):
 			if event.keycode == KEY_ENTER:
 				get_viewport().set_input_as_handled();
 
-	
-	
+
+
+
+
+

@@ -1,10 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://5km0tv5bvtt5"]
+[gd_scene load_steps=30 format=3 uid="uid://5km0tv5bvtt5"]
 
 [ext_resource type="Script" path="res://systems/fully_fed/fully_fed.gd" id="1_k7h33"]
 [ext_resource type="Script" path="res://systems/games/Control.gd" id="2_2va06"]
 [ext_resource type="Script" path="res://systems/fully_fed/Animator.gd" id="2_8atyk"]
+[ext_resource type="AudioStream" uid="uid://vmeh8iicy4q7" path="res://assets/universal/sounds/Charge.wav" id="2_c2ivx"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="3_fmor2"]
+[ext_resource type="AudioStream" uid="uid://wmunc2ghxa6f" path="res://assets/universal/sounds/Win Fx 2.wav" id="3_i4nir"]
+[ext_resource type="AudioStream" uid="uid://cxkmwuyk0rcut" path="res://assets/universal/sounds/cheer .mp3" id="4_h3jyp"]
 [ext_resource type="Shader" path="res://assets/fully_fed/shader/baloon2.gdshader" id="4_hsw1r"]
+[ext_resource type="AudioStream" uid="uid://bwnat1kktw5kc" path="res://assets/universal/sounds/Swipe  Sound.wav" id="4_oypac"]
 [ext_resource type="Shader" path="res://assets/fully_fed/shader/baloon1.gdshader" id="4_ttbbo"]
 [ext_resource type="Texture2D" uid="uid://crtj1qu62t1d0" path="res://assets/fully_fed/baloon_background.png" id="4_w5wfs"]
 [ext_resource type="Texture2D" uid="uid://b2ibqnxsq243x" path="res://assets/universal/hunger_icon.png" id="5_byhcv"]
@@ -17,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ddv7bawiffy5a" path="res://assets/universal/money_icon.png" id="11_q3so4"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="15_lbe3b"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="17_7ymcp"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="17_g7ttj"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="17_g7ttj"]
 
 [sub_resource type="Animation" id="Animation_k8bkh"]
 length = 0.001
@@ -57,6 +61,54 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animator/Sound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_c2ivx")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Animator/Sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Animator/Sound2:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_i4nir")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Animator/Sound2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wihtp"]
 resource_name = "hunger_appear"
@@ -84,6 +136,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animator/Sound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_oypac")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animator/Sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fybt7"]
 resource_name = "white_animation"
@@ -100,6 +176,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.929412), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animator/Sound:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_c2ivx")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animator/Sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animator/Sound2:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_i4nir")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Animator/Sound2:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ayvfo"]
 resource_name = "white_fade"
@@ -114,6 +238,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.521569), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animator/Sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00629681),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animator/Sound:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_h3jyp")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hi51x"]
@@ -138,6 +286,12 @@ libraries = {
 "": SubResource("AnimationLibrary_hi51x")
 }
 script = ExtResource("2_8atyk")
+
+[node name="Sound" type="AudioStreamPlayer" parent="Animator"]
+stream = ExtResource("2_c2ivx")
+
+[node name="Sound2" type="AudioStreamPlayer" parent="Animator"]
+stream = ExtResource("3_i4nir")
 
 [node name="Timer" type="Timer" parent="."]
 

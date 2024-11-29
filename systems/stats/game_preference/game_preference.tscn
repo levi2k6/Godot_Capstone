@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qegaifqc484q" path="res://assets/game_preference/info.png" id="4_rm6r1"]
 [ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="6_p0hhr"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="8_2rhr2"]
-[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/transition_layer/transition_layer.tscn" id="8_4wewa"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="8_4wewa"]
 
 [node name="GamePreference" type="Node2D"]
 script = ExtResource("1_jnx5u")
