@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2m83r2xqeial"]
+[gd_scene load_steps=12 format=3 uid="uid://b2m83r2xqeial"]
 
 [ext_resource type="Script" path="res://systems/settings/settings.gd" id="1_8mcl3"]
 [ext_resource type="PackedScene" uid="uid://namv7b1invr4" path="res://systems/misc/clickable/back_change_scene/clickable_change_back_scene.tscn" id="2_5e23u"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://systems/settings/Label.gd" id="6_jtc3b"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="6_nrsig"]
 [ext_resource type="Script" path="res://systems/settings/HSlider.gd" id="7_2qe38"]
+[ext_resource type="Texture2D" uid="uid://4hjdms5wsie0" path="res://assets/settings/volume_icon.png" id="7_r13a7"]
 [ext_resource type="PackedScene" uid="uid://cx0hmtjo834nu" path="res://systems/settings/exit_modal.tscn" id="8_vyiom"]
 
 [node name="Settings" type="Node2D"]
@@ -88,7 +89,6 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Teheee"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -107,17 +107,18 @@ anchor_left = 0.108
 anchor_top = 0.368
 anchor_right = 0.892
 anchor_bottom = 0.632
-offset_left = 0.155998
-offset_top = -0.0680046
-offset_right = -0.156006
-offset_bottom = 0.0679932
+offset_left = -20.344
+offset_top = -31.104
+offset_right = 21.344
+offset_bottom = 31.104
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(57, 96)
 layout_mode = 2
-text = "Music:"
+texture = ExtResource("7_r13a7")
+expand_mode = 1
 
 [node name="HSlider" type="HSlider" parent="Control/Options/VBoxContainer2/VBoxContainer2/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(230, 50)
@@ -132,10 +133,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Stats_Button" parent="Control/Options/VBoxContainer2/VBoxContainer" instance=ExtResource("6_27t48")]
+[node name="Login_Button" parent="Control/Options/VBoxContainer2/VBoxContainer" instance=ExtResource("6_27t48")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Stats"
+text = "Parent"
 
 [node name="EXIT" type="Button" parent="Control/Options/VBoxContainer2/VBoxContainer"]
 self_modulate = Color(1, 0.0705882, 0.054902, 1)

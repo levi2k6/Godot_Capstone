@@ -29,14 +29,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.4, 0.894118, 1)
 
-[node name="Settings_Button" parent="Control" instance=ExtResource("1_k8j3d")]
+[node name="Choose_Child_Button" parent="Control" instance=ExtResource("1_k8j3d")]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 106.0
 offset_bottom = 106.0
 
-[node name="BackIcon" type="Sprite2D" parent="Control/Settings_Button"]
+[node name="BackIcon" type="Sprite2D" parent="Control/Choose_Child_Button"]
 position = Vector2(48, 48)
 scale = Vector2(3, 3)
 texture = ExtResource("5_tsqde")
@@ -86,18 +86,21 @@ grow_vertical = 2
 [node name="Game_Preference_Button" parent="Control/Panel/UI" instance=ExtResource("1_k8j3d")]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Game Preference
 "
 
 [node name="Performance_Chart_Button" parent="Control/Panel/UI" instance=ExtResource("1_k8j3d")]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Performance Chart
 "
 
 [node name="Milestone_Button" parent="Control/Panel/UI" instance=ExtResource("1_k8j3d")]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Milestone
 "
 

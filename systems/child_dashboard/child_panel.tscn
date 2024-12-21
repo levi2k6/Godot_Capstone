@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2511qyfi1aub"]
+
+[ext_resource type="Script" path="res://systems/child_dashboard/child_panel.gd" id="1_1okcy"]
+[ext_resource type="Texture2D" uid="uid://ek51bnha2k4r" path="res://assets/child_panel/play_icon.png" id="2_0r66c"]
+
+[node name="ChildPanel" type="Panel"]
+self_modulate = Color(0.619608, 0.501961, 0.619608, 1)
+custom_minimum_size = Vector2(450, 120)
+offset_right = 400.0
+offset_bottom = 100.0
+size_flags_vertical = 0
+script = ExtResource("1_1okcy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 15.0
+offset_right = 386.0
+offset_bottom = 120.0
+theme_override_constants/separation = 18
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("2_0r66c")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="button_down" from="HBoxContainer/Button" to="." method="_on_texture_rect_button_down"]

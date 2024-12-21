@@ -23,16 +23,16 @@ func _item_texture(item, naym):
 	
 
 func _update_pet_equip_database(item):
-	var child = DataManager._get_child_database()[0].id
+	var child_id = DataManager._get_current_child_database()[0].id
 	
 	if item.type == "body":
-		Singleton.database.update_rows("pet", "id = %s" %child, { "body_id" : item.id})
+		Singleton.database.update_rows("pet", "id = %s" %child_id, { "body_id" : item.id})
 	elif item.type == "eye":
-			Singleton.database.update_rows("pet", "id = %s"%child, {"eyes_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %s"%child_id, {"eyes_id" : item.id})
 	elif item.type == "mouth":
-			Singleton.database.update_rows("pet", "id = %s" %child, {"mouth_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %s" %child_id, {"mouth_id" : item.id})
 	elif item.type == "hat":
-			Singleton.database.update_rows("pet", "id = %s" %child, {"hat_id" : item.id})
+			Singleton.database.update_rows("pet", "id = %s" %child_id, {"hat_id" : item.id})
 	get_parent()._get_item(this_item)
 	
 

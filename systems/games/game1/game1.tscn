@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://di4kqbjwtefkk"]
+[gd_scene load_steps=40 format=3 uid="uid://di4kqbjwtefkk"]
 
 [ext_resource type="Script" path="res://systems/games/game1/game1.gd" id="1_h5acu"]
 [ext_resource type="Script" path="res://systems/games/game1/Animator.gd" id="2_jf0en"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://cvicx8py657yb" path="res://assets/game1/sounds/Ti.wav" id="18_g0aaw"]
 [ext_resource type="AudioStream" uid="uid://dy7bccqypnbb5" path="res://assets/game1/sounds/Do - High.wav" id="19_ag56d"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="24_ii57i"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="33_31p4k"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6im47"]
 
@@ -495,6 +496,8 @@ one_shot = true
 visible = false
 
 [node name="Transition_Layer" parent="." instance=ExtResource("24_ii57i")]
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("33_31p4k")]
 
 [connection signal="button_down" from="Control/Game/Tiles/tile1" to="Control/Game/Tiles/tile1" method="_on_button_down"]
 [connection signal="button_down" from="Control/Game/Tiles/tile2" to="Control/Game/Tiles/tile2" method="_on_button_down"]

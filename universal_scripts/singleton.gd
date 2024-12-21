@@ -18,12 +18,20 @@ func create_table():
 		print(database.path);
 		
 		database.query('
+		CREATE TABLE "parent" (
+		"id" INTEGER NOT NULL,
+		"password" TEXT,
+		PRIMARY KEY("id" AUTOINCREMENT)
+		);
+
 		CREATE TABLE "child" (
 		"id" INTEGER NOT NULL,
 		"fname" TEXT,
-		"lname" INTEGER,
+		"lname" TEXT,
 		"pet_id" INTEGER UNIQUE,
 		"datas_id" INTEGER UNIQUE,
+		"status_id" INTEGER UNIQUE,
+		"disabled" BOOLEAN,
 		PRIMARY KEY("id" AUTOINCREMENT)
 		);
 
@@ -49,6 +57,13 @@ func create_table():
 		"milestone_id" INTEGER UNIQUE,
 		PRIMARY KEY("id"),
 		FOREIGN KEY("id") REFERENCES "child"("datas_id")
+		);
+
+		CREATE TABLE "status" (
+		"id" INTEGER,
+		"redeem_status" BOOLEAN,
+		"fully_fed_status" BOOLEAN,
+		FOREIGN KEY("id") REFERENCES "child"("status_id")
 		);
 
 		CREATE TABLE "milestone"(
@@ -133,9 +148,9 @@ func create_table():
 		"today" INTEGER
 		);
 
-		CREATE TABLE "status" (
-		"redeem_status" BOOLEAN,
-		"fully_fed_status" BOOLEAN
+		CREATE TABLE "time_limit"(
+		"start_time" TEXT,
+		"end_time" TEXT
 		);
 
 		CREATE TABLE "collection"(

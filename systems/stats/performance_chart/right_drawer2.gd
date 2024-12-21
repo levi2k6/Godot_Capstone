@@ -25,7 +25,7 @@ func _ready():
 	pass
 
 func create_origin():
-	var child_database = DataManager._get_child_database();
+	var child_database = DataManager._get_current_child();
 	if child_database.size() == 0:
 		print_debug("child does not exist");
 		return;

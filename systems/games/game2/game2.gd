@@ -19,7 +19,7 @@ func _connections():
 	pass
 
 func update_hunger():
-	var pet_hunger = DataManager._get_pet_database()[0].hunger;
+	var pet_hunger = DataManager._get_pet_database(GameData.current_child_id)[0].hunger;
 	hunger_bar.value = pet_hunger;
 
 func update_money(add):

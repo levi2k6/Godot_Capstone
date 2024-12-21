@@ -8,7 +8,8 @@ func _item_texture(item, naym):
 	this_item = item
 	
 	if naym == "Body_Items":
-		var color = ItemLibrary._get_pet_equip_library()[4].name
+		var child_id = GameData.current_child_id;
+		var color = ItemLibrary._get_pet_equip_library(child_id)[4].name
 		get_child(0).self_modulate = color
 		
 	if naym == "Eyes_Items":

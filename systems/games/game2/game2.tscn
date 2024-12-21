@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://biljrcgvvn0o3"]
+[gd_scene load_steps=61 format=3 uid="uid://biljrcgvvn0o3"]
 
 [ext_resource type="Script" path="res://systems/games/game2/game2.gd" id="1_uuvrj"]
 [ext_resource type="Script" path="res://systems/games/game2/Game_Intro.gd" id="2_602pu"]
@@ -46,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://dxskhl0xq2nnb" path="res://assets/game2/sounds/electricity-2.wav" id="35_nhy1h"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="39_3nuh5"]
 [ext_resource type="Script" path="res://systems/games/game2/transition_position.gd" id="39_bs1fk"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="47_2xfes"]
 
 [sub_resource type="Animation" id="Animation_jhloa"]
 length = 0.001
@@ -865,6 +866,8 @@ offset_right = 270.0
 offset_bottom = 693.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("47_2xfes")]
 
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Normal" to="Foreground/Casing/Game_Intro" method="_on_normal_button_up"]
 [connection signal="button_up" from="Foreground/Monitor1/Difficulties/Hard" to="Foreground/Casing/Game_Intro" method="_on_hard_button_up"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bwl4v0hw2og16"]
+[gd_scene load_steps=30 format=3 uid="uid://bwl4v0hw2og16"]
 
 [ext_resource type="Script" path="res://systems/main_hub/main_hub.gd" id="1_yumrb"]
 [ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_1p52a"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="24_a11n7"]
 [ext_resource type="Script" path="res://systems/main_hub/Receive_Label.gd" id="24_rc4mi"]
 [ext_resource type="AudioStream" uid="uid://wmunc2ghxa6f" path="res://assets/universal/sounds/Win Fx 2.wav" id="25_pcrol"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="27_kjmc8"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="28_6kd1y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6jh8"]
 shader = ExtResource("3_ickli")
@@ -1331,9 +1333,28 @@ script = ExtResource("24_rc4mi")
 stream = ExtResource("25_pcrol")
 pitch_scale = 1.08
 
+[node name="Child_Dashboard_Button" parent="Control" instance=ExtResource("3_vrikd")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.107
+anchor_top = 0.89
+anchor_right = 0.107
+anchor_bottom = 0.89
+offset_left = -47.78
+offset_top = -0.400024
+offset_right = 48.22
+offset_bottom = 95.6
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Child_Dashboard_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("28_6kd1y")
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Transition_Layer" parent="." instance=ExtResource("24_a11n7")]
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("27_kjmc8")]
 
 [connection signal="pressed" from="Control/UI/VBoxContainer/Daily_Reward" to="." method="_on_daily_reward_pressed"]
 [connection signal="pressed" from="Control/UI/Get_Money" to="." method="_on_get_money_pressed"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://63d8dqpjuo5i"]
+
+[ext_resource type="Script" path="res://systems/misc/modules/modules.gd" id="1_q1icp"]
+[ext_resource type="Script" path="res://systems/misc/modules/restriction.gd" id="2_7n8w6"]
+
+[node name="Modules" type="Node"]
+script = ExtResource("1_q1icp")
+
+[node name="restriction" type="Node" parent="."]
+script = ExtResource("2_7n8w6")

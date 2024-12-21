@@ -7,4 +7,3 @@ func get_transition_layer():
 func _ready():
 	pass
 
-		

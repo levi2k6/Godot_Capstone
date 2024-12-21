@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://ir5fsqksmt2"]
+
+[ext_resource type="Script" path="res://systems/child_dashboard/child_dashboard.gd" id="1_2xg8t"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_74iw8"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="3_1ie20"]
+[ext_resource type="FontFile" uid="uid://bjqtxj2hjlg82" path="res://assets/fonts/MinecraftItalic-R8Mo.otf" id="4_3pb6s"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="4_30vn1"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="4_eivvi"]
+[ext_resource type="Script" path="res://systems/child_dashboard/Time.gd" id="4_omaxp"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="5_wnygl"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="9_qytms"]
+
+[node name="Child_Dashboard" type="Node2D"]
+script = ExtResource("1_2xg8t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 1060.0
+script = ExtResource("2_74iw8")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Pets_Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.084
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -147.0
+offset_top = -47.04
+offset_right = 147.0
+offset_bottom = 30.96
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_1ie20")
+theme_override_font_sizes/font_size = 40
+text = "Children"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Control"]
+self_modulate = Color(0.9981, 0.326736, 0.261626, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.122
+anchor_right = 0.5
+anchor_bottom = 0.122
+offset_left = -20.0
+offset_top = -0.320007
+offset_right = 20.0
+offset_bottom = 22.68
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_3pb6s")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_omaxp")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -344.0
+offset_right = 257.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_eivvi")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.282
+anchor_right = 0.5
+anchor_bottom = 0.282
+offset_left = -225.0
+offset_top = -172.016
+offset_right = 225.0
+offset_bottom = -52.016
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="child_panel_hbox" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="OptionsModal" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -229.5
+offset_right = 228.0
+offset_bottom = 229.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_eivvi")
+
+[node name="Game_Menu_Button" parent="Control" instance=ExtResource("4_30vn1")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 106.0
+offset_bottom = 106.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Game_Menu_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("5_wnygl")
+
+[node name="Transition_Layer" parent="." instance=ExtResource("9_qytms")]

@@ -1,0 +1,293 @@
+[gd_scene load_steps=11 format=3 uid="uid://ce77qi5nkd38j"]
+
+[ext_resource type="Script" path="res://systems/child_settings/child_settings.gd" id="1_0s2k6"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_hqw3m"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="3_vg1x5"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="4_a8w2w"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="4_hjcin"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="5_3xe70"]
+[ext_resource type="Script" path="res://systems/child_settings/OptionsModal.gd" id="5_c3svq"]
+[ext_resource type="Texture2D" uid="uid://7wwup2cx87x2" path="res://assets/child_panel/add_icon.png" id="5_t2o7e"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="6_n3pih"]
+[ext_resource type="Script" path="res://systems/child_settings/DeleteModal.gd" id="8_s3hc1"]
+
+[node name="Child_Settings" type="Node2D"]
+script = ExtResource("1_0s2k6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 1060.0
+script = ExtResource("2_hqw3m")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Dashboard_Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.084
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -147.0
+offset_top = -47.04
+offset_right = 147.0
+offset_bottom = 30.96
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_vg1x5")
+theme_override_font_sizes/font_size = 40
+text = "CHILDREN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -344.0
+offset_right = 257.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_a8w2w")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -322.0
+offset_right = 225.0
+offset_bottom = -202.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="child_panel_hbox" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 450.0
+offset_bottom = 120.0
+theme_override_constants/separation = 18
+
+[node name="Add_Child" type="Button" parent="Control/Panel/HBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/HBoxContainer/Panel/HBoxContainer/Add_Child"]
+position = Vector2(48, 47)
+scale = Vector2(3, 3)
+texture = ExtResource("5_t2o7e")
+
+[node name="Label" type="Label" parent="Control/Panel/HBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "ADD CHILD"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="OptionsModal" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -394.5
+offset_right = 290.5
+offset_bottom = 394.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_a8w2w")
+script = ExtResource("5_c3svq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OptionsModal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.5
+offset_top = -380.0
+offset_right = 274.5
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Name_Label" type="Label" parent="Control/OptionsModal/VBoxContainer"]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OptionsModal/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Fname" type="LineEdit" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "First Name"
+max_length = 50
+
+[node name="Lname" type="LineEdit" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Last Name"
+max_length = 50
+
+[node name="Rename" type="Button" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Rename"
+
+[node name="Disable" type="Button" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Disable"
+
+[node name="Delete" type="Button" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Delete"
+
+[node name="Back" type="Button" parent="Control/OptionsModal/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[node name="Message" type="Label" parent="Control/OptionsModal"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -167.0
+offset_right = 254.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Parent_Dashboard_Button" parent="Control" instance=ExtResource("4_hjcin")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 106.0
+offset_bottom = 106.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Parent_Dashboard_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("5_3xe70")
+
+[node name="DeleteModal" type="Panel" parent="Control"]
+visible = false
+self_modulate = Color(0.729412, 0.568627, 0.568627, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -139.0
+offset_right = 225.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_a8w2w")
+script = ExtResource("8_s3hc1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DeleteModal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -81.5
+offset_right = 161.5
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="Label" type="Label" parent="Control/DeleteModal/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Are sure you want to delete this child?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/DeleteModal/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 40
+
+[node name="Yes" type="Button" parent="Control/DeleteModal/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0.0705882, 0.054902, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "YES"
+
+[node name="No" type="Button" parent="Control/DeleteModal/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "NO"
+
+[node name="Transition_Layer" parent="." instance=ExtResource("6_n3pih")]
+
+[connection signal="button_up" from="Control/Panel/HBoxContainer/Panel/HBoxContainer/Add_Child" to="." method="_on_add_child_button_up"]
+[connection signal="button_down" from="Control/OptionsModal/VBoxContainer/VBoxContainer/Rename" to="Control/OptionsModal" method="_on_rename_button_down"]
+[connection signal="button_up" from="Control/OptionsModal/VBoxContainer/VBoxContainer/Disable" to="Control/OptionsModal" method="_on_disable_button_up"]
+[connection signal="button_up" from="Control/OptionsModal/VBoxContainer/VBoxContainer/Delete" to="Control/OptionsModal" method="_on_delete_button_up"]
+[connection signal="button_down" from="Control/OptionsModal/VBoxContainer/VBoxContainer/Back" to="Control/OptionsModal" method="_on_back_button_down"]
+[connection signal="button_up" from="Control/DeleteModal/VBoxContainer/HBoxContainer/Yes" to="Control/DeleteModal" method="_on_yes_button_up"]
+[connection signal="button_down" from="Control/DeleteModal/VBoxContainer/HBoxContainer/No" to="Control/DeleteModal" method="_on_no_button_down"]

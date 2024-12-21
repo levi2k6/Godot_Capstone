@@ -52,7 +52,7 @@ offset_right = 212.5
 offset_bottom = 77.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
@@ -63,11 +63,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "First Name"
 
 [node name="Fname" type="LineEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer1"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 max_length = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel/VBoxContainer/HBoxContainer"]
@@ -75,14 +77,17 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Last Name"
 
 [node name="Lname" type="LineEdit" parent="Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 max_length = 50
 
 [node name="Button" type="Button" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
@@ -104,6 +109,24 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_dkulu")
 theme_override_font_sizes/font_size = 40
 text = "CHILD'S NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="Control"]
+self_modulate = Color(1, 0.334602, 0.277642, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.793
+anchor_right = 0.5
+anchor_bottom = 0.793
+offset_left = -254.0
+offset_top = -96.28
+offset_right = 254.0
+offset_bottom = 43.72
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
 

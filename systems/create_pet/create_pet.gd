@@ -49,7 +49,6 @@ func button_highlight_disabler(naym):
 		child.button_pressed = false;
 
 func _change_item(item, naym):
-	#print(naym)
 	pet._fashion()
 	pass
 

@@ -6,7 +6,8 @@ var this_item;
 func _item_texture(item, naym):
 	get_child(0).texture = item.texture
 	if naym == "Body_Items":
-		var color = ItemLibrary._get_pet_equip_library()[4].name
+		var child_id = GameData.current_child_id;
+		var color = ItemLibrary._get_pet_equip_library(child_id)[4].name
 		get_child(0).self_modulate = color
 	if naym == "Eyes_Items":
 		get_child(0).hframes = 9
@@ -23,7 +24,9 @@ func _item_texture(item, naym):
 
 
 func _update_pet_equip_database(item):
-	var child_id = DataManager._get_child_database()[0].id
+	var child_id = DataManager._get_current_child()[0].id
+	print("look here", child_id);
+	print("look here too,", item.id);
 	
 	if item.type == "body":
 		Singleton.database.update_rows("pet", "id = %d" %child_id, {"body_id" : item.id})

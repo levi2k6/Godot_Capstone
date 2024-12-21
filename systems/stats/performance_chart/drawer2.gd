@@ -57,7 +57,7 @@ func clear_line_datas():
 		line_2d_hard.remove_point(i);
 
 func create_origin():
-	var child = DataManager._get_child_database();
+	var child = DataManager._get_current_child();
 	if child.size() == 0:
 		print_debug("child does not exist");
 		return;
@@ -100,6 +100,10 @@ func show_game_stats_dynamic():
 	
 	var range = length_check();
 	
+	difficulty_number.set_text(session_datas_all.size(), "all");
+	difficulty_number.set_text(session_datas_normal.size(), "normal");
+	difficulty_number.set_text(session_datas_hard.size(), "hard");
+	
 	if range == null:
 		print_debug("range is null");
 		return
@@ -109,10 +113,6 @@ func show_game_stats_dynamic():
 		rich_text_label.text = "Interpretation: ...";
 		return;
 	
-	
-	difficulty_number.set_text(session_datas_all.size(), "all");
-	difficulty_number.set_text(session_datas_normal.size(), "normal");
-	difficulty_number.set_text(session_datas_hard.size(), "hard");
 	interpretation.interpret();
 	
 	set_length_max_size(session_datas_all, range);

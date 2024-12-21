@@ -12,7 +12,9 @@ func get_transition_layer():
 	return transition_layer;
 
 func _ready():
-	var child = DataManager._get_child_database();
+	var child = DataManager._get_current_child();
+	print("THIS", child);
+	print(GameData.current_child_id);
 	if child.size() == 0:
 		print_debug("child does not exist");
 		return;
@@ -22,7 +24,7 @@ func _ready():
 func update_datas():
 	DataManager._update_milestone_total_time();
 	DataManager._update_milestone_total_collection();
-	DataManager._update_milestone_total_games_played();
+	DataManager._update_milestone_total_games_played(GameData.current_child_id);
 
 func total_time_converter(seconds):
 	var minutes = float(seconds) / 60; 

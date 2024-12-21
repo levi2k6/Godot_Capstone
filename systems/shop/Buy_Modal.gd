@@ -52,7 +52,7 @@ func _modal_func(item):
 @onready var buy_sound = $Buy_Sound
 @onready var buy = $Buy
 func _on_button_button_up():
-	var child_id = DataManager._get_child_database()
+	var child_id = DataManager._get_current_child()[0].id;
 	var item_id = this_item.id
 	
 	

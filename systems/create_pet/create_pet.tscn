@@ -199,16 +199,17 @@ theme = ExtResource("5_8smym")
 [node name="Create_Pet_Modal" type="Panel" parent="Control"]
 visible = false
 self_modulate = Color(0.486275, 0.564706, 0.690196, 1)
+custom_minimum_size = Vector2(442, 269)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.182
-anchor_top = 0.231
-anchor_right = 0.785
-anchor_bottom = 0.444
-offset_left = 18.168
-offset_top = 0.455994
-offset_right = 17.84
-offset_bottom = 0.343964
+anchor_left = 0.506
+anchor_top = 0.322
+anchor_right = 0.506
+anchor_bottom = 0.322
+offset_left = -221.24
+offset_top = -134.62
+offset_right = 220.76
+offset_bottom = 134.38
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_c4pff")
@@ -222,12 +223,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.5
-offset_top = -29.0
-offset_right = 132.5
-offset_bottom = 7.0
+offset_left = -150.0
+offset_top = -18.0
+offset_right = 150.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 20
 max_length = 20
 
 [node name="Label" type="Label" parent="Control/Create_Pet_Modal"]
@@ -243,6 +245,7 @@ offset_right = 20.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 25
 text = "NAME YOUR PET"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Create_Pet_Modal"]
@@ -262,11 +265,13 @@ theme_override_constants/separation = 25
 
 [node name="CreatePet" type="Button" parent="Control/Create_Pet_Modal/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Create Pet!"
 
 [node name="Back" type="Button" parent="Control/Create_Pet_Modal/HBoxContainer"]
 custom_minimum_size = Vector2(122, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Back
 "
 

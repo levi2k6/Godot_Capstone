@@ -1,0 +1,229 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccb8k2tiondog"]
+
+[ext_resource type="Script" path="res://systems/restriction/restriction.gd" id="1_ld7hk"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="1_m4nig"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="2_rryeg"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="3_d0tee"]
+[ext_resource type="Script" path="res://systems/restriction/LineEdit.gd" id="4_6lgmg"]
+[ext_resource type="Script" path="res://systems/restriction/OptionButton.gd" id="4_8pxk7"]
+[ext_resource type="Texture2D" uid="uid://cyo845pw4dgnc" path="res://assets/universal/panel.png" id="4_lruoi"]
+[ext_resource type="FontFile" uid="uid://cubu4cwt23fk0" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="5_7ylw3"]
+[ext_resource type="Script" path="res://systems/restriction/time_limit_label.gd" id="5_ekeoy"]
+[ext_resource type="Script" path="res://systems/restriction/Button2.gd" id="7_qk3v8"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="8_6nnoq"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="9_r81gg"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="10_hb2ro"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsst3"]
+texture = ExtResource("4_lruoi")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="Restriction" type="Node2D"]
+script = ExtResource("1_ld7hk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("2_rryeg")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.082
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -158.0
+offset_top = -38.72
+offset_right = 158.0
+offset_bottom = 37.36
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_d0tee")
+theme_override_font_sizes/font_size = 40
+text = "RESTRICTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -291.0
+offset_right = 255.0
+offset_bottom = 395.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wsst3")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 60.0
+offset_right = 484.0
+offset_bottom = 665.0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="TimeLimitLabel" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_7ylw3")
+theme_override_font_sizes/font_size = 20
+text = "Time Limit: "
+script = ExtResource("5_ekeoy")
+
+[node name="StartHbox" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_7ylw3")
+theme_override_font_sizes/font_size = 20
+text = "Start:"
+
+[node name="SpinBoxStartH" type="SpinBox" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer2"]
+layout_mode = 2
+text = ":"
+
+[node name="SpinBoxStartM" type="SpinBox" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 59.0
+alignment = 1
+
+[node name="OptionButtonS" type="OptionButton" parent="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+script = ExtResource("4_8pxk7")
+
+[node name="EndHbox" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_7ylw3")
+theme_override_font_sizes/font_size = 20
+text = "End:"
+
+[node name="SpinBoxEndH" type="SpinBox" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+script = ExtResource("4_6lgmg")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer2"]
+layout_mode = 2
+text = ":"
+
+[node name="SpinBoxEndM" type="SpinBox" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 59.0
+alignment = 1
+
+[node name="OptionButtonE" type="OptionButton" parent="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+script = ExtResource("4_8pxk7")
+
+[node name="Hours_Between" type="Label" parent="Control/Panel/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_7ylw3")
+theme_override_font_sizes/font_size = 20
+text = "Hours Between:"
+
+[node name="Button" type="Button" parent="Control/Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_m4nig")
+theme_override_font_sizes/font_size = 20
+text = "Set Restriction"
+
+[node name="Button2" type="Button" parent="Control/Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_m4nig")
+theme_override_font_sizes/font_size = 20
+text = "Remove Restriction"
+script = ExtResource("7_qk3v8")
+
+[node name="Message" type="Label" parent="Control/Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_7ylw3")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Parent_Dashboard_Button" parent="Control" instance=ExtResource("8_6nnoq")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 106.0
+offset_bottom = 106.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Parent_Dashboard_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("9_r81gg")
+
+[node name="Transition_Layer" parent="." instance=ExtResource("10_hb2ro")]
+
+[connection signal="value_changed" from="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer/SpinBoxStartH" to="." method="_on_spin_box_start_h_value_changed"]
+[connection signal="value_changed" from="Control/Panel/VBoxContainer2/VBoxContainer/StartHbox/HBoxContainer2/SpinBoxStartM" to="." method="_on_spin_box_start_m_value_changed"]
+[connection signal="value_changed" from="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer/SpinBoxEndH" to="." method="_on_spin_box_end_h_value_changed"]
+[connection signal="value_changed" from="Control/Panel/VBoxContainer2/VBoxContainer/EndHbox/HBoxContainer2/SpinBoxEndM" to="." method="_on_spin_box_end_m_value_changed"]
+[connection signal="button_up" from="Control/Panel/VBoxContainer2/Button" to="." method="_on_button_button_up"]
+[connection signal="button_down" from="Control/Panel/VBoxContainer2/Button2" to="." method="_on_button_2_button_down"]

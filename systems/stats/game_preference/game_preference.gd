@@ -36,7 +36,7 @@ func remove_games_stats():
 		child.queue_free();
 
 func append_game_library():
-	var games_db = DataManager._get_all_game_counts();
+	var games_db = DataManager._get_all_game_counts(GameData.current_child_id);
 	for i in range(games_library.size()):
 		#games_library[i].name = games_db[i].name;
 		games_library[i].count = games_db[i].count;

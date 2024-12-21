@@ -31,8 +31,8 @@ func _ready():
 	_fashion();
 
 func check_hunger():
-	properties.hunger = DataManager._get_pet_database()[0].hunger;
-	var fully_fed_status = DataManager._get_status()[0].fully_fed_status;
+	properties.hunger = DataManager._get_current_pet()[0].hunger;
+	#var fully_fed_status = DataManager._get_status(GameData.current_child_id)[0].fully_fed_status;
 	if get_tree().current_scene.name == "MainHub":
 		if properties.hunger == 100:
 			dance();
@@ -43,7 +43,8 @@ func dance():
 
 
 func _fashion():
-	var equip_items = ItemLibrary._get_pet_equip_library();
+	var child_id = GameData.current_child_id;
+	var equip_items = ItemLibrary._get_pet_equip_library(child_id);
 	#print("RIGHT HERE:: " , equip_items);
 	if equip_items.size() == 0:
 		print_debug("Empty Equip Items");
@@ -80,10 +81,10 @@ func _learn(xp):
 	state_chage();
 	update_hunger_bar();
 	
-	var fully_fed_status = DataManager._get_status()[0].fully_fed_status;
+	var fully_fed_status = DataManager._get_status(GameData.current_child_id)[0].fully_fed_status;
 	if fully_fed_status == 0:
 		if properties.hunger == 100:
-			DataManager._update_milestone_total_pet_fully_fed();
+			DataManager._update_milestone_total_pet_fully_fed(GameData.current_child_id);
 			DataManager._update_fully_fed_status(1);
 			
 			var transition_layer = get_tree().current_scene.get_transition_layer();

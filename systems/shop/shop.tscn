@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qnvyv3a0mthy"]
+[gd_scene load_steps=21 format=3 uid="uid://qnvyv3a0mthy"]
 
 [ext_resource type="Script" path="res://systems/shop/shop.gd" id="1_x604k"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="2_bmkpa"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://wmunc2ghxa6f" path="res://assets/universal/sounds/Win Fx 2.wav" id="12_75jbr"]
 [ext_resource type="Texture2D" uid="uid://dxm7l6a13fcxw" path="res://assets/customize/shadow.png" id="13_esqxw"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="14_xldgr"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="16_4hsrb"]
 
 [sub_resource type="Animation" id="Animation_raj6n"]
 length = 0.001
@@ -376,6 +377,8 @@ texture = ExtResource("13_esqxw")
 position = Vector2(32, 32)
 
 [node name="Transition_Layer" parent="." instance=ExtResource("14_xldgr")]
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("16_4hsrb")]
 
 [connection signal="button_up" from="Control/Buy_Modal/Buy" to="Control/Buy_Modal" method="_on_button_button_up"]
 [connection signal="pressed" from="Control/Buy_Modal/Close" to="Control/Buy_Modal" method="_on_close_pressed"]

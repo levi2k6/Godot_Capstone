@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm6vbtrqbqx7d"]
+[gd_scene load_steps=13 format=3 uid="uid://bm6vbtrqbqx7d"]
 
 [ext_resource type="Script" path="res://systems/collection/collection.gd" id="1_0txvs"]
 [ext_resource type="PackedScene" uid="uid://dppjchrp5io0f" path="res://systems/pet/pet.tscn" id="1_lwmpp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://dent1p17y64cs" path="res://assets/themes/customize_theme.tres" id="8_hh76e"]
 [ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="9_7skf4"]
 [ext_resource type="Texture2D" uid="uid://dxm7l6a13fcxw" path="res://assets/customize/shadow.png" id="11_4biyp"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="12_0jmhy"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="12_rjb6o"]
 
 [node name="Collection" type="Node2D"]
@@ -228,3 +229,5 @@ texture = ExtResource("11_4biyp")
 position = Vector2(32, 32)
 
 [node name="Transition_Layer" parent="." instance=ExtResource("12_rjb6o")]
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("12_0jmhy")]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0wpewocb0isa"]
+
+[ext_resource type="Script" path="res://systems/misc/time_limit_checker/time_limit_checker.gd" id="1_1273m"]
+
+[node name="TimeLimitChecker" type="Node"]
+script = ExtResource("1_1273m")
+
+[node name="Timer" type="Timer" parent="."]

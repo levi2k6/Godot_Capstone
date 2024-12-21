@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw4br10y5erol"]
+
+[ext_resource type="Script" path="res://systems/parent_dashboard/parent_dashboard.gd" id="1_oj8vu"]
+[ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="2_q2bg4"]
+[ext_resource type="Script" path="res://universal_scripts/Control.gd" id="3_rmsur"]
+[ext_resource type="PackedScene" uid="uid://dq5jw5oofwekp" path="res://systems/misc/clickable/change_scene/clickable_change_scene.tscn" id="4_4en26"]
+[ext_resource type="Texture2D" uid="uid://cnltgiwq825d2" path="res://assets/universal/back_icon.png" id="5_ssy16"]
+[ext_resource type="FontFile" uid="uid://jsenqrxfhpga" path="res://assets/fonts/MinecraftBoldItalic-1y1e.otf" id="6_csbj5"]
+[ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="7_hivxt"]
+
+[node name="ParentDashboard" type="Node2D"]
+script = ExtResource("1_oj8vu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+size_flags_horizontal = 4
+theme = ExtResource("2_q2bg4")
+script = ExtResource("3_rmsur")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4, 0.894118, 1)
+
+[node name="Settings_Button" parent="Control" instance=ExtResource("4_4en26")]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 106.0
+offset_bottom = 106.0
+
+[node name="BackIcon" type="Sprite2D" parent="Control/Settings_Button"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("5_ssy16")
+
+[node name="Dashboard_Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.084
+anchor_right = 0.5
+anchor_bottom = 0.084
+offset_left = -147.0
+offset_top = -38.64
+offset_right = 147.0
+offset_bottom = 39.36
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_csbj5")
+theme_override_font_sizes/font_size = 40
+text = "DASHBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.142
+anchor_right = 0.5
+anchor_bottom = 0.142
+offset_left = -219.0
+offset_top = -0.320007
+offset_right = 219.0
+offset_bottom = 687.68
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 69.0
+offset_top = 81.0
+offset_right = 369.0
+offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Child_Settings_Button" parent="Control/Panel/UI" instance=ExtResource("4_4en26")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Child Settings
+"
+
+[node name="Restriction_Button" parent="Control/Panel/UI" instance=ExtResource("4_4en26")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restriction"
+
+[node name="Choose_Child_Button" parent="Control/Panel/UI" instance=ExtResource("4_4en26")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Stats
+"
+
+[node name="Change_Password_Button" parent="Control/Panel/UI" instance=ExtResource("4_4en26")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Change Password
+"
+
+[node name="Game_Menu_Button" parent="Control/Panel/UI" instance=ExtResource("4_4en26")]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Game Menu
+"
+
+[node name="Transition_Layer" parent="." instance=ExtResource("7_hivxt")]

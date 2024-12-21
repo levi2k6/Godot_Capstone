@@ -83,10 +83,10 @@ func _id_to_library_data(ids):
 	return dictionaries
 
 
-func _get_pet_equip_library():
+func _get_pet_equip_library(id):
 	Singleton.database.query(
-		"SELECT * FROM  pet;"
-	)
+		"SELECT * FROM  pet WHERE id = %s;"%id
+	);
 	var equip = Singleton.database.query_result
 	var lib_result = [null, null, null, null, null];
 	
@@ -109,7 +109,7 @@ func _get_pet_equip_library():
 	return lib_result
 
 func _get_collection_library():
-	var collection_database = DataManager._get_collection_database()
+	var collection_database = DataManager._get_collection_database(GameData.current_child_id);
 	var my_collection = []
 	for item in library:
 		for collection in collection_database:

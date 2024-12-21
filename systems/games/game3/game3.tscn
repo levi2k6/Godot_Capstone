@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtwuefjxhddi2"]
+[gd_scene load_steps=34 format=3 uid="uid://dtwuefjxhddi2"]
 
 [ext_resource type="Script" path="res://systems/games/game3/game3.gd" id="1_i7y8d"]
 [ext_resource type="Script" path="res://systems/games/game3/Game.gd" id="1_j4hsh"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://systems/games/game3/Info_Control.gd" id="14_peucc"]
 [ext_resource type="Theme" uid="uid://bywvvpuodhlu0" path="res://assets/themes/universal_theme.tres" id="15_rd76u"]
 [ext_resource type="PackedScene" uid="uid://4ne55yncfru3" path="res://systems/misc/transition_layer/transition_layer.tscn" id="19_2wmt0"]
+[ext_resource type="PackedScene" uid="uid://c0wpewocb0isa" path="res://systems/misc/time_limit_checker/time_limit_checker.tscn" id="21_75joj"]
 
 [sub_resource type="Animation" id="Animation_657cm"]
 length = 0.001
@@ -388,12 +389,14 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme = ExtResource("10_ggkwj")
+theme_override_font_sizes/font_size = 20
 text = "Normal"
 
 [node name="Hard" type="Button" parent="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme = ExtResource("10_ggkwj")
+theme_override_font_sizes/font_size = 20
 text = "Hard
 "
 
@@ -401,6 +404,7 @@ text = "Hard
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme = ExtResource("10_ggkwj")
+theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [node name="Info_Control" type="Control" parent="."]
@@ -460,6 +464,8 @@ position = Vector2(270, 1440)
 
 [node name="Pet" parent="." instance=ExtResource("6_3po1a")]
 visible = false
+
+[node name="TimeLimitChecker" parent="." instance=ExtResource("21_75joj")]
 
 [connection signal="area_shape_entered" from="Game/Area2D" to="Game" method="_on_area_2d_area_shape_entered"]
 [connection signal="button_up" from="Control/Game_Intro/Ship_Intro/ShipMenu/VBoxContainer/Normal" to="Control/Game_Intro" method="_on_normal_button_up"]

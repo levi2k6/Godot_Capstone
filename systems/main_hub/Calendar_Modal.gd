@@ -40,6 +40,21 @@ var library = [
 	
 ]
 
+func _ready():
+	var milestone_data = DataManager._get_milestone_datas();
+	var days = milestone_data[0].total_days_played;
+	print("look ar here", days);
+	var redeem_status = DataManager._get_status(GameData.current_child_id)[0].redeem_status;
+	
+	
+	
+	if redeem_status == 0:
+		visible = true;
+		populate_day_datas(days, redeem_status);
+		DataManager._update_redeem_status(1);
+	elif redeem_status == 1:
+		populate_day_datas(days, redeem_status);
+	
 
 func populate_day_datas(days, redeem_status):
 	var i = 0;
@@ -63,20 +78,6 @@ func populate_day_datas(days, redeem_status):
 				break;
 			elif child.name.to_int() < days:
 				child.self_modulate = "69ff4d";
-
-func _ready():
-	var milestone_data = DataManager._get_milestone_datas();
-	var days = milestone_data[0].total_days_played;
-	print(days);
-	var redeem_status = DataManager._get_status()[0].redeem_status;
-	
-	if redeem_status == 0:
-		visible = true;
-		populate_day_datas(days, redeem_status);
-		DataManager._update_redeem_status(1);
-	elif redeem_status == 1:
-		populate_day_datas(days, redeem_status);
-
 
 func animate(child):
 	close.visible = false;

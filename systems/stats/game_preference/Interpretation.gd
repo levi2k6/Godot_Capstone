@@ -2,14 +2,14 @@ extends Panel
 
 
 
-func interpret():
-	var games_count = DataManager._get_all_game_counts();
-	
-	
-	
-	
-	
-	
+#func interpret():
+	#var games_count = DataManager._get_all_game_counts();
+	#
+	#
+	#
+	#
+	#
+	#
 
 
 

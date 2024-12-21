@@ -2,10 +2,12 @@ extends Panel
 
 @onready var text_edit = $TextEdit
 
+var able = true;
+
 func _on_create_pet_button_up():
-	var child = DataManager._get_child_database()
-	var equip_library = ItemLibrary._get_pet_equip_library()
-	var collection_library = ItemLibrary._get_collection_library()
+	var child = DataManager._get_current_child();
+	var equip_library = ItemLibrary._get_pet_equip_library(child[0].id);
+	var collection_library = ItemLibrary._get_collection_library();
 	var n = 0
 	if equip_library.size() < 3:
 		print("PET INCOMPLETE!")
@@ -18,29 +20,34 @@ func _on_create_pet_button_up():
 			print("is thsi even working?");
 			
 		if collection_library.size() == 0:
-			print("nothing inside")
-			for item in equip_library:
-				if item == null:
-					continue;
-				Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
-			await transition();
-			GameData.transition_disappear = true;
-			get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
+			if able:
+				able = false;
+				print("nothing inside")
+				for item in equip_library:
+					if item == null:
+						continue;
+					Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
+				await transition();
+				GameData.transition_disappear = true;
+				get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
 		else:
-			for item in equip_library:
-				for collection in collection_library:
-					n += 1
-					print(n)
-					if item.id == collection.id:
-						#print("(",item.id, " is the same with ", collection.id,")")
-						break
-					if n == collection_library.size():
-						print(n," was not found so insert the item")
-						Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
-				n = 0
-			await transition();
-			GameData.transition_disappear = true;
-			get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
+			if able:
+				able = false;
+				for item in equip_library:
+					for collection in collection_library:
+						n += 1
+						print(n)
+						if item == null:
+							continue;
+						if item.id == collection.id:
+							break;
+						if n == collection_library.size():
+							print(n," was not found so insert the item")
+							Singleton.database.insert_row("collection", {"child_id": child[0].id, "item_id": item.id})
+					n = 0
+				await transition();
+				GameData.transition_disappear = true;
+				get_tree().change_scene_to_file("res://systems/main_hub/main_hub.tscn")
 
 
 func _input(event):
